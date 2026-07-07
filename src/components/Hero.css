@@ -1,0 +1,279 @@
+/* ─────────────────────────────
+   CSS Custom Property for animated gradient border
+───────────────────────────── */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* ─────────────────────────────
+   Variables
+───────────────────────────── */
+:root {
+  --navy:        #0D1B4B;
+  --accent-blue: #0031B8;
+  --white:       #ffffff;
+}
+
+/* ─────────────────────────────
+   Scroll zone + sticky wrapper
+───────────────────────────── */
+.hero-scroll-zone {
+  height: 300vh;
+}
+
+.hero-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  background: transparent;
+  padding: 16px 16px 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: visible;
+  /* sticky creates a stacking context — must sit above .services-section (z-index: 1)
+     or the flying hero image gets painted behind it mid-animation */
+  z-index: 5;
+  /* the wrapper spans the viewport while pinned; let clicks pass through to sections below */
+  pointer-events: none;
+}
+
+/* ─────────────────────────────
+   Navbar
+───────────────────────────── */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px 16px;
+  background: var(--white);
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  z-index: 60;
+  pointer-events: auto;
+  opacity: 0;
+  animation: navFadeDown 0.7s ease-out 0.1s forwards;
+}
+
+.nav-logo img {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--navy);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.55;
+}
+
+/* ── Contact CTA with spinning gradient border ── */
+.nav-contact {
+  --border-angle: 0deg;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  padding: 8px 8px 8px 20px;
+  border-radius: 100px;
+  letter-spacing: -0.01em;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--navy), var(--navy)) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      #00E1FF 0%,
+      #FF0069 50%,
+      #0055FF 100%
+    ) border-box;
+  animation: spin-border 2.5s linear infinite;
+}
+
+.contact-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: var(--white);
+  color: var(--navy);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────
+   Hero Image Container
+───────────────────────────── */
+.hero-image-container {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  isolation: isolate;
+  will-change: top, left, width, height, opacity;
+  pointer-events: auto;
+}
+
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: kenBurns 12s ease-out forwards;
+}
+
+/* ─────────────────────────────
+   Hero Content
+───────────────────────────── */
+.hero-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 40px 40px;
+  z-index: 2;
+}
+
+.hero-headline {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(36px, 5.2vw, 76px);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  margin: 0 0 28px;
+}
+
+/* ── Text mask reveal ── */
+.line-wrap {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.line-inner {
+  display: block;
+  transform: translateY(110%);
+  opacity: 0;
+}
+
+.line-1 {
+  animation: revealLine 1s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+}
+
+.line-2 {
+  animation: revealLine 1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
+}
+
+.hero-accent {
+  font-family: 'Canela', serif;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--accent-blue);
+  letter-spacing: -0.01em;
+}
+
+/* ─────────────────────────────
+   CTA Buttons
+───────────────────────────── */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.7s ease-out 1.15s forwards;
+}
+
+.btn-primary {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--navy);
+  text-decoration: none;
+  padding: 13px 26px;
+  border-radius: 100px;
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.8;
+}
+
+.btn-ghost {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.btn-ghost:hover {
+  opacity: 1;
+}
+
+/* ─────────────────────────────
+   Keyframes
+───────────────────────────── */
+@keyframes navFadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes kenBurns {
+  from { transform: scale(1.1); opacity: 0; }
+  12%  { opacity: 1; }
+  to   { transform: scale(1.0); opacity: 1; }
+}
+
+@keyframes revealLine {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin-border {
+  to { --border-angle: 360deg; }
+}

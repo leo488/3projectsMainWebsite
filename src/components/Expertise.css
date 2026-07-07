@@ -1,0 +1,210 @@
+/* ── Static section ── */
+.expertise-section {
+  background: #EFEFED;
+  display: flex;
+  flex-direction: column;
+  /* max() keeps the cards tall even on short viewports */
+  height: max(100vh, 800px);
+  overflow: hidden;
+  padding: 72px 80px 0;
+  box-sizing: border-box;
+}
+
+/* ── Heading block ── */
+.exp-header {
+  flex-shrink: 0;
+  margin-bottom: 40px;
+}
+
+.exp-eyebrow {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(14, 27, 46, 0.40);
+  margin: 0 0 14px;
+}
+
+.exp-heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(40px, 4.4vw, 64px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: #0E1B2E;
+  margin: 0;
+}
+
+/* ── Rail wrapper ── */
+.exp-rail-wrap {
+  flex: 1;
+  overflow: visible;
+  min-height: 0;
+}
+
+/* ── Horizontal card rail — all cards always fit the screen ── */
+.exp-rail {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  height: 100%;
+  padding: 0 0 28px;
+  box-sizing: border-box;
+}
+
+/* ── Card base — accordion: hovered card grows, siblings shrink ── */
+.exp-card {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: flex-grow 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: flex-grow;
+}
+
+.exp-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* bottom-heavy gradient overlay */
+.exp-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.20) 45%,
+    transparent 70%
+  );
+  z-index: 1;
+}
+
+/* ── Bottom content strip ── */
+.exp-card-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+/* ── Glassmorphism — edge to edge, flows into the card, no border ── */
+.exp-glass {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  padding: 26px 30px;
+  box-sizing: border-box;
+}
+
+/* ── Featured card ── */
+.exp-card--featured {
+  flex-grow: 2.9;
+}
+
+.exp-card--featured:hover {
+  flex-grow: 3.6;
+}
+
+/* when a category card is hovered, the featured card gives up space */
+.exp-rail:has(.exp-card--category:hover) .exp-card--featured {
+  flex-grow: 1.6;
+}
+
+.exp-card-tag {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.60);
+  margin: 0 0 14px;
+}
+
+.exp-card-headline {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(22px, 2.1vw, 34px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.exp-card-stats {
+  display: flex;
+  gap: 36px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+/* category cards keep the same copy but reveal their stats when expanded */
+.exp-card--category .exp-card-stats {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 0;
+  border-top-color: transparent;
+  transition:
+    max-height  0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity     0.45s ease 0.12s,
+    margin-top  0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    padding-top 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    border-top-color 0.45s ease;
+}
+
+.exp-card--category:hover .exp-card-stats {
+  max-height: 140px;
+  opacity: 1;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top-color: rgba(255, 255, 255, 0.28);
+}
+
+.exp-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.exp-stat-val {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.exp-stat-val--green { color: #2EDFA3; }
+.exp-stat-val--cyan  { color: #2EDFA3; }
+
+.exp-stat-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.50);
+}
+
+/* ── Category card ── */
+.exp-card--category {
+  flex-grow: 1;
+}
+
+.exp-card--category:hover {
+  flex-grow: 2.4;
+}
+

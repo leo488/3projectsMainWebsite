@@ -1,0 +1,167 @@
+/* ── Footer ── */
+.footer {
+  background: #0D1826;
+  padding: 0 80px 60px;
+  overflow: hidden;
+}
+
+/* ── Big CTA headline ── */
+.footer-cta {
+  padding: clamp(140px, 18vh, 240px) 0 clamp(120px, 16vh, 220px);
+  text-align: center;
+}
+
+.footer-cta-headline {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(44px, 6.4vw, 96px);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: #F4F6F8;
+  margin: 0;
+}
+
+.footer-accent {
+  font-family: 'Canela', serif;
+  font-style: italic;
+  font-weight: 700;
+  color: #2E55E6;
+  letter-spacing: -0.01em;
+}
+
+/* ── Link columns ── */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(4, 1fr);
+  gap: 48px;
+  padding-bottom: 110px;
+}
+
+.footer-mark {
+  width: 56px;
+  height: auto;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.footer-blurb {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 320px;
+  margin: 0;
+}
+
+.footer-col-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.40);
+  margin: 0 0 26px;
+}
+
+.footer-col-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-col-links a {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-col-links a:hover {
+  color: #ffffff;
+}
+
+/* ── Legal bar ── */
+.footer-legal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 34px 0 0;
+}
+
+.footer-legal-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.footer-legal-links a {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.50);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-legal-links a:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-copyright {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Giant brand lockup ── */
+.footer-lockup {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 3vw, 56px);
+  padding-top: clamp(90px, 12vh, 160px);
+}
+
+.footer-lockup-mark {
+  width: clamp(120px, 17vw, 300px);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.footer-lockup-word {
+  min-width: 0;
+}
+
+.footer-wordmark {
+  display: block;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(56px, 12vw, 236px);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 0.95;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.footer-tm {
+  display: block;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(16px, 1.6vw, 30px);
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 10px;
+}

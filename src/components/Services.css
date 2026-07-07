@@ -1,0 +1,144 @@
+.services-section {
+  background: #EFEFED;
+  padding: 120px 70px 140px;
+  margin-top: -100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Heading ── */
+.services-heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(32px, 3.6vw, 54px);
+  font-weight: 400;
+  color: #0E1B2E;
+  line-height: 1.16;
+  letter-spacing: -0.03em;
+  text-align: center;
+  margin: 0 auto 100px;
+  max-width: 940px;
+}
+
+/* ── Tile rows — small squares scattered around the heading ── */
+.services-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.services-row--top {
+  margin-bottom: 100px;
+}
+
+/* subtle organic stagger per tile */
+.tile-t1 { margin-top: 18px; }
+.tile-t2 { margin-top: 0; }
+.tile-t3 { margin-top: 42px; }
+.tile-t4 { margin-top: 8px; }
+.tile-t5 { margin-top: 26px; }
+
+.tile-b1 { margin-top: 0; }
+.tile-b2 { margin-top: 30px; }
+.tile-b3 { margin-top: 8px; }
+.tile-b4 { margin-top: 44px; }
+.tile-b5 { margin-top: 16px; }
+
+/* ── Card base — small square tiles ── */
+.card {
+  width: clamp(104px, 10.5vw, 158px);
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(32px);
+  position: relative;
+  cursor: pointer;
+  will-change: transform;
+  transition:
+    opacity   0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0ms),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0ms);
+}
+
+/* Cursor-tracking glare — position driven by --gx/--gy set via JS on mousemove */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(255, 255, 255, 0.22) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.25s ease;
+}
+
+.card--hovered::after {
+  opacity: 1;
+}
+
+.card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Card image ── */
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ── Logo tile ── */
+.card-logo {
+  width: 58%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Card variants ── */
+.card--blue {
+  background: #0031B8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card--dark {
+  background: #0E1B2E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card--light {
+  background: #E0E0DE;
+}
+
+.card-symbol {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

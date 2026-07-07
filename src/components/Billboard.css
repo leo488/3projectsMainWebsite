@@ -1,0 +1,11 @@
+/* ── Full-width billboard section ── */
+.billboard-section {
+  background: #EFEFED;
+  line-height: 0;
+}
+
+.billboard-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
