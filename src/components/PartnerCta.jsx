@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import DataField from './DataField'
+import DotGrid from './DotGrid'
 import './PartnerCta.css'
 
 export default function PartnerCta() {
@@ -28,7 +28,7 @@ export default function PartnerCta() {
         <a href="#" className="partner-btn">Become a CPA Partner</a>
       </div>
       <div className="partner-right">
-        <DataField focusX={0.5} focusY={0.62} focusRx={0.34} focusRy={0.5} />
+        <DotGrid />
         <img src="/images/portrait-partner.png" alt="" className="partner-portrait" />
       </div>
     </section>

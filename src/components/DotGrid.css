@@ -1,0 +1,32 @@
+.dot-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+  pointer-events: none;
+}
+
+.dot-grid-dot {
+  align-self: center;
+  justify-self: center;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.5s ease var(--delay),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--delay);
+}
+
+.pc--visible .dot-grid-dot {
+  opacity: 0.28;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot-grid-dot {
+    transition: none;
+  }
+}
