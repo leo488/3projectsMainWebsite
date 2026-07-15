@@ -66,8 +66,6 @@ export default function CaseStudy() {
         </div>
       </div>
 
-      <div className="cs-rule" />
-
       <div className="cs-stats">
         {STATS.map((s, i) => (
           <div key={i} className="cs-stat">

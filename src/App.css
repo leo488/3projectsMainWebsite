@@ -1,1 +1,125 @@
-/* reserved for global app styles */
+main {
+  position: relative;
+}
+
+:root {
+  --edge-inset: 24px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --edge-inset: 20px;
+  }
+}
+
+@keyframes edge-flow-v {
+  from { background-position: 0 0; }
+  to   { background-position: 0 -100%; }
+}
+
+/* Flowing brand-gradient thread — same color logic as the CTA button
+   borders, but travelling continuously instead of spinning. Kept subtle
+   so it reads as ambient structure, not a decoration. */
+.edge-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: repeating-linear-gradient(
+    180deg,
+    #00E1FF 0%,
+    #B429F9 25%,
+    #FF0069 50%,
+    #0055FF 75%,
+    #00E1FF 100%
+  );
+  background-size: 100% 400%;
+  animation: edge-flow-v 6s linear infinite;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.edge-line--left {
+  left: var(--edge-inset);
+}
+
+.edge-line--right {
+  right: var(--edge-inset);
+}
+
+/* Short horizontal "extenders" — bridge the fixed edge-line into every
+   section (and every internal divider) whose own border sits further in
+   than --edge-inset, so the thread always reads as connected. These stay
+   plain grey (not the brand gradient) so they read as structure, not
+   decoration; color flips for light vs. dark section backgrounds. */
+.pillars-section::before, .pillars-section::after,
+.focus-section::before, .focus-section::after,
+.accordion::before, .accordion::after,
+.case-study::before, .case-study::after,
+.cc-section::before, .cc-section::after,
+.brands-section::before, .brands-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 1px;
+  background: rgba(13, 27, 75, 0.18);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.partner-left::before,
+.footer::before, .footer::after,
+.footer-legal::before, .footer-legal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.pillars-section, .focus-section, .accordion,
+.partner-left, .cc-section, .footer, .footer-legal, .brands-section {
+  position: relative;
+}
+
+.pillars-section::before, .focus-section::before, .accordion::before,
+.case-study::before, .partner-left::before, .cc-section::before,
+.footer::before, .footer-legal::before, .brands-section::before {
+  left: var(--edge-inset);
+}
+
+.pillars-section::after, .focus-section::after, .accordion::after,
+.case-study::after, .cc-section::after,
+.footer::after, .footer-legal::after, .brands-section::after {
+  right: var(--edge-inset);
+}
+
+.pillars-section::before, .pillars-section::after,
+.focus-section::before, .focus-section::after,
+.accordion::before, .accordion::after,
+.cc-section::before, .cc-section::after { width: calc(40px - var(--edge-inset)); }
+
+.case-study::before, .case-study::after { width: calc(80px - var(--edge-inset)); }
+.partner-left::before { width: calc(64px - var(--edge-inset)); }
+.footer::before, .footer::after,
+.footer-legal::before, .footer-legal::after { width: calc(80px - var(--edge-inset)); }
+.brands-section::before, .brands-section::after { width: calc(32px - var(--edge-inset)); }
+
+/* Sections whose content padding collapses toward --edge-inset on
+   mobile don't need a visible bridge — the thread already meets them. */
+@media (max-width: 900px) {
+  .pillars-section::before, .pillars-section::after,
+  .focus-section::before, .focus-section::after,
+  .accordion::before, .accordion::after,
+  .case-study::before, .case-study::after,
+  .partner-left::before,
+  .cc-section::before, .cc-section::after,
+  .footer::before, .footer::after,
+  .footer-legal::before, .footer-legal::after,
+  .brands-section::before, .brands-section::after {
+    width: 0;
+  }
+}

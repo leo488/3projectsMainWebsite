@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import './Footer.css'
 
 /* The three slabs of the 3Projects mark, filled with the brand gradient */
@@ -58,8 +59,24 @@ const COLUMNS = [
 const LEGAL = ['Privacy', 'Terms', 'Cookies', 'Accessibility', 'Modern Slavery Statement']
 
 export default function Footer() {
+  const footerRef = useRef(null)
+
+  useEffect(() => {
+    const footer = footerRef.current
+    if (!footer) return
+
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      footer.classList.add('footer--visible')
+      io.disconnect()
+    }, { threshold: 0.1 })
+
+    io.observe(footer)
+    return () => io.disconnect()
+  }, [])
+
   return (
-    <footer className="footer">
+    <footer className="footer" ref={footerRef}>
 
       {/* ── Big CTA headline ── */}
       <div className="footer-cta">
@@ -71,16 +88,20 @@ export default function Footer() {
 
       {/* ── Link columns ── */}
       <div className="footer-grid">
-        <div className="footer-brand">
+        <div className="footer-brand" style={{ '--i': 0 }}>
           <GradientMark className="footer-mark" id="fm-small" />
           <p className="footer-blurb">
             An enterprise transformation firm architecting the operating models
             of the organizations that move markets.
           </p>
+          <div className="footer-contact">
+            <a href="mailto:hello@3projects.com">hello@3projects.com</a>
+            <a href="tel:+18005550142">+1 (800) 555-0142</a>
+          </div>
         </div>
 
-        {COLUMNS.map((col) => (
-          <div key={col.title} className="footer-col">
+        {COLUMNS.map((col, i) => (
+          <div key={col.title} className="footer-col" style={{ '--i': i + 1 }}>
             <p className="footer-col-title">{col.title}</p>
             <ul className="footer-col-links">
               {col.links.map((link) => (

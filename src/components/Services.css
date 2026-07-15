@@ -1,9 +1,6 @@
 .services-section {
   background: #EFEFED;
   padding: 120px 70px 140px;
-  margin-top: -100vh;
-  position: relative;
-  z-index: 1;
 }
 
 /* ── Heading ── */

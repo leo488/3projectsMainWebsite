@@ -1,0 +1,201 @@
+.stories-section {
+  background: #F2F2F0;
+  padding: 96px 40px 120px;
+}
+
+.stories-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto 40px;
+}
+
+.stories-eyebrow {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(13, 27, 75, 0.4);
+  margin: 0;
+}
+
+.stories-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stories-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(13, 27, 75, 0.08);
+  color: rgba(13, 27, 75, 0.35);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.stories-nav-btn:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.stories-nav-btn:not(:disabled):hover {
+  background: rgba(13, 27, 75, 0.14);
+}
+
+.stories-nav-btn--active {
+  background: #0031B8;
+  color: #ffffff;
+}
+
+.stories-nav-btn--active:not(:disabled):hover {
+  background: #0026a0;
+}
+
+.stories-rail {
+  display: flex;
+  gap: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.stories-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.story-card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 0.1s);
+}
+
+.stories--visible .story-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-visual {
+  position: relative;
+  height: 340px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 18px;
+  margin-bottom: 20px;
+  transform: translateY(0);
+  box-shadow: 0 0 0 rgba(13, 27, 75, 0);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.story-card:hover .story-visual {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(13, 27, 75, 0.18);
+}
+
+.story-name {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.story-visual--bloom {
+  background: #0B0A16;
+  background-image:
+    radial-gradient(120px 120px at 30% 32%, rgba(255, 60, 130, 0.85) 0%, rgba(255, 60, 130, 0) 70%),
+    radial-gradient(120px 120px at 62% 30%, rgba(120, 70, 255, 0.8) 0%, rgba(120, 70, 255, 0) 70%),
+    radial-gradient(120px 120px at 46% 55%, rgba(255, 140, 60, 0.75) 0%, rgba(255, 140, 60, 0) 70%);
+}
+
+.story-visual--portrait {
+  background: linear-gradient(160deg, #12224F 0%, #0B0A16 100%);
+}
+
+.story-visual--portrait::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(220px 260px at 55% 40%, rgba(255, 90, 150, 0.35) 0%, rgba(255, 90, 150, 0) 65%),
+    radial-gradient(180px 220px at 40% 65%, rgba(60, 140, 255, 0.35) 0%, rgba(60, 140, 255, 0) 65%);
+}
+
+.story-visual--blank {
+  background: #E3EAF5;
+}
+
+.story-visual--blank .story-name {
+  color: rgba(13, 27, 75, 0.35);
+}
+
+.story-visual--mark {
+  background: #0B0A16;
+}
+
+.story-visual--mark::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 60px;
+  height: 60px;
+  background: #22C58B;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  transform: translate(-50%, -50%);
+}
+
+.story-desc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(13, 27, 75, 0.6);
+  margin: 0 0 12px;
+}
+
+.story-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0031B8;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.story-link:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .stories-section {
+    padding: 64px 20px 80px;
+  }
+
+  .story-card {
+    flex-basis: 220px;
+  }
+
+  .story-visual {
+    height: 280px;
+  }
+}

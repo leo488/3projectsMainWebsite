@@ -5,7 +5,7 @@ const CARDS = [
     featured: true,
     tag: 'Global Financial Institution · $40B AUM',
     headline: 'Rebuilding the operating core of a global bank.',
-    image: '/images/section4images02.png',
+    image: '/images/expertise-banking.png',
     stats: [
       { value: '$2.8B', label: 'Value Unlocked' },
       { value: '41%',   label: 'Faster Decisions' },
@@ -14,7 +14,7 @@ const CARDS = [
   {
     tag: 'Pan-European Courier Network · 200M Parcels',
     headline: 'Reinventing last-mile delivery at continental scale.',
-    image: '/images/section4images03.png',
+    image: '/images/expertise-logistics.png',
     stats: [
       { value: '98.6%', label: 'On-Time Delivery' },
       { value: '3.2x',  label: 'Route Efficiency' },
@@ -23,7 +23,7 @@ const CARDS = [
   {
     tag: 'Global Retail Group · 4,000 Stores',
     headline: 'Turning every store visit into lasting loyalty.',
-    image: '/images/section4images01.png',
+    image: '/images/expertise-retail.png',
     stats: [
       { value: '+62%', label: 'Repeat Purchases' },
       { value: '19%',  label: 'Lower Cost-to-Serve' },

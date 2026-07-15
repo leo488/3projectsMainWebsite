@@ -1,15 +1,14 @@
 import { useEffect, useRef } from 'react'
 import './Services.css'
 
-export default function Services({ card1Ref }) {
+export default function Services() {
   const sectionRef = useRef(null)
 
   useEffect(() => {
     const section = sectionRef.current
     if (!section) return
 
-    // Entrance animation — exclude card-1 (opacity driven by scroll)
-    const cards = section.querySelectorAll('.card:not(.card--hero-target)')
+    const cards = section.querySelectorAll('.card')
 
     const observer = new IntersectionObserver(
       entries => entries.forEach(entry => {
@@ -81,21 +80,16 @@ export default function Services({ card1Ref }) {
       <div className="services-row services-row--top">
 
         <div className="card tile-t1" style={{ '--delay': '0ms' }}>
-          <img src="/images/section%203%20images01.jpg" alt="" className="card-img" />
+          <img src="/images/services-tile-01.jpg" alt="" className="card-img" />
         </div>
 
         <div className="card card--dark tile-t2" style={{ '--delay': '80ms' }}>
           <span className="card-symbol">; )</span>
         </div>
 
-        {/* Hero image landing target — centered, opacity controlled by scroll */}
-        <div
-          ref={card1Ref}
-          className="card card--hero-target tile-t3"
-          style={{ opacity: 0 }}
-        >
+        <div className="card tile-t3" style={{ '--delay': '120ms' }}>
           <img
-            src="/images/hero%20image.png"
+            src="/images/hero-logistics.png"
             alt="Enterprise logistics"
             className="card-img"
           />
@@ -106,7 +100,7 @@ export default function Services({ card1Ref }) {
         </div>
 
         <div className="card tile-t5" style={{ '--delay': '240ms' }}>
-          <img src="/images/section%203%20images02.jpg" alt="" className="card-img" />
+          <img src="/images/services-tile-02.jpg" alt="" className="card-img" />
         </div>
 
       </div>
@@ -119,13 +113,13 @@ export default function Services({ card1Ref }) {
       <div className="services-row services-row--bottom">
 
         <div className="card tile-b1" style={{ '--delay': '60ms' }}>
-          <img src="/images/section%203%20images03.jpg" alt="" className="card-img" />
+          <img src="/images/services-tile-03.jpg" alt="" className="card-img" />
         </div>
 
         <div className="card card--light tile-b2" style={{ '--delay': '140ms' }} />
 
         <div className="card card--dark tile-b3" style={{ '--delay': '220ms' }}>
-          <img src="/images/3PRO_WHTE01.svg" alt="3Projects" className="card-logo" />
+          <img src="/images/logo-white.svg" alt="3Projects" className="card-logo" />
         </div>
 
         <div className="card card--blue tile-b4" style={{ '--delay': '300ms' }}>
@@ -133,7 +127,7 @@ export default function Services({ card1Ref }) {
         </div>
 
         <div className="card tile-b5" style={{ '--delay': '380ms' }}>
-          <img src="/images/section4images03.png" alt="" className="card-img" />
+          <img src="/images/expertise-logistics.png" alt="" className="card-img" />
         </div>
 
       </div>

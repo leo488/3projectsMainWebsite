@@ -14,54 +14,63 @@
   --navy:        #0D1B4B;
   --accent-blue: #0031B8;
   --white:       #ffffff;
+  --hero-bg:     #EFEFEA;
+  --side-pad:    24px;
+  --nav-h:       76px;
+  --btn-bg:      var(--accent-blue);
 }
 
 /* ─────────────────────────────
-   Scroll zone + sticky wrapper
+   Section
 ───────────────────────────── */
-.hero-scroll-zone {
-  height: 300vh;
-}
-
-.hero-wrapper {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  background: transparent;
-  padding: 16px 16px 0;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  overflow: visible;
-  /* sticky creates a stacking context — must sit above .services-section (z-index: 1)
-     or the flying hero image gets painted behind it mid-animation */
-  z-index: 5;
-  /* the wrapper spans the viewport while pinned; let clicks pass through to sections below */
-  pointer-events: none;
+.hero-section {
+  background: var(--hero-bg);
+  padding-top: var(--nav-h);
 }
 
 /* ─────────────────────────────
-   Navbar
+   Navbar — sits on the section background at rest; becomes a
+   blurred glass bar once the page scrolls (no drop shadow)
 ───────────────────────────── */
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-h);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 8px 16px;
-  background: var(--white);
-  border-radius: 8px 8px 0 0;
-  position: relative;
-  z-index: 60;
-  pointer-events: auto;
-  opacity: 0;
-  animation: navFadeDown 0.7s ease-out 0.1s forwards;
+  padding: 0 var(--side-pad);
+  background: var(--hero-bg);
+  border-bottom: 1px solid rgba(13, 27, 75, 0.08);
+  transition:
+    background      0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    backdrop-filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color    0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar--scrolled {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
 }
 
 .nav-logo img {
-  height: 30px;
+  height: 27px;
   width: auto;
   display: block;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 .nav-links {
@@ -73,14 +82,11 @@
 
 .nav-links a {
   font-family: 'Manrope', sans-serif;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--navy);
   text-decoration: none;
   letter-spacing: -0.01em;
-  display: flex;
-  align-items: center;
-  gap: 4px;
   transition: opacity 0.2s ease;
 }
 
@@ -88,23 +94,22 @@
   opacity: 0.55;
 }
 
-/* ── Contact CTA with spinning gradient border ── */
-.nav-contact {
+/* ── Start a Conversation CTA with spinning gradient border ── */
+.btn-start {
   --border-angle: 0deg;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
   font-family: 'Manrope', sans-serif;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--white);
   text-decoration: none;
-  padding: 8px 8px 8px 20px;
+  padding: 9px 20px;
   border-radius: 100px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.005em;
   border: 2px solid transparent;
   background:
-    linear-gradient(var(--navy), var(--navy)) padding-box,
+    linear-gradient(var(--btn-bg), var(--btn-bg)) padding-box,
     conic-gradient(
       from var(--border-angle),
       #00E1FF 0%,
@@ -114,93 +119,48 @@
   animation: spin-border 2.5s linear infinite;
 }
 
-.contact-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  background: var(--white);
-  color: var(--navy);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
 /* ─────────────────────────────
-   Hero Image Container
+   Headline
 ───────────────────────────── */
-.hero-image-container {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  isolation: isolate;
-  will-change: top, left, width, height, opacity;
-  pointer-events: auto;
-}
-
-.hero-bg-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transform-origin: center;
-  will-change: transform, opacity;
-  animation: kenBurns 12s ease-out forwards;
-}
-
-/* ─────────────────────────────
-   Hero Content
-───────────────────────────── */
-.hero-content {
-  position: absolute;
-  inset: 0;
+.hero-headline-row {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 40px 40px;
-  z-index: 2;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 56px var(--side-pad) 32px;
 }
 
 .hero-headline {
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(36px, 5.2vw, 76px);
-  font-weight: 400;
-  color: var(--white);
-  line-height: 1.08;
+  font-size: clamp(40px, 5.4vw, 84px);
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.1;
   letter-spacing: -0.035em;
-  margin: 0 0 28px;
+  max-width: 1400px;
+  margin: 0;
 }
 
 /* ── Text mask reveal ── */
 .line-wrap {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.06em;
+  padding-bottom: 0.08em;
 }
 
 .line-inner {
   display: block;
   transform: translateY(110%);
   opacity: 0;
+  animation: revealLine 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.line-1 {
-  animation: revealLine 1s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
-}
-
-.line-2 {
-  animation: revealLine 1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
-}
+.line-1 { animation-delay: 0.2s; }
+.line-2 { animation-delay: 0.35s; }
 
 .hero-accent {
+  display: inline-block;
+  position: relative;
   font-family: 'Canela', serif;
   font-style: italic;
   font-weight: 700;
@@ -208,72 +168,204 @@
   letter-spacing: -0.01em;
 }
 
+.hero-accent::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.02em;
+  height: 3px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-accent:hover::after {
+  transform: scaleX(1);
+}
+
+.hero-view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--navy);
+  text-decoration: none;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+  transition: opacity 0.2s ease;
+}
+
+.hero-view-link:hover {
+  opacity: 0.6;
+}
+
 /* ─────────────────────────────
-   CTA Buttons
+   Featured case study image
 ───────────────────────────── */
-.hero-actions {
+.hero-case-card {
+  position: relative;
+  width: 100%;
+  margin: 0 0 40px;
+  aspect-ratio: 2.5 / 1;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+
+.hero-case-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hero-case-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%);
+  pointer-events: none;
+}
+
+.hero-case-copy {
+  position: absolute;
+  left: 32px;
+  bottom: 28px;
+  right: 120px;
+  color: var(--white);
+}
+
+.hero-case-copy h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+
+.hero-case-copy p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.85);
+  max-width: 520px;
+  margin: 0;
+}
+
+.hero-case-arrow {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  background: var(--white);
+  color: var(--navy);
+  border-radius: 8px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-case-arrow:hover {
+  transform: scale(1.08);
+}
+
+/* ─────────────────────────────
+   Stats row
+───────────────────────────── */
+.hero-stats-row {
+  display: flex;
+  align-items: baseline;
+  gap: 56px;
+  padding: 0 var(--side-pad) 64px;
+  flex-wrap: wrap;
   opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 0.7s ease-out 1.15s forwards;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
 }
 
-.btn-primary {
+.hero-stat {
   font-family: 'Manrope', sans-serif;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--white);
-  background: var(--navy);
-  text-decoration: none;
-  padding: 13px 26px;
-  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(13, 27, 75, 0.55);
   letter-spacing: -0.01em;
-  transition: opacity 0.2s ease;
 }
 
-.btn-primary:hover {
-  opacity: 0.8;
+.hero-stat strong {
+  font-weight: 700;
+  color: var(--navy);
+  margin-right: 6px;
 }
 
-.btn-ghost {
-  font-family: 'Manrope', sans-serif;
-  font-size: 13.5px;
-  font-weight: 500;
-  color: var(--white);
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  opacity: 0.85;
-  transition: opacity 0.2s ease;
+.hero-stat--products {
+  display: flex;
+  gap: 6px;
 }
 
-.btn-ghost:hover {
-  opacity: 1;
+.hero-stat-label {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.hero-stat-value {
+  color: rgba(13, 27, 75, 0.55);
 }
 
 /* ─────────────────────────────
    Keyframes
 ───────────────────────────── */
-@keyframes navFadeDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes kenBurns {
-  from { transform: scale(1.1); opacity: 0; }
-  12%  { opacity: 1; }
-  to   { transform: scale(1.0); opacity: 1; }
-}
-
 @keyframes revealLine {
   to { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes spin-border {
   to { --border-angle: 360deg; }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --side-pad: 20px;
+    --nav-h: 64px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero-headline-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 32px 20px 24px;
+  }
+
+  .hero-case-card {
+    aspect-ratio: 4 / 5;
+  }
+
+  .hero-case-copy {
+    right: 20px;
+    bottom: 64px;
+  }
+
+  .hero-stats-row {
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 40px;
+  }
 }
