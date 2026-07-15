@@ -44,8 +44,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 8px;
   background: rgba(13, 27, 75, 0.06);
   transition: background 0.25s ease;
@@ -56,8 +56,8 @@
 }
 
 .accordion-pixel-icon {
-  --pixel-size: 24px;
-  gap: 1.5px;
+  --pixel-size: 16px;
+  gap: 1px;
 }
 
 .accordion-item:hover .accordion-pixel-icon .pixel-dot {
