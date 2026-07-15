@@ -51,6 +51,32 @@
   border-left: none;
 }
 
+.pillar-pixel-icon {
+  margin-bottom: 22px;
+}
+
+.pillar-cell:hover .pixel-dot--filled {
+  background: #0026a0;
+}
+
+/* Workflow icons stay alive after revealing — a gentle staggered
+   breathing pulse, like each step of the process is still ticking. */
+.pillar-pixel-icon.pixel-icon--visible .pixel-dot--filled {
+  animation: pillarPixelBreathe 3.4s ease-in-out infinite;
+  animation-delay: calc(var(--d) * 16ms + 0.5s);
+}
+
+@keyframes pillarPixelBreathe {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.82); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar-pixel-icon.pixel-icon--visible .pixel-dot--filled {
+    animation: none;
+  }
+}
+
 .pillar-title {
   font-family: 'Manrope', sans-serif;
   font-size: 15px;

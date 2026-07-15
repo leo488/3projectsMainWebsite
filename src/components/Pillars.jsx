@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import PixelIcon from './PixelIcon'
 import './Pillars.css'
 
 const PILLARS = [
@@ -18,6 +19,14 @@ const PILLARS = [
     title: 'Continuous Evolution',
     desc: 'We measure, learn, and improve long after launch.',
   },
+]
+
+/* 7x7 bitmaps — one glyph per pillar, drawn onto the dotted grid */
+const PIXEL_ICONS = [
+  ['..XXX..', '.X...X.', 'X..X..X', 'X.XXX.X', 'X..X..X', '.X...X.', '..XXX..'],
+  ['..XXX..', '..XXX..', '.......', '.XXXXX.', 'XXXXXXX', 'XXXXXXX', 'XX...XX'],
+  ['..X.X..', '.XXXXX.', 'XX...XX', 'XX.X.XX', 'XX...XX', '.XXXXX.', '..X.X..'],
+  ['.XX.XX.', 'X..X..X', 'X..X..X', '.XX.XX.', 'X..X..X', 'X..X..X', '.XX.XX.'],
 ]
 
 export default function Pillars() {
@@ -47,6 +56,7 @@ export default function Pillars() {
       <div className="pillars-grid">
         {PILLARS.map((p, i) => (
           <div key={i} className="pillar-cell" style={{ '--i': i }}>
+            <PixelIcon pattern={PIXEL_ICONS[i]} className="pillar-pixel-icon" />
             <p className="pillar-title">{p.title}</p>
             <p className="pillar-desc">{p.desc}</p>
           </div>

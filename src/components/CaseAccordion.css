@@ -44,17 +44,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 8px;
   background: rgba(13, 27, 75, 0.06);
-  color: var(--navy, #0D1B4B);
-  transition: background 0.25s ease, color 0.25s ease;
+  transition: background 0.25s ease;
 }
 
 .accordion-item:hover .accordion-icon {
   background: #0031B8;
-  color: #ffffff;
+}
+
+.accordion-pixel-icon {
+  --pixel-size: 24px;
+  gap: 1.5px;
+}
+
+.accordion-item:hover .accordion-pixel-icon .pixel-dot {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.accordion-item:hover .accordion-pixel-icon .pixel-dot--filled {
+  background: #ffffff;
 }
 
 .accordion-text {

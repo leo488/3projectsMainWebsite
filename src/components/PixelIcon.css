@@ -1,0 +1,32 @@
+.pixel-icon {
+  --pixel-size: 42px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  width: var(--pixel-size);
+  height: var(--pixel-size);
+  flex-shrink: 0;
+}
+
+.pixel-dot {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(13, 27, 75, 0.14);
+  transition: background 0.25s ease;
+}
+
+.pixel-dot--filled {
+  border-radius: 2px;
+  background: #0031B8;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--d) * 16ms),
+              opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--d) * 16ms),
+              background 0.25s ease;
+}
+
+.pixel-icon--visible .pixel-dot--filled {
+  transform: scale(1);
+  opacity: 1;
+}
