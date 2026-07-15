@@ -65,8 +65,6 @@
 .partner-right {
   position: relative;
   background-color: #0031B8;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1.6px);
-  background-size: 16px 16px;
   overflow: hidden;
 }
 
