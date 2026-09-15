@@ -5,17 +5,15 @@
   padding: 30px 0 clamp(96px, 28vw, 406px);
 }
 
-/* Horizontal rail: the cards start on the page's side gutter and run
-   past the right edge, so the row reads as scrollable. */
+/* Five equal columns spanning the full container width, so the row's
+   left and right gutters land on the same 24px as the feature card
+   above it. Below 1100px it falls back to a scrollable rail. */
 .caps-track {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 24px;
   list-style: none;
   padding: 0 var(--side-pad);
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  scroll-padding-inline: var(--side-pad);
-  scrollbar-width: none;
 }
 
 .caps-track::-webkit-scrollbar {
@@ -23,12 +21,10 @@
 }
 
 .cap-card {
-  flex: 0 0 305px;
   height: 405px;
   padding: 22px 22px 24px;
   background: var(--card);
   border-radius: 7px;
-  scroll-snap-align: start;
   opacity: 0;
   transform: translateY(20px);
   transition:
@@ -90,6 +86,25 @@
   line-height: 1.6;
   color: rgba(14, 27, 46, 0.62);
   max-width: 24ch;
+}
+
+@media (max-width: 1100px) {
+  .caps-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: var(--side-pad);
+    scrollbar-width: none;
+  }
+
+  .caps-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cap-card {
+    flex: 0 0 305px;
+    scroll-snap-align: start;
+  }
 }
 
 @media (max-width: 900px) {

@@ -27,25 +27,18 @@
   transform: none;
 }
 
-.footer-mark {
-  width: 46px;
-  height: auto;
-  display: block;
-  margin-bottom: 24px;
-}
-
 .footer-blurb {
   max-width: 30ch;
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.65;
-  color: rgba(14, 27, 46, 0.72);
+  line-height: 1.7;
+  color: rgba(14, 27, 46, 0.78);
 }
 
 .footer-col-title {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   color: rgba(14, 27, 46, 0.48);
   margin-bottom: 20px;
@@ -55,13 +48,13 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 15px;
 }
 
 .footer-col-links a {
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 400;
-  color: rgba(14, 27, 46, 0.8);
+  color: rgba(14, 27, 46, 0.82);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -89,9 +82,9 @@
 
 .footer-legal-links a,
 .footer-copyright {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(14, 27, 46, 0.5);
   text-decoration: none;
@@ -132,8 +125,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: 1px solid rgba(14, 27, 46, 0.16);
   color: rgba(14, 27, 46, 0.7);
@@ -141,8 +134,8 @@
 }
 
 .footer-social svg {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   display: block;
 }
 

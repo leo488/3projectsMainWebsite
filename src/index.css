@@ -65,3 +65,54 @@ html, body {
 #root {
   width: 100%;
 }
+
+/* ─────────────────────────────
+   Shared CTA — a brand-blue pill inside a slowly rotating gradient
+   ring. The header and the closing CTA are the same button: the ring
+   keys off one custom property so both stay in step.
+───────────────────────────── */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-border {
+  to { --border-angle: 360deg; }
+}
+
+.btn-gradient {
+  --border-angle: 0deg;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Manrope', sans-serif;
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 100px;
+  letter-spacing: -0.005em;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--brand-blue), var(--brand-blue)) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      #00E1FF 0%,
+      #FF0069 50%,
+      #0055FF 100%
+    ) border-box;
+  animation: spin-border 2.5s linear infinite;
+}
+
+/* Hand-off: once the closing CTA is on screen the header pill steps
+   aside, so the two read as one button travelling down the page
+   rather than two competing calls to action. */
+body.cta-handoff .navbar .btn-start {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-gradient {
+    animation: none;
+  }
+}

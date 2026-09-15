@@ -74,24 +74,15 @@
   opacity: 0.55;
 }
 
-/* ── Start a Conversation CTA — solid brand blue, no gradient ── */
+/* ── Start a Conversation CTA — sizing only; the gradient ring and fill
+   come from .btn-gradient so the closing CTA can share them. ── */
 .btn-start {
-  display: inline-flex;
-  align-items: center;
-  font-family: 'Manrope', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: var(--white);
-  text-decoration: none;
   padding: 13px 26px;
-  border-radius: 100px;
-  letter-spacing: -0.005em;
-  background: var(--brand-blue);
-  transition: background 0.25s ease;
-}
-
-.btn-start:hover {
-  background: #002590;
+  transition:
+    opacity   0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ─────────────────────────────
@@ -109,7 +100,7 @@
 .hero-headline {
   font-family: 'Manrope', sans-serif;
   font-size: clamp(34px, 4.8vw, 78px);
-  font-weight: 600;
+  font-weight: 500;
   color: var(--ink);
   line-height: 1.12;
   letter-spacing: -0.035em;
@@ -140,7 +131,7 @@
 .line-2 { animation-delay: 0.35s; }
 
 .hero-accent {
-  color: var(--brand-blue);
+  color: var(--bright);
 }
 
 .hero-view-link {

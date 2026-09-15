@@ -1,29 +1,6 @@
 import { useEffect, useRef } from 'react'
 import './Footer.css'
 
-/* The three slabs of the 3Projects mark, filled with the brand gradient */
-function GradientMark({ className, id }) {
-  return (
-    <svg className={className} viewBox="0 0 42.2 36.2" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id={`${id}-a`} x1="0" y1="36" x2="42" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0"    stopColor="#FF2E7E" />
-          <stop offset="0.5"  stopColor="#B429F9" />
-          <stop offset="1"    stopColor="#2E4BFF" />
-        </linearGradient>
-        <linearGradient id={`${id}-b`} x1="0" y1="36" x2="42" y2="20" gradientUnits="userSpaceOnUse">
-          <stop offset="0"    stopColor="#35E1F0" />
-          <stop offset="0.45" stopColor="#B429F9" />
-          <stop offset="1"    stopColor="#FF2E7E" />
-        </linearGradient>
-      </defs>
-      <path d="M41.9705 35.819L42.1503 25.8806L0.0126962 28.2837L0 36.1002L41.9705 35.819Z" fill={`url(#${id}-b)`} />
-      <path d="M41.7116 18.3649L40.9459 7.02446L0.223009 22.5473L0.146623 27.2527L41.7116 18.3649Z" fill={`url(#${id}-a)`} />
-      <path d="M40.3957 4.88894L36.3734 0L0.803406 16.2763L0.281094 20.7281L40.3957 4.88894Z" fill={`url(#${id}-a)`} />
-    </svg>
-  )
-}
-
 const COLUMNS = [
   {
     title: 'Capabilities',
@@ -107,7 +84,6 @@ export default function Footer() {
       {/* ── Link columns ── */}
       <div className="footer-grid">
         <div className="footer-brand" style={{ '--i': 0 }}>
-          <GradientMark className="footer-mark" id="fm-small" />
           <p className="footer-blurb">
             An enterprise transformation firm architecting the operating models
             of the organizations that move markets.

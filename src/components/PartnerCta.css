@@ -15,9 +15,9 @@
 }
 
 .partner-headline {
-  font-size: clamp(24px, 2.2vw, 32px);
+  font-size: clamp(30px, 3.3vw, 52px);
   font-weight: 500;
-  line-height: 1.32;
+  line-height: 1.22;
   letter-spacing: -0.025em;
   color: var(--white);
   opacity: 0;

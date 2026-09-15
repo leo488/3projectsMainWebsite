@@ -30,7 +30,7 @@ export default function Hero() {
             <li><a href="#">Careers</a></li>
           </ul>
 
-          <a href="#" className="btn-start">Start a Conversation</a>
+          <a href="#" className="btn-start btn-gradient">Start a Conversation</a>
         </div>
       </nav>
 
