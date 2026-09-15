@@ -317,7 +317,7 @@ export default function Brand() {
         </div>
       </div>
 
-      <SiteFooter />
+      <SiteFooter tone="bone" />
     </>
   )
 }

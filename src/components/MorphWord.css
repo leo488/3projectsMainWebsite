@@ -3,7 +3,7 @@
   display: inline-block;
   vertical-align: baseline;
   white-space: nowrap;
-  transition: width 0.62s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Out of flow — width measurement only, no effect on layout. */
@@ -20,9 +20,8 @@
   display: block;
 }
 
-/* In flow and invisible: this is what gives .morph its line box, so the
-   absolutely positioned copies land on the text baseline instead of
-   below it. */
+/* In flow and invisible: gives .morph its line box so the absolutely
+   positioned copies sit on the baseline rather than below it. */
 .morph-sizer {
   visibility: hidden;
 }
@@ -42,80 +41,73 @@
   top: 0;
   white-space: nowrap;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.morph-word > span {
-  display: block;
+.morph-word.is-active {
+  opacity: 1;
 }
 
-/* Stacked so the outline and the flooded fill occupy the same box. */
-.morph-word .morph-fill {
+/* ── One letter, two layers: the outline that draws, and the fill that
+   lands behind it in brand blue. ── */
+.morph-letter {
+  position: relative;
+  display: inline-block;
+}
+
+.morph-letter .morph-fill {
   position: absolute;
   left: 0;
   top: 0;
 }
 
-/* ── Outline: solid stroke, no fill. Its colour walks the brand set so
-   the edge reads as lit rather than drawn once. ── */
+/* The outline. Its colour runs through the brand hues as the stroke is
+   traced, which is the only place the gradient lives. */
 .morph-stroke {
   color: transparent;
-  -webkit-text-stroke: 1.3px var(--cobalt);
+  -webkit-text-stroke: 1.25px var(--cobalt);
   opacity: 0;
   clip-path: inset(0 100% 0 0);
 }
 
-/* ── Fill: a wide gradient that keeps travelling through the glyphs. ── */
+/* The settled letter: brand blue, no gradient. */
 .morph-fill {
-  background: linear-gradient(
-    100deg,
-    var(--cobalt) 0%,
-    var(--cyan)   20%,
-    var(--violet) 44%,
-    var(--mint)   66%,
-    var(--cobalt) 100%
-  );
-  background-size: 260% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--cobalt);
   opacity: 0;
-  clip-path: inset(0 100% 0 0);
 }
 
+/* Letters are drawn in sequence, each one a beat behind the last. */
 .morph-word.is-active .morph-stroke {
   animation:
-    morph-draw   0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-    morph-hue    5.2s linear infinite;
+    morph-trace 0.46s cubic-bezier(0.32, 0, 0.2, 1) both,
+    morph-edge  0.46s linear both;
+  animation-delay: calc(var(--li) * 52ms);
 }
 
 .morph-word.is-active .morph-fill {
-  animation:
-    morph-flood  0.62s cubic-bezier(0.16, 1, 0.3, 1) 0.16s forwards,
-    morph-travel 5.2s linear 0.78s infinite;
+  animation: morph-land 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--li) * 52ms + 190ms);
 }
 
-/* Outline sweeps in, then steps aside as the fill catches up. */
-@keyframes morph-draw {
+/* Outline sweeps across the letter, then hands over to the fill. */
+@keyframes morph-trace {
   0%   { opacity: 1; clip-path: inset(0 100% 0 0); }
-  62%  { opacity: 1; clip-path: inset(0 0 0 0); }
+  70%  { opacity: 1; clip-path: inset(0 0 0 0); }
   100% { opacity: 0; clip-path: inset(0 0 0 0); }
 }
 
-@keyframes morph-flood {
-  from { opacity: 1; clip-path: inset(0 100% 0 0); }
-  to   { opacity: 1; clip-path: inset(0 0 0 0); }
-}
-
-@keyframes morph-travel {
-  to { background-position: 260% 0; }
-}
-
-@keyframes morph-hue {
-  0%   { -webkit-text-stroke-color: var(--cobalt); }
-  25%  { -webkit-text-stroke-color: var(--cyan); }
-  50%  { -webkit-text-stroke-color: var(--violet); }
-  75%  { -webkit-text-stroke-color: var(--mint); }
+/* The brand hues travelling through the stroke as it is traced. */
+@keyframes morph-edge {
+  0%   { -webkit-text-stroke-color: var(--cyan); }
+  35%  { -webkit-text-stroke-color: var(--violet); }
+  70%  { -webkit-text-stroke-color: var(--bright); }
   100% { -webkit-text-stroke-color: var(--cobalt); }
+}
+
+@keyframes morph-land {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -131,11 +123,5 @@
   .morph-word.is-active .morph-fill {
     animation: none;
     opacity: 1;
-    clip-path: none;
-    background: none;
-    -webkit-background-clip: border-box;
-    background-clip: border-box;
-    -webkit-text-fill-color: var(--bright);
-    color: var(--bright);
   }
 }

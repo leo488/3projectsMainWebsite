@@ -141,6 +141,29 @@ export default function Footer() {
       </div>
 
       <p className="footer-dedication">
+        {/* Drawn on the same grid as the hero artwork — seven cells
+            across, filled by hand rather than traced from a glyph. */}
+        <svg
+          className="footer-heart"
+          viewBox="0 0 7 6"
+          shapeRendering="crispEdges"
+          aria-hidden="true"
+        >
+          {[
+            '.XX.XX.',
+            'XXXXXXX',
+            'XXXXXXX',
+            '.XXXXX.',
+            '..XXX..',
+            '...X...',
+          ].map((row, y) =>
+            Array.from(row).map((cell, x) =>
+              cell === 'X' ? (
+                <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill="currentColor" />
+              ) : null,
+            ),
+          )}
+        </svg>
         A Pitch Blossoms company, made with the servant heart of Jesus Christ.
       </p>
 

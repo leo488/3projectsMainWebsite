@@ -1,11 +1,12 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import './MorphWord.css'
 
-/* Cycles the closing word of the hero line. Each change draws the new
-   word's outline first, then floods it with a gradient that keeps
-   travelling through the letterforms — the stroke-and-fill read, rather
-   than a straight text swap. */
-export default function MorphWord({ words, interval = 2900 }) {
+/* Cycles the closing word of the hero line. Each word is drawn letter by
+   letter — the outline of each character sweeps in with the brand hues
+   running through its edge, then the letter settles into cobalt. The
+   gradient only exists while the word is being drawn; the word at rest
+   is the brand blue. */
+export default function MorphWord({ words, interval = 5200 }) {
   const [index, setIndex] = useState(0)
   const [widths, setWidths] = useState(() => words.map(() => null))
   const measureRef = useRef(null)
@@ -44,9 +45,8 @@ export default function MorphWord({ words, interval = 2900 }) {
         {words.map((w) => <span key={w}>{w}</span>)}
       </span>
 
-      {/* In flow, invisible: gives the span a real line box so the
-          animated copies have a baseline to sit on. Without it the
-          container collapses and the word renders below the line. */}
+      {/* In flow, invisible: this is what gives .morph its line box, so
+          the animated copies land on the text baseline. */}
       <span className="morph-sizer" aria-hidden="true">{words[index]}</span>
 
       {words.map((w, i) => (
@@ -55,8 +55,12 @@ export default function MorphWord({ words, interval = 2900 }) {
           className={`morph-word${i === index ? ' is-active' : ''}`}
           aria-hidden="true"
         >
-          <span className="morph-stroke">{w}</span>
-          <span className="morph-fill">{w}</span>
+          {Array.from(w).map((ch, ci) => (
+            <span key={ci} className="morph-letter" style={{ '--li': ci }}>
+              <span className="morph-stroke">{ch}</span>
+              <span className="morph-fill">{ch}</span>
+            </span>
+          ))}
         </span>
       ))}
 

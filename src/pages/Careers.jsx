@@ -168,7 +168,7 @@ export default function Careers() {
         </div>
       </section>
 
-      <SiteFooter />
+      <SiteFooter tone="bone" />
     </>
   )
 }

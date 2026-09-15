@@ -1,7 +1,9 @@
 /* Continues the bone ground opened by the closing CTA. */
 .footer {
   background: var(--bone);
-  padding: 0 var(--side-pad);
+  /* Clear air under the newsletter band — the columns were sitting
+     straight on top of it. */
+  padding: 104px var(--side-pad) 0;
 }
 
 .footer-grid {
@@ -148,11 +150,21 @@
 /* Sits below the legal rule, quieter than the links above it but on the
    same tiny-label rhythm. */
 .footer-dedication {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   padding: 0 0 28px;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: rgba(14, 27, 46, 0.55);
+}
+
+.footer-heart {
+  width: 12px;
+  height: auto;
+  flex: none;
+  display: block;
 }
 
 /* The Cookies entry reopens the preferences panel, so it is a button —

@@ -55,7 +55,7 @@ export default function WorkDetail({ slug }) {
           <h1>That project isn&rsquo;t here.</h1>
           <Link href="/work" className="detail-back-link">Back to all work</Link>
         </section>
-        <SiteFooter />
+        <SiteFooter tone="bone" />
       </>
     )
   }
@@ -174,7 +174,7 @@ export default function WorkDetail({ slug }) {
         </ul>
       </section>
 
-      <SiteFooter />
+      <SiteFooter tone="bone" />
     </>
   )
 }

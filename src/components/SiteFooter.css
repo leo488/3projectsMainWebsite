@@ -1,0 +1,6 @@
+/* The home page keeps the white billboard under the bone links. Every
+   other page runs one continuous bone ground from the links through to
+   the lockup. */
+.site-footer--bone .billboard {
+  background: var(--bone);
+}
