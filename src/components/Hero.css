@@ -1,23 +1,13 @@
 /* ─────────────────────────────
-   CSS Custom Property for animated gradient border
-───────────────────────────── */
-@property --border-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-/* ─────────────────────────────
    Variables
 ───────────────────────────── */
 :root {
-  --navy:        #0D1B4B;
+  --navy:        #0E1B2E;
   --accent-blue: #0031B8;
   --white:       #ffffff;
-  --hero-bg:     #EFEFEA;
+  --hero-bg:     #ffffff;
   --side-pad:    24px;
   --nav-h:       76px;
-  --btn-bg:      var(--accent-blue);
 }
 
 /* ─────────────────────────────
@@ -26,11 +16,12 @@
 .hero-section {
   background: var(--hero-bg);
   padding-top: var(--nav-h);
+  overflow: hidden;
 }
 
 /* ─────────────────────────────
-   Navbar — sits on the section background at rest; becomes a
-   blurred glass bar once the page scrolls (no drop shadow)
+   Navbar — white bar with a hairline rule; the rule fades out once
+   the page scrolls so the bar melts into the artwork below.
 ───────────────────────────── */
 .navbar {
   position: fixed;
@@ -44,15 +35,13 @@
   justify-content: space-between;
   padding: 0 var(--side-pad);
   background: var(--hero-bg);
-  border-bottom: 1px solid rgba(13, 27, 75, 0.08);
+  border-bottom: 1px solid rgba(14, 27, 46, 0.08);
   transition:
-    background      0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    backdrop-filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color    0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    background   0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar--scrolled {
-  background: transparent;
   border-bottom-color: transparent;
 }
 
@@ -94,9 +83,8 @@
   opacity: 0.55;
 }
 
-/* ── Start a Conversation CTA with spinning gradient border ── */
+/* ── Start a Conversation CTA — solid brand blue, no gradient ── */
 .btn-start {
-  --border-angle: 0deg;
   display: inline-flex;
   align-items: center;
   font-family: 'Manrope', sans-serif;
@@ -104,41 +92,43 @@
   font-weight: 600;
   color: var(--white);
   text-decoration: none;
-  padding: 9px 20px;
+  padding: 11px 22px;
   border-radius: 100px;
   letter-spacing: -0.005em;
-  border: 2px solid transparent;
-  background:
-    linear-gradient(var(--btn-bg), var(--btn-bg)) padding-box,
-    conic-gradient(
-      from var(--border-angle),
-      #00E1FF 0%,
-      #FF0069 50%,
-      #0055FF 100%
-    ) border-box;
-  animation: spin-border 2.5s linear infinite;
+  background: var(--accent-blue);
+  transition: background 0.25s ease;
+}
+
+.btn-start:hover {
+  background: #002590;
 }
 
 /* ─────────────────────────────
-   Headline
+   Headline — centred over the artwork
 ───────────────────────────── */
 .hero-headline-row {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 56px var(--side-pad) 32px;
+  align-items: center;
+  gap: 18px;
+  padding: 64px var(--side-pad) 40px;
+  text-align: center;
 }
 
 .hero-headline {
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(40px, 5.4vw, 84px);
+  font-size: clamp(30px, 4.1vw, 60px);
   font-weight: 600;
   color: var(--navy);
-  line-height: 1.1;
+  line-height: 1.12;
   letter-spacing: -0.035em;
-  max-width: 1400px;
   margin: 0;
+}
+
+/* Each line is authored as one line and must stay that way — the mask
+   reveal animates per line, so a reflow would break the effect. */
+.line-inner {
+  white-space: nowrap;
 }
 
 /* ── Text mask reveal ── */
@@ -159,30 +149,7 @@
 .line-2 { animation-delay: 0.35s; }
 
 .hero-accent {
-  display: inline-block;
-  position: relative;
-  font-family: 'Canela', serif;
-  font-style: italic;
-  font-weight: 700;
   color: var(--accent-blue);
-  letter-spacing: -0.01em;
-}
-
-.hero-accent::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0.02em;
-  height: 3px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-accent:hover::after {
-  transform: scaleX(1);
 }
 
 .hero-view-link {
@@ -195,7 +162,6 @@
   color: var(--navy);
   text-decoration: none;
   white-space: nowrap;
-  padding-bottom: 10px;
   opacity: 0;
   animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
   transition: opacity 0.2s ease;
@@ -206,119 +172,18 @@
 }
 
 /* ─────────────────────────────
-   Featured case study image
+   Pixel-art visual — full bleed, sits directly on the white ground
 ───────────────────────────── */
-.hero-case-card {
-  position: relative;
+.hero-visual {
   width: 100%;
-  margin: 0 0 40px;
-  aspect-ratio: 2.5 / 1;
-  overflow: hidden;
   opacity: 0;
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
 
-.hero-case-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+.hero-visual-img {
   display: block;
-}
-
-.hero-case-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%);
-  pointer-events: none;
-}
-
-.hero-case-copy {
-  position: absolute;
-  left: 32px;
-  bottom: 28px;
-  right: 120px;
-  color: var(--white);
-}
-
-.hero-case-copy h3 {
-  font-family: 'Manrope', sans-serif;
-  font-size: clamp(20px, 2vw, 28px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin: 0 0 8px;
-}
-
-.hero-case-copy p {
-  font-family: 'Manrope', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: rgba(255,255,255,0.85);
-  max-width: 520px;
-  margin: 0;
-}
-
-.hero-case-arrow {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--white);
-  color: var(--navy);
-  border-radius: 8px;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-case-arrow:hover {
-  transform: scale(1.08);
-}
-
-/* ─────────────────────────────
-   Stats row
-───────────────────────────── */
-.hero-stats-row {
-  display: flex;
-  align-items: baseline;
-  gap: 56px;
-  padding: 0 var(--side-pad) 64px;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
-}
-
-.hero-stat {
-  font-family: 'Manrope', sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  color: rgba(13, 27, 75, 0.55);
-  letter-spacing: -0.01em;
-}
-
-.hero-stat strong {
-  font-weight: 700;
-  color: var(--navy);
-  margin-right: 6px;
-}
-
-.hero-stat--products {
-  display: flex;
-  gap: 6px;
-}
-
-.hero-stat-label {
-  font-weight: 700;
-  color: var(--navy);
-}
-
-.hero-stat-value {
-  color: rgba(13, 27, 75, 0.55);
+  width: 100%;
+  height: auto;
 }
 
 /* ─────────────────────────────
@@ -333,10 +198,6 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes spin-border {
-  to { --border-angle: 360deg; }
-}
-
 @media (max-width: 900px) {
   :root {
     --side-pad: 20px;
@@ -348,24 +209,44 @@
   }
 
   .hero-headline-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 32px 20px 24px;
+    gap: 14px;
+    padding: 40px 20px 28px;
   }
 
-  .hero-case-card {
-    aspect-ratio: 4 / 5;
+  /* Below 900px the lines are allowed to reflow rather than shrink
+     the type any further. */
+  .hero-headline {
+    max-width: 100%;
   }
 
-  .hero-case-copy {
-    right: 20px;
-    bottom: 64px;
+  .line-inner {
+    white-space: normal;
   }
 
-  .hero-stats-row {
-    flex-direction: column;
-    gap: 16px;
-    padding-bottom: 40px;
+  /* The nav has to survive without the links: shrink the logo and the
+     CTA so the bar still fits a 360px viewport. */
+  .nav-logo img {
+    height: 22px;
+  }
+
+  .nav-right {
+    gap: 0;
+  }
+
+  .btn-start {
+    font-size: 12px;
+    padding: 9px 16px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-logo img {
+    height: 20px;
+  }
+
+  .btn-start {
+    font-size: 11px;
+    padding: 8px 14px;
   }
 }

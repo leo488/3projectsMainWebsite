@@ -41,45 +41,33 @@ export default function Hero() {
           </span>
           <span className="line-wrap">
             <span className="line-inner line-2">
-              your enterprise <em className="hero-accent">unstoppable.</em>
+              your enterprise <span className="hero-accent">Unstoppable</span>
             </span>
           </span>
         </h1>
         <a href="#" className="hero-view-link">
           View Case Studies
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </a>
       </div>
 
-      {/* ── Featured case study image ── */}
-      <div className="hero-case-card">
-        <img src="/images/restaurant-worker.png" alt="" className="hero-case-img" />
-        <div className="hero-case-scrim" />
-        <div className="hero-case-copy">
-          <h3>Modernizing Banking Operations</h3>
-          <p>Reduced operational bottlenecks through enterprise process redesign and technology modernization.</p>
-        </div>
-        <a href="#" className="hero-case-arrow" aria-label="View case study">
-          <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-            <path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </a>
-      </div>
-
-      {/* ── Stats row ── */}
-      <div className="hero-stats-row">
-        <div className="hero-stat">
-          <strong>160</strong> countries
-        </div>
-        <div className="hero-stat">
-          <strong>11K+</strong> locations globally
-        </div>
-        <div className="hero-stat hero-stat--products">
-          <span className="hero-stat-label">Products used</span>
-          <span className="hero-stat-value">Payments, Terminal, Connect, Radar, and Stripe Intergration</span>
-        </div>
+      {/* ── Pixel-art hero image ──
+         Served as a flat raster for now. public/images/Hero.svg holds the
+         same artwork with the pixel blocks as individual vector shapes —
+         swap to that (inlined) when we animate the pixels. */}
+      <div className="hero-visual">
+        <img
+          className="hero-visual-img"
+          src="/images/hero-2880.jpg"
+          srcSet="/images/hero-1600.jpg 1600w, /images/hero-2880.jpg 2880w"
+          sizes="100vw"
+          width="2880"
+          height="2035"
+          alt=""
+          fetchPriority="high"
+        />
       </div>
 
     </section>
