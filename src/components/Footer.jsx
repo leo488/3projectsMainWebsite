@@ -104,9 +104,16 @@ export default function Footer() {
             <ul className="footer-col-links">
               {col.links.map((link) => (
                 <li key={link.label}>
-                  {link.href.startsWith('mailto:')
-                    ? <a href={link.href}>{link.label}</a>
-                    : <Link href={link.href}>{link.label}</Link>}
+                  {link.href.startsWith('mailto:') ? (
+                    <a href={link.href}>{link.label}</a>
+                  ) : (
+                    <Link href={link.href}>
+                      {link.label}
+                      {link.tag && (
+                        <span className="tiny footer-link-tag">{link.tag}</span>
+                      )}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

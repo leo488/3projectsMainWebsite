@@ -35,8 +35,8 @@ export const FIRM_LINKS = [
   { label: 'Leadership', href: '/about#leadership' },
   { label: 'Careers',    href: '/careers' },
   { label: 'Newsroom',   href: '/about#newsroom' },
-  { label: 'Insights',   href: '/about#insights' },
-  { label: 'Brand Assets', href: '/brand' },
+  { label: 'Insights',   href: '/blog' },
+  { label: 'Brand Assets', href: '/brand', tag: 'New' },
   { label: 'Contact',    href: `mailto:${CONTACT_EMAIL}` },
 ]
 

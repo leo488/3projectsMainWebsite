@@ -11,6 +11,8 @@ import WorkDetail   from './pages/WorkDetail'
 import Careers      from './pages/Careers'
 import About        from './pages/About'
 import Brand        from './pages/Brand'
+import Blog         from './pages/Blog'
+import BlogPost     from './pages/BlogPost'
 import { useRoute } from './router'
 import './App.css'
 
@@ -43,6 +45,10 @@ export default function App() {
     page = <About />
   } else if (path === '/brand') {
     page = <Brand />
+  } else if (path === '/blog') {
+    page = <Blog />
+  } else if (path.startsWith('/blog/')) {
+    page = <BlogPost slug={path.slice('/blog/'.length)} />
   }
 
   return <main>{page}</main>

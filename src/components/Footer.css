@@ -65,6 +65,26 @@
   color: var(--brand-blue);
 }
 
+/* Marks a link that leads somewhere of its own rather than being one
+   more entry in the column. Small, but cobalt against muted ink so it
+   is the first thing the eye lands on in the footer. */
+.footer-link-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: var(--cobalt);
+  color: var(--white);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  vertical-align: 2px;
+  transition: background 0.2s ease;
+}
+
+.footer-col-links a:hover .footer-link-tag {
+  background: var(--carbon);
+}
+
 /* ── Legal bar ── */
 .footer-legal {
   display: flex;
