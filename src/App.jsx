@@ -1,3 +1,4 @@
+import Navbar       from './components/Navbar'
 import Hero         from './components/Hero'
 import Featured     from './components/Featured'
 import Capabilities from './components/Capabilities'
@@ -6,11 +7,15 @@ import Stats        from './components/Stats'
 import FinalCta     from './components/FinalCta'
 import Footer       from './components/Footer'
 import Billboard    from './components/Billboard'
+import Work         from './pages/Work'
+import WorkDetail   from './pages/WorkDetail'
+import { useRoute } from './router'
 import './App.css'
 
-export default function App() {
+function Home() {
   return (
-    <main>
+    <>
+      <Navbar />
       <Hero />
       <Featured />
       <Capabilities />
@@ -19,6 +24,19 @@ export default function App() {
       <FinalCta />
       <Footer />
       <Billboard />
-    </main>
+    </>
   )
+}
+
+export default function App() {
+  const path = useRoute().replace(/\/+$/, '') || '/'
+
+  let page = <Home />
+  if (path === '/work') {
+    page = <Work />
+  } else if (path.startsWith('/work/')) {
+    page = <WorkDetail slug={path.slice('/work/'.length)} />
+  }
+
+  return <main>{page}</main>
 }

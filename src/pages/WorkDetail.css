@@ -1,0 +1,379 @@
+/* ─────────────────────────────
+   Masthead
+───────────────────────────── */
+.detail-intro {
+  color: var(--white);
+  padding: calc(var(--nav-h) + 96px) var(--side-pad) 72px;
+}
+
+.detail-back {
+  display: inline-block;
+  margin-bottom: 48px;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.detail-back:hover {
+  color: var(--white);
+}
+
+.detail-title {
+  font-size: clamp(32px, 4.8vw, 72px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  max-width: 18ch;
+}
+
+.detail-summary {
+  margin-top: 28px;
+  max-width: 52ch;
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 64px;
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.detail-meta dt {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 12px;
+}
+
+.detail-meta dd {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.detail-meta-services dd {
+  max-width: 40ch;
+}
+
+.detail-lede {
+  max-width: 68ch;
+  margin: 0 auto;
+  padding: 104px var(--side-pad) 96px;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--carbon);
+}
+
+/* ─────────────────────────────
+   Paired columns. The text column holds its place while the visual
+   column scrolls; an observer on the panels decides which chapter
+   is shown, so the two stay locked together.
+───────────────────────────── */
+.detail-body {
+  display: grid;
+  grid-template-columns: 38% 62%;
+  /* No align-items: start here — the text column has to stretch to the
+     full height of the visual column, or its sticky child has no room
+     to travel and simply scrolls away. */
+  padding: 0 var(--side-pad);
+}
+
+.detail-text-col {
+  position: relative;
+  height: 100%;
+}
+
+.detail-text-sticky {
+  position: sticky;
+  top: calc(var(--nav-h) + 72px);
+  padding-right: 48px;
+}
+
+.detail-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  list-style: none;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.14);
+}
+
+.detail-progress-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(20, 20, 20, 0.35);
+  transition: color 0.35s ease;
+}
+
+.detail-progress-item.is-active {
+  color: var(--carbon);
+}
+
+.detail-progress-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  opacity: 0.3;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.detail-progress-item.is-active .detail-progress-dot {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+/* Chapters are stacked on top of each other so the column never jumps
+   height as the active one changes. */
+.detail-chapters {
+  display: grid;
+}
+
+.detail-chapter {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition:
+    opacity   0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.detail-chapter.is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.detail-chapter-title {
+  font-size: clamp(24px, 2.3vw, 34px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: var(--carbon);
+}
+
+.detail-chapter-body {
+  margin-top: 20px;
+  max-width: 40ch;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(20, 20, 20, 0.64);
+}
+
+/* ── Visual column ── */
+.detail-visual-col {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 120px;
+}
+
+.detail-panel-plate {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 620px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.detail-panel:nth-child(even) .detail-panel-plate {
+  aspect-ratio: 5 / 4;
+  max-height: 720px;
+}
+
+.detail-panel-index,
+.detail-panel-label {
+  position: absolute;
+  bottom: 22px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.detail-panel-index { left: 22px; }
+.detail-panel-label { right: 22px; }
+
+/* Only shown once the columns stack. */
+.detail-panel-copy {
+  display: none;
+}
+
+/* ─────────────────────────────
+   Outcome
+───────────────────────────── */
+.detail-metrics {
+  padding: 120px var(--side-pad);
+  background: var(--bone);
+}
+
+.detail-metrics-eyebrow {
+  color: var(--cobalt);
+  margin-bottom: 48px;
+}
+
+.detail-metrics-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+  list-style: none;
+}
+
+.detail-metrics-list li {
+  padding-top: 28px;
+  border-top: 1px solid rgba(20, 20, 20, 0.18);
+}
+
+.detail-metric-value {
+  display: block;
+  font-size: clamp(44px, 6vw, 96px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  color: var(--carbon);
+}
+
+.detail-metric-label {
+  display: block;
+  margin-top: 16px;
+  font-size: 15px;
+  color: rgba(20, 20, 20, 0.6);
+}
+
+/* ─────────────────────────────
+   More work
+───────────────────────────── */
+.detail-next {
+  padding: 120px var(--side-pad);
+}
+
+.detail-next-eyebrow {
+  color: rgba(20, 20, 20, 0.45);
+  margin-bottom: 40px;
+}
+
+.detail-next-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  list-style: none;
+}
+
+.detail-next-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.detail-next-plate {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 7px;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.detail-next-link:hover .detail-next-plate {
+  transform: translateY(-6px);
+}
+
+.detail-next-link h3 {
+  margin: 20px 0 10px;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.detail-next-link .tiny {
+  color: rgba(20, 20, 20, 0.5);
+}
+
+/* ─────────────────────────────
+   404
+───────────────────────────── */
+.detail-missing {
+  padding: calc(var(--nav-h) + 160px) var(--side-pad) 160px;
+}
+
+.detail-missing .tiny {
+  color: var(--cobalt);
+  margin-bottom: 24px;
+}
+
+.detail-missing h1 {
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.detail-back-link {
+  display: inline-block;
+  margin-top: 32px;
+  font-size: 16px;
+  color: var(--cobalt);
+}
+
+@media (max-width: 1000px) {
+  /* Stacked: the sticky pairing has nothing to pair with, so each
+     panel carries its own copy instead. */
+  .detail-body {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-text-col {
+    display: none;
+  }
+
+  .detail-panel-copy {
+    display: block;
+    padding: 24px 0 16px;
+  }
+
+  .detail-panel-copy h2 {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+  }
+
+  .detail-panel-copy p {
+    margin-top: 14px;
+    max-width: 52ch;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: rgba(20, 20, 20, 0.64);
+  }
+
+  .detail-next-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .detail-intro {
+    padding: calc(var(--nav-h) + 56px) var(--side-pad) 56px;
+  }
+
+  .detail-meta {
+    gap: 32px;
+    margin-top: 44px;
+  }
+
+  .detail-lede {
+    padding: 64px var(--side-pad) 56px;
+  }
+
+  .detail-metrics,
+  .detail-next {
+    padding: 72px var(--side-pad);
+  }
+
+  .detail-metrics-list {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}

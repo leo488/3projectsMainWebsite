@@ -1,38 +1,8 @@
-import { useEffect, useState } from 'react'
-import Logo from './Logo'
 import './Hero.css'
 
 export default function Hero() {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
     <section className="hero-section">
-
-      {/* ── Navbar ── */}
-      <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
-        <a href="/" className="nav-logo">
-          <Logo className="nav-logo-svg" />
-        </a>
-
-        <div className="nav-right">
-          <ul className="nav-links">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Expertise</a></li>
-            <li><a href="#">Industries</a></li>
-            <li><a href="#">Case Studies</a></li>
-            <li><a href="#">Careers</a></li>
-          </ul>
-
-          <a href="#" className="btn-start btn-gradient">Start a Conversation</a>
-        </div>
-      </nav>
 
       {/* ── Headline ── */}
       <div className="hero-headline-row">

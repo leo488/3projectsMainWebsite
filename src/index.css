@@ -19,6 +19,14 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'Bitroad';
+  src: url('/fonts/Bitroad/BitroadDEMO-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ─────────────────────────────
    Design tokens
    Blues are sampled straight out of public/images/pattern.png so the
@@ -31,9 +39,24 @@
   --bright:       #0A52FF;   /* accent — "grows", billboard wordmark */
   --pattern-mid:  #0036C5;
   --pattern-lite: #2973FD;
-  --bone:         #EFEFEC;   /* light ground — closing CTA, footer */
+  --bone:         #E9E9E4;   /* light ground — closing CTA, footer */
   --card:         #E7E8E3;   /* capability cards */
   --white:        #ffffff;
+
+  /* Brand palette. Cobalt is the only primary accent; the six
+     hues below are reserved for the phases they name and are
+     never used decoratively. */
+  --cobalt:       #004BFF;   /* primary accent */
+  --enterprise:   #0031B8;   /* large grounds */
+  --carbon:       #141414;   /* all text */
+  --amber:        #F2A61D;   /* Discover */
+  --indigo:       #2E2A8C;   /* Design */
+  --cyan:         #00C2E8;   /* Deliver */
+  --mint:         #2FD39A;   /* Sustain */
+  --violet:       #6E4CE8;   /* Support */
+  --slate:        #44506B;   /* Structure */
+  --signal-red:   #D92D22;   /* Prohibition */
+  --sky:          #7FA5FF;   /* On dark */
 
   --side-pad: 24px;
   --nav-h:    84px;
@@ -115,4 +138,13 @@ body.cta-handoff .navbar .btn-start {
   .btn-gradient {
     animation: none;
   }
+}
+
+/* Tiny label face — section eyebrows, category filters, metadata. */
+.tiny {
+  font-family: 'Bitroad', 'Manrope', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
 }
