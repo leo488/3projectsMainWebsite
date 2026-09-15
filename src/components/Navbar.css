@@ -69,6 +69,55 @@
   opacity: 0.55;
 }
 
+.nav-has-menu {
+  position: relative;
+}
+
+.nav-menu-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s ease;
+}
+
+.navbar--dark .nav-menu-trigger {
+  color: var(--white);
+}
+
+.nav-menu-trigger:hover,
+.nav-menu-trigger.is-open {
+  opacity: 0.55;
+}
+
+.nav-caret {
+  transition: transform 0.25s ease;
+}
+
+.nav-menu-trigger.is-open .nav-caret {
+  transform: rotate(180deg);
+}
+
+/* While the panel is down the bar keeps its white ground so the two
+   read as one surface. */
+.navbar--menu-open {
+  background: var(--white);
+  border-bottom-color: transparent;
+}
+
+.navbar--menu-open .nav-links a,
+.navbar--menu-open .nav-menu-trigger {
+  color: var(--ink);
+}
+
 /* Sizing only — the gradient ring and fill come from .btn-gradient so
    the closing CTA can share them. */
 .btn-start {

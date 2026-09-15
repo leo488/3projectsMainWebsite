@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { CONTACT_EMAIL } from '../data/site'
 import './FinalCta.css'
 
 export default function FinalCta() {
@@ -28,7 +29,12 @@ export default function FinalCta() {
         Let&rsquo;s redesign how your<br />
         enterprise <span className="final-cta-accent">grows</span>
       </h2>
-      <a href="#" className="final-cta-btn btn-gradient">Start a Conversation</a>
+      <a
+        href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
+        className="final-cta-btn btn-gradient"
+      >
+        Start a Conversation
+      </a>
     </section>
   )
 }

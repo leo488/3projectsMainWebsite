@@ -1,0 +1,149 @@
+/* Full-width panel hung off the bar. Hidden with [hidden] as well as
+   opacity so it is genuinely out of the tab order when closed. */
+.mega {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: var(--white);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.12);
+  box-shadow: 0 24px 48px -32px rgba(14, 27, 46, 0.35);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity   0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mega.is-open {
+  opacity: 1;
+  transform: none;
+}
+
+.mega-inner {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.2fr 1fr;
+  gap: 56px;
+  padding: 48px var(--side-pad) 52px;
+}
+
+.mega-label {
+  color: var(--cobalt);
+  margin-bottom: 26px;
+}
+
+.mega-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mega-list a {
+  text-decoration: none;
+  color: var(--carbon);
+}
+
+.mega-service {
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.mega-service:hover {
+  opacity: 0.6;
+}
+
+.mega-service-name {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.mega-service-desc {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(20, 20, 20, 0.55);
+}
+
+.mega-list--plain a {
+  font-size: 15px;
+  transition: color 0.2s ease;
+}
+
+.mega-list--plain a:hover {
+  color: var(--cobalt);
+}
+
+.mega-phase {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: opacity 0.2s ease;
+}
+
+.mega-phase:hover {
+  opacity: 0.6;
+}
+
+.mega-phase-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  margin-top: 3px;
+  flex: none;
+}
+
+.mega-phase-name {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.mega-phase-note {
+  display: block;
+  margin-top: 3px;
+  font-size: 13px;
+  color: rgba(20, 20, 20, 0.55);
+}
+
+.mega-col--cta {
+  padding-left: 40px;
+  border-left: 1px solid rgba(20, 20, 20, 0.12);
+}
+
+.mega-cta-copy {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(20, 20, 20, 0.62);
+}
+
+.mega-cta-link {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--cobalt);
+  text-decoration: none;
+}
+
+@media (max-width: 1100px) {
+  .mega-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .mega-col--cta {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .mega {
+    display: none;
+  }
+}

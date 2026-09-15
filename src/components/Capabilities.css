@@ -2,7 +2,7 @@
   background: var(--white);
   /* The reference leaves a deliberate ~385px white break between the
      rail and the partner split; it collapses on narrow screens. */
-  padding: 30px 0 clamp(96px, 28vw, 406px);
+  padding: 30px 0 clamp(80px, 19vw, 272px);
 }
 
 /* Five equal columns spanning the full container width, so the row's

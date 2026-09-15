@@ -1,3 +1,4 @@
+import { Link } from '../router'
 import './Hero.css'
 
 export default function Hero() {
@@ -16,12 +17,12 @@ export default function Hero() {
             </span>
           </span>
         </h1>
-        <a href="#" className="hero-view-link">
+        <Link href="/work" className="hero-view-link">
           View Case Studies
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-        </a>
+        </Link>
       </div>
 
       {/* ── Pixel-art hero image ──

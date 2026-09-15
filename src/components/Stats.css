@@ -43,7 +43,9 @@
 
 .stat-num {
   font-size: clamp(48px, 6.4vw, 104px);
-  font-weight: 800;
+  /* Medium, not Bold — large statistics read the same site-wide:
+     prominent but clean. Mirrored in WorkDetail and Work. */
+  font-weight: 500;
   line-height: 0.95;
   letter-spacing: -0.045em;
   color: var(--white);
