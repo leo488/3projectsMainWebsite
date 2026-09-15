@@ -1,0 +1,63 @@
+/* Opens the bone-coloured run that carries through to the legal bar. */
+.final-cta {
+  background: var(--bone);
+  padding: clamp(96px, 27vw, 390px) var(--side-pad) clamp(72px, 15.8vw, 228px);
+  text-align: center;
+}
+
+.final-cta-headline {
+  font-size: clamp(32px, 3.9vw, 54px);
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity   0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.final-cta.is-visible .final-cta-headline {
+  opacity: 1;
+  transform: none;
+}
+
+.final-cta-accent {
+  color: var(--bright);
+}
+
+.final-cta-btn {
+  display: inline-block;
+  margin-top: 36px;
+  padding: 11px 22px;
+  border-radius: 100px;
+  background: var(--brand-blue);
+  color: var(--white);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  opacity: 0;
+  transition:
+    opacity    0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+    background 0.25s ease;
+}
+
+.final-cta.is-visible .final-cta-btn {
+  opacity: 1;
+}
+
+.final-cta-btn:hover {
+  background: #002590;
+}
+
+@media (max-width: 900px) {
+  .final-cta {
+    padding: 96px var(--side-pad) 72px;
+  }
+
+  .final-cta-headline br {
+    display: none;
+  }
+}

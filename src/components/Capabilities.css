@@ -1,0 +1,70 @@
+.caps {
+  background: var(--white);
+  /* The reference leaves a deliberate ~385px white break between the
+     rail and the partner split; it collapses on narrow screens. */
+  padding: 30px 0 clamp(96px, 28vw, 406px);
+}
+
+/* Horizontal rail: the cards start on the page's side gutter and run
+   past the right edge, so the row reads as scrollable. */
+.caps-track {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  padding: 0 var(--side-pad);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--side-pad);
+  scrollbar-width: none;
+}
+
+.caps-track::-webkit-scrollbar {
+  display: none;
+}
+
+.cap-card {
+  flex: 0 0 305px;
+  height: 405px;
+  padding: 22px 22px 24px;
+  background: var(--card);
+  scroll-snap-align: start;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity   0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 70ms);
+}
+
+.caps.is-visible .cap-card {
+  opacity: 1;
+  transform: none;
+}
+
+.cap-card--accent {
+  background: var(--bright);
+}
+
+.cap-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.cap-desc {
+  font-size: 11.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(14, 27, 46, 0.62);
+  max-width: 24ch;
+}
+
+@media (max-width: 900px) {
+  .cap-card {
+    flex-basis: 240px;
+    height: 320px;
+  }
+}

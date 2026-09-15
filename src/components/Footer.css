@@ -1,133 +1,73 @@
-/* ── Footer ── */
+/* Continues the bone ground opened by the closing CTA. */
 .footer {
-  background: #0D1826;
-  padding: 0 80px 80px;
-  overflow: hidden;
+  background: var(--bone);
+  padding: 0 var(--side-pad);
 }
 
-/* ── Big CTA headline ── */
-.footer-cta {
-  padding: clamp(160px, 20vh, 260px) 0 clamp(140px, 18vh, 240px);
-  text-align: center;
-}
-
-.footer-cta-headline {
-  font-family: 'Manrope', sans-serif;
-  font-size: clamp(48px, 6.8vw, 104px);
-  font-weight: 300;
-  line-height: 1.12;
-  letter-spacing: -0.035em;
-  color: #F4F6F8;
-  margin: 0;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.footer--visible .footer-cta-headline {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.footer-accent {
-  font-family: 'Canela', serif;
-  font-style: italic;
-  font-weight: 700;
-  color: #2E55E6;
-  letter-spacing: -0.01em;
-}
-
-/* ── Link columns ── */
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr repeat(4, 1fr);
-  gap: 40px;
-  padding-bottom: 110px;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 149px;
 }
 
 .footer-brand,
 .footer-col {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: calc(var(--i) * 0.08s);
+  transform: translateY(14px);
+  transition:
+    opacity   0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 60ms);
 }
 
 .footer--visible .footer-brand,
 .footer--visible .footer-col {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 .footer-mark {
-  width: 56px;
+  width: 34px;
   height: auto;
   display: block;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
 }
 
 .footer-blurb {
-  font-family: 'Manrope', sans-serif;
-  font-size: 13.5px;
+  max-width: 25ch;
+  font-size: 10.5px;
   font-weight: 400;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.55);
-  max-width: 280px;
-  margin: 0;
-}
-
-.footer-contact {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 20px;
-}
-
-.footer-contact a {
-  font-family: 'Manrope', sans-serif;
-  font-size: 13.5px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footer-contact a:hover {
-  color: #ffffff;
+  line-height: 1.7;
+  color: rgba(14, 27, 46, 0.68);
 }
 
 .footer-col-title {
-  font-family: 'Manrope', sans-serif;
-  font-size: 11.5px;
+  font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.40);
-  margin: 0 0 20px;
+  color: rgba(14, 27, 46, 0.42);
+  margin-bottom: 16px;
 }
 
 .footer-col-links {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 9px;
 }
 
 .footer-col-links a {
-  font-family: 'Manrope', sans-serif;
-  font-size: 14px;
+  font-size: 10.5px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(14, 27, 46, 0.78);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .footer-col-links a:hover {
-  color: #ffffff;
+  color: var(--brand-blue);
 }
 
 /* ── Legal bar ── */
@@ -136,123 +76,46 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  flex-wrap: wrap;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 38px 0 0;
+  padding: 33px 0 33px;
+  border-top: 1px solid rgba(14, 27, 46, 0.12);
 }
 
 .footer-legal-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
-  gap: 36px;
   flex-wrap: wrap;
+  gap: 22px;
+  list-style: none;
+}
+
+.footer-legal-links a,
+.footer-copyright {
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(14, 27, 46, 0.45);
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .footer-legal-links a {
-  font-family: 'Manrope', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.50);
-  text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .footer-legal-links a:hover {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.footer-copyright {
-  font-family: 'Manrope', sans-serif;
-  font-size: 13.5px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.45);
-}
-
-/* ── Giant brand lockup ── */
-.footer-lockup {
-  display: flex;
-  align-items: center;
-  gap: clamp(24px, 3vw, 56px);
-  padding-top: clamp(140px, 18vh, 230px);
-}
-
-.footer-lockup-mark {
-  width: clamp(140px, 20vw, 340px);
-  height: auto;
-  flex-shrink: 0;
-  opacity: 0;
-  transform: translateY(28px) rotate(-4deg);
-  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.footer--visible .footer-lockup-mark {
-  opacity: 1;
-  transform: translateY(0) rotate(0deg);
-  animation: footerMarkFloat 5s ease-in-out 1.1s infinite;
-}
-
-@keyframes footerMarkFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50%      { transform: translateY(-10px) rotate(-1.5deg); }
-}
-
-.footer-lockup-word {
-  min-width: 0;
-}
-
-.footer-wordmark {
-  display: block;
-  font-family: 'Manrope', sans-serif;
-  font-size: clamp(56px, 12vw, 236px);
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  line-height: 0.95;
-  color: #ffffff;
-  white-space: nowrap;
-}
-
-.footer-tm {
-  display: block;
-  font-family: 'Manrope', sans-serif;
-  font-size: clamp(16px, 1.6vw, 30px);
-  font-weight: 600;
-  color: #ffffff;
-  margin-top: 10px;
+  color: var(--ink);
 }
 
 @media (max-width: 900px) {
-  .footer {
-    padding: 0 24px 56px;
-  }
-
   .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 24px;
+    padding-bottom: 40px;
   }
 
   .footer-legal {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
-  }
-
-  .footer-lockup {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    padding-top: 100px;
-  }
-
-  .footer-lockup-mark {
-    width: clamp(80px, 22vw, 140px);
-  }
-
-  .footer-wordmark {
-    font-size: clamp(48px, 15vw, 96px);
+    gap: 12px;
   }
 }

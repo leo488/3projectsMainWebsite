@@ -78,14 +78,6 @@ export default function Footer() {
   return (
     <footer className="footer" ref={footerRef}>
 
-      {/* ── Big CTA headline ── */}
-      <div className="footer-cta">
-        <h2 className="footer-cta-headline">
-          Let&rsquo;s redesign how your<br />
-          enterprise <em className="footer-accent">grows.</em>
-        </h2>
-      </div>
-
       {/* ── Link columns ── */}
       <div className="footer-grid">
         <div className="footer-brand" style={{ '--i': 0 }}>
@@ -94,10 +86,6 @@ export default function Footer() {
             An enterprise transformation firm architecting the operating models
             of the organizations that move markets.
           </p>
-          <div className="footer-contact">
-            <a href="mailto:hello@3projects.com">hello@3projects.com</a>
-            <a href="tel:+18005550142">+1 (800) 555-0142</a>
-          </div>
         </div>
 
         {COLUMNS.map((col, i) => (
@@ -126,15 +114,6 @@ export default function Footer() {
         <span className="footer-copyright">
           © 2026 3Projects LLP · All rights reserved
         </span>
-      </div>
-
-      {/* ── Giant brand lockup ── */}
-      <div className="footer-lockup">
-        <GradientMark className="footer-lockup-mark" id="fm-big" />
-        <div className="footer-lockup-word">
-          <span className="footer-wordmark">3PROJECTS</span>
-          <span className="footer-tm">™</span>
-        </div>
       </div>
 
     </footer>

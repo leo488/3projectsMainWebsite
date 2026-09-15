@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Logo from './Logo'
 import './Hero.css'
 
 export default function Hero() {
@@ -17,7 +18,7 @@ export default function Hero() {
       {/* ── Navbar ── */}
       <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
         <a href="/" className="nav-logo">
-          <img src="/images/logo-dark.svg" alt="3Projects" />
+          <Logo className="nav-logo-svg" />
         </a>
 
         <div className="nav-right">

@@ -1,20 +1,11 @@
 /* ─────────────────────────────
    Variables
 ───────────────────────────── */
-:root {
-  --navy:        #0E1B2E;
-  --accent-blue: #0031B8;
-  --white:       #ffffff;
-  --hero-bg:     #ffffff;
-  --side-pad:    24px;
-  --nav-h:       76px;
-}
-
 /* ─────────────────────────────
    Section
 ───────────────────────────── */
 .hero-section {
-  background: var(--hero-bg);
+  background: var(--white);
   padding-top: var(--nav-h);
   overflow: hidden;
 }
@@ -34,7 +25,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--side-pad);
-  background: var(--hero-bg);
+  background: var(--white);
   border-bottom: 1px solid rgba(14, 27, 46, 0.08);
   transition:
     background   0.5s cubic-bezier(0.16, 1, 0.3, 1),
@@ -50,8 +41,8 @@
   align-items: center;
 }
 
-.nav-logo img {
-  height: 27px;
+.nav-logo-svg {
+  height: 24px;
   width: auto;
   display: block;
 }
@@ -73,7 +64,7 @@
   font-family: 'Manrope', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: var(--navy);
+  color: var(--ink);
   text-decoration: none;
   letter-spacing: -0.01em;
   transition: opacity 0.2s ease;
@@ -95,7 +86,7 @@
   padding: 11px 22px;
   border-radius: 100px;
   letter-spacing: -0.005em;
-  background: var(--accent-blue);
+  background: var(--brand-blue);
   transition: background 0.25s ease;
 }
 
@@ -111,7 +102,7 @@
   flex-direction: column;
   align-items: center;
   gap: 18px;
-  padding: 64px var(--side-pad) 40px;
+  padding: 110px var(--side-pad) 84px;
   text-align: center;
 }
 
@@ -119,7 +110,7 @@
   font-family: 'Manrope', sans-serif;
   font-size: clamp(30px, 4.1vw, 60px);
   font-weight: 600;
-  color: var(--navy);
+  color: var(--ink);
   line-height: 1.12;
   letter-spacing: -0.035em;
   margin: 0;
@@ -149,7 +140,7 @@
 .line-2 { animation-delay: 0.35s; }
 
 .hero-accent {
-  color: var(--accent-blue);
+  color: var(--brand-blue);
 }
 
 .hero-view-link {
@@ -159,7 +150,7 @@
   font-family: 'Manrope', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: var(--navy);
+  color: var(--ink);
   text-decoration: none;
   white-space: nowrap;
   opacity: 0;
@@ -199,11 +190,6 @@
 }
 
 @media (max-width: 900px) {
-  :root {
-    --side-pad: 20px;
-    --nav-h: 64px;
-  }
-
   .nav-links {
     display: none;
   }
@@ -225,7 +211,7 @@
 
   /* The nav has to survive without the links: shrink the logo and the
      CTA so the bar still fits a 360px viewport. */
-  .nav-logo img {
+  .nav-logo-svg {
     height: 22px;
   }
 
@@ -241,7 +227,7 @@
 }
 
 @media (max-width: 400px) {
-  .nav-logo img {
+  .nav-logo-svg {
     height: 20px;
   }
 

@@ -19,6 +19,33 @@
   font-style: italic;
 }
 
+/* ─────────────────────────────
+   Design tokens
+   Blues are sampled straight out of public/images/pattern.png so the
+   flat fills and the artwork are the same system.
+───────────────────────────── */
+:root {
+  --ink:          #0E1B2E;   /* near-black navy — body text, dark panels */
+  --navy:         #0A2072;   /* deep brand navy — feature card, partner */
+  --brand-blue:   #0031B8;   /* primary — buttons, "Unstoppable" */
+  --bright:       #0A52FF;   /* accent — "grows", billboard wordmark */
+  --pattern-mid:  #0036C5;
+  --pattern-lite: #2973FD;
+  --bone:         #EFEFEC;   /* light ground — closing CTA, footer */
+  --card:         #E7E8E3;   /* capability cards */
+  --white:        #ffffff;
+
+  --side-pad: 24px;
+  --nav-h:    68px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --side-pad: 20px;
+    --nav-h:    64px;
+  }
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -28,7 +55,8 @@
 html, body {
   width: 100%;
   min-height: 100vh;
-  background: #ffffff;
+  background: var(--white);
+  color: var(--ink);
   font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
