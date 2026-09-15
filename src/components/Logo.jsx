@@ -7,13 +7,17 @@ export default function Logo({
   tm,
   className,
   title = '3Projects',
+  markOnly = false,
 }) {
   const tmFill = tm ?? word
+  // Cropping the viewBox to the slabs is what isolates the mark; setting
+  // the wordmark transparent would leave its box occupying the space.
+  const box = markOnly ? '0 0 256 270' : '0 0 1300 270'
 
   return (
     <svg
       className={className}
-      viewBox="0 0 1300 270"
+      viewBox={box}
       fill="none"
       role="img"
       aria-label={title}

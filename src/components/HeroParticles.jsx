@@ -38,6 +38,11 @@ export default function HeroParticles({ className }) {
     let painted = false
     let done = false
     const DURATION = 1800
+    // Tail after the grid has assembled, during which the real image is
+    // blended in over the particles. By the time it ends the canvas is
+    // showing the photograph, so handing back to the <img> is invisible.
+    const RESOLVE = 0.62
+    let frame = null
 
     const image = new Image()
     image.decoding = 'async'
@@ -68,6 +73,16 @@ export default function HeroParticles({ className }) {
       const dw = image.width * scale
       const dh = image.height * scale
       sctx.drawImage(image, (cols - dw) / 2, (rows - dh) * 0.41, dw, dh)
+
+      // The same cover framing the CSS gives the still, in canvas pixels,
+      // so the blended image lands exactly where the <img> sits.
+      const fit = Math.max(rect.width / image.width, rect.height / image.height)
+      frame = {
+        w: image.width * fit,
+        h: image.height * fit,
+      }
+      frame.x = (rect.width - frame.w) / 2
+      frame.y = (rect.height - frame.h) * 0.41
 
       const { data } = sctx.getImageData(0, 0, cols, rows)
       const cx = rect.width / 2
@@ -126,6 +141,12 @@ export default function HeroParticles({ className }) {
 
       const elapsed = (now - start) / DURATION
 
+      // 0 while the grid is still assembling, then ramps as the
+      // photograph takes over from the particles.
+      const resolve = easeOutCubic(
+        Math.min(Math.max((elapsed - 1) / RESOLVE, 0), 1),
+      )
+
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i]
         const local = Math.min(Math.max((elapsed - p.delay) / (1 - p.delay), 0), 1)
@@ -140,9 +161,16 @@ export default function HeroParticles({ className }) {
         const y = p.oy + (p.y - p.oy) * e + drift
         const size = p.cell * (0.35 + 0.65 * e)
 
-        ctx.globalAlpha = e
+        ctx.globalAlpha = e * (1 - resolve)
         ctx.fillStyle = p.color
         ctx.fillRect(x, y, size, size)
+      }
+
+      // The photograph fades up through the thinning grid rather than
+      // replacing it, so the two never read as separate pictures.
+      if (resolve > 0 && frame) {
+        ctx.globalAlpha = resolve
+        ctx.drawImage(image, frame.x, frame.y, frame.w, frame.h)
       }
       ctx.globalAlpha = 1
 
@@ -153,14 +181,14 @@ export default function HeroParticles({ className }) {
         setReady(true)
       }
 
-      if (elapsed < 1.25) {
+      if (resolve < 1) {
         raf = requestAnimationFrame(draw)
         return
       }
 
       raf = 0
-      // Assembly is done: hand the frame back to the original still so
-      // the hero resolves sharp rather than resting on the grid.
+      // The canvas is now showing the photograph itself, so handing the
+      // frame back to the <img> underneath changes nothing on screen.
       if (!done) {
         done = true
         setSettled(true)
@@ -176,7 +204,7 @@ export default function HeroParticles({ className }) {
       if (disposed) return
       if (raf) cancelAnimationFrame(raf)
       raf = 0
-      start = performance.now() - DURATION * 1.4
+      start = performance.now() - DURATION * (1 + RESOLVE + 0.1)
       draw(performance.now())
     }
 
@@ -185,7 +213,7 @@ export default function HeroParticles({ className }) {
       if (settleTimer) clearTimeout(settleTimer)
       start = 0
       raf = requestAnimationFrame(draw)
-      settleTimer = setTimeout(settle, DURATION * 1.6)
+      settleTimer = setTimeout(settle, DURATION * (1 + RESOLVE) + 600)
     }
 
     function onScroll() {

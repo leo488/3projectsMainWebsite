@@ -119,9 +119,19 @@ export default function Footer() {
         <ul className="footer-legal-links">
           {LEGAL.map((item) => (
             <li key={item}>
-              <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(item)}`}>
-                {item}
-              </a>
+              {item === 'Cookies' ? (
+                <button
+                  type="button"
+                  className="footer-legal-btn"
+                  onClick={() => window.dispatchEvent(new CustomEvent('cookie:open'))}
+                >
+                  {item}
+                </button>
+              ) : (
+                <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(item)}`}>
+                  {item}
+                </a>
+              )}
             </li>
           ))}
         </ul>
@@ -129,6 +139,10 @@ export default function Footer() {
           © 2026 3Projects LLP · All rights reserved
         </span>
       </div>
+
+      <p className="footer-dedication">
+        A Pitch Blossoms company, made with the servant heart of Jesus Christ.
+      </p>
 
     </footer>
   )

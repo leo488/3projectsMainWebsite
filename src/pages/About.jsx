@@ -1,6 +1,5 @@
+import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import Billboard from '../components/Billboard'
 import useReveal from '../components/useReveal'
 import { Link } from '../router'
 import { CONTACT_EMAIL, PHASES, INDUSTRIES } from '../data/site'
@@ -172,8 +171,7 @@ export default function About() {
         </a>
       </section>
 
-      <Footer />
-      <Billboard />
+      <SiteFooter />
     </>
   )
 }

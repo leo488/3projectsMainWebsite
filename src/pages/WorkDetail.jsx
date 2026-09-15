@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import Billboard from '../components/Billboard'
 import { Link } from '../router'
 import { PROJECTS, getProject } from '../data/projects'
 import './WorkDetail.css'
@@ -56,8 +55,7 @@ export default function WorkDetail({ slug }) {
           <h1>That project isn&rsquo;t here.</h1>
           <Link href="/work" className="detail-back-link">Back to all work</Link>
         </section>
-        <Footer />
-        <Billboard />
+        <SiteFooter />
       </>
     )
   }
@@ -176,8 +174,7 @@ export default function WorkDetail({ slug }) {
         </ul>
       </section>
 
-      <Footer />
-      <Billboard />
+      <SiteFooter />
     </>
   )
 }

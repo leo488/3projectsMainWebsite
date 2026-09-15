@@ -1,7 +1,6 @@
 import { useState } from 'react'
+import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import Billboard from '../components/Billboard'
 import useReveal from '../components/useReveal'
 import { Link } from '../router'
 import { PROJECTS, CATEGORIES } from '../data/projects'
@@ -136,8 +135,7 @@ export default function Work() {
         </ol>
       </section>
 
-      <Footer />
-      <Billboard />
+      <SiteFooter />
     </>
   )
 }

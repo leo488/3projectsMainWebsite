@@ -1,0 +1,221 @@
+/* Pinned to the full width of the viewport, on the same carbon ground
+   the roles table and the numbers band use — so it reads as part of the
+   site rather than a bolted-on widget. */
+.cookie {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  background: var(--carbon);
+  color: var(--white);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  /* No fill-mode: the resting state is the element's own, so if the
+     animation never runs the banner is still in place rather than
+     parked off-screen. */
+  animation: cookie-rise 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes cookie-rise {
+  from { transform: translateY(100%); }
+  to   { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cookie {
+    animation: none;
+  }
+}
+
+.cookie-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 40px;
+  padding: 26px var(--side-pad);
+}
+
+/* Once the options are open the panel becomes a column and can scroll
+   on short viewports. */
+.cookie--managing .cookie-inner {
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  gap: 28px;
+  max-height: 82vh;
+  overflow-y: auto;
+  padding-block: 32px;
+}
+
+.cookie-eyebrow {
+  color: var(--sky);
+  margin-bottom: 14px;
+}
+
+.cookie-title {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.cookie-copy {
+  margin-top: 8px;
+  max-width: 68ch;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Options ── */
+.cookie-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  list-style: none;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.cookie-option-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.cookie-option-head input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.cookie-switch {
+  position: relative;
+  flex: none;
+  width: 34px;
+  height: 20px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.22);
+  transition: background 0.25s ease;
+}
+
+.cookie-switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--white);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cookie-option-head input:checked + .cookie-switch {
+  background: var(--cobalt);
+}
+
+.cookie-option-head input:checked + .cookie-switch::after {
+  transform: translateX(14px);
+}
+
+.cookie-option-head input:disabled + .cookie-switch {
+  background: rgba(255, 255, 255, 0.3);
+  cursor: default;
+}
+
+.cookie-option-head input:focus-visible + .cookie-switch {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+}
+
+.cookie-option-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.cookie-locked {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.cookie-option-desc {
+  margin-top: 10px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+/* ── Actions ── */
+.cookie-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cookie--managing .cookie-actions {
+  justify-content: flex-end;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.cookie-btn {
+  padding: 11px 20px;
+  border-radius: 100px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+}
+
+.cookie-btn--ghost {
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: none;
+  color: var(--white);
+}
+
+.cookie-btn--ghost:hover {
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cookie-btn--solid {
+  border: 1px solid var(--cobalt);
+  background: var(--cobalt);
+  color: var(--white);
+}
+
+.cookie-btn--solid:hover {
+  background: #0040d8;
+  border-color: #0040d8;
+}
+
+@media (max-width: 1000px) {
+  .cookie-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .cookie-inner {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .cookie-options {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cookie-btn {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
