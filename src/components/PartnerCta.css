@@ -4,14 +4,14 @@
   display: grid;
   grid-template-columns: 52% 48%;
   min-height: 690px;
-  background: var(--ink);
+  background: var(--carbon);
 }
 
 .partner-left {
   display: flex;
   flex-direction: column;
   padding: 72px var(--side-pad) 64px 64px;
-  background: var(--ink);
+  background: var(--carbon);
 }
 
 .partner-headline {
@@ -38,7 +38,7 @@
   padding: 10px 20px;
   border-radius: 100px;
   background: var(--white);
-  color: var(--ink);
+  color: var(--carbon);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: -0.005em;
@@ -59,7 +59,22 @@
 }
 
 .partner-right {
-  background: var(--navy);
+  position: relative;
+  background: var(--hero-blue);
+}
+
+/* The grid sits inset from all four edges so it reads as living inside
+   the panel rather than being cropped by it. A percentage inset would
+   resolve against width for the sides and height for the top and
+   bottom, giving four different margins — a viewport unit keeps all
+   four equal. */
+.partner-grid {
+  position: absolute;
+  inset: clamp(32px, 4vw, 72px);
+}
+
+.partner-grid svg {
+  display: block;
 }
 
 @media (max-width: 900px) {

@@ -1,4 +1,5 @@
 import useReveal from './useReveal'
+import PartnerGrid from './PartnerGrid'
 import { CONTACT_EMAIL } from '../data/site'
 import './PartnerCta.css'
 
@@ -19,7 +20,9 @@ export default function PartnerCta() {
           Become a CPA Partner
         </a>
       </div>
-      <div className="partner-right" role="presentation" />
+      <div className="partner-right" role="presentation">
+        <PartnerGrid className="partner-grid" fill="var(--navy)" />
+      </div>
     </section>
   )
 }
