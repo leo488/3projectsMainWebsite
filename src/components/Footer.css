@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
   gap: 32px;
-  padding-bottom: 149px;
+  padding-bottom: 88px;
 }
 
 .footer-brand,
@@ -28,40 +28,40 @@
 }
 
 .footer-mark {
-  width: 34px;
+  width: 46px;
   height: auto;
   display: block;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
 .footer-blurb {
-  max-width: 25ch;
-  font-size: 10.5px;
+  max-width: 30ch;
+  font-size: 13.5px;
   font-weight: 400;
-  line-height: 1.7;
-  color: rgba(14, 27, 46, 0.68);
+  line-height: 1.65;
+  color: rgba(14, 27, 46, 0.72);
 }
 
 .footer-col-title {
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(14, 27, 46, 0.42);
-  margin-bottom: 16px;
+  color: rgba(14, 27, 46, 0.48);
+  margin-bottom: 20px;
 }
 
 .footer-col-links {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 13px;
 }
 
 .footer-col-links a {
-  font-size: 10.5px;
+  font-size: 13.5px;
   font-weight: 400;
-  color: rgba(14, 27, 46, 0.78);
+  color: rgba(14, 27, 46, 0.8);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -83,17 +83,17 @@
 .footer-legal-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 22px;
+  gap: 26px;
   list-style: none;
 }
 
 .footer-legal-links a,
 .footer-copyright {
-  font-size: 8.5px;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: rgba(14, 27, 46, 0.45);
+  color: rgba(14, 27, 46, 0.5);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -118,4 +118,36 @@
     align-items: flex-start;
     gap: 12px;
   }
+}
+
+/* ── Social row ── */
+.footer-social {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  margin-top: 26px;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(14, 27, 46, 0.16);
+  color: rgba(14, 27, 46, 0.7);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.footer-social svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+.footer-social a:hover {
+  color: var(--white);
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
 }

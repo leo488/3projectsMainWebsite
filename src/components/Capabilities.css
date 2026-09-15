@@ -27,6 +27,7 @@
   height: 405px;
   padding: 22px 22px 24px;
   background: var(--card);
+  border-radius: 7px;
   scroll-snap-align: start;
   opacity: 0;
   transform: translateY(20px);
@@ -41,8 +42,37 @@
   transform: none;
 }
 
-.cap-card--accent {
+/* Intro card — leads the rail and shares the left edge with the
+   feature card above it, so the two sections line up exactly. */
+.cap-card--intro {
   background: var(--bright);
+  display: flex;
+  flex-direction: column;
+}
+
+.cap-intro-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 18px;
+}
+
+.cap-intro-title {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--white);
+}
+
+.cap-intro-desc {
+  margin-top: auto;
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .cap-title {

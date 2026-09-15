@@ -42,7 +42,7 @@
 }
 
 .nav-logo-svg {
-  height: 24px;
+  height: 34px;
   width: auto;
   display: block;
 }
@@ -50,19 +50,19 @@
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 44px;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 32px;
   list-style: none;
 }
 
 .nav-links a {
   font-family: 'Manrope', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--ink);
   text-decoration: none;
@@ -79,11 +79,11 @@
   display: inline-flex;
   align-items: center;
   font-family: 'Manrope', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--white);
   text-decoration: none;
-  padding: 11px 22px;
+  padding: 13px 26px;
   border-radius: 100px;
   letter-spacing: -0.005em;
   background: var(--brand-blue);
@@ -101,14 +101,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
-  padding: 110px var(--side-pad) 84px;
+  gap: 24px;
+  padding: 92px var(--side-pad) 44px;
   text-align: center;
 }
 
 .hero-headline {
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(30px, 4.1vw, 60px);
+  font-size: clamp(34px, 4.8vw, 78px);
   font-weight: 600;
   color: var(--ink);
   line-height: 1.12;
@@ -148,7 +148,7 @@
   align-items: center;
   gap: 8px;
   font-family: 'Manrope', sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--ink);
   text-decoration: none;
@@ -165,8 +165,12 @@
 /* ─────────────────────────────
    Pixel-art visual — full bleed, sits directly on the white ground
 ───────────────────────────── */
+/* The artwork is taller than a 16" viewport, so the frame trims its top
+   whitespace — the face clears the fold instead of sitting under it. */
 .hero-visual {
   width: 100%;
+  aspect-ratio: 1440 / 930;
+  overflow: hidden;
   opacity: 0;
   animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
@@ -174,7 +178,9 @@
 .hero-visual-img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 41%;
 }
 
 /* ─────────────────────────────
@@ -203,6 +209,10 @@
      the type any further. */
   .hero-headline {
     max-width: 100%;
+  }
+
+  .hero-visual {
+    aspect-ratio: 1440 / 1017;
   }
 
   .line-inner {

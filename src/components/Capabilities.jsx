@@ -26,15 +26,21 @@ export default function Capabilities() {
   return (
     <section className="caps" ref={ref}>
       <ul className="caps-track">
+        <li className="cap-card cap-card--intro" style={{ '--i': 0 }}>
+          <p className="cap-intro-eyebrow">Our Process</p>
+          <h2 className="cap-intro-title">What&nbsp;We&nbsp;Do</h2>
+          <p className="cap-intro-desc">
+            Four disciplines, run as one engagement — from the first
+            diagnostic through to the systems that outlive it.
+          </p>
+        </li>
+
         {CAPABILITIES.map((c, i) => (
-          <li key={c.title} className="cap-card" style={{ '--i': i }}>
+          <li key={c.title} className="cap-card" style={{ '--i': i + 1 }}>
             <h3 className="cap-title">{c.title}</h3>
             <p className="cap-desc">{c.desc}</p>
           </li>
         ))}
-        {/* The blue card runs off the right edge — it's the affordance
-            that tells you the row scrolls. */}
-        <li className="cap-card cap-card--accent" style={{ '--i': 4 }} aria-hidden="true" />
       </ul>
     </section>
   )

@@ -8,6 +8,7 @@
   grid-template-columns: 60.5% 39.5%;
   min-height: 614px;
   background: var(--navy);
+  border-radius: 7px;
   overflow: hidden;
   opacity: 0;
   transform: translateY(24px);
