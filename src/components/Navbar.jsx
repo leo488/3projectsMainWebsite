@@ -11,6 +11,22 @@ export default function Navbar({ theme = 'light' }) {
   const wrapRef = useRef(null)
   const panelRef = useRef(null)
   const triggerRef = useRef(null)
+  const closeTimer = useRef(0)
+
+  // The panel hangs below the bar, so the cursor has to cross dead space
+  // between the link and the menu. Closing on a short delay lets it make
+  // that trip; re-entering either the trigger or the panel cancels it.
+  const openMenu = () => {
+    clearTimeout(closeTimer.current)
+    setMenuOpen(true)
+  }
+
+  const scheduleClose = () => {
+    clearTimeout(closeTimer.current)
+    closeTimer.current = setTimeout(() => setMenuOpen(false), 260)
+  }
+
+  useEffect(() => () => clearTimeout(closeTimer.current), [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -24,11 +40,13 @@ export default function Navbar({ theme = 'light' }) {
 
     const onKey = (e) => {
       if (e.key !== 'Escape') return
+      clearTimeout(closeTimer.current)
       setMenuOpen(false)
       triggerRef.current?.focus()
     }
     const onPointer = (e) => {
       if (wrapRef.current?.contains(e.target)) return
+      clearTimeout(closeTimer.current)
       setMenuOpen(false)
     }
 
@@ -46,7 +64,7 @@ export default function Navbar({ theme = 'light' }) {
         <Logo
           className="nav-logo-svg"
           mark={theme === 'dark' ? 'var(--white)' : '#0031B8'}
-          word={theme === 'dark' ? 'var(--white)' : '#0E1B2E'}
+          word={theme === 'dark' ? 'var(--white)' : '#141414'}
         />
       </Link>
 
@@ -57,8 +75,9 @@ export default function Navbar({ theme = 'light' }) {
           <li
             className="nav-has-menu"
             ref={wrapRef}
-            onMouseEnter={() => setMenuOpen(true)}
-            onMouseLeave={() => setMenuOpen(false)}
+            onMouseEnter={openMenu}
+            onMouseLeave={scheduleClose}
+            onFocus={openMenu}
           >
             <button
               type="button"
@@ -67,7 +86,10 @@ export default function Navbar({ theme = 'light' }) {
               aria-expanded={menuOpen}
               aria-controls="expertise-menu"
               aria-haspopup="true"
-              onClick={() => setMenuOpen((v) => !v)}
+              onClick={() => {
+                clearTimeout(closeTimer.current)
+                setMenuOpen((v) => !v)
+              }}
             >
               Expertise
               <svg className="nav-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
@@ -78,7 +100,12 @@ export default function Navbar({ theme = 'light' }) {
             <MegaMenu
               open={menuOpen}
               panelRef={panelRef}
-              onNavigate={() => setMenuOpen(false)}
+              onEnter={openMenu}
+              onLeave={scheduleClose}
+              onNavigate={() => {
+                clearTimeout(closeTimer.current)
+                setMenuOpen(false)
+              }}
             />
           </li>
 

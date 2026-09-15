@@ -146,6 +146,10 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+.work-card--light .work-card-industry {
+  color: rgba(20, 20, 20, 0.66);
+}
+
 .work-card-body {
   padding-top: 22px;
 }

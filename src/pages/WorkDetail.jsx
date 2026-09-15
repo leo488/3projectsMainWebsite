@@ -64,15 +64,26 @@ export default function WorkDetail({ slug }) {
 
   return (
     <>
-      <Navbar theme="dark" />
+      {/* A light project ground cannot carry a white lockup. */}
+      <Navbar theme={project.tone === 'light' ? 'onlight' : 'dark'} />
 
       {/* ── Project masthead ── */}
-      <header className="detail-intro" style={{ background: project.ground }}>
+      <header
+        className={`detail-intro detail-intro--${project.tone || 'dark'}`}
+        style={{ background: project.ground }}
+      >
         <Link href="/work" className="tiny detail-back">← All work</Link>
         <h1 className="detail-title">{project.title}</h1>
         <p className="detail-summary">{project.summary}</p>
 
         <dl className="detail-meta">
+          {/* Only the CSV-backed records carry a client name. */}
+          {project.client && (
+            <div>
+              <dt className="tiny">Client</dt>
+              <dd>{project.client}</dd>
+            </div>
+          )}
           <div>
             <dt className="tiny">Industry</dt>
             <dd>{project.industry}</dd>

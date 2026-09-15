@@ -6,6 +6,32 @@
   padding: calc(var(--nav-h) + 96px) var(--side-pad) 72px;
 }
 
+/* Amber and the other light grounds cannot carry white text — the
+   masthead flips to carbon on those. */
+.detail-intro--light {
+  color: var(--carbon);
+}
+
+.detail-intro--light .detail-back {
+  color: rgba(20, 20, 20, 0.66);
+}
+
+.detail-intro--light .detail-back:hover {
+  color: var(--carbon);
+}
+
+.detail-intro--light .detail-summary {
+  color: rgba(20, 20, 20, 0.74);
+}
+
+.detail-intro--light .detail-meta {
+  border-top-color: rgba(20, 20, 20, 0.28);
+}
+
+.detail-intro--light .detail-meta dt {
+  color: rgba(20, 20, 20, 0.58);
+}
+
 .detail-back {
   display: inline-block;
   margin-bottom: 48px;

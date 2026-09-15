@@ -35,7 +35,10 @@ const APPROACH = [
 
 function ProjectCard({ project, index }) {
   return (
-    <li className="work-card" style={{ '--i': index, '--ratio': project.ratio }}>
+    <li
+      className={`work-card work-card--${project.tone || 'dark'}`}
+      style={{ '--i': index, '--ratio': project.ratio }}
+    >
       <Link href={`/work/${project.slug}`} className="work-card-link">
         <div className="work-card-visual" style={{ background: project.ground }}>
           <span className="tiny work-card-industry">{project.industry}</span>

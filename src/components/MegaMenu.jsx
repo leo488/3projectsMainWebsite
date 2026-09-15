@@ -2,13 +2,15 @@ import { Link } from '../router'
 import { SERVICES, INDUSTRIES, PHASES } from '../data/site'
 import './MegaMenu.css'
 
-export default function MegaMenu({ open, onNavigate, panelRef }) {
+export default function MegaMenu({ open, onNavigate, panelRef, onEnter, onLeave }) {
   return (
     <div
       ref={panelRef}
       id="expertise-menu"
       className={`mega${open ? ' is-open' : ''}`}
       hidden={!open}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
     >
       <div className="mega-inner">
         <section className="mega-col mega-col--services">

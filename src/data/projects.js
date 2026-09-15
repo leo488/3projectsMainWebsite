@@ -196,6 +196,102 @@ export const PROJECTS = [
       },
     ],
   },
+  /* ── From the case-study intake CSV (responses of 2/9/2026 and
+     7/9/2026). Everything below is taken from those responses; where a
+     field was left blank or answered "Nil" it is simply absent rather
+     than filled in. ── */
+  {
+    slug: 'crunchies-inventory',
+    title: 'Inventory Innovation / Solution',
+    client: 'Crunchies Group — Crunchies Fried Chicken',
+    summary: 'Limited real-time visibility into stock across outlets, warehouses and kitchens, with much of the process still dependent on manual tracking and reporting.',
+    tag: 'Inventory Operations Hub — phase 1 of 8',
+    categories: ['Operations', 'Platform'],
+    industry: 'Hospitality / Food chain',
+    year: 'In progress',
+    ground: 'var(--signal-red)',
+    tone: 'dark',
+    ratio: '4 / 3',
+    services: ['Centralised item database', 'Digital inventory workflows', 'SAGE ERP integration'],
+    metrics: [
+      { value: '₦25M–₦36M', label: 'Estimated internal value (projected)' },
+      { value: '100%', label: 'Digital inventory requests (projected)' },
+    ],
+    intro:
+      'Stock management ran on manual tracking, documentation and reporting, leaving no reliable view of levels across outlets, warehouses and kitchens. Without a connected system, gaps opened between Inventory, Procurement, Production and Operations — delays, stock-outs, overstocking and avoidable waste.',
+    sections: [
+      {
+        label: 'Discover',
+        heading: 'Where the inventory picture breaks down',
+        body: 'No real-time visibility across branches, warehouses and kitchens. Daily records uploaded by hand, no structured database for branch requests or transactions, and data integrity weak enough to allow manipulation across outlets. Item descriptions were not standardised, which made reconciliation difficult and submissions late.',
+        ground: 'var(--amber)',
+      },
+      {
+        label: 'Design',
+        heading: 'One connected Inventory Operations Hub',
+        body: 'A digital system bringing the department onto one platform, replacing Excel, email and paper with digital inventory requests, warehouse issuance, kitchen records, approvals, reports and real-time dashboards. A standard item list and a digital record of stock movement make stock traceable across every location. Delivery is planned across eight phases; phase one is in build.',
+        ground: 'var(--indigo)',
+      },
+      {
+        label: 'Deliver',
+        heading: 'Mobile-first, and built to reconcile',
+        body: 'A mobile-first approach over a centralised item database, with digital workflows, dashboards, barcode support, audit logs, automated reporting, alerts and real-time tracking. API integration with SAGE ERP and data validation sit underneath, alongside demand forecasting.',
+        ground: 'var(--cyan)',
+      },
+      {
+        label: 'Sustain',
+        heading: 'From manual process to traceable workflow',
+        body: 'The aim is to move inventory management from a largely manual process to a structured digital workflow — changing how staff submit requests, track stock, record daily activity and share information across branches, warehouses and kitchens, and giving management visibility it did not previously have. The roadmap carries further phases including demand forecasting and AI features such as smart reorder suggestions, overstock alerts and waste prediction.',
+        ground: 'var(--mint)',
+      },
+    ],
+  },
+  {
+    slug: 'myspotlyt',
+    title: 'Myspotlyt',
+    client: 'Myspotlyt',
+    summary: 'A live platform lacking stability and features, with no user retention and no new user acquisition.',
+    tag: 'Platform stability & feature delivery',
+    categories: ['Platform', 'Design'],
+    industry: 'Arts and Entertainment',
+    year: '2022–2026',
+    ground: 'var(--amber)',
+    tone: 'light',
+    ratio: '4 / 5',
+    services: ['NestJS backend', 'Vite + Express frontend', 'MongoDB'],
+    metrics: [
+      { value: '₦3M+',  label: 'Revenue by 2026, from ₦100K+ in 2022' },
+      { value: '<5,000', label: 'Active user base' },
+    ],
+    intro:
+      'Myspotlyt was already live when 3Projects came in. The platform lacked stability, was not fully user friendly and was missing features, with a user base between zero and five thousand.',
+    sections: [
+      {
+        label: 'Discover',
+        heading: 'Live, but not holding anyone',
+        body: 'The platform was shipping without the stability or the feature set to keep people on it. The two problems that mattered were plain: no user retention, and no new user acquisition.',
+        ground: 'var(--amber)',
+      },
+      {
+        label: 'Design',
+        heading: 'Build the features the platform was missing',
+        body: 'The team deployed new features to lift the platform — the Award feature, the agent feature and the payment feature among them.',
+        ground: 'var(--indigo)',
+      },
+      {
+        label: 'Deliver',
+        heading: 'The stack underneath',
+        body: 'NestJS for the backend, Vite with Express for the frontend, and MongoDB as the database.',
+        ground: 'var(--cyan)',
+      },
+      {
+        label: 'Sustain',
+        heading: 'A measured delivery cadence',
+        body: 'Deploying a feature on Myspotlyt takes approximately two to three months. Revenue over the engagement moved from ₦100K+ in 2022 to over ₦3M by 2026, against an active user base under five thousand.',
+        ground: 'var(--mint)',
+      },
+    ],
+  },
 ]
 
 export const getProject = (slug) => PROJECTS.find((p) => p.slug === slug)

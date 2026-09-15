@@ -27,6 +27,18 @@
   color: var(--white);
 }
 
+/* Sits on a light coloured ground — amber and the like — so it keeps the
+   transparent bar but takes carbon text rather than white. */
+.navbar--onlight {
+  background: transparent;
+  border-bottom-color: rgba(20, 20, 20, 0.18);
+}
+
+.navbar--onlight .nav-links a,
+.navbar--onlight .nav-menu-trigger {
+  color: var(--carbon);
+}
+
 .navbar--scrolled {
   border-bottom-color: transparent;
 }
@@ -71,6 +83,22 @@
 
 .nav-has-menu {
   position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* The trigger's box is only as tall as its text, but the panel hangs off
+   the bottom of the bar — leaving dead space the cursor has to cross.
+   While the menu is open this bridges that gap so the pointer never
+   leaves the hover target. It only exists when open, so it cannot
+   intercept anything the rest of the time. */
+.navbar--menu-open .nav-has-menu::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -24px;
+  right: -24px;
+  height: calc(var(--nav-h) / 2 + 12px);
 }
 
 .nav-menu-trigger {
