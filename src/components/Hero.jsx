@@ -1,3 +1,5 @@
+import MorphWord from './MorphWord'
+import HeroParticles from './HeroParticles'
 import { Link } from '../router'
 import './Hero.css'
 
@@ -13,7 +15,10 @@ export default function Hero() {
           </span>
           <span className="line-wrap">
             <span className="line-inner line-2">
-              your enterprise <span className="hero-accent">Unstoppable</span>
+              your enterprise{' '}
+              <MorphWord
+                words={['Unstoppable', 'Adaptable', 'Decisive', 'Resilient', 'Relentless']}
+              />
             </span>
           </span>
         </h1>
@@ -30,6 +35,9 @@ export default function Hero() {
          same artwork with the pixel blocks as individual vector shapes —
          swap to that (inlined) when we animate the pixels. */}
       <div className="hero-visual">
+        {/* The still is the ground truth and the no-JS fallback; the
+            canvas rebuilds it out of grid particles on top and hides
+            the still once it has something to show. */}
         <img
           className="hero-visual-img"
           src="/images/hero-2880.jpg"
@@ -40,6 +48,7 @@ export default function Hero() {
           alt=""
           fetchPriority="high"
         />
+        <HeroParticles className="hero-visual-canvas" />
       </div>
 
     </section>

@@ -84,6 +84,7 @@
 /* The artwork is taller than a 16" viewport, so the frame trims its top
    whitespace — the face clears the fold instead of sitting under it. */
 .hero-visual {
+  position: relative;
   width: 100%;
   aspect-ratio: 1440 / 930;
   overflow: hidden;
@@ -97,6 +98,20 @@
   height: 100%;
   object-fit: cover;
   object-position: center 41%;
+  transition: opacity 0.5s ease;
+}
+
+/* Once the grid has a frame to show, the still steps back. */
+.hero-visual:has(.hero-visual-canvas[data-ready='true']) .hero-visual-img {
+  opacity: 0;
+}
+
+.hero-visual-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* ─────────────────────────────

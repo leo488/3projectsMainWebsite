@@ -78,7 +78,7 @@ export default function Work() {
         <dl className="work-intro-stats">
           <div><dt className="tiny">Engagements</dt><dd>{PROJECTS.length}</dd></div>
           <div><dt className="tiny">Sectors</dt><dd>4</dd></div>
-          <div><dt className="tiny">Since</dt><dd>2012</dd></div>
+          <div><dt className="tiny">Disciplines</dt><dd>4</dd></div>
         </dl>
       </header>
 

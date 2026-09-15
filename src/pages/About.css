@@ -1,0 +1,411 @@
+/* ── Statement ── */
+.about-hero {
+  padding: calc(var(--nav-h) + 96px) var(--side-pad) 88px;
+  background: var(--white);
+}
+
+.about-hero-headline {
+  font-size: clamp(34px, 5vw, 76px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: var(--carbon);
+}
+
+/* ── Two-column body, label left ── */
+.about-position,
+.about-sectors,
+.about-team {
+  display: grid;
+  grid-template-columns: 22% 1fr;
+  gap: 40px;
+  padding: 0 var(--side-pad);
+}
+
+.about-label {
+  color: rgba(20, 20, 20, 0.45);
+}
+
+.about-position-copy {
+  max-width: 66ch;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 88px;
+}
+
+.about-position-copy p {
+  font-size: 17px;
+  line-height: 1.68;
+  color: var(--carbon);
+}
+
+/* ── Mark + story card ── */
+.about-story {
+  display: grid;
+  grid-template-columns: 22% 260px 1fr;
+  gap: 40px;
+  align-items: stretch;
+  padding: 0 var(--side-pad) 120px;
+}
+
+.about-story-plate {
+  grid-column: 2;
+  aspect-ratio: 1;
+  border-radius: 7px;
+  background: var(--cobalt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-story-mark {
+  font-size: 128px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: var(--white);
+}
+
+.about-story-card {
+  grid-column: 3;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  border-radius: 7px;
+  background: var(--bone);
+}
+
+.about-story-card h2 {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.about-story-card p {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(20, 20, 20, 0.62);
+}
+
+.about-story-btn {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 28px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--carbon);
+  text-decoration: none;
+}
+
+/* ── Numbers ── */
+.about-numbers {
+  display: grid;
+  grid-template-columns: 22% 1fr;
+  gap: 40px;
+  padding: 104px var(--side-pad);
+  background: var(--carbon);
+  color: var(--white);
+}
+
+.about-numbers-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.about-numbers-headline {
+  font-size: clamp(24px, 2.6vw, 36px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin-bottom: 56px;
+}
+
+.about-numbers-list {
+  list-style: none;
+}
+
+.about-number {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 28px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity   0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 80ms);
+}
+
+.about-numbers.is-visible .about-number {
+  opacity: 1;
+  transform: none;
+}
+
+/* Same figure treatment as the home statistics band. */
+.about-number-value {
+  font-size: clamp(38px, 4.4vw, 68px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.about-number-note {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.66);
+  max-width: 44ch;
+}
+
+/* ── Sectors ── */
+.about-sectors {
+  padding-top: 112px;
+  padding-bottom: 112px;
+}
+
+.about-sectors-main {
+  position: relative;
+}
+
+.about-sectors-headline {
+  font-size: clamp(24px, 2.6vw, 36px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  max-width: 24ch;
+}
+
+.about-sectors-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 9px 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(20, 20, 20, 0.25);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--carbon);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.about-sectors-btn:hover {
+  background: var(--carbon);
+  color: var(--white);
+}
+
+.about-sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 32px;
+  list-style: none;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(20, 20, 20, 0.14);
+}
+
+.about-sector h3 {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.about-sector p {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(20, 20, 20, 0.6);
+}
+
+.about-sector-tags {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin-top: 16px;
+}
+
+.about-sector-tags li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--bone);
+  color: rgba(20, 20, 20, 0.7);
+}
+
+.about-sector-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+/* ── The practice ── */
+.about-team {
+  padding-bottom: 120px;
+}
+
+.about-team-main {
+  position: relative;
+}
+
+.about-team-copy {
+  max-width: 58ch;
+  font-size: clamp(19px, 1.9vw, 26px);
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -0.025em;
+  color: var(--carbon);
+}
+
+.about-team-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 9px 18px;
+  border-radius: 100px;
+  background: var(--carbon);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.about-roster {
+  grid-column: 1 / -1;
+  list-style: none;
+  margin-top: 88px;
+  border-top: 1px solid rgba(20, 20, 20, 0.14);
+}
+
+.about-roster-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
+  gap: 24px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.1);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: calc(var(--i) * 40ms);
+}
+
+.about-team.is-visible .about-roster-row {
+  opacity: 1;
+}
+
+.about-roster-role {
+  font-size: 15.5px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.about-roster-practice,
+.about-roster-base {
+  color: rgba(20, 20, 20, 0.55);
+}
+
+.about-roster-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.about-roster-tags span {
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: var(--bone);
+  color: rgba(20, 20, 20, 0.6);
+}
+
+/* ── Close ── */
+.about-close {
+  padding: 140px var(--side-pad);
+  background: var(--bone);
+  text-align: center;
+}
+
+.about-close h2 {
+  font-size: clamp(34px, 5.6vw, 84px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--carbon);
+}
+
+.about-close-btn {
+  margin-top: 44px;
+  padding: 13px 26px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 1000px) {
+  .about-position,
+  .about-sectors,
+  .about-team,
+  .about-numbers {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-story {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .about-story-plate,
+  .about-story-card {
+    grid-column: 1;
+    max-width: 100%;
+  }
+
+  .about-story-plate {
+    aspect-ratio: 2 / 1;
+  }
+
+  .about-sectors-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-sectors-btn,
+  .about-team-btn {
+    position: static;
+    display: inline-block;
+    margin-top: 24px;
+  }
+
+  .about-number {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .about-roster-row {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 8px;
+  }
+
+  .about-roster-tags {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-hero {
+    padding: calc(var(--nav-h) + 56px) var(--side-pad) 56px;
+  }
+
+  .about-hero-headline br {
+    display: none;
+  }
+
+  .about-numbers,
+  .about-sectors,
+  .about-close {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+}

@@ -10,6 +10,7 @@ import Billboard    from './components/Billboard'
 import Work         from './pages/Work'
 import WorkDetail   from './pages/WorkDetail'
 import Careers      from './pages/Careers'
+import About        from './pages/About'
 import { useRoute } from './router'
 import './App.css'
 
@@ -39,6 +40,8 @@ export default function App() {
     page = <WorkDetail slug={path.slice('/work/'.length)} />
   } else if (path === '/careers') {
     page = <Careers />
+  } else if (path === '/about') {
+    page = <About />
   }
 
   return <main>{page}</main>

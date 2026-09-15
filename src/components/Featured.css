@@ -1,25 +1,31 @@
+/* Three viewport-heights of travel, one pinned card: the page holds
+   while the states turn over, then releases. */
 .featured {
-  padding: 80px var(--side-pad) 0;
+  position: relative;
+  height: 300vh;
+  padding: 0 var(--side-pad);
   background: var(--white);
+}
+
+.featured-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding: calc(var(--nav-h) + 40px) 0 40px;
 }
 
 .featured-card {
   display: grid;
   grid-template-columns: 60.5% 39.5%;
-  min-height: 614px;
-  background: var(--navy);
+  flex: 1;
+  min-height: 0;
   border-radius: 7px;
   overflow: hidden;
-  opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity   0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.featured.is-visible .featured-card {
-  opacity: 1;
-  transform: none;
+  transition: background 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Copy column — eyebrow and headline sit at the top, the body paragraph
@@ -37,6 +43,48 @@
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.62);
   margin-bottom: 26px;
+}
+
+.featured-line {
+  display: block;
+  animation: featured-line-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i) * 70ms);
+}
+
+.featured-body {
+  animation: featured-line-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.14s both;
+}
+
+@keyframes featured-line-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-line,
+  .featured-body {
+    animation: none;
+  }
+}
+
+/* Progress through the states. */
+.featured-dots {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  justify-content: center;
+}
+
+.featured-dot {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(20, 20, 20, 0.18);
+  transition: background 0.4s ease;
+}
+
+.featured-dot.is-active {
+  background: var(--cobalt);
 }
 
 .featured-headline {
@@ -64,6 +112,19 @@
 }
 
 @media (max-width: 900px) {
+  /* Too little vertical room to pin comfortably — the states become a
+     plain stack of one card. */
+  .featured {
+    height: auto;
+    padding-top: 64px;
+  }
+
+  .featured-pin {
+    position: static;
+    height: auto;
+    padding: 0;
+  }
+
   .featured-card {
     grid-template-columns: 1fr;
     min-height: 0;
