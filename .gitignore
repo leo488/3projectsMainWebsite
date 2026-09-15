@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Full-resolution source art — derived, optimised copies are committed instead
+public/images/Picture*
