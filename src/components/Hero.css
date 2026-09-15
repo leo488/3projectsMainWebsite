@@ -98,11 +98,13 @@
   height: 100%;
   object-fit: cover;
   object-position: center 41%;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Once the grid has a frame to show, the still steps back. */
-.hero-visual:has(.hero-visual-canvas[data-ready='true']) .hero-visual-img {
+/* The still steps back only while the grid is assembling. Once the
+   assembly finishes the canvas fades out and the sharp original comes
+   back, so the hero never rests on the pixel grid. */
+.hero-visual:has(.hero-visual-canvas[data-ready='true']:not([data-settled='true'])) .hero-visual-img {
   opacity: 0;
 }
 
@@ -112,6 +114,12 @@
   width: 100%;
   height: 100%;
   display: block;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-visual-canvas[data-settled='true'] {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ─────────────────────────────

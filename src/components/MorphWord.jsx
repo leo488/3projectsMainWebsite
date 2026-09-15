@@ -8,13 +8,13 @@ import './MorphWord.css'
 export default function MorphWord({ words, interval = 2900 }) {
   const [index, setIndex] = useState(0)
   const [widths, setWidths] = useState(() => words.map(() => null))
-  const sizerRef = useRef(null)
+  const measureRef = useRef(null)
 
   // Width is animated between measured word widths so the sentence
   // reflows smoothly instead of snapping.
   useLayoutEffect(() => {
     const measure = () => {
-      const spans = sizerRef.current?.children
+      const spans = measureRef.current?.children
       if (!spans) return
       setWidths(Array.from(spans, (el) => el.getBoundingClientRect().width))
     }
@@ -39,16 +39,21 @@ export default function MorphWord({ words, interval = 2900 }) {
       className="morph"
       style={width ? { width: `${Math.ceil(width)}px` } : undefined}
     >
-      {/* Off-screen copies used only for measurement. */}
-      <span className="morph-sizer" ref={sizerRef} aria-hidden="true">
+      {/* Out of flow: measured but contributes nothing to layout. */}
+      <span className="morph-measure" ref={measureRef} aria-hidden="true">
         {words.map((w) => <span key={w}>{w}</span>)}
       </span>
+
+      {/* In flow, invisible: gives the span a real line box so the
+          animated copies have a baseline to sit on. Without it the
+          container collapses and the word renders below the line. */}
+      <span className="morph-sizer" aria-hidden="true">{words[index]}</span>
 
       {words.map((w, i) => (
         <span
           key={w}
           className={`morph-word${i === index ? ' is-active' : ''}`}
-          aria-hidden={i !== index}
+          aria-hidden="true"
         >
           <span className="morph-stroke">{w}</span>
           <span className="morph-fill">{w}</span>

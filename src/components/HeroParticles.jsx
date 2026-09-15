@@ -18,6 +18,7 @@ const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3)
 export default function HeroParticles({ className }) {
   const canvasRef = useRef(null)
   const [ready, setReady] = useState(false)
+  const [settled, setSettled] = useState(false)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -35,6 +36,7 @@ export default function HeroParticles({ className }) {
     let scrollShift = 0
     let settleTimer = 0
     let painted = false
+    let done = false
     const DURATION = 1800
 
     const image = new Image()
@@ -153,8 +155,16 @@ export default function HeroParticles({ className }) {
 
       if (elapsed < 1.25) {
         raf = requestAnimationFrame(draw)
-      } else {
-        raf = 0
+        return
+      }
+
+      raf = 0
+      // Assembly is done: hand the frame back to the original still so
+      // the hero resolves sharp rather than resting on the grid.
+      if (!done) {
+        done = true
+        setSettled(true)
+        window.removeEventListener('scroll', onScroll)
       }
     }
 
@@ -178,7 +188,8 @@ export default function HeroParticles({ className }) {
       settleTimer = setTimeout(settle, DURATION * 1.6)
     }
 
-    const onScroll = () => {
+    function onScroll() {
+      if (done) return
       const rect = canvas.getBoundingClientRect()
       scrollShift = Math.max(-1, Math.min(1, -rect.top / window.innerHeight)) * 6
       if (!raf) raf = requestAnimationFrame(draw)
@@ -222,6 +233,7 @@ export default function HeroParticles({ className }) {
       ref={canvasRef}
       className={className}
       data-ready={ready ? 'true' : 'false'}
+      data-settled={settled ? 'true' : 'false'}
       aria-hidden="true"
     />
   )
