@@ -16,7 +16,7 @@ export default function BlogPost({ slug }) {
           <h1>That article isn&rsquo;t here.</h1>
           <Link href="/blog" className="post-back-link">Back to insights</Link>
         </section>
-        <SiteFooter tone="bone" />
+        <SiteFooter />
       </>
     )
   }
@@ -60,7 +60,7 @@ export default function BlogPost({ slug }) {
         </ul>
       </section>
 
-      <SiteFooter tone="bone" />
+      <SiteFooter />
     </>
   )
 }

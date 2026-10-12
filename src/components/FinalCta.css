@@ -23,12 +23,26 @@
   transform: none;
 }
 
+.final-cta-sub {
+  max-width: 560px;
+  margin: 28px auto 0;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.55;
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+}
+
+.final-cta.is-visible .final-cta-sub {
+  opacity: 1;
+}
+
 .final-cta-accent {
   color: var(--bright);
 }
 
 .final-cta-btn {
-  margin-top: 44px;
+  margin-top: 36px;
   padding: 13px 26px;
   font-size: 14px;
   font-weight: 600;

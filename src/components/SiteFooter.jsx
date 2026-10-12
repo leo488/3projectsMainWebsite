@@ -2,13 +2,12 @@ import Newsletter from './Newsletter'
 import Footer from './Footer'
 import Billboard from './Billboard'
 import CookieBanner from './CookieBanner'
-import './SiteFooter.css'
 
 /* Every page closes the same way, so the run lives in one place rather
    than being repeated five times. */
-export default function SiteFooter({ tone = 'default' }) {
+export default function SiteFooter() {
   return (
-    <div className={`site-footer site-footer--${tone}`}>
+    <div className="site-footer">
       <Newsletter />
       <Footer />
       <Billboard />

@@ -14,6 +14,7 @@ import Brand        from './pages/Brand'
 import Blog         from './pages/Blog'
 import BlogPost     from './pages/BlogPost'
 import { useRoute } from './router'
+import useSeo       from './components/useSeo'
 import './App.css'
 
 function Home() {
@@ -33,6 +34,7 @@ function Home() {
 
 export default function App() {
   const path = useRoute().replace(/\/+$/, '') || '/'
+  useSeo(path)
 
   let page = <Home />
   if (path === '/work') {

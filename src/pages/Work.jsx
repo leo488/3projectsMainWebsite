@@ -138,7 +138,7 @@ export default function Work() {
         </ol>
       </section>
 
-      <SiteFooter tone="bone" />
+      <SiteFooter />
     </>
   )
 }
