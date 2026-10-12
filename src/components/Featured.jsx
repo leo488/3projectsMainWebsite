@@ -10,7 +10,7 @@ const STATES = [
     ground: 'var(--navy)',
     eyebrow: 'Featured Transformation',
     headline: ['Turning Operational', 'Complexity into Competitive', 'Advantage.'],
-    body: '3Projects partners with enterprise leaders to uncover these hidden constraints, redesign how critical operations work, and implement technology strategies that create measurable business value.',
+    body: 'Every enterprise carries hidden constraints that slow the work and inflate its cost. 3Projects partners with enterprise leaders to find them, redesign how critical operations run, and put in the technology that turns the fix into measurable business value.',
   },
   {
     ground: 'var(--indigo)',

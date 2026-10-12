@@ -1,6 +1,7 @@
 import MorphWord from './MorphWord'
 import HeroParticles from './HeroParticles'
 import { Link } from '../router'
+import { CONTACT_EMAIL } from '../data/site'
 import './Hero.css'
 
 export default function Hero() {
@@ -22,12 +23,25 @@ export default function Hero() {
             </span>
           </span>
         </h1>
-        <Link href="/work" className="hero-view-link">
-          View Case Studies
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </Link>
+        <p className="hero-sub">
+          We find the constraints holding your operation back, redesign how
+          the critical work runs, and ship the technology that makes the
+          change stick.
+        </p>
+        <div className="hero-actions">
+          <a
+            href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
+            className="hero-cta btn-gradient"
+          >
+            Start a Conversation
+          </a>
+          <Link href="/work" className="hero-view-link">
+            View Case Studies
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
+        </div>
       </div>
 
       {/* ── Pixel-art hero image ──

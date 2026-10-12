@@ -78,7 +78,7 @@ export default function Blog() {
         )}
       </section>
 
-      <SiteFooter tone="bone" />
+      <SiteFooter />
     </>
   )
 }

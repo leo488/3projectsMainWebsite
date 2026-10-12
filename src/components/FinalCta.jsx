@@ -29,6 +29,10 @@ export default function FinalCta() {
         Let&rsquo;s redesign how your<br />
         enterprise <span className="final-cta-accent">grows</span>
       </h2>
+      <p className="final-cta-sub">
+        Tell us where the work is getting stuck. We will tell you honestly
+        whether we can help, and where we would start.
+      </p>
       <a
         href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
         className="final-cta-btn btn-gradient"

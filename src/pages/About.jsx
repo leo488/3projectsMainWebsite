@@ -171,7 +171,7 @@ export default function About() {
         </a>
       </section>
 
-      <SiteFooter tone="bone" />
+      <SiteFooter />
     </>
   )
 }
