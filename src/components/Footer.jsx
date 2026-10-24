@@ -48,7 +48,12 @@ const SOCIALS = [
   },
 ]
 
-const LEGAL = ['Privacy', 'Terms', 'Cookies', 'Accessibility', 'Modern Slavery Statement']
+const LEGAL = [
+  { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: '/terms' },
+  { label: 'Cookies' },
+  { label: 'Accessibility', href: '/accessibility' },
+]
 
 export default function Footer() {
   const footerRef = useRef(null)
@@ -125,19 +130,17 @@ export default function Footer() {
       <div className="footer-legal">
         <ul className="footer-legal-links">
           {LEGAL.map((item) => (
-            <li key={item}>
-              {item === 'Cookies' ? (
+            <li key={item.label}>
+              {item.href ? (
+                <Link href={item.href}>{item.label}</Link>
+              ) : (
                 <button
                   type="button"
                   className="footer-legal-btn"
                   onClick={() => window.dispatchEvent(new CustomEvent('cookie:open'))}
                 >
-                  {item}
+                  {item.label}
                 </button>
-              ) : (
-                <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(item)}`}>
-                  {item}
-                </a>
               )}
             </li>
           ))}

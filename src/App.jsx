@@ -13,9 +13,14 @@ import About        from './pages/About'
 import Brand        from './pages/Brand'
 import Blog         from './pages/Blog'
 import BlogPost     from './pages/BlogPost'
+import Legal        from './pages/Legal'
+import NotFound     from './pages/NotFound'
 import { useRoute } from './router'
+import { LEGAL_PAGES } from './data/legal'
 import useSeo       from './components/useSeo'
 import './App.css'
+
+const LEGAL_PATHS = Object.keys(LEGAL_PAGES).map((k) => `/${k}`)
 
 function Home() {
   return (
@@ -36,8 +41,10 @@ export default function App() {
   const path = useRoute().replace(/\/+$/, '') || '/'
   useSeo(path)
 
-  let page = <Home />
-  if (path === '/work') {
+  let page = <NotFound />
+  if (path === '/') {
+    page = <Home />
+  } else if (path === '/work') {
     page = <Work />
   } else if (path.startsWith('/work/')) {
     page = <WorkDetail slug={path.slice('/work/'.length)} />
@@ -51,6 +58,8 @@ export default function App() {
     page = <Blog />
   } else if (path.startsWith('/blog/')) {
     page = <BlogPost slug={path.slice('/blog/'.length)} />
+  } else if (LEGAL_PATHS.includes(path)) {
+    page = <Legal key={path} page={path.slice(1)} />
   }
 
   return <main>{page}</main>

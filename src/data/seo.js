@@ -5,6 +5,7 @@
 
 import { PROJECTS, getProject } from './projects.js'
 import { POSTS, getPost } from './posts.js'
+import { LEGAL_PAGES } from './legal.js'
 
 // The production domain. Change it here if the site moves.
 export const SITE_URL = 'https://3projects.com'
@@ -44,6 +45,10 @@ const PAGES = {
     description:
       'Logos, colours, typography and usage rules for representing the 3Projects brand correctly.',
   },
+}
+
+for (const [key, doc] of Object.entries(LEGAL_PAGES)) {
+  PAGES[`/${key}`] = { title: `${doc.title} | 3Projects`, description: doc.intro }
 }
 
 const ORGANIZATION = {
@@ -117,8 +122,7 @@ export function getSeo(rawPath) {
     return notFound(url)
   }
 
-  // Unknown paths fall through to the home page in the app.
-  return { ...getSeo('/'), noindex: true }
+  return notFound(url)
 }
 
 function notFound(url) {

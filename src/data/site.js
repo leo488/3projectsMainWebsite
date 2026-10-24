@@ -32,9 +32,7 @@ export const OFFICES = ['New York', 'London', 'Frankfurt', 'Dubai', 'Singapore',
 
 export const FIRM_LINKS = [
   { label: 'About',      href: '/about' },
-  { label: 'Leadership', href: '/about#leadership' },
   { label: 'Careers',    href: '/careers' },
-  { label: 'Newsroom',   href: '/about#newsroom' },
   { label: 'Insights',   href: '/blog' },
   { label: 'Brand Assets', href: '/brand', tag: 'New' },
   { label: 'Contact',    href: `mailto:${CONTACT_EMAIL}` },
