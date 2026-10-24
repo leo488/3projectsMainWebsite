@@ -19,3 +19,10 @@ main {
   border-radius: var(--radius);
   overflow: hidden;
 }
+
+/* The phase cards from Case Studies, on a Deep Carbon panel under How
+   we engage. */
+.home-phases {
+  padding: var(--band-pad);
+  background: var(--carbon);
+}

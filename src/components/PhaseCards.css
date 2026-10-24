@@ -1,0 +1,90 @@
+/* The four phases as a row of process cards: the What We Do card,
+   lifted one shade off Deep Carbon with the white axis texture, the
+   step and phase at the top and the kit glyph at the bottom right.
+   Used on Case Studies and on the home page under How we engage. */
+.approach-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  list-style: none;
+}
+
+.approach-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+  padding: 28px 28px 32px;
+  border-radius: var(--radius);
+  background-color: rgb(255 255 255 / 0.06);
+  background-image: url("data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'><path%20d='M10%208.5v3M8.5%2010h3'%20stroke='%23ffffff'%20stroke-width='1'%20opacity='0.06'/></svg>");
+  background-size: 20px 20px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity   0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 80ms);
+}
+
+.approach-list.is-visible .approach-item {
+  opacity: 1;
+  transform: none;
+}
+
+.approach-label {
+  color: var(--pale-blue);
+}
+
+.approach-title {
+  margin-top: 28px;
+  font-size: clamp(22px, 1.9vw, 28px);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  color: var(--white);
+}
+
+.approach-text {
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+/* The phase's kit glyph at 6px a cell. */
+.approach-icon {
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin-top: auto;
+  padding-top: 40px;
+  box-sizing: content-box;
+  align-self: flex-end;
+}
+
+@media (max-width: 1100px) {
+  .approach-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .approach-item {
+    min-height: 460px;
+  }
+}
+
+@media (max-width: 900px) {
+  .approach-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .approach-item {
+    min-height: 0;
+  }
+
+  .approach-icon {
+    width: 72px;
+    height: 72px;
+  }
+}

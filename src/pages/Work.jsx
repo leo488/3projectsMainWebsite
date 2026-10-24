@@ -3,38 +3,10 @@ import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
 import useReveal from '../components/useReveal'
 import PixelArt from '../components/PixelArt'
-import PixelGlyph from '../components/PixelGlyph'
-import Arrow from '../components/Arrow'
+import PhaseCards from '../components/PhaseCards'
 import { Link } from '../router'
 import { PROJECTS, CATEGORIES } from '../data/projects'
 import './Work.css'
-
-const APPROACH = [
-  {
-    label: 'Discover',
-    title: 'We start where you are',
-    body: 'Every engagement opens against the operating model as it actually runs — the workarounds, the queues, the reports nobody reads — not the one on the org chart.',
-    glyph: 'magnifier',
-  },
-  {
-    label: 'Design',
-    title: 'Redesign the work first',
-    body: 'Process before software. We rebuild each critical path around the decision it exists to support, then specify what has to be built, bought or retired to carry it.',
-    glyph: 'nib',
-  },
-  {
-    label: 'Deliver',
-    title: 'Ship into the live operation',
-    body: 'Delivery runs in slices against real work, so every change is measured against the operation it is meant to improve rather than a staging environment.',
-    glyph: 'carton',
-  },
-  {
-    label: 'Sustain',
-    title: 'Leave the capability behind',
-    body: 'Instrumentation, ownership and a review cadence stay with the teams running the work. The engagement ends; the operating model does not.',
-    glyph: 'coin',
-  },
-]
 
 function ProjectCard({ project, index }) {
   return (
@@ -60,7 +32,6 @@ function ProjectCard({ project, index }) {
 export default function Work() {
   const [active, setActive] = useState('All')
   const gridRef = useReveal('is-visible')
-  const approachRef = useReveal('is-visible')
 
   const shown = active === 'All'
     ? PROJECTS
@@ -113,7 +84,7 @@ export default function Work() {
       </section>
 
       {/* ── How the work runs — Deep Carbon from here into the footer ── */}
-      <section className="approach" ref={approachRef}>
+      <section className="approach">
         <div className="approach-head">
           <p className="tiny approach-eyebrow">How the work runs</p>
           <h2 className="approach-headline">
@@ -125,21 +96,7 @@ export default function Work() {
             keeps running as the next begins.
           </p>
         </div>
-        <ol className="approach-list">
-          {APPROACH.map((a, i) => (
-            <li key={a.label} className="approach-item" style={{ '--i': i }}>
-              <span className="tiny approach-label">
-                {String(i + 1).padStart(2, '0')} / {a.label}
-              </span>
-              <h3 className="approach-title">{a.title}</h3>
-              <p className="approach-text">{a.body}</p>
-              <PixelGlyph name={a.glyph} className="approach-icon" />
-              {i < APPROACH.length - 1 && (
-                <span className="approach-next" aria-hidden="true"><Arrow size={16} /></span>
-              )}
-            </li>
-          ))}
-        </ol>
+        <PhaseCards />
       </section>
 
       <SiteFooter />
