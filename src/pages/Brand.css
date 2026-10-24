@@ -321,6 +321,37 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+.brand-gradient {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding: 28px;
+  border-radius: var(--radius);
+  background: var(--carbon);
+  color: var(--white);
+}
+
+.brand-gradient-sample {
+  font-size: clamp(64px, 8vw, 120px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  background: var(--gradient-growth);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-gradient figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 36ch;
+}
+
 /* Bone is too light to carry white text. */
 .brand-swatch[style*='E9E9E4'] figcaption { color: var(--carbon); }
 .brand-swatch[style*='E9E9E4'] .brand-swatch-hex,

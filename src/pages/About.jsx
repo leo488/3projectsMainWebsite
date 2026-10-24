@@ -9,11 +9,12 @@ import './About.css'
 /* Figures follow the placeholder convention already used by the home
    page statistics band (XX, ₦XM+). Nothing here asserts a number the
    firm has not published. */
+// The same figures as the home page Stats band and the case studies.
 const NUMBERS = [
-  { value: '20XX', note: 'The year the practice was founded, and the operating model it was built to fix.' },
-  { value: 'XX+',  note: 'Strategists, architects, designers and engineers working as one team in Lagos.' },
-  { value: '₦XM+', note: 'Operational efficiency released for the organisations we work with.' },
-  { value: 'XXM+', note: 'People touched daily by the systems our engagements leave behind.' },
+  { value: '30×',    note: 'Revenue growth for Myspotlyt since 2022, on a platform we took over and rebuilt.' },
+  { value: '5,000',  note: 'Active users on a platform we rebuilt.' },
+  { value: '₦20B+',  note: 'In transactions through platforms we built.' },
+  { value: '100%',   note: 'Of Crunchies inventory requests made digital (projected).' },
 ]
 
 /* Role archetypes rather than named individuals — the practice is

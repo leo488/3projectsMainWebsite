@@ -124,6 +124,14 @@ function ColourPanel() {
           </figure>
         ))}
       </div>
+      <figure className="brand-gradient">
+        <span className="brand-gradient-sample">30×</span>
+        <figcaption>
+          <span className="brand-swatch-name">Growth gradient</span>
+          <span className="tiny brand-swatch-hex">#FFFFFF / #A3C0FF / #2973FD</span>
+          <span className="brand-swatch-role">Headline figures on Deep Carbon, such as case study results. Never on body text.</span>
+        </figcaption>
+      </figure>
     </Panel>
   )
 }

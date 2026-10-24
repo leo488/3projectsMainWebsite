@@ -94,6 +94,8 @@
   --section-blue: #0031B8;
   /* Pale Blue: labels and accents on dark and blue grounds. */
   --pale-blue:    #A3C0FF;
+  /* Growth gradient: headline figures on dark grounds (brand page, Colour). */
+  --gradient-growth: linear-gradient(100deg, #FFFFFF 0%, #A3C0FF 40%, #2973FD 100%);
 
   /* One corner radius for every card, panel and image on the site, so
      nothing is rounder than its neighbour. Buttons are always pills. */
