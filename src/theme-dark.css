@@ -1,0 +1,32 @@
+/* ─────────────────────────────
+   All-dark trial. Setting data-theme="dark" on <html> swaps the
+   surface and text tokens, so every light-ground section turns over
+   together; the rules underneath only cover what tokens can't reach.
+───────────────────────────── */
+[data-theme='dark'] {
+  --surface:      #000000;
+  --surface-alt:  var(--night);
+  --surface-card: var(--night-raise);
+  --fg:           #EEF1F6;
+  --fg-ink:       #EEF1F6;
+  --fg-rgb:       238 241 246;
+  --ink-rgb:      238 241 246;
+  --logo-mark:    var(--white);
+  --billboard-mark: var(--white);
+  color-scheme: dark;
+}
+
+/* On black, the case panels and the night sections lift one step so
+   they still read as surfaces. */
+[data-theme='dark'] .hero-case-panel,
+[data-theme='dark'] .showcase {
+  background: var(--night);
+}
+
+[data-theme='dark'] .hero-logo {
+  color: #6B7180;
+}
+
+[data-theme='dark'] .insights {
+  background: var(--night);
+}

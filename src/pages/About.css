@@ -1,7 +1,7 @@
 /* ── Statement ── */
 .about-hero {
   padding: calc(var(--nav-h) + 96px) var(--side-pad) 88px;
-  background: var(--white);
+  background: var(--surface);
 }
 
 .about-hero-headline {
@@ -9,7 +9,7 @@
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.04em;
-  color: var(--carbon);
+  color: var(--fg);
 }
 
 /* ── Two-column body, label left ── */
@@ -23,7 +23,7 @@
 }
 
 .about-label {
-  color: rgba(20, 20, 20, 0.45);
+  color: rgb(var(--fg-rgb) / 0.45);
 }
 
 .about-position-copy {
@@ -37,7 +37,7 @@
 .about-position-copy p {
   font-size: 17px;
   line-height: 1.68;
-  color: var(--carbon);
+  color: var(--fg);
 }
 
 /* ── Mark + story card ── */
@@ -74,7 +74,7 @@
   flex-direction: column;
   padding: 26px;
   border-radius: 7px;
-  background: var(--bone);
+  background: var(--surface-alt);
 }
 
 .about-story-card h2 {
@@ -87,7 +87,7 @@
   margin-top: 14px;
   font-size: 14px;
   line-height: 1.6;
-  color: rgba(20, 20, 20, 0.62);
+  color: rgb(var(--fg-rgb) / 0.62);
 }
 
 .about-story-btn {
@@ -96,7 +96,7 @@
   padding-top: 28px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--carbon);
+  color: var(--fg);
   text-decoration: none;
 }
 
@@ -183,10 +183,10 @@
   right: 0;
   padding: 9px 18px;
   border-radius: 100px;
-  border: 1px solid rgba(20, 20, 20, 0.25);
+  border: 1px solid rgb(var(--fg-rgb) / 0.25);
   font-size: 13px;
   font-weight: 600;
-  color: var(--carbon);
+  color: var(--fg);
   text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease;
 }
@@ -203,7 +203,7 @@
   list-style: none;
   margin-top: 64px;
   padding-top: 40px;
-  border-top: 1px solid rgba(20, 20, 20, 0.14);
+  border-top: 1px solid rgb(var(--fg-rgb) / 0.14);
 }
 
 .about-sector h3 {
@@ -216,7 +216,7 @@
   margin-top: 12px;
   font-size: 14px;
   line-height: 1.6;
-  color: rgba(20, 20, 20, 0.6);
+  color: rgb(var(--fg-rgb) / 0.6);
 }
 
 .about-sector-tags {
@@ -232,8 +232,8 @@
   gap: 7px;
   padding: 6px 10px;
   border-radius: 4px;
-  background: var(--bone);
-  color: rgba(20, 20, 20, 0.7);
+  background: var(--surface-alt);
+  color: rgb(var(--fg-rgb) / 0.7);
 }
 
 .about-sector-dot {
@@ -257,7 +257,7 @@
   font-weight: 400;
   line-height: 1.42;
   letter-spacing: -0.025em;
-  color: var(--carbon);
+  color: var(--fg);
 }
 
 .about-team-btn {
@@ -277,7 +277,7 @@
   grid-column: 1 / -1;
   list-style: none;
   margin-top: 88px;
-  border-top: 1px solid rgba(20, 20, 20, 0.14);
+  border-top: 1px solid rgb(var(--fg-rgb) / 0.14);
 }
 
 .about-roster-row {
@@ -286,7 +286,7 @@
   gap: 24px;
   align-items: center;
   padding: 18px 0;
-  border-bottom: 1px solid rgba(20, 20, 20, 0.1);
+  border-bottom: 1px solid rgb(var(--fg-rgb) / 0.1);
   opacity: 0;
   transition: opacity 0.5s ease;
   transition-delay: calc(var(--i) * 40ms);
@@ -304,7 +304,7 @@
 
 .about-roster-practice,
 .about-roster-base {
-  color: rgba(20, 20, 20, 0.55);
+  color: rgb(var(--fg-rgb) / 0.55);
 }
 
 .about-roster-tags {
@@ -317,14 +317,14 @@
 .about-roster-tags span {
   padding: 5px 9px;
   border-radius: 4px;
-  background: var(--bone);
-  color: rgba(20, 20, 20, 0.6);
+  background: var(--surface-alt);
+  color: rgb(var(--fg-rgb) / 0.6);
 }
 
 /* ── Close ── */
 .about-close {
   padding: 140px var(--side-pad);
-  background: var(--bone);
+  background: var(--surface-alt);
   text-align: center;
 }
 
@@ -333,7 +333,7 @@
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.04em;
-  color: var(--carbon);
+  color: var(--fg);
 }
 
 .about-close-btn {

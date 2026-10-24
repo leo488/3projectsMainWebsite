@@ -6,6 +6,7 @@ import Capabilities from './components/Capabilities'
 import Showcase     from './components/Showcase'
 import PartnerCta   from './components/PartnerCta'
 import Stats        from './components/Stats'
+import Insights     from './components/Insights'
 import FinalCta     from './components/FinalCta'
 import Work         from './pages/Work'
 import WorkDetail   from './pages/WorkDetail'
@@ -19,6 +20,7 @@ import NotFound     from './pages/NotFound'
 import { useRoute } from './router'
 import { LEGAL_PAGES } from './data/legal'
 import useSeo       from './components/useSeo'
+import ThemeToggle  from './components/ThemeToggle'
 import './App.css'
 
 const LEGAL_PATHS = Object.keys(LEGAL_PAGES).map((k) => `/${k}`)
@@ -33,6 +35,7 @@ function Home() {
       <Showcase />
       <PartnerCta />
       <Stats />
+      <Insights />
       <FinalCta />
       <SiteFooter />
     </>
@@ -64,5 +67,10 @@ export default function App() {
     page = <Legal key={path} page={path.slice(1)} />
   }
 
-  return <main>{page}</main>
+  return (
+    <>
+      <main>{page}</main>
+      <ThemeToggle />
+    </>
+  )
 }

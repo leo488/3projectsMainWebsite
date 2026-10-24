@@ -1,7 +1,7 @@
 /* The lockup at poster scale, on the same bone ground as the footer
    links so the close of every page reads as one block. */
 .billboard {
-  background: var(--bone);
+  background: var(--surface-alt);
   padding: 30px var(--side-pad) 123px;
 }
 

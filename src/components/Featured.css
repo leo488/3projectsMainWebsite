@@ -4,7 +4,7 @@
   position: relative;
   height: 300vh;
   padding: 0 var(--side-pad);
-  background: var(--white);
+  background: var(--surface);
 }
 
 .featured-pin {
@@ -79,7 +79,7 @@
   width: 28px;
   height: 3px;
   border-radius: 2px;
-  background: rgba(20, 20, 20, 0.18);
+  background: rgb(var(--fg-rgb) / 0.18);
   transition: background 0.4s ease;
 }
 

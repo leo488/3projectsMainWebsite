@@ -60,6 +60,7 @@ export default function Blog() {
               <li key={p.slug} className="blog-card" style={{ '--i': i, '--ratio': p.ratio }}>
                 <Link href={`/blog/${p.slug}`} className="blog-card-link">
                   <div className="blog-card-visual" style={{ background: p.ground }}>
+                    {p.image && <img className="blog-card-img" src={p.image} alt="" loading="lazy" />}
                     <span className="tiny blog-card-category">{p.category}</span>
                   </div>
                   <div className="blog-card-body">

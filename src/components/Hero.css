@@ -5,7 +5,7 @@
    Section
 ───────────────────────────── */
 .hero-section {
-  background: var(--white);
+  background: var(--surface);
   padding-top: var(--nav-h);
   overflow: hidden;
 }
@@ -26,7 +26,7 @@
   font-family: 'Manrope', sans-serif;
   font-size: clamp(34px, 4.8vw, 78px);
   font-weight: 500;
-  color: var(--ink);
+  color: var(--fg-ink);
   line-height: 1.12;
   letter-spacing: -0.035em;
   margin: 0;
@@ -64,7 +64,7 @@
   margin: 0;
   font-size: clamp(16px, 1.3vw, 19px);
   line-height: 1.55;
-  color: var(--ink);
+  color: var(--fg-ink);
   opacity: 0;
   animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
@@ -93,7 +93,7 @@
   font-family: 'Manrope', sans-serif;
   font-size: 17px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--fg-ink);
   text-decoration: none;
   white-space: nowrap;
   transition: opacity 0.2s ease;
@@ -104,60 +104,237 @@
 }
 
 /* ─────────────────────────────
-   Pixel-art visual — full bleed, sits directly on the white ground
+   Brand strip — grey marks drifting under the headline
 ───────────────────────────── */
-/* The artwork is taller than a 16" viewport, so the frame trims its top
-   whitespace — the face clears the fold instead of sitting under it. */
-.hero-visual {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 2880 / 1643;
+.hero-logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 8px 0 56px;
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+}
+
+.hero-logos-label {
+  color: rgb(var(--fg-rgb) / 0.45);
+}
+
+.hero-logos-window {
+  width: min(100%, 1080px);
   overflow: hidden;
-  opacity: 0;
-  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
 }
 
-.hero-visual-img {
+.hero-logos-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  list-style: none;
+  animation: logoDrift 48s linear infinite;
+}
+
+.hero-logos-window:hover .hero-logos-track {
+  animation-play-state: paused;
+}
+
+.hero-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 clamp(28px, 4vw, 56px);
+  color: #9A9DA3;
+  filter: grayscale(1);
+}
+
+.hero-logo-img {
+  max-height: 32px;
+  width: auto;
+  opacity: 0.6;
+}
+
+/* Lettering stand-ins until the real marks are supplied. */
+.hero-logo-word {
+  font-size: 26px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.hero-logo-word--crunchies {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+.hero-logo-word--myspotlyt {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
+}
+
+.hero-logo-word--lola {
+  font-family: 'Canela', Georgia, serif;
+  font-style: italic;
+  font-size: 30px;
+}
+
+/* ─────────────────────────────
+   Case cards — photograph over a panel of numbers
+───────────────────────────── */
+.hero-cases {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 0 var(--side-pad) clamp(32px, 3vw, 48px);
+  list-style: none;
+}
+
+.hero-case {
+  opacity: 0;
+  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(0.55s + var(--i) * 0.12s);
+}
+
+.hero-case-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero-case-visual {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 6px 6px 0 0;
+  background: var(--night-raise);
+}
+
+.hero-case-img,
+.hero-case-canvas {
   position: absolute;
   inset: 0;
   display: block;
   width: 100%;
   height: 100%;
+}
+
+.hero-case-img {
   object-fit: cover;
-  object-position: center 41%;
+  transition:
+    opacity   0.35s ease,
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-case-link:hover .hero-case-img {
+  transform: scale(1.03);
+}
+
+/* The still steps back only while the grid is assembling; once the
+   canvas has resolved into the photograph it fades and the sharp
+   original carries on underneath. */
+.hero-case-visual:has(.hero-case-canvas[data-ready='true']:not([data-settled='true'])) .hero-case-img {
   opacity: 0;
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-visual-img.is-active {
-  opacity: 1;
-}
-
-/* The still steps back only while the grid is assembling. Once the
-   assembly finishes the canvas fades out and the sharp original comes
-   back, so the hero never rests on the pixel grid. */
-.hero-visual:has(.hero-visual-canvas[data-ready='true']:not([data-settled='true'])) .hero-visual-img.is-active {
-  opacity: 0;
-}
-
-.hero-visual-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
+.hero-case-canvas {
   transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
 }
 
-.hero-visual-canvas[data-settled='true'] {
+.hero-case-canvas[data-settled='true'] {
   opacity: 0;
   pointer-events: none;
 }
 
-/* The still is brought up before the canvas is taken down, so there is
-   never a frame where neither is at full strength. */
-.hero-visual:has(.hero-visual-canvas[data-settled='true']) .hero-visual-img {
-  transition-duration: 0.35s;
+.hero-case-sector {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 7px 10px;
+  border-radius: 3px;
+  background: rgba(7, 11, 20, 0.72);
+  color: var(--white);
+  backdrop-filter: blur(6px);
+}
+
+/* The rectangle under each picture that carries the numbers. */
+.hero-case-panel {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  padding: clamp(22px, 2.4vw, 32px);
+  border-radius: 0 0 6px 6px;
+  background: var(--night);
+  color: var(--white);
+}
+
+.hero-case-head {
+  display: grid;
+  gap: 8px;
+}
+
+.hero-case-client {
+  font-family: 'Bitroad', 'Manrope', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sky);
+}
+
+.hero-case-line {
+  max-width: 34ch;
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.hero-case-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hero-case-stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 20px 20px 0 0;
+}
+
+.hero-case-stat + .hero-case-stat {
+  padding-left: 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hero-case-stat-value {
+  font-size: clamp(28px, 2.8vw, 44px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.hero-case-stat-label {
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-case-cta {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.82);
+  transition: color 0.2s ease;
+}
+
+.hero-case-link:hover .hero-case-cta {
+  color: var(--white);
 }
 
 /* ─────────────────────────────
@@ -167,9 +344,19 @@
   to { transform: translateY(0); opacity: 1; }
 }
 
+@keyframes logoDrift {
+  to { transform: translateX(-50%); }
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logos-track {
+    animation: none;
+  }
 }
 
 @media (max-width: 900px) {
@@ -184,8 +371,46 @@
     max-width: 100%;
   }
 
-  .hero-visual {
-    aspect-ratio: 1440 / 1017;
+  /* Phones swipe between the two cards, with the next one peeking. */
+  .hero-cases {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 86%;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 20px;
+    padding: 0 20px 56px;
+    scrollbar-width: none;
+  }
+
+  .hero-cases::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-case {
+    scroll-snap-align: start;
+  }
+
+  .hero-logos {
+    padding-bottom: 36px;
+  }
+
+  .hero-logo-word {
+    font-size: 21px;
+  }
+
+  .hero-case-stat-value {
+    font-size: 24px;
+    white-space: nowrap;
+  }
+
+  .hero-case-stat {
+    padding-right: 12px;
+  }
+
+  .hero-case-stat + .hero-case-stat {
+    padding-left: 12px;
   }
 
   .line-inner {

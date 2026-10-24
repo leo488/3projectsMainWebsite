@@ -75,6 +75,19 @@
   --phase-deliver:  #0A2072;
   --phase-sustain:  #0E1B2E;
 
+  /* Theme surfaces. Light-ground sections paint with these rather than
+     the raw colours, so the dark theme can swap the whole site at once
+     (see theme-dark.css). */
+  --surface:      var(--white);
+  --surface-alt:  var(--bone);
+  --surface-card: var(--card);
+  --fg:           var(--carbon);
+  --fg-ink:       var(--ink);
+  --fg-rgb:       20 20 20;
+  --ink-rgb:      14 27 46;
+  --logo-mark:    #0031B8;
+  --billboard-mark: var(--navy);
+
   --side-pad: 24px;
   --nav-h:    84px;
 }
@@ -95,8 +108,8 @@
 html, body {
   width: 100%;
   min-height: 100vh;
-  background: var(--white);
-  color: var(--ink);
+  background: var(--surface);
+  color: var(--fg-ink);
   font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -9,8 +9,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--side-pad);
-  background: var(--white);
-  border-bottom: 1px solid rgba(14, 27, 46, 0.08);
+  background: var(--surface);
+  border-bottom: 1px solid rgb(var(--ink-rgb) / 0.08);
   transition:
     background   0.5s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -31,12 +31,12 @@
    transparent bar but takes carbon text rather than white. */
 .navbar--onlight {
   background: transparent;
-  border-bottom-color: rgba(20, 20, 20, 0.18);
+  border-bottom-color: rgb(var(--fg-rgb) / 0.18);
 }
 
 .navbar--onlight .nav-links a,
 .navbar--onlight .nav-menu-trigger {
-  color: var(--carbon);
+  color: var(--fg);
 }
 
 .navbar--scrolled {
@@ -71,7 +71,7 @@
   font-family: 'Manrope', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--fg-ink);
   text-decoration: none;
   letter-spacing: -0.01em;
   transition: opacity 0.2s ease;
@@ -112,7 +112,7 @@
   font-family: 'Manrope', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--fg-ink);
   letter-spacing: -0.01em;
   transition: opacity 0.2s ease;
 }
@@ -137,13 +137,13 @@
 /* While the panel is down the bar keeps its white ground so the two
    read as one surface. */
 .navbar--menu-open {
-  background: var(--white);
+  background: var(--surface);
   border-bottom-color: transparent;
 }
 
 .navbar--menu-open .nav-links a,
 .navbar--menu-open .nav-menu-trigger {
-  color: var(--ink);
+  color: var(--fg-ink);
 }
 
 /* Sizing only — the gradient ring and fill come from .btn-gradient so

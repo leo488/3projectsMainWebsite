@@ -107,7 +107,7 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--white);
+  background: var(--surface);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 

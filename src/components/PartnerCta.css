@@ -37,8 +37,8 @@
   margin-top: auto;
   padding: 10px 20px;
   border-radius: 100px;
-  background: var(--white);
-  color: var(--carbon);
+  background: var(--surface);
+  color: var(--fg);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: -0.005em;

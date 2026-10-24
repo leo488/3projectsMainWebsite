@@ -1,0 +1,34 @@
+.theme-toggle {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 200;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(7, 11, 20, 0.88);
+  color: #fff;
+  font: 500 13px/1 'Manrope', sans-serif;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+
+.theme-toggle-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: inset -4px 0 0 #004BFF;
+}
+
+[data-theme='dark'] .theme-toggle-dot {
+  background: #004BFF;
+  box-shadow: none;
+}
+
+.theme-toggle-hint {
+  color: rgba(255, 255, 255, 0.5);
+}

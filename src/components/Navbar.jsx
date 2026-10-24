@@ -63,8 +63,8 @@ export default function Navbar({ theme = 'light' }) {
       <Link href="/" className="nav-logo">
         <Logo
           className="nav-logo-svg"
-          mark={theme === 'dark' ? 'var(--white)' : '#0031B8'}
-          word={theme === 'dark' ? 'var(--white)' : '#141414'}
+          mark={theme === 'dark' ? 'var(--white)' : 'var(--logo-mark)'}
+          word={theme === 'dark' ? 'var(--white)' : 'var(--fg)'}
         />
       </Link>
 

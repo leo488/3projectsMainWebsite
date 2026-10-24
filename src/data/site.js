@@ -48,3 +48,13 @@ export const SOCIAL_LINKS = {
   X:         '',
   YouTube:   '',
 }
+
+/* Brands 3Projects has built for, shown in grey under the hero. Until
+   the real files arrive each one is set as a type-only wordmark; give
+   an entry a `src` (an SVG in /public/images/clients) and the logo
+   replaces the lettering. */
+export const CLIENT_LOGOS = [
+  { name: 'Crunchies', style: 'crunchies' },
+  { name: 'Myspotlyt', style: 'myspotlyt' },
+  { name: 'Lola', style: 'lola' },
+]

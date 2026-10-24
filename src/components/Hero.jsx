@@ -1,30 +1,44 @@
-import { useEffect, useState } from 'react'
 import MorphWord from './MorphWord'
 import HeroParticles from './HeroParticles'
 import { Link } from '../router'
-import { CONTACT_EMAIL } from '../data/site'
+import { CONTACT_EMAIL, CLIENT_LOGOS } from '../data/site'
+import { getProject } from '../data/projects'
 import './Hero.css'
 
-/* The photographs the hero turns through, in order. Each is cut into
-   the brand's pixel edge in the artwork itself. */
-const SLIDES = [
-  { name: 'retail', small: '/images/hero-retail-1600.jpg', large: '/images/hero-retail-2880.jpg' },
-  { name: 'cargo',  small: '/images/hero-cargo-1600.jpg',  large: '/images/hero-cargo-2880.jpg' },
+/* The two engagements the hero leads with. Each photograph is cropped
+   to the card's 3:2 frame in the file itself, so the pixel assembly and
+   the still underneath land on exactly the same framing. */
+const CASES = [
+  {
+    slug: 'crunchies-inventory',
+    sector: 'Food & hospitality',
+    line: 'One live view of stock across every outlet, warehouse and kitchen.',
+    small: '/images/case-food-900.jpg',
+    large: '/images/case-food-1600.jpg',
+    alt: 'A restaurant manager checking stock on a tablet at the shop door',
+  },
+  {
+    slug: 'myspotlyt',
+    sector: 'Arts & entertainment',
+    line: 'A live platform rebuilt for stability, with the features to grow it.',
+    small: '/images/case-spotlyt-900.jpg',
+    large: '/images/case-spotlyt-1224.jpg',
+    alt: 'A creator smiling at her phone against an open sky',
+  },
 ]
 
-const WORD_INTERVAL = 5200
+// The strip scrolls, so the set repeats until it is wider than any
+// screen; the second half is a copy and is hidden from assistive tech.
+const STRIP = Array.from({ length: 4 }, () => CLIENT_LOGOS).flat()
+
+function ClientMark({ logo }) {
+  if (logo.src) {
+    return <img className="hero-logo-img" src={logo.src} alt={logo.name} />
+  }
+  return <span className={`hero-logo-word hero-logo-word--${logo.style}`}>{logo.name}</span>
+}
 
 export default function Hero() {
-  const [slide, setSlide] = useState(0)
-
-  // The photograph changes on every other word, so each picture holds
-  // for two turns of the headline.
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const id = setInterval(() => setSlide((i) => (i + 1) % SLIDES.length), WORD_INTERVAL * 2)
-    return () => clearInterval(id)
-  }, [])
-
   return (
     <section className="hero-section">
 
@@ -32,11 +46,11 @@ export default function Hero() {
       <div className="hero-headline-row">
         <h1 className="hero-headline">
           <span className="line-wrap">
-            <span className="line-inner line-1">We build the systems that make</span>
+            <span className="line-inner line-1">We build the platforms that make</span>
           </span>
           <span className="line-wrap">
             <span className="line-inner line-2">
-              your enterprise{' '}
+              your brand{' '}
               <MorphWord
                 words={['Unstoppable', 'Adaptable', 'Decisive', 'Resilient', 'Relentless']}
               />
@@ -44,9 +58,9 @@ export default function Hero() {
           </span>
         </h1>
         <p className="hero-sub">
-          We find the constraints holding your operation back, redesign how
-          the critical work runs, and ship the technology that makes the
-          change stick.
+          Strategy, design and engineering at one table. We find what is
+          holding your business back, then design and ship the product
+          that moves the number.
         </p>
         <div className="hero-actions">
           <a
@@ -64,26 +78,70 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Hero photographs ──
-         The first one is rebuilt out of grid particles on load, then the
-         stills take over and cross-fade in turn. */}
-      <div className="hero-visual">
-        {SLIDES.map((sl, i) => (
-          <img
-            key={sl.name}
-            className={`hero-visual-img${i === slide ? ' is-active' : ''}`}
-            src={sl.large}
-            srcSet={`${sl.small} 1600w, ${sl.large} 2880w`}
-            sizes="100vw"
-            width="2880"
-            height="1643"
-            alt=""
-            fetchPriority={i === 0 ? 'high' : 'low'}
-            loading={i === 0 ? 'eager' : 'lazy'}
-          />
-        ))}
-        <HeroParticles className="hero-visual-canvas" src={SLIDES[0].small} />
+      {/* ── Brands we've built for ── */}
+      <div className="hero-logos">
+        <p className="tiny hero-logos-label">Brands we have built for</p>
+        <div className="hero-logos-window">
+          <ul className="hero-logos-track">
+            {[...STRIP, ...STRIP].map((logo, i) => (
+              <li
+                key={i}
+                className="hero-logo"
+                aria-hidden={i >= CLIENT_LOGOS.length ? 'true' : undefined}
+              >
+                <ClientMark logo={logo} />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
+
+      {/* ── Two engagements, each with its numbers underneath ──
+         The photographs assemble out of the brand grid on load, then
+         the sharp stills take over. */}
+      <ul className="hero-cases">
+        {CASES.map((c, i) => {
+          const project = getProject(c.slug)
+          if (!project) return null
+          return (
+            <li key={c.slug} className="hero-case" style={{ '--i': i }}>
+              <Link href={`/work/${c.slug}`} className="hero-case-link">
+                <div className="hero-case-visual">
+                  <img
+                    className="hero-case-img"
+                    src={c.large}
+                    srcSet={`${c.small} 900w, ${c.large} 1600w`}
+                    sizes="(max-width: 900px) 86vw, 48vw"
+                    width="1600"
+                    height="1067"
+                    alt={c.alt}
+                    fetchPriority={i === 0 ? 'high' : 'auto'}
+                  />
+                  <HeroParticles className="hero-case-canvas" src={c.small} />
+                  <span className="tiny hero-case-sector">{c.sector}</span>
+                </div>
+                <div className="hero-case-panel">
+                  <div className="hero-case-head">
+                    <p className="hero-case-client">{project.client.split(' — ')[0]}</p>
+                    <p className="hero-case-line">{c.line}</p>
+                  </div>
+                  <dl className="hero-case-stats">
+                    {project.metrics.slice(0, 2).map((m) => (
+                      <div key={m.label} className="hero-case-stat">
+                        <dt className="hero-case-stat-label">{m.label}</dt>
+                        <dd className="hero-case-stat-value">{m.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <span className="hero-case-cta">
+                    Read the case study <span aria-hidden="true">→</span>
+                  </span>
+                </div>
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
 
     </section>
   )

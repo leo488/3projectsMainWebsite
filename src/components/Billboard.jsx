@@ -10,7 +10,7 @@ export default function Billboard({ tone = 'light' }) {
     <section className="billboard" ref={ref}>
       <Logo
         className="billboard-logo"
-        mark={dark ? 'var(--white)' : 'var(--navy)'}
+        mark={dark ? 'var(--white)' : 'var(--billboard-mark)'}
         word="var(--bright)"
         tm={dark ? 'var(--white)' : 'var(--navy)'}
         title="3Projects"

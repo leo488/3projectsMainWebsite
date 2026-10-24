@@ -7,6 +7,7 @@ export const POST_CATEGORIES = ['All', 'Operating models', 'Method', 'Technology
 export const POSTS = [
   {
     slug: 'the-constraint-is-never-where-you-think',
+    image: '/images/insight-aerial-1400.jpg',
     title: 'The constraint is never where you think it is',
     excerpt: 'Every organisation has a theory about what is slowing it down. In our experience that theory is wrong roughly as often as it is right — and the cost of starting from it is a year of work aimed at the wrong thing.',
     category: 'Operating models',
@@ -31,6 +32,7 @@ export const POSTS = [
   },
   {
     slug: 'process-before-software',
+    image: '/images/insight-payment-800.jpg',
     title: 'Process before software, every time',
     excerpt: 'Buying a platform to fix a process problem is how organisations end up paying twice: once for the licence, and again for the workarounds that grow around it.',
     category: 'Method',
@@ -55,6 +57,7 @@ export const POSTS = [
   },
   {
     slug: 'modernising-without-a-cutover',
+    image: '/images/insight-street-800.jpg',
     title: 'Modernising without a cutover weekend',
     excerpt: 'The big-bang migration is still the default plan in most transformation programmes. It is also the single largest source of avoidable risk in them.',
     category: 'Technology',
@@ -79,6 +82,7 @@ export const POSTS = [
   },
   {
     slug: 'what-we-leave-behind',
+    image: '/images/insight-truck-800.jpg',
     title: 'What we leave behind',
     excerpt: 'The measure of an engagement is not the system that ships. It is whether the organisation is still improving it eighteen months after we have gone.',
     category: 'Practice',

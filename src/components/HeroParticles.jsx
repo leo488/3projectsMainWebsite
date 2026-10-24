@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from 'react'
    photograph cut into squares; the face keeps its own colour. */
 const BRAND = [
   [0, 75, 255],    // cobalt
-  [0, 194, 232],   // cyan
-  [110, 76, 232],  // violet
-  [47, 211, 154],  // mint
+  [111, 149, 255], // mid
+  [163, 192, 255], // light
+  [10, 32, 114],   // navy
   [0, 49, 184],    // enterprise
 ]
 

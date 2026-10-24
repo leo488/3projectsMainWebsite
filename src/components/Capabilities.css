@@ -1,5 +1,5 @@
 .caps {
-  background: var(--white);
+  background: var(--surface);
   /* The reference leaves a deliberate ~385px white break between the
      rail and the partner split; it collapses on narrow screens. */
   padding: 30px 0 clamp(80px, 19vw, 272px);
@@ -25,7 +25,7 @@
   flex-direction: column;
   height: 440px;
   padding: 22px 22px 24px;
-  background: var(--card);
+  background: var(--surface-card);
   border-radius: 7px;
   opacity: 0;
   transform: translateY(20px);
@@ -102,7 +102,7 @@
 }
 
 .cap-phase span {
-  color: rgba(14, 27, 46, 0.4);
+  color: rgb(var(--ink-rgb) / 0.4);
 }
 
 .cap-title {
@@ -110,7 +110,7 @@
   font-weight: 500;
   line-height: 1.18;
   letter-spacing: -0.025em;
-  color: var(--ink);
+  color: var(--fg-ink);
   margin-bottom: 12px;
 }
 
@@ -118,7 +118,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.55;
-  color: rgba(14, 27, 46, 0.66);
+  color: rgb(var(--ink-rgb) / 0.66);
   max-width: 28ch;
 }
 

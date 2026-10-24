@@ -29,8 +29,8 @@
   align-items: center;
   padding: 13px 26px;
   border-radius: 100px;
-  background: var(--white);
-  color: var(--carbon);
+  background: var(--surface);
+  color: var(--fg);
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
@@ -56,7 +56,7 @@
 .careers-how-label,
 .careers-people-label,
 .careers-roles-label {
-  color: rgba(20, 20, 20, 0.45);
+  color: rgb(var(--fg-rgb) / 0.45);
 }
 
 .careers-how-copy {
@@ -69,7 +69,7 @@
 .careers-how-copy p {
   font-size: 17px;
   line-height: 1.65;
-  color: var(--carbon);
+  color: var(--fg);
 }
 
 /* ── Principles ── */
@@ -114,7 +114,7 @@
 .careers-principle p {
   font-size: 14.5px;
   line-height: 1.65;
-  color: rgba(20, 20, 20, 0.62);
+  color: rgb(var(--fg-rgb) / 0.62);
   max-width: 46ch;
 }
 
@@ -163,7 +163,7 @@
 .careers-people-copy p {
   font-size: 16px;
   line-height: 1.7;
-  color: rgba(20, 20, 20, 0.64);
+  color: rgb(var(--fg-rgb) / 0.64);
 }
 
 .careers-people-copy p + p {
@@ -241,9 +241,9 @@
 }
 
 .careers-role-apply:hover {
-  background: var(--white);
+  background: var(--surface);
   border-color: var(--white);
-  color: var(--carbon);
+  color: var(--fg);
 }
 
 .careers-pool {
@@ -271,7 +271,7 @@
 /* ── Close ── */
 .careers-close {
   padding: 140px var(--side-pad);
-  background: var(--bone);
+  background: var(--surface-alt);
   text-align: center;
 }
 
@@ -280,7 +280,7 @@
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.04em;
-  color: var(--carbon);
+  color: var(--fg);
 }
 
 .careers-close-actions {

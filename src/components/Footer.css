@@ -1,6 +1,6 @@
 /* Continues the bone ground opened by the closing CTA. */
 .footer {
-  background: var(--bone);
+  background: var(--surface-alt);
   /* Clear air under the newsletter band — the columns were sitting
      straight on top of it. */
   padding: 104px var(--side-pad) 0;
@@ -34,7 +34,7 @@
   font-size: 15px;
   font-weight: 400;
   line-height: 1.7;
-  color: rgba(14, 27, 46, 0.78);
+  color: rgb(var(--ink-rgb) / 0.78);
 }
 
 .footer-col-title {
@@ -42,7 +42,7 @@
   font-weight: 600;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: rgba(14, 27, 46, 0.48);
+  color: rgb(var(--ink-rgb) / 0.48);
   margin-bottom: 20px;
 }
 
@@ -56,7 +56,7 @@
 .footer-col-links a {
   font-size: 15px;
   font-weight: 400;
-  color: rgba(14, 27, 46, 0.82);
+  color: rgb(var(--ink-rgb) / 0.82);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -92,7 +92,7 @@
   justify-content: space-between;
   gap: 24px;
   padding: 33px 0 33px;
-  border-top: 1px solid rgba(14, 27, 46, 0.12);
+  border-top: 1px solid rgb(var(--ink-rgb) / 0.12);
 }
 
 .footer-legal-links {
@@ -108,7 +108,7 @@
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(14, 27, 46, 0.5);
+  color: rgb(var(--ink-rgb) / 0.5);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -118,7 +118,7 @@
 }
 
 .footer-legal-links a:hover {
-  color: var(--ink);
+  color: var(--fg-ink);
 }
 
 @media (max-width: 900px) {
@@ -150,8 +150,8 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  border: 1px solid rgba(14, 27, 46, 0.16);
-  color: rgba(14, 27, 46, 0.7);
+  border: 1px solid rgb(var(--ink-rgb) / 0.16);
+  color: rgb(var(--ink-rgb) / 0.7);
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
@@ -177,7 +177,7 @@
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.02em;
-  color: rgba(14, 27, 46, 0.55);
+  color: rgb(var(--ink-rgb) / 0.55);
 }
 
 .footer-heart {
@@ -200,10 +200,10 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   line-height: 1;
-  color: rgba(14, 27, 46, 0.5);
+  color: rgb(var(--ink-rgb) / 0.5);
   transition: color 0.2s ease;
 }
 
 .footer-legal-btn:hover {
-  color: var(--ink);
+  color: var(--fg-ink);
 }
