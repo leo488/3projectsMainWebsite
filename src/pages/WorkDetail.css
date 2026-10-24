@@ -24,7 +24,6 @@
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.04em;
-  max-width: 18ch;
 }
 
 .detail-summary {
@@ -84,15 +83,16 @@
 }
 
 /* The opening statement, large and left aligned. */
-/* What happened, directly under the statement on the same line. */
+/* What happened, directly under the statement on the same line and
+   as wide as it. */
 .detail-story-copy {
-  max-width: 62ch;
+  max-width: 1000px;
   margin-top: 72px;
 }
 
 .detail-story-copy p:not(.tiny) {
   text-wrap: pretty;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.7;
   color: rgb(var(--fg-rgb) / 0.72);
 }
@@ -102,7 +102,7 @@
 }
 
 .detail-lede {
-  max-width: 28ch;
+  max-width: 1000px;
   text-wrap: pretty;
   font-size: clamp(30px, 3.8vw, 56px);
   font-weight: 400;
@@ -265,7 +265,7 @@
 .detail-metric-label {
   display: block;
   margin-top: 14px;
-  max-width: 28ch;
+  max-width: 40ch;
   font-size: 15px;
   line-height: 1.5;
   color: rgb(var(--fg-rgb) / 0.6);
@@ -287,26 +287,25 @@
 }
 
 .detail-outcome-headline {
-  max-width: 20ch;
   font-size: clamp(38px, 5.4vw, 84px);
-  font-weight: 600;
-  line-height: 1.06;
+  font-weight: 500;   /* the bold headline weight of Featured and the CPA */
+  line-height: 1.08;
   text-wrap: balance;
   letter-spacing: -0.035em;
 }
 
 .detail-outcome-body {
   margin-top: 32px;
-  max-width: 56ch;
+  max-width: 1160px;
   text-wrap: pretty;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.7);
 }
 
 .detail-proof {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 32px;
   margin-top: 88px;
   list-style: none;
@@ -317,11 +316,12 @@
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* The figures in the brand blues, white through Pale Blue to the
-   pattern blue, so the growth reads first. */
+/* The figures in the Start a conversation button's gradient, so the
+   growth reads first. */
 .detail-proof .detail-metric-value {
   font-size: clamp(48px, 5.6vw, 96px);
-  background: linear-gradient(100deg, #FFFFFF 0%, #A3C0FF 40%, #2973FD 100%);
+  white-space: nowrap;
+  background: linear-gradient(100deg, #00E1FF 0%, #FF0069 50%, #0055FF 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -443,8 +443,12 @@
     padding: 72px var(--side-pad);
   }
 
+  .detail-proof .detail-metric-value {
+    font-size: 40px;
+  }
+
   .detail-proof {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 36px 20px;
     margin-top: 56px;
   }
