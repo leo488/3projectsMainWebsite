@@ -33,7 +33,7 @@ const PAGES = {
   '/careers': {
     title: 'Careers | 3Projects',
     description:
-      'Join a team where strategy, design and technology work at one table. Explore open roles at 3Projects across our offices.',
+      'Join a team where strategy, design and technology work at one table. Explore open roles at 3Projects in Lagos.',
   },
   '/blog': {
     title: 'Insights | 3Projects',

@@ -1,5 +1,6 @@
 import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
+import Arrow from '../components/Arrow'
 import useReveal from '../components/useReveal'
 import { Link } from '../router'
 import { CONTACT_EMAIL, PHASES } from '../data/site'
@@ -15,8 +16,8 @@ const PRINCIPLES = [
     body: 'Clarity, collaboration, curiosity, craft and care. These are not abstract principles — they are how we work. We push for clarity when things get complex, and we collaborate honestly even when the answer is unwelcome.',
   },
   {
-    title: 'Remote-first, genuinely connected',
-    body: 'We are distributed across six offices and several more time zones. Remote does not mean disconnected: we build systems for staying aligned, sharing knowledge, and supporting each other wherever the work happens.',
+    title: 'Based in Lagos',
+    body: 'The team works from Lagos, with days in the studio and days at home. Hybrid does not mean disconnected: we build systems for staying aligned, sharing knowledge, and supporting each other wherever the work happens.',
   },
   {
     title: 'Room to grow',
@@ -25,12 +26,12 @@ const PRINCIPLES = [
 ]
 
 const ROLES = [
-  { title: 'Senior Transformation Consultant',   team: 'Strategy',   location: 'London · Remote' },
-  { title: 'Operations Architect',               team: 'Operations', location: 'New York · Remote' },
-  { title: 'Principal Systems Designer',         team: 'Design',     location: 'Remote, EU' },
-  { title: 'Senior Platform Engineer',           team: 'Technology', location: 'Frankfurt · Remote' },
-  { title: 'Data & Instrumentation Lead',        team: 'Technology', location: 'Remote, EU' },
-  { title: 'Engagement Manager',                 team: 'Operations', location: 'Singapore' },
+  { title: 'Senior Transformation Consultant',   team: 'Strategy',   location: 'Lagos · Hybrid' },
+  { title: 'Operations Architect',               team: 'Operations', location: 'Lagos · Hybrid' },
+  { title: 'Principal Systems Designer',         team: 'Design',     location: 'Lagos · Hybrid' },
+  { title: 'Senior Platform Engineer',           team: 'Technology', location: 'Lagos · Hybrid' },
+  { title: 'Data & Instrumentation Lead',        team: 'Technology', location: 'Lagos · Hybrid' },
+  { title: 'Engagement Manager',                 team: 'Operations', location: 'Lagos' },
 ]
 
 function mail(subject) {
@@ -43,7 +44,7 @@ export default function Careers() {
 
   return (
     <>
-      <Navbar theme="dark" />
+      <Navbar />
 
       {/* ── Masthead on a solid brand ground ── */}
       <header className="careers-intro">
@@ -152,7 +153,7 @@ export default function Careers() {
             Interested in joining our network?
           </h3>
           <a href={mail('Open application')} className="careers-pool-link">
-            Send an open application →
+            Send an open application <Arrow size={16} />
           </a>
         </div>
       </section>
@@ -162,9 +163,9 @@ export default function Careers() {
         <h2>Let&rsquo;s explore what&rsquo;s next</h2>
         <div className="careers-close-actions">
           <a href={mail('Starting a conversation')} className="careers-close-btn btn-gradient">
-            Start a Conversation
+            Start a conversation
           </a>
-          <Link href="/work" className="careers-close-secondary">See the work →</Link>
+          <Link href="/work" className="careers-close-secondary">See the work <Arrow size={16} /></Link>
         </div>
       </section>
 

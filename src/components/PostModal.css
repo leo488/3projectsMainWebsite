@@ -1,0 +1,108 @@
+/* The article modal: a white reading panel over a dimmed page, with a
+   bar that stays put while the article scrolls under it. */
+.post-modal {
+  width: min(880px, 100vw - 32px);
+  max-width: none;
+  max-height: calc(100vh - 48px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--fg);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.post-modal::backdrop {
+  background: rgb(var(--ink-rgb) / 0.72);
+}
+
+.post-modal[open] {
+  animation: postModalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.post-modal-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px clamp(20px, 4vw, 48px);
+  border-bottom: 1px solid rgb(var(--fg-rgb) / 0.1);
+  background: var(--surface);
+}
+
+.post-modal-category {
+  color: rgb(var(--fg-rgb) / 0.6);
+}
+
+.post-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-modal-share {
+  padding: 8px 18px;
+  font-size: 14px;
+}
+
+.post-modal-close {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgb(var(--fg-rgb) / 0.2);
+  border-radius: 50%;
+  background: none;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.post-modal-title {
+  padding: clamp(32px, 5vw, 56px) clamp(20px, 4vw, 48px) 0;
+  font-size: clamp(28px, 3.6vw, 48px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  max-width: 22ch;
+}
+
+.post-modal-cover {
+  margin: 36px clamp(20px, 4vw, 48px) 0;
+}
+
+.post-modal-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.post-body.post-modal-body {
+  max-width: none;
+  padding: 48px clamp(20px, 4vw, 48px) 64px;
+}
+
+@keyframes postModalIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 600px) {
+  .post-modal {
+    width: 100vw;
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-modal[open] {
+    animation: none;
+  }
+}

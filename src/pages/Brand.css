@@ -406,7 +406,7 @@
 }
 
 .brand-pattern--pixel {
-  background: var(--white) url('/images/hero-retail-1600.jpg') center 41% / cover no-repeat;
+  background: #001A66 url('/images/pattern-pixel-lines-blue.svg') left top / 1200px 1440px no-repeat;
 }
 
 .brand-phases {

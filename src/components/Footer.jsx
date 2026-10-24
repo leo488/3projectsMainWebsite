@@ -19,7 +19,7 @@ const COLUMNS = [
     links: FIRM_LINKS,
   },
   {
-    title: 'Offices',
+    title: 'Office',
     links: OFFICES.map((o) => ({
       label: o,
       href: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`Enquiry — ${o}`)}`,
@@ -146,7 +146,7 @@ export default function Footer() {
           ))}
         </ul>
         <span className="footer-copyright">
-          © 2026 3Projects LLP · All rights reserved
+          © 2026 3Projects · All rights reserved
         </span>
       </div>
 

@@ -190,8 +190,8 @@ function PatternPanel() {
         <figure className="brand-box brand-box--flush">
           <div className="brand-pattern brand-pattern--pixel" />
           <figcaption>
-            <span className="tiny">Pixel grid</span>
-            <span>Portraiture and hero artwork — the figure assembled from data cells.</span>
+            <span className="tiny">Pixel lines</span>
+            <span>Rows of blue cells, for bands and section grounds.</span>
           </figcaption>
         </figure>
       </div>
@@ -267,7 +267,7 @@ export default function Brand() {
 
   return (
     <>
-      <Navbar theme="dark" />
+      <Navbar />
 
       <header className="brand-intro">
         <p className="tiny brand-intro-eyebrow">Brand assets</p>

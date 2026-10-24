@@ -21,7 +21,7 @@ export const PROJECTS = [
     ratio: '4 / 3',
     services: ['Enterprise Discovery', 'Strategic Analysis', 'Operational Optimization'],
     metrics: [
-      { value: '$XM+', label: 'Operational efficiency improvement' },
+      { value: '₦XM+', label: 'Operational efficiency improvement' },
       { value: 'XX',   label: 'Processes redesigned' },
     ],
     intro:
@@ -154,7 +154,7 @@ export const PROJECTS = [
     services: ['Strategic Analysis', 'Technology Integration', 'Continuous Evolution'],
     metrics: [
       { value: 'XX',   label: 'Planning cycle reduced to' },
-      { value: '$XM+', label: 'Operational efficiency improvement' },
+      { value: '₦XM+', label: 'Operational efficiency improvement' },
     ],
     intro:
       'An annual planning cycle cannot answer a weekly question. The brief was to shorten the loop between what the network is doing and what the organisation decides to do about it.',

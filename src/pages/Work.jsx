@@ -6,7 +6,6 @@ import PixelArt from '../components/PixelArt'
 import { Link } from '../router'
 import { PROJECTS, CATEGORIES } from '../data/projects'
 import './Work.css'
-import './WorkDark.css'
 
 const APPROACH = [
   {
@@ -66,8 +65,8 @@ export default function Work() {
     : PROJECTS.filter((p) => p.categories.includes(active))
 
   return (
-    <div className="work-dark">
-      <Navbar theme="dark" />
+    <div>
+      <Navbar />
 
       {/* ── Introduction ── */}
       <header className="work-intro">

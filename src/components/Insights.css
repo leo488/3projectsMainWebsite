@@ -64,28 +64,28 @@
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: rgb(255 255 255 / 0.18);
-  color: var(--white);
-  transition: background 0.2s ease;
-}
-
-.ins-arrow:hover {
   background: var(--cta-blue);
+  color: var(--white);
 }
 
-/* Picture cards: the label and title sit on the picture's foot. */
+/* Cards: the picture, then the label and title under it. */
 .ins-card,
 .ins-case {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  background: rgb(255 255 255 / 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
   color: var(--white);
   text-decoration: none;
 }
 
-.ins-card img,
-.ins-case img {
+.ins-media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: rgb(255 255 255 / 0.08);
+}
+
+.ins-media img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -94,71 +94,57 @@
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.ins-card:hover img,
-.ins-case:hover img {
+.ins-card:hover .ins-media img,
+.ins-case:hover .ins-media img {
   transform: scale(1.03);
 }
 
-.ins-card--a { grid-area: a; aspect-ratio: 4 / 5; }
-.ins-card--b { grid-area: b; aspect-ratio: 1 / 1; margin-top: 64px; }
-.ins-card--c { grid-area: c; aspect-ratio: 1 / 1; }
-.ins-card--d { grid-area: d; aspect-ratio: 1 / 1; }
-
-.ins-card-text {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: grid;
-  gap: 12px;
-  padding: 72px 28px 28px;
-  background: linear-gradient(to top, rgb(0 0 0 / 0.62), transparent);
+.ins-card .ins-media {
+  margin-bottom: 6px;
 }
 
+.ins-card--a { grid-area: a; }
+.ins-card--b { grid-area: b; margin-top: 64px; }
+.ins-card--c { grid-area: c; }
+.ins-card--d { grid-area: d; }
+
+.ins-card--a .ins-media { aspect-ratio: 4 / 5; }
+.ins-card--b .ins-media,
+.ins-card--c .ins-media,
+.ins-card--d .ins-media { aspect-ratio: 1 / 1; }
+
 .ins-label {
-  color: rgb(255 255 255 / 0.9);
+  color: var(--pale-blue);
 }
 
 .ins-card-title {
-  max-width: 24ch;
+  max-width: 28ch;
   font-size: clamp(17px, 1.5vw, 23px);
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: -0.01em;
 }
 
-/* The case study: title at the top, button at the foot. */
+.ins-card-title .arrow {
+  margin-left: 4px;
+  vertical-align: 0.1em;
+}
+
+/* The case study: a tall picture filling the column, the title and a
+   button under it. */
 .ins-case {
   grid-area: case;
   align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 560px;
-  padding: 36px 32px 32px;
 }
 
-.ins-case::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: rgb(0 0 0 / 0.42);
-}
-
-.ins-case-top,
-.ins-case-btn {
-  position: relative;
-  z-index: 2;
-}
-
-.ins-case-top {
-  display: grid;
-  gap: 14px;
+.ins-case .ins-media {
+  flex: 1;
+  min-height: 420px;
+  margin-bottom: 6px;
 }
 
 .ins-case-title {
-  font-size: clamp(26px, 2.5vw, 42px);
+  font-size: clamp(24px, 2.2vw, 36px);
   font-weight: 400;
   line-height: 1.18;
   letter-spacing: -0.02em;
@@ -166,6 +152,7 @@
 
 .ins-case-btn {
   align-self: flex-start;
+  margin-top: 8px;
 }
 
 @media (max-width: 900px) {
@@ -178,16 +165,16 @@
       'c    d';
   }
 
-  .ins-case {
-    min-height: 460px;
+  .ins-case .ins-media {
+    min-height: 360px;
   }
 
-  .ins-card--a,
-  .ins-card--b,
-  .ins-card--c,
-  .ins-card--d {
-    aspect-ratio: 4 / 5;
+  .ins-card--b {
     margin-top: 0;
+  }
+
+  .ins-card .ins-media {
+    aspect-ratio: 4 / 5;
   }
 }
 
@@ -197,10 +184,7 @@
     grid-template-areas: 'head' 'case' 'a' 'b' 'c' 'd';
   }
 
-  .ins-card--a,
-  .ins-card--b,
-  .ins-card--c,
-  .ins-card--d {
+  .ins-card .ins-media {
     aspect-ratio: 4 / 3;
   }
 

@@ -1,10 +1,14 @@
-/* Full-bleed split: near-black copy panel against a deep brand-navy
-   field. No gutter — the two panels meet edge to edge. */
+/* Full-bleed split, the same width as the hero band: a Deep
+   Enterprise copy panel against the partner photograph. It sits
+   directly under the pattern band (see .home-pair in App.css). */
 .partner {
   display: grid;
   grid-template-columns: 52% 48%;
-  min-height: 690px;
+  min-height: clamp(520px, 44vw, 700px);
   background: var(--carbon);
+  /* A hairline where it meets the pattern band, for the turns when the
+     band is on the same blue. */
+  border-top: 1px solid rgb(255 255 255 / 0.16);
 }
 
 .partner-left {
@@ -15,6 +19,7 @@
 }
 
 .partner-headline {
+  max-width: 17ch;
   font-size: clamp(30px, 3.3vw, 52px);
   font-weight: 500;
   line-height: 1.22;
@@ -35,27 +40,12 @@
 .partner-btn {
   align-self: flex-start;
   margin-top: auto;
-  padding: 10px 20px;
-  border-radius: 100px;
-  background: var(--surface);
-  color: var(--fg);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: -0.005em;
-  text-decoration: none;
-  white-space: nowrap;
   opacity: 0;
-  transition:
-    opacity    0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
-    background 0.25s ease;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
 }
 
 .partner.is-visible .partner-btn {
   opacity: 1;
-}
-
-.partner-btn:hover {
-  background: rgba(255, 255, 255, 0.86);
 }
 
 /* The partner photograph, full bleed against the copy panel. */
@@ -82,10 +72,6 @@
   .partner-left {
     padding: 48px var(--side-pad) 44px;
     min-height: 420px;
-  }
-
-  .partner-headline br {
-    display: none;
   }
 
   .partner-right {

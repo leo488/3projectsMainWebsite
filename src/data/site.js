@@ -28,7 +28,7 @@ export const PHASES = [
   { label: 'Sustain',  ground: 'var(--phase-sustain)',   note: 'Leave the capability behind' },
 ]
 
-export const OFFICES = ['New York', 'London', 'Frankfurt', 'Dubai', 'Singapore', 'São Paulo']
+export const OFFICES = ['Lagos, Nigeria']
 
 export const FIRM_LINKS = [
   { label: 'About',      href: '/about' },

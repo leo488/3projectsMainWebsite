@@ -114,6 +114,7 @@
   width: 100%;
   aspect-ratio: var(--ratio);
   overflow: hidden;
+  background: #D6D8DC;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 

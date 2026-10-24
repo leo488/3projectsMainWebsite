@@ -5,7 +5,6 @@ import { Link } from '../router'
 import PixelArt from '../components/PixelArt'
 import { PROJECTS, getProject } from '../data/projects'
 import './WorkDetail.css'
-import './WorkDark.css'
 
 // Each phase panel carries the matching pixel illustration; Deliver
 // shows what the engagement built.
@@ -69,12 +68,12 @@ export default function WorkDetail({ slug }) {
   const others = PROJECTS.filter((p) => p.slug !== project.slug).slice(0, 3)
 
   return (
-    <div className="work-dark">
-      <Navbar theme="dark" />
+    <div>
+      <Navbar />
 
       {/* ── Project masthead ── */}
-      <header className="detail-intro detail-intro--dark">
-        <Link href="/work" className="tiny detail-back">← All work</Link>
+      <header className="detail-intro detail-intro--light">
+        <Link href="/work" className="tiny detail-back"><span aria-hidden="true">←</span> All work</Link>
         <h1 className="detail-title">{project.title}</h1>
         <p className="detail-summary">{project.summary}</p>
 

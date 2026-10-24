@@ -2,13 +2,14 @@ import { useState } from 'react'
 import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
 import useReveal from '../components/useReveal'
-import { Link } from '../router'
+import { usePostModal, postHref } from '../components/PostModal'
 import { POSTS, POST_CATEGORIES } from '../data/posts'
 import './Blog.css'
 
 export default function Blog() {
   const [active, setActive] = useState('All')
   const gridRef = useReveal('is-visible', 0)
+  const [modal, openPost] = usePostModal()
 
   const shown = active === 'All'
     ? POSTS
@@ -16,7 +17,7 @@ export default function Blog() {
 
   return (
     <>
-      <Navbar theme="dark" />
+      <Navbar />
 
       {/* Same opening as the work index: a solid brand ground carrying
           the heading. */}
@@ -58,8 +59,8 @@ export default function Blog() {
           <ul className="blog-grid">
             {shown.map((p, i) => (
               <li key={p.slug} className="blog-card" style={{ '--i': i, '--ratio': p.ratio }}>
-                <Link href={`/blog/${p.slug}`} className="blog-card-link">
-                  <div className="blog-card-visual" style={{ background: p.ground }}>
+                <a href={postHref(p.slug)} className="blog-card-link" onClick={openPost(p.slug)}>
+                  <div className="blog-card-visual">
                     {p.image && <img className="blog-card-img" src={p.image} alt="" loading="lazy" />}
                     <span className="tiny blog-card-category">{p.category}</span>
                   </div>
@@ -70,7 +71,7 @@ export default function Blog() {
                     <h2 className="blog-card-title">{p.title}</h2>
                     <p className="blog-card-excerpt">{p.excerpt}</p>
                   </div>
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -80,6 +81,7 @@ export default function Blog() {
       </section>
 
       <SiteFooter />
+      {modal}
     </>
   )
 }

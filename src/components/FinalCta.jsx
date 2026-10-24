@@ -12,7 +12,7 @@ export default function FinalCta() {
     const io = new IntersectionObserver(([entry]) => {
       el.classList.toggle('is-visible', entry.isIntersecting || el.classList.contains('is-visible'))
       // While the closing CTA is on screen the header pill stands down,
-      // so the page only ever shows one Start a Conversation.
+      // so the page only ever shows one Start a conversation.
       document.body.classList.toggle('cta-handoff', entry.isIntersecting)
     }, { threshold: 0.35 })
 
@@ -37,7 +37,7 @@ export default function FinalCta() {
         href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
         className="final-cta-btn btn-gradient"
       >
-        Start a Conversation
+        Start a conversation
       </a>
     </section>
   )

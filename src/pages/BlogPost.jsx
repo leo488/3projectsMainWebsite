@@ -1,20 +1,9 @@
 import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
+import PostBody from '../components/PostBody'
 import { Link } from '../router'
 import { POSTS, getPost } from '../data/posts'
 import './Blog.css'
-
-/* Paragraph text with **bold** runs and the author's own line breaks. */
-function Inline({ text }) {
-  return text.split('\n').map((line, i) => (
-    <span key={i}>
-      {i > 0 && <br />}
-      {line.split(/\*\*(.+?)\*\*/).map((part, j) =>
-        j % 2 ? <strong key={j}>{part}</strong> : part,
-      )}
-    </span>
-  ))
-}
 
 export default function BlogPost({ slug }) {
   const post = getPost(slug)
@@ -37,7 +26,7 @@ export default function BlogPost({ slug }) {
 
   return (
     <>
-      <Navbar theme="dark" />
+      <Navbar />
 
       <header className="post-intro" style={{ background: post.ground }}>
         <Link href="/blog" className="tiny post-back">← All insights</Link>
@@ -52,13 +41,7 @@ export default function BlogPost({ slug }) {
         </figure>
       )}
 
-      <article className="post-body">
-        {post.blocks.map(([kind, text], i) => {
-          if (kind === 'h2') return <h2 key={i}>{text}</h2>
-          if (kind === 'pull') return <p key={i} className="post-pull">{text}</p>
-          return <p key={i}><Inline text={text} /></p>
-        })}
-      </article>
+      <PostBody post={post} />
 
       <section className="post-next">
         <p className="tiny post-next-eyebrow">More insights</p>

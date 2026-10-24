@@ -92,6 +92,8 @@
      cards are Deep Enterprise. Nothing else is a flat blue. */
   --cta-blue:     #004BFF;
   --section-blue: #0031B8;
+  /* Pale Blue: labels and accents on dark and blue grounds. */
+  --pale-blue:    #A3C0FF;
 
   /* One corner radius for every card, panel and image on the site, so
      nothing is rounder than its neighbour. Buttons are always pills. */
@@ -196,11 +198,6 @@ html, body {
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-.btn:hover {
-  opacity: 0.86;
 }
 
 .btn--black {
@@ -211,6 +208,13 @@ html, body {
 .btn--white {
   background: var(--white);
   color: var(--carbon);
+}
+
+/* Plain Electric Cobalt, with no ring or motion: only Start a
+   conversation animates. */
+.btn--blue {
+  background: var(--cta-blue);
+  color: var(--white);
 }
 
 /* Hand-off: once the closing CTA is on screen the header pill steps
@@ -235,4 +239,10 @@ body.cta-handoff .navbar .btn-start {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   line-height: 1;
+}
+
+/* The shared arrow (Arrow.jsx) sits on the text's centre line. */
+.arrow {
+  flex: none;
+  vertical-align: middle;
 }

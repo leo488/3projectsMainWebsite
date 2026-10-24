@@ -2,10 +2,10 @@ import Logo from './Logo'
 import useReveal from './useReveal'
 import './Billboard.css'
 
-/* The lockup on the Deep Enterprise footer, all in white: the logo is
+/* The lockup on the Deep Carbon footer, all in white: the logo is
    either in its own colours (Deep Enterprise mark, Electric Cobalt
    wordmark) or one colour throughout, never recoloured piece by
-   piece, and its own blues would vanish on this ground. */
+   piece. */
 export default function Billboard() {
   const ref = useReveal('is-visible')
 

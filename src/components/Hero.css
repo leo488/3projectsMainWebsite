@@ -1,52 +1,71 @@
 /* ─────────────────────────────
-   The band — full width, as tall as the screen under the header, in
-   three parts: copy, picture, pattern.
+   Section — the centred line, actions and client row on a soft grey
+   ground, then the full-width band.
 ───────────────────────────── */
 .hero-section {
+  --hero-ground: #F5F5F5;
+  background: var(--hero-ground);
   padding-top: var(--nav-h);
-  background: var(--surface);
+  overflow: hidden;
 }
 
-.hero-band {
-  display: grid;
-  grid-template-columns: 44% 34% 22%;
-  height: calc(100vh - var(--nav-h) - var(--banner-h));
-  min-height: 600px;
-  max-height: 980px;
-  color: var(--white);
-  transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+[data-theme='dark'] .hero-section {
+  --hero-ground: var(--carbon);
 }
 
-.hero-copy {
+.hero-headline-row {
   display: flex;
   flex-direction: column;
-  min-width: 0;
-  padding: clamp(40px, 5vw, 72px) clamp(28px, 3.4vw, 56px) clamp(32px, 3.4vw, 48px) var(--band-pad);
+  align-items: center;
+  gap: 20px;
+  padding: clamp(64px, 8vw, 110px) var(--side-pad) 0;
+  text-align: center;
 }
 
 .hero-headline {
-  font-size: clamp(40px, 4.6vw, 80px);
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(40px, 5.6vw, 96px);
   font-weight: 400;
-  line-height: 1.04;
+  color: var(--fg);
+  line-height: 1.05;
   letter-spacing: -0.04em;
-  /* The changing word in Pale Blue, so it holds on all three grounds. */
-  --cobalt: #A3C0FF;
+  margin: 0;
+}
+
+.line-wrap {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+}
+
+.line-inner {
+  display: block;
+  white-space: nowrap;
+  transform: translateY(110%);
+  opacity: 0;
+  animation: revealLine 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
 }
 
 .hero-sub {
-  max-width: 34ch;
-  margin-top: 22px;
-  font-size: clamp(16px, 1.25vw, 20px);
+  max-width: 620px;
+  margin: 0;
+  font-size: clamp(17px, 1.4vw, 22px);
+  font-weight: 300;
   line-height: 1.45;
-  color: rgb(255 255 255 / 0.8);
+  color: rgb(var(--fg-rgb) / 0.8);
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  margin-top: 28px;
+  margin-top: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
 }
 
 .hero-cta {
@@ -56,43 +75,111 @@
   font-weight: 500;
 }
 
-/* The case study in play, at the foot of the copy. */
-.hero-case {
+/* ─────────────────────────────
+   Client row — six grey marks between thin rules
+───────────────────────────── */
+.hero-logos {
+  --logo-cut: var(--hero-ground);
   display: grid;
-  gap: 10px;
-  margin-top: auto;
-  padding-top: 24px;
-  border-top: 1px solid rgb(255 255 255 / 0.2);
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  max-width: 1380px;
+  margin: clamp(64px, 6vw, 96px) auto clamp(48px, 4.4vw, 64px);
+  padding: 0 var(--side-pad);
+  list-style: none;
+  color: #585C63;
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+}
+
+[data-theme='dark'] .hero-logos {
+  color: #B4B8BF;
+}
+
+.hero-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 16px;
+}
+
+.hero-logo + .hero-logo {
+  border-left: 1px solid rgb(var(--fg-rgb) / 0.14);
+}
+
+.hero-logo svg {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.hero-logo .mark-crunchies {
+  height: 58px;
+}
+
+.hero-logo-word {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* ─────────────────────────────
+   The band — full width and as tall as the screen under the header,
+   in three parts: the case study, its picture, the pattern.
+───────────────────────────── */
+.hero-band {
+  display: grid;
+  grid-template-columns: 44% 34% 22%;
+  height: calc(100vh - var(--nav-h) - var(--banner-h));
+  min-height: 640px;
+  max-height: 980px;
+  color: var(--white);
+  transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-case {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 18px;
+  min-width: 0;
+  padding: clamp(40px, 5vw, 72px) clamp(28px, 3.4vw, 56px) clamp(40px, 4.4vw, 64px) var(--band-pad);
   color: inherit;
   text-decoration: none;
   animation: heroFade 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-case-client {
-  color: #A3C0FF;
+  color: var(--pale-blue);
 }
 
 .hero-case-line {
-  max-width: 36ch;
-  font-size: clamp(16px, 1.3vw, 20px);
-  font-weight: 500;
-  line-height: 1.3;
+  max-width: 22ch;
+  font-size: clamp(28px, 2.8vw, 48px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
 }
 
 .hero-case-numbers {
   display: flex;
-  gap: 32px;
-  margin-top: 8px;
+  gap: 40px;
+  margin-top: 18px;
+  padding-top: 28px;
+  border-top: 1px solid rgb(255 255 255 / 0.2);
 }
 
 .hero-case-number {
   display: flex;
   flex-direction: column-reverse;
-  gap: 6px;
+  gap: 8px;
 }
 
 .hero-case-number dd {
-  font-size: clamp(26px, 2.4vw, 40px);
+  font-size: clamp(32px, 3.2vw, 56px);
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -100,9 +187,9 @@
 }
 
 .hero-case-number dt {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
-  color: rgb(255 255 255 / 0.7);
+  color: rgb(255 255 255 / 0.75);
 }
 
 /* Picture: the two case images stacked, cross-fading. */
@@ -160,63 +247,24 @@
   background-image: url('/images/pattern-pixel-lines-blue.svg');
 }
 
+/* ─────────────────────────────
+   Keyframes
+───────────────────────────── */
+@keyframes revealLine {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes heroFade {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: none; }
 }
 
-/* ─────────────────────────────
-   Client row — six grey marks between thin rules, under the band
-───────────────────────────── */
-.hero-logos {
-  --logo-cut: var(--surface);
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  align-items: center;
-  padding: 36px var(--side-pad);
-  list-style: none;
-  color: #585C63;
-}
-
-.hero-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  padding: 0 16px;
-}
-
-.hero-logo + .hero-logo {
-  border-left: 1px solid rgb(var(--fg-rgb) / 0.14);
-}
-
-.hero-logo svg {
-  display: block;
-  height: 36px;
-  width: auto;
-  max-width: 100%;
-  overflow: visible;
-}
-
-.hero-logo .mark-crunchies {
-  height: 52px;
-}
-
-.hero-logo-word {
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-
 @media (max-width: 1100px) {
-  .hero-band {
-    grid-template-columns: 52% 48%;
-  }
-
-  .hero-pattern {
-    display: none;
-  }
-
   .hero-logos {
     grid-template-columns: repeat(3, 1fr);
     row-gap: 20px;
@@ -225,9 +273,37 @@
   .hero-logo:nth-child(3n + 1) {
     border-left: 0;
   }
+
+  .hero-band {
+    grid-template-columns: 52% 48%;
+  }
+
+  .hero-pattern {
+    display: none;
+  }
 }
 
 @media (max-width: 760px) {
+  .hero-headline-row {
+    padding-top: 48px;
+  }
+
+  .line-inner {
+    white-space: normal;
+  }
+
+  .hero-logo {
+    height: 40px;
+  }
+
+  .hero-logo svg {
+    height: 32px;
+  }
+
+  .hero-logo-word {
+    font-size: 20px;
+  }
+
   .hero-band {
     grid-template-columns: 1fr;
     height: auto;
@@ -235,24 +311,16 @@
     min-height: 0;
   }
 
-  .hero-copy {
-    padding: 40px var(--side-pad) 32px;
+  .hero-case {
+    padding: 40px var(--side-pad) 36px;
   }
 
-  .hero-case {
-    margin-top: 36px;
+  .hero-case-number dd {
+    white-space: normal;
   }
 
   .hero-visual {
     aspect-ratio: 4 / 3;
-  }
-
-  .hero-logo svg {
-    height: 28px;
-  }
-
-  .hero-logo-word {
-    font-size: 18px;
   }
 }
 
@@ -263,7 +331,13 @@
     transition: none;
   }
 
+  .line-inner,
+  .hero-sub,
+  .hero-actions,
+  .hero-logos,
   .hero-case {
+    opacity: 1;
+    transform: none;
     animation: none;
   }
 }

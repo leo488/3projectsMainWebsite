@@ -1,10 +1,13 @@
 import { Link } from '../router'
+import Arrow from './Arrow'
 import { SERVICES, INDUSTRIES, PHASES } from '../data/site'
 import './MegaMenu.css'
 
-/* Three parts, divided by rules: a case-study picture on the left, the
+/* Three parts, divided by rules: a case-study panel on the left, the
    services on a solid Deep Enterprise panel, then plain link columns.
-   Every item in the panel is a link. */
+   Every item in the panel is a link. The case-study panel shows the
+   kit's wave pattern until it has a picture of its own, since no
+   picture is repeated across the site. */
 export default function MegaMenu({ open, onNavigate, panelRef, onEnter, onLeave }) {
   return (
     <div
@@ -17,10 +20,10 @@ export default function MegaMenu({ open, onNavigate, panelRef, onEnter, onLeave 
     >
       <div className="mega-inner">
         <Link href="/work/crunchies-inventory" onClick={onNavigate} className="mega-feature">
-          <img src="/images/hero-crunchies-900.jpg" alt="" loading="lazy" />
+          <span className="mega-feature-pattern" aria-hidden="true" />
           <span className="mega-feature-caption">
             <span className="tiny">Case study</span>
-            <span className="mega-feature-title">Crunchies: one live view of stock →</span>
+            <span className="mega-feature-title">Crunchies: one live view of stock <Arrow size={16} /></span>
           </span>
         </Link>
 
@@ -59,7 +62,7 @@ export default function MegaMenu({ open, onNavigate, panelRef, onEnter, onLeave 
             ))}
           </ul>
           <Link href="/work" onClick={onNavigate} className="mega-all">
-            View all work →
+            View all work <Arrow size={16} />
           </Link>
         </section>
       </div>

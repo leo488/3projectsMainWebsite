@@ -26,6 +26,11 @@
   color: rgb(var(--fg-rgb) / 0.45);
 }
 
+/* With the story card gone, the copy sets the gap to the numbers. */
+.about-position {
+  padding-bottom: 120px;
+}
+
 .about-position-copy {
   max-width: 66ch;
   display: flex;
@@ -38,66 +43,6 @@
   font-size: 17px;
   line-height: 1.68;
   color: var(--fg);
-}
-
-/* ── Mark + story card ── */
-.about-story {
-  display: grid;
-  grid-template-columns: 22% 260px 1fr;
-  gap: 40px;
-  align-items: stretch;
-  padding: 0 var(--side-pad) 120px;
-}
-
-.about-story-plate {
-  grid-column: 2;
-  aspect-ratio: 1;
-  border-radius: var(--radius);
-  background: var(--cobalt);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.about-story-mark {
-  font-size: 128px;
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.06em;
-  color: var(--white);
-}
-
-.about-story-card {
-  grid-column: 3;
-  max-width: 340px;
-  display: flex;
-  flex-direction: column;
-  padding: 26px;
-  border-radius: var(--radius);
-  background: var(--surface-alt);
-}
-
-.about-story-card h2 {
-  font-size: 19px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-}
-
-.about-story-card p {
-  margin-top: 14px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgb(var(--fg-rgb) / 0.62);
-}
-
-.about-story-btn {
-  align-self: flex-start;
-  margin-top: auto;
-  padding-top: 28px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--fg);
-  text-decoration: none;
 }
 
 /* ── Numbers ── */
@@ -178,6 +123,9 @@
 }
 
 .about-sectors-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   position: absolute;
   top: 0;
   right: 0;
@@ -236,12 +184,6 @@
   color: rgb(var(--fg-rgb) / 0.7);
 }
 
-.about-sector-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-}
-
 /* ── The practice ── */
 .about-team {
   padding-bottom: 120px;
@@ -261,6 +203,9 @@
 }
 
 .about-team-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   position: absolute;
   top: 0;
   right: 0;
@@ -350,21 +295,6 @@
   .about-numbers {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .about-story {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .about-story-plate,
-  .about-story-card {
-    grid-column: 1;
-    max-width: 100%;
-  }
-
-  .about-story-plate {
-    aspect-ratio: 2 / 1;
   }
 
   .about-sectors-grid {

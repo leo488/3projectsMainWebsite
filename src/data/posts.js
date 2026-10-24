@@ -16,7 +16,7 @@ export const POSTS = [
     read: '3 min',
     ground: 'var(--phase-discover)',
     ratio: '4 / 3',
-    image: null,
+    image: "/images/blog-pos-900.jpg",
     blocks: [
       ["p", "There is a strange kind of failure that happens in business."],
       ["p", "Everything works."],
@@ -85,7 +85,7 @@ export const POSTS = [
     read: '3 min',
     ground: 'var(--phase-design)',
     ratio: '4 / 5',
-    image: null,
+    image: "/images/blog-laptop-900.jpg",
     blocks: [
       ["p", "Everywhere you look, there is another app."],
       ["p", "An app for this."],
@@ -163,7 +163,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--phase-deliver)',
     ratio: '4 / 5',
-    image: null,
+    image: "/images/blog-conversation-900.jpg",
     blocks: [
       ["p", "If you want to understand an organisation, don’t start with the boardroom."],
       ["p", "Go where the work happens."],
@@ -235,7 +235,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--phase-sustain)',
     ratio: '4 / 3',
-    image: null,
+    image: "/images/blog-team-1024.jpg",
     blocks: [
       ["p", "Growth is usually celebrated."],
       ["p", "More customers."],

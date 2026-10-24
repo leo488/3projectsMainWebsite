@@ -4,3 +4,10 @@
 main {
   position: relative;
 }
+
+/* The pattern band stacked on the CPA band, with white space above and
+   below to set the pair apart from the dark sections either side. */
+.home-pair {
+  padding: var(--section-y) 0;
+  background: var(--surface);
+}

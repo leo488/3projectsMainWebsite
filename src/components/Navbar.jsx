@@ -117,7 +117,7 @@ export default function Navbar({ theme = 'light' }) {
           href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
           className="btn-start btn-gradient"
         >
-          Start a Conversation
+          Start a conversation
         </a>
       </div>
     </nav>

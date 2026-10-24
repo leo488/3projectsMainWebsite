@@ -49,6 +49,12 @@
   transform: scale(1.03);
 }
 
+.mega-feature-pattern {
+  position: absolute;
+  inset: 0;
+  background: #001A66 url('/images/pattern-wave-blue.svg') left top / 1200px 1440px no-repeat;
+}
+
 .mega-feature-caption {
   position: absolute;
   left: 0;

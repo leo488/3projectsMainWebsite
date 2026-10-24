@@ -1,28 +1,11 @@
-/* Three viewport-heights of travel, one pinned band: the page holds
-   while the states turn over, then releases. The band runs edge to
-   edge with square corners, so the hero card above stays the page's
-   only card. */
+/* The pattern band, stacked directly on the CPA band below it: the
+   same full width and the same 52/48 columns, so the copy and the
+   pattern line up with the CPA's copy and picture. */
 .featured {
-  position: relative;
-  height: 300vh;
-  background: var(--surface);
-}
-
-.featured-pin {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding-top: calc(var(--banner-h) + var(--nav-h));
-}
-
-.featured-card {
   display: grid;
-  grid-template-columns: 60.5% 39.5%;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
+  grid-template-columns: 52% 48%;
+  min-height: clamp(480px, 40vw, 640px);
+  color: var(--white);
   transition: background 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -32,7 +15,7 @@
    pushed to the bottom edge. */
 .featured-copy {
   display: grid;
-  padding: 56px 44px 64px var(--band-pad);
+  padding: 72px 44px 64px var(--band-pad);
 }
 
 .featured-state {
@@ -55,11 +38,7 @@
 }
 
 .featured-eyebrow {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--pale-blue);
   margin-bottom: 26px;
 }
 
@@ -81,31 +60,8 @@
   }
 }
 
-/* Progress through the states. */
-/* Sits on the band itself, under the copy. */
-.featured-dots {
-  position: absolute;
-  left: var(--band-pad);
-  bottom: 28px;
-  display: flex;
-  gap: 8px;
-  list-style: none;
-}
-
-.featured-dot {
-  width: 28px;
-  height: 3px;
-  border-radius: 2px;
-  background: rgb(255 255 255 / 0.28);
-  transition: background 0.4s ease;
-}
-
-.featured-dot.is-active {
-  background: var(--white);
-}
-
 .featured-headline {
-  font-size: clamp(26px, 2.65vw, 38px);
+  font-size: clamp(30px, 3.3vw, 52px);
   font-weight: 500;
   line-height: 1.24;
   letter-spacing: -0.025em;
@@ -115,8 +71,8 @@
 .featured-body {
   margin-top: auto;
   padding-top: 48px;
-  max-width: 440px;
-  font-size: 12.5px;
+  max-width: 460px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.72);
@@ -158,29 +114,13 @@
 }
 
 @media (max-width: 900px) {
-  /* Too little vertical room to pin comfortably — the states become a
-     plain stack of one card. */
   .featured {
-    height: auto;
-  }
-
-  .featured-dots {
-    display: none;
-  }
-
-  .featured-pin {
-    position: static;
-    height: auto;
-    padding: 0;
-  }
-
-  .featured-card {
     grid-template-columns: 1fr;
     min-height: 0;
   }
 
   .featured-copy {
-    padding: 32px 24px 36px;
+    padding: 48px var(--side-pad) 44px;
   }
 
   .featured-headline br {

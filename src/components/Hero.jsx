@@ -6,12 +6,12 @@ import { getProject } from '../data/projects'
 import { CLIENT_MARKS } from './ClientLogos'
 import './Hero.css'
 
-/* The hero is one full-width band in three parts: the copy, a
-   case-study picture, and a strip of brand pattern. It turns over on
-   its own, the way the feature band used to on scroll: each turn
-   changes the ground and pattern (Deep Carbon, Deep Enterprise,
-   Electric Cobalt, each with its kit pattern) and the case study.
-   The client marks sit under the band. */
+/* One centred line, a short subhead, two actions and a grey row of
+   client marks, then a full-width band in three parts: the case study
+   in play with its numbers, its picture, and a strip of brand pattern.
+   The band turns over on its own: each turn changes the ground and
+   pattern (Deep Carbon, Deep Enterprise, Electric Cobalt, each with
+   its kit pattern) and the case study. It holds while hovered. */
 const STATES = [
   { ground: 'var(--carbon)',       pattern: 'wave-multi' },
   { ground: 'var(--section-blue)', pattern: 'wave-blue' },
@@ -22,14 +22,14 @@ const SLIDES = [
   {
     slug: 'crunchies-inventory',
     line: 'One live view of stock across every outlet, warehouse and kitchen.',
-    image: '/images/hero-crunchies-1448.jpg',
-    small: '/images/hero-crunchies-900.jpg',
+    image: '/images/hero-pos-1536.jpg',
+    small: '/images/hero-pos-900.jpg',
   },
   {
     slug: 'myspotlyt',
     line: 'A live platform rebuilt for stability, with the features to grow it.',
-    image: '/images/hero-myspotlyt-1600.jpg',
-    small: '/images/hero-myspotlyt-900.jpg',
+    image: '/images/hero-apps-1536.jpg',
+    small: '/images/hero-apps-900.jpg',
   },
 ]
 
@@ -74,50 +74,66 @@ export default function Hero() {
 
   return (
     <section className="hero-section">
+      <div className="hero-headline-row">
+        <h1 className="hero-headline">
+          <span className="line-wrap">
+            <span className="line-inner">
+              We make brands{' '}
+              <MorphWord words={['Unstoppable', 'Adaptable', 'Decisive', 'Resilient', 'Relentless']} />
+            </span>
+          </span>
+        </h1>
+        <p className="hero-sub">
+          3Projects designs and builds the platforms behind growing brands,
+          from inventory systems to consumer apps.
+        </p>
+        <div className="hero-actions" ref={actionsRef}>
+          <a
+            href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
+            className="hero-cta btn-gradient"
+          >
+            Start a conversation
+            <svg width="22" height="12" viewBox="0 0 22 12" fill="none" aria-hidden="true">
+              <path d="M0 6h20M15 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
+          </a>
+          <Link href="/work" className="btn btn--black">See our case studies</Link>
+        </div>
+      </div>
+
+      <ul className="hero-logos" aria-label="Brands we have built for">
+        {ROW.map((logo, i) => (
+          <li
+            key={i}
+            className="hero-logo"
+            style={{ '--i': i }}
+            aria-hidden={i >= CLIENT_LOGOS.length ? 'true' : undefined}
+          >
+            <ClientMark logo={logo} />
+          </li>
+        ))}
+      </ul>
+
       <div
         className="hero-band"
         style={{ background: state.ground }}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        <div className="hero-copy">
-          <h1 className="hero-headline">
-            We make brands
-            <br />
-            <MorphWord words={['Unstoppable', 'Adaptable', 'Decisive', 'Resilient', 'Relentless']} />
-          </h1>
-          <p className="hero-sub">
-            3Projects designs and builds the platforms behind growing brands,
-            from inventory systems to consumer apps.
-          </p>
-          <div className="hero-actions" ref={actionsRef}>
-            <a
-              href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
-              className="hero-cta btn-gradient"
-            >
-              Start a conversation
-              <svg width="22" height="12" viewBox="0 0 22 12" fill="none" aria-hidden="true">
-                <path d="M0 6h20M15 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            </a>
-            <Link href="/work" className="btn btn--white">See our case studies</Link>
-          </div>
-
-          {project && (
-            <Link href={`/work/${slide.slug}`} className="hero-case" key={slide.slug}>
-              <p className="tiny hero-case-client">{project.client.split(' — ')[0]}</p>
-              <p className="hero-case-line">{slide.line}</p>
-              <dl className="hero-case-numbers">
-                {project.metrics.slice(0, 2).map((m) => (
-                  <div key={m.label} className="hero-case-number">
-                    <dt>{m.label}</dt>
-                    <dd>{m.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </Link>
-          )}
-        </div>
+        {project && (
+          <Link href={`/work/${slide.slug}`} className="hero-case" key={slide.slug}>
+            <p className="tiny hero-case-client">{project.client.split(' — ')[0]}</p>
+            <p className="hero-case-line">{slide.line}</p>
+            <dl className="hero-case-numbers">
+              {project.metrics.slice(0, 2).map((m) => (
+                <div key={m.label} className="hero-case-number">
+                  <dt>{m.label}</dt>
+                  <dd>{m.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </Link>
+        )}
 
         <Link href={`/work/${slide.slug}`} className="hero-visual" aria-label={project?.client}>
           {SLIDES.map((s) => (
@@ -125,7 +141,7 @@ export default function Hero() {
               key={s.slug}
               className={`hero-img${s === slide ? ' is-on' : ''}`}
               src={s.image}
-              srcSet={`${s.small} 900w, ${s.image} 1600w`}
+              srcSet={`${s.small} 900w, ${s.image} 1536w`}
               sizes="(max-width: 900px) 100vw, 36vw"
               alt=""
             />
@@ -141,18 +157,6 @@ export default function Hero() {
           ))}
         </div>
       </div>
-
-      <ul className="hero-logos" aria-label="Brands we have built for">
-        {ROW.map((logo, i) => (
-          <li
-            key={i}
-            className="hero-logo"
-            aria-hidden={i >= CLIENT_LOGOS.length ? 'true' : undefined}
-          >
-            <ClientMark logo={logo} />
-          </li>
-        ))}
-      </ul>
     </section>
   )
 }

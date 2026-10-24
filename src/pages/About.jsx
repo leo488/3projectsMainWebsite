@@ -1,17 +1,18 @@
 import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
+import Arrow from '../components/Arrow'
 import useReveal from '../components/useReveal'
 import { Link } from '../router'
 import { CONTACT_EMAIL, PHASES, INDUSTRIES } from '../data/site'
 import './About.css'
 
 /* Figures follow the placeholder convention already used by the home
-   page statistics band (XX, $XM+). Nothing here asserts a number the
+   page statistics band (XX, ₦XM+). Nothing here asserts a number the
    firm has not published. */
 const NUMBERS = [
   { value: '20XX', note: 'The year the practice was founded, and the operating model it was built to fix.' },
-  { value: 'XX+',  note: 'Strategists, architects, designers and engineers working as one team across six offices.' },
-  { value: '$XM+', note: 'Operational efficiency released for the organisations we work with.' },
+  { value: 'XX+',  note: 'Strategists, architects, designers and engineers working as one team in Lagos.' },
+  { value: '₦XM+', note: 'Operational efficiency released for the organisations we work with.' },
   { value: 'XXM+', note: 'People touched daily by the systems our engagements leave behind.' },
 ]
 
@@ -19,16 +20,16 @@ const NUMBERS = [
    described by the disciplines it fields, not by a staff list we do
    not have. */
 const PRACTICE = [
-  { role: 'Transformation Director',   practice: 'Strategy',   base: 'London',    tags: ['Operating models', 'Board counsel'] },
-  { role: 'Operations Architect',      practice: 'Operations', base: 'New York',  tags: ['Critical paths', 'Throughput'] },
-  { role: 'Principal Systems Designer', practice: 'Design',     base: 'Remote, EU', tags: ['Service design', 'Interfaces'] },
-  { role: 'Engagement Manager',        practice: 'Operations', base: 'Singapore', tags: ['Delivery', 'Governance'] },
-  { role: 'Enterprise Analyst',        practice: 'Strategy',   base: 'Frankfurt', tags: ['Diagnostics', 'Modelling'] },
-  { role: 'Platform Engineer',         practice: 'Technology', base: 'Remote, EU', tags: ['Integration', 'Migration'] },
-  { role: 'Data & Instrumentation Lead', practice: 'Technology', base: 'London',   tags: ['Measurement', 'Telemetry'] },
-  { role: 'Process Designer',          practice: 'Design',     base: 'São Paulo', tags: ['Workflow', 'Adoption'] },
-  { role: 'Technology Strategist',     practice: 'Strategy',   base: 'Dubai',     tags: ['Architecture', 'Build vs buy'] },
-  { role: 'Change Lead',               practice: 'Operations', base: 'New York',  tags: ['Adoption', 'Enablement'] },
+  { role: 'Transformation Director',   practice: 'Strategy',   base: 'Lagos',    tags: ['Operating models', 'Board counsel'] },
+  { role: 'Operations Architect',      practice: 'Operations', base: 'Lagos',  tags: ['Critical paths', 'Throughput'] },
+  { role: 'Principal Systems Designer', practice: 'Design',     base: 'Lagos', tags: ['Service design', 'Interfaces'] },
+  { role: 'Engagement Manager',        practice: 'Operations', base: 'Lagos', tags: ['Delivery', 'Governance'] },
+  { role: 'Enterprise Analyst',        practice: 'Strategy',   base: 'Lagos', tags: ['Diagnostics', 'Modelling'] },
+  { role: 'Platform Engineer',         practice: 'Technology', base: 'Lagos', tags: ['Integration', 'Migration'] },
+  { role: 'Data & Instrumentation Lead', practice: 'Technology', base: 'Lagos',   tags: ['Measurement', 'Telemetry'] },
+  { role: 'Process Designer',          practice: 'Design',     base: 'Lagos', tags: ['Workflow', 'Adoption'] },
+  { role: 'Technology Strategist',     practice: 'Strategy',   base: 'Lagos',     tags: ['Architecture', 'Build vs buy'] },
+  { role: 'Change Lead',               practice: 'Operations', base: 'Lagos',  tags: ['Adoption', 'Enablement'] },
 ]
 
 export default function About() {
@@ -68,23 +69,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── Mark + story card ── */}
-      <section className="about-story">
-        <div className="about-story-plate" aria-hidden="true">
-          <span className="about-story-mark">3</span>
-        </div>
-        <div className="about-story-card">
-          <h2>How we got here</h2>
-          <p>
-            A practice built by operators, not by a consultancy template. Same
-            people, same table, a deeper remit each year.
-          </p>
-          <Link href="/work" className="about-story-btn">
-            Read the story <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-      </section>
-
       {/* ── Numbers ── */}
       <section className="about-numbers" ref={numbersRef}>
         <p className="tiny about-numbers-label">3Projects in numbers</p>
@@ -108,7 +92,7 @@ export default function About() {
           <h2 className="about-sectors-headline">
             We work where the operating model carries real weight.
           </h2>
-          <Link href="/work" className="about-sectors-btn">All work →</Link>
+          <Link href="/work" className="about-sectors-btn">All work <Arrow size={16} /></Link>
 
           <ul className="about-sectors-grid">
             {INDUSTRIES.map((industry) => (
@@ -121,10 +105,7 @@ export default function About() {
                 </p>
                 <ul className="about-sector-tags">
                   {PHASES.slice(0, 2).map((p) => (
-                    <li key={p.label} className="tiny">
-                      <span className="about-sector-dot" style={{ background: p.ground }} />
-                      {p.label}
-                    </li>
+                    <li key={p.label} className="tiny">{p.label}</li>
                   ))}
                 </ul>
               </li>
@@ -138,12 +119,12 @@ export default function About() {
         <p className="tiny about-label">The practice</p>
         <div className="about-team-main">
           <p className="about-team-copy">
-            Strategists, architects, designers and engineers working across
-            continents. What brings us together is not just what we do but how
+            Strategists, architects, designers and engineers working together
+            in Lagos. What brings us together is not just what we do but how
             we do it: through clarity, collaboration and curiosity. With craft,
             care, and a commitment to the work outlasting us.
           </p>
-          <Link href="/careers" className="about-team-btn">Careers →</Link>
+          <Link href="/careers" className="about-team-btn">Careers <Arrow size={16} /></Link>
         </div>
 
         <ul className="about-roster">
@@ -164,10 +145,10 @@ export default function About() {
       <section className="about-close">
         <h2>Let&rsquo;s explore what&rsquo;s next</h2>
         <a
-          href={`mailto:${CONTACT_EMAIL}?subject=Let%27s%20collaborate`}
+          href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
           className="about-close-btn btn-gradient"
         >
-          Let&rsquo;s collaborate
+          Start a conversation <Arrow />
         </a>
       </section>
 

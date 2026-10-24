@@ -29,6 +29,16 @@ export function navigate(href) {
   window.dispatchEvent(new PopStateEvent('popstate'))
 }
 
+// The full address of an in-app path, for sharing.
+export function absoluteUrl(path) {
+  return new URL(HASH ? `#${path}` : path, window.location.href).href
+}
+
+// What an <a href> should hold for an in-app path.
+export function hrefFor(path) {
+  return HASH && path.startsWith('/') ? `#${path}` : path
+}
+
 export function Link({ href, children, className, ...rest }) {
   const onClick = (e) => {
     // Let modified clicks behave like normal links.
@@ -39,7 +49,7 @@ export function Link({ href, children, className, ...rest }) {
   }
 
   return (
-    <a href={HASH && href.startsWith('/') ? `#${href}` : href} className={className} onClick={onClick} {...rest}>
+    <a href={hrefFor(href)} className={className} onClick={onClick} {...rest}>
       {children}
     </a>
   )
