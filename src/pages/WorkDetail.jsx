@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
 import { Link } from '../router'
-import PixelArt from '../components/PixelArt'
+import Arrow from '../components/Arrow'
 import PixelGlyph from '../components/PixelGlyph'
 import { PROJECTS, getProject } from '../data/projects'
 import './WorkDetail.css'
@@ -69,7 +69,10 @@ export default function WorkDetail({ slug }) {
     )
   }
 
-  const others = PROJECTS.filter((p) => p.slug !== project.slug).slice(0, 3)
+  // The next case study in the list, wrapping round to the first.
+  const next = PROJECTS.length > 1
+    ? PROJECTS[(PROJECTS.indexOf(project) + 1) % PROJECTS.length]
+    : null
 
   return (
     <div>
@@ -104,26 +107,16 @@ export default function WorkDetail({ slug }) {
         </dl>
       </header>
 
-      {/* ── The starting point, what happened, and the proof ── */}
+      {/* ── The starting point and what happened ── */}
       <section className="detail-story">
         <p className="tiny detail-story-eyebrow">The starting point</p>
         <p className="detail-lede">{project.intro}</p>
-        <div className="detail-story-grid">
-          {project.story && (
-            <div className="detail-story-copy">
-              <p className="tiny detail-story-label">What happened</p>
-              {project.story.map((para) => <p key={para}>{para}</p>)}
-            </div>
-          )}
-          <ul className="detail-proof">
-            {project.metrics.map((m) => (
-              <li key={m.label}>
-                <span className="detail-metric-value">{m.value}</span>
-                <span className="detail-metric-label">{m.label}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {project.story && (
+          <div className="detail-story-copy">
+            <p className="tiny detail-story-label">What happened</p>
+            {project.story.map((para) => <p key={para}>{para}</p>)}
+          </div>
+        )}
       </section>
 
       {/* ── Paired columns: text holds, visuals scroll ── */}
@@ -182,34 +175,31 @@ export default function WorkDetail({ slug }) {
         </div>
       </div>
 
-      {/* ── Close: Deep Carbon from here into the footer ── */}
-      <div className="detail-close">
+      {/* ── Close: where it stands and the numbers behind it, on Deep
+          Carbon so the page runs straight into the footer ── */}
+      <section className="detail-close">
+        <p className="tiny detail-outcome-eyebrow">Where it stands</p>
         {project.outcome && (
-          <section className="detail-outcome">
-            <p className="tiny detail-outcome-eyebrow">Where it stands</p>
+          <>
             <h2 className="detail-outcome-headline">{project.outcome.headline}</h2>
             <p className="detail-outcome-body">{project.outcome.body}</p>
-          </section>
+          </>
         )}
-
-        {/* ── Next projects ── */}
-        <section className="detail-next">
-          <p className="tiny detail-next-eyebrow">More work</p>
-          <ul className="detail-next-list">
-            {others.map((p) => (
-              <li key={p.slug}>
-                <Link href={`/work/${p.slug}`} className="detail-next-link">
-                  <span className="detail-next-plate">
-                    {p.art && <PixelArt name={p.art} className="detail-next-art" />}
-                  </span>
-                  <h3>{p.title}</h3>
-                  <span className="tiny">{p.tag}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </div>
+        <ul className="detail-proof">
+          {project.metrics.map((m) => (
+            <li key={m.label}>
+              <span className="detail-metric-value">{m.value}</span>
+              <span className="detail-metric-label">{m.label}</span>
+            </li>
+          ))}
+        </ul>
+        {next && (
+          <Link href={`/work/${next.slug}`} className="detail-next-link">
+            <span className="tiny">Next case study</span>
+            <span className="detail-next-title">{next.title} <Arrow size={18} /></span>
+          </Link>
+        )}
+      </section>
 
       <SiteFooter />
     </div>

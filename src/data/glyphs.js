@@ -15,6 +15,7 @@ export const GLYPHS = {
     '..BLLLLLLLLB....',
     '..BLLLLLLLLB....',
     '..BLLLLLLLLB....',
+    '..BLLLLLLLLB....',
     '...BLLLLLLB.....',
     '...BBLLLLBB.....',
     '.....BBBB.DD....',
@@ -22,7 +23,6 @@ export const GLYPHS = {
     '...........DDD..',
     '............DDD.',
     '.............DD.',
-    '................',
     '................',
   ],
 
