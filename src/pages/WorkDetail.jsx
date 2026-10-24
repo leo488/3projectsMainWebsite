@@ -192,7 +192,7 @@ export default function WorkDetail({ slug }) {
         </ul>
       </section>
 
-      <SiteFooter tone="dark" />
+      <SiteFooter />
     </div>
   )
 }

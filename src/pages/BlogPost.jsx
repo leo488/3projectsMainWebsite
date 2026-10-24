@@ -46,6 +46,12 @@ export default function BlogPost({ slug }) {
         <p className="post-meta tiny">{post.read} read</p>
       </header>
 
+      {post.image && (
+        <figure className="post-cover">
+          <img src={post.image} alt="" />
+        </figure>
+      )}
+
       <article className="post-body">
         {post.blocks.map(([kind, text], i) => {
           if (kind === 'h2') return <h2 key={i}>{text}</h2>
@@ -60,7 +66,9 @@ export default function BlogPost({ slug }) {
           {more.map((p) => (
             <li key={p.slug}>
               <Link href={`/blog/${p.slug}`} className="post-next-link">
-                <span className="post-next-plate" style={{ background: p.ground }} />
+                <span className="post-next-plate" style={{ background: p.ground }}>
+                  {p.image && <img src={p.image} alt="" loading="lazy" />}
+                </span>
                 <h3>{p.title}</h3>
                 <span className="tiny">{p.category} · {p.read}</span>
               </Link>

@@ -5,9 +5,9 @@ import CookieBanner from './CookieBanner'
 import './SiteFooter.css'
 
 /* Every page closes the same way, so the run lives in one place rather
-   than being repeated five times. The dark tone closes the case-study
-   pages, which run on a dark ground throughout. */
-export default function SiteFooter({ tone = 'light' }) {
+   than being repeated five times. It is all Deep Carbon by default; the
+   light tone is kept for any page that wants it. */
+export default function SiteFooter({ tone = 'dark' }) {
   return (
     <div className={`site-footer site-footer--${tone}`}>
       <Newsletter />

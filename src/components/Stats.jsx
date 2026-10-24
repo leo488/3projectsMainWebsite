@@ -1,11 +1,13 @@
 import { useEffect, useRef } from 'react'
 import './Stats.css'
 
+// Our own numbers, from the live case studies (src/data/projects.js).
+// The Crunchies figures are the projections in its case study.
 const STATS = [
-  { to: 10, suffix: 'M',  label: ['Operational Efficiency', 'Improvement'] },
-  { raw: '$XM+',          label: ['Operational Efficiency', 'Improvement'] },
-  { raw: 'XX',            label: ['Operational Efficiency', 'Improvement'] },
-  { to: 30, suffix: '%+', label: ['Operational Efficiency', 'Improvement'] },
+  { to: 30,   suffix: '×',  label: ['Revenue growth for', 'Myspotlyt since 2022'] },
+  { to: 5000, suffix: '',   label: ['Active users on a', 'platform we rebuilt'] },
+  { raw: '₦25M+',           label: ['Estimated value for', 'Crunchies (projected)'] },
+  { to: 100,  suffix: '%',  label: ['Inventory requests', 'made digital (projected)'] },
 ]
 
 function countUp(el, target, suffix, duration = 1600) {
@@ -13,7 +15,7 @@ function countUp(el, target, suffix, duration = 1600) {
   const tick = (now) => {
     const p = Math.min((now - start) / duration, 1)
     const eased = 1 - Math.pow(1 - p, 3)
-    el.textContent = `${Math.round(eased * target)}${suffix}`
+    el.textContent = `${Math.round(eased * target).toLocaleString('en-GB')}${suffix}`
     if (p < 1) requestAnimationFrame(tick)
   }
   requestAnimationFrame(tick)
@@ -36,7 +38,7 @@ export default function Stats() {
         const el = numRefs.current[i]
         if (!el || s.to == null) return
         if (reduced) {
-          el.textContent = `${s.to}${s.suffix}`
+          el.textContent = `${s.to.toLocaleString('en-GB')}${s.suffix}`
           return
         }
         setTimeout(() => countUp(el, s.to, s.suffix), i * 100 + 400)

@@ -141,7 +141,7 @@ export default function Work() {
         </ol>
       </section>
 
-      <SiteFooter tone="dark" />
+      <SiteFooter />
     </div>
   )
 }

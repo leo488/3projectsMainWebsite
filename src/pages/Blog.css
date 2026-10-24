@@ -113,7 +113,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: var(--ratio);
-  border-radius: 7px;
+  border-radius: var(--radius);
   overflow: hidden;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -280,7 +280,7 @@
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
-  border-radius: 7px;
+  border-radius: var(--radius);
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -339,4 +339,32 @@
   background: rgba(7, 11, 20, 0.72);
   color: var(--white);
   backdrop-filter: blur(6px);
+}
+
+/* The article's cover, set between the title band and the text. */
+.post-cover {
+  max-width: 1200px;
+  margin: clamp(32px, 4vw, 56px) auto 0;
+  padding: 0 var(--side-pad);
+}
+
+.post-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.post-next-plate {
+  position: relative;
+  overflow: hidden;
+}
+
+.post-next-plate img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

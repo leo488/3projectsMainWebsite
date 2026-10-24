@@ -33,8 +33,12 @@ function negative(cols, rows, cells) {
 
 /* One illustration from the pixel-grid system, drawn as SVG cells.
    When it scrolls into view the cells switch on in row order, which is
-   the only motion the system allows: whole cells, on the grid. */
-export default function PixelArt({ name, variant = 'A', title, className = '', sweep = 900 }) {
+   the only motion the system allows: whole cells, on the grid.
+
+   With `loop`, it builds the way the announcement banner's mark does:
+   the cells lay themselves down from the bottom up, hold, then clear
+   in the same order, and start again. */
+export default function PixelArt({ name, variant = 'A', title, className = '', sweep = 900, loop = false }) {
   const ref = useReveal('is-drawn', 0.2)
   const art = PIXEL_ART[name]
 
@@ -56,7 +60,7 @@ export default function PixelArt({ name, variant = 'A', title, className = '', s
   return (
     <svg
       ref={ref}
-      className={`pixel-art ${className}`}
+      className={`pixel-art${loop ? ' pixel-art--loop' : ''} ${className}`}
       viewBox={`0 0 ${w} ${h}`}
       shapeRendering="crispEdges"
       role={title ? 'img' : undefined}
@@ -71,7 +75,7 @@ export default function PixelArt({ name, variant = 'A', title, className = '', s
           width={CELL}
           height={CELL}
           fill={TONES[t]}
-          style={{ '--d': `${Math.round((r / rows) * sweep + ((c * 7) % 5) * 18)}ms` }}
+          style={{ '--d': `${Math.round(((loop ? rows - r : r) / rows) * sweep + ((c * 7) % 5) * 18)}ms` }}
         />
       ))}
     </svg>

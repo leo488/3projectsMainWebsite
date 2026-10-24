@@ -151,7 +151,7 @@
 .btn-start {
   font-size: 14px;
   font-weight: 600;
-  padding: 13px 26px;
+  padding: 10px 22px;
   transition:
     opacity   0.45s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);

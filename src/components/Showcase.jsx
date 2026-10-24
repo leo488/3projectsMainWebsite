@@ -5,26 +5,28 @@ import './Showcase.css'
 
 /* What a brand can have built, shown as demos in the pixel style rather
    than as past work (the hero already leads with the case studies).
-   Each card is a kind of product, drawn and described plainly. */
+   Each card is a kind of product, drawn in perspective and built cell
+   by cell in the announcement banner's colours, with its tags below. */
 const DEMOS = [
   {
     art: 'pos-terminal',
     kind: 'Operations platforms',
     title: 'Inventory, ordering and stock control that every outlet, warehouse and kitchen runs on.',
-    points: ['Live stock across locations', 'Digital requests and approvals', 'ERP and POS integration'],
+    tags: ['Live stock', 'Approvals', 'ERP + POS'],
   },
   {
     art: 'hand-phone',
     kind: 'Consumer apps',
     title: 'Mobile products your customers come back to, from sign-up through to payment.',
-    points: ['Accounts and onboarding', 'Payments and rewards', 'Built to scale with demand'],
+    tags: ['Onboarding', 'Payments', 'Rewards'],
+    // The arm runs in from the card's edge rather than stopping short of it.
+    edge: true,
   },
   {
-    art: 'platform',
+    art: 'laptop-dashboard',
     kind: 'Dashboards and data',
     title: 'One live view of the business, built on the systems you already run.',
-    points: ['Real-time reporting', 'Alerts on what needs action', 'One source of truth'],
-    wide: true,
+    tags: ['Real-time', 'Alerts', 'Reporting'],
   },
 ]
 
@@ -51,19 +53,19 @@ export default function Showcase() {
         {DEMOS.map((d, i) => (
           <li key={d.kind} className="showcase-item" style={{ '--i': i }}>
             <div className="showcase-card">
-              <div className={`showcase-visual${d.wide ? ' showcase-visual--wide' : ''}`}>
+              <div className="showcase-visual">
                 <PixelArt
                   name={d.art}
-                  variant={d.wide ? 'B' : 'A'}
-                  className={`showcase-art${d.wide ? ' showcase-art--wide' : ''}`}
-                  sweep={1100}
+                  className={`showcase-art showcase-art--${d.art}${d.edge ? ' showcase-art--edge' : ''}`}
+                  sweep={1800}
+                  loop
                 />
               </div>
               <div className="showcase-copy">
                 <p className="tiny showcase-client">{d.kind}</p>
                 <h3 className="showcase-title">{d.title}</h3>
-                <ul className="showcase-points">
-                  {d.points.map((pt) => <li key={pt}>{pt}</li>)}
+                <ul className="showcase-tags">
+                  {d.tags.map((t) => <li key={t} className="tiny">{t}</li>)}
                 </ul>
               </div>
             </div>

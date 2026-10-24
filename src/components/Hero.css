@@ -75,8 +75,8 @@
 
 /* Same pill as the navbar's, with the arrow Persona's carries. */
 .hero-cta {
-  gap: 18px;
-  padding: 17px 28px;
+  gap: 16px;
+  padding: 12px 24px;
   font-size: 16px;
   font-weight: 500;
 }

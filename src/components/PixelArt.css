@@ -20,7 +20,21 @@
   to { opacity: 1; }
 }
 
+/* The banner mark's cycle: each cell is on for two thirds of it, so
+   the art builds, holds, then clears in the order it arrived. */
+.pixel-art--loop.is-drawn rect {
+  animation: px-build 6s steps(1, end) infinite;
+  animation-delay: var(--d);
+}
+
+@keyframes px-build {
+  0%   { opacity: 1; }
+  66%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pixel-art rect { opacity: 1; }
-  .pixel-art.is-drawn rect { animation: none; }
+  .pixel-art.is-drawn rect,
+  .pixel-art--loop.is-drawn rect { animation: none; }
 }

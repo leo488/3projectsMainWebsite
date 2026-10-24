@@ -36,7 +36,7 @@
   align-self: flex-start;
   margin-top: auto;
   padding: 10px 20px;
-  border-radius: var(--radius);
+  border-radius: 100px;
   background: var(--surface);
   color: var(--fg);
   font-size: 12px;

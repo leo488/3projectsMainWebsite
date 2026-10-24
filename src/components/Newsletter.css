@@ -85,7 +85,7 @@
   flex: none;
   padding: 11px 22px;
   border: 0;
-  border-radius: var(--radius);
+  border-radius: 100px;
   background: var(--surface);
   color: var(--fg);
   font-family: 'Manrope', sans-serif;
