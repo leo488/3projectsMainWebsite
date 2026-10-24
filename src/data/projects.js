@@ -252,8 +252,8 @@ export const PROJECTS = [
     ratio: '4 / 5',
     services: ['NestJS backend', 'Vite + Express frontend', 'MongoDB'],
     metrics: [
-      { value: '₦3M+',  label: 'Revenue by 2026, from ₦100K+ in 2022' },
-      { value: '<5,000', label: 'Active user base' },
+      { value: '30×',   label: 'Revenue growth since 2022, to ₦3M+' },
+      { value: '5,000', label: 'Active user base' },
     ],
     intro:
       'Myspotlyt was already live when 3Projects came in. The platform lacked stability, was not fully user friendly and was missing features, with a user base between zero and five thousand.',

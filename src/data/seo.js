@@ -112,7 +112,6 @@ export function getSeo(rawPath) {
           '@type': 'Article',
           headline: post.title,
           description: post.excerpt,
-          datePublished: post.date,
           author: { '@type': 'Organization', name: SITE_NAME },
           publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
           mainEntityOfPage: url,

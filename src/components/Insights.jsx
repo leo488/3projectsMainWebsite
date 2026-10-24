@@ -1,6 +1,6 @@
 import useReveal from './useReveal'
 import { Link } from '../router'
-import { POSTS, formatDate } from '../data/posts'
+import { POSTS } from '../data/posts'
 import { getProject } from '../data/projects'
 import './Insights.css'
 
@@ -57,7 +57,7 @@ export default function Insights() {
               <p className="tiny insights-label">Blog post</p>
               <h3 className="insights-title">{lead.title}</h3>
               <p className="insights-excerpt">{lead.excerpt}</p>
-              <p className="insights-meta">{formatDate(lead.date)} · {lead.read}</p>
+              <p className="insights-meta">{lead.category} · {lead.read}</p>
             </div>
           </Link>
         </li>

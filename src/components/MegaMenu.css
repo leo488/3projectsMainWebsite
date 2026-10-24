@@ -2,7 +2,7 @@
    opacity so it is genuinely out of the tab order when closed. */
 .mega {
   position: fixed;
-  top: var(--nav-h);
+  top: calc(var(--nav-h) + var(--banner-h));
   left: 0;
   right: 0;
   z-index: 99;

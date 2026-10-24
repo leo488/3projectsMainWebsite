@@ -45,7 +45,7 @@
 
 .brand-tabs-sticky {
   position: sticky;
-  top: calc(var(--nav-h) + 48px);
+  top: calc(var(--nav-h) + var(--banner-h) + 48px);
   padding: 64px 40px 64px 0;
 }
 
@@ -486,7 +486,7 @@
 
   .brand-tabs-sticky {
     position: sticky;
-    top: var(--nav-h);
+    top: calc(var(--nav-h) + var(--banner-h));
     z-index: 5;
     padding: 20px 0;
     background: var(--white);

@@ -1,8 +1,20 @@
 import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
 import { Link } from '../router'
-import { POSTS, getPost, formatDate } from '../data/posts'
+import { POSTS, getPost } from '../data/posts'
 import './Blog.css'
+
+/* Paragraph text with **bold** runs and the author's own line breaks. */
+function Inline({ text }) {
+  return text.split('\n').map((line, i) => (
+    <span key={i}>
+      {i > 0 && <br />}
+      {line.split(/\*\*(.+?)\*\*/).map((part, j) =>
+        j % 2 ? <strong key={j}>{part}</strong> : part,
+      )}
+    </span>
+  ))
+}
 
 export default function BlogPost({ slug }) {
   const post = getPost(slug)
@@ -31,18 +43,15 @@ export default function BlogPost({ slug }) {
         <Link href="/blog" className="tiny post-back">← All insights</Link>
         <p className="tiny post-category">{post.category}</p>
         <h1 className="post-title">{post.title}</h1>
-        <p className="post-meta tiny">{formatDate(post.date)} · {post.read} read</p>
+        <p className="post-meta tiny">{post.read} read</p>
       </header>
 
-      <p className="post-lede">{post.excerpt}</p>
-
       <article className="post-body">
-        {post.sections.map((s) => (
-          <section key={s.heading} className="post-section">
-            <h2>{s.heading}</h2>
-            <p>{s.body}</p>
-          </section>
-        ))}
+        {post.blocks.map(([kind, text], i) => {
+          if (kind === 'h2') return <h2 key={i}>{text}</h2>
+          if (kind === 'pull') return <p key={i} className="post-pull">{text}</p>
+          return <p key={i}><Inline text={text} /></p>
+        })}
       </article>
 
       <section className="post-next">

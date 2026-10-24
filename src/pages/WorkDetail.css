@@ -115,7 +115,7 @@
 
 .detail-text-sticky {
   position: sticky;
-  top: calc(var(--nav-h) + 72px);
+  top: calc(var(--nav-h) + var(--banner-h) + 72px);
   padding-right: 48px;
 }
 

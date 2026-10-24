@@ -8,6 +8,7 @@
 .hero-section {
   --hero-ground: #F5F5F5;
   --hero-box: #D6D8DC;
+  --card-r: 4px;
   background: var(--hero-ground);
   padding-top: var(--nav-h);
   overflow: hidden;
@@ -203,11 +204,11 @@
 /* The neighbours are cut by the screen edge; only their inner corners
    are rounded, as in the reference. */
 .hero-card--left .hero-card-visual {
-  border-radius: 0 28px 28px 0;
+  border-radius: 0 var(--card-r) var(--card-r) 0;
 }
 
 .hero-card--right .hero-card-visual {
-  border-radius: 28px 0 0 28px;
+  border-radius: var(--card-r) 0 0 var(--card-r);
 }
 
 .hero-card-link {
@@ -220,7 +221,7 @@
   position: relative;
   aspect-ratio: 1376 / 620;
   overflow: hidden;
-  border-radius: 28px 28px 0 0;
+  border-radius: var(--card-r);
   background: var(--hero-box);
 }
 
@@ -272,7 +273,7 @@
   top: 22px;
   left: 22px;
   padding: 8px 12px;
-  border-radius: 999px;
+  border-radius: 2px;
   background: var(--white);
   color: var(--carbon);
 }
@@ -288,8 +289,9 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
   gap: 24px 48px;
+  margin-top: 6px;
   padding: clamp(24px, 2.6vw, 40px);
-  border-radius: 0 0 28px 28px;
+  border-radius: var(--card-r);
   background: var(--night);
   color: var(--white);
 }
@@ -426,15 +428,12 @@
 
   .hero-card-visual {
     aspect-ratio: 4 / 3;
-    border-radius: 18px 18px 0 0;
   }
 
-  .hero-card-stats {
-    border-radius: 0 0 18px 18px;
+  .hero-card--left .hero-card-visual,
+  .hero-card--right .hero-card-visual {
+    height: 220px;
   }
-
-  .hero-card--left .hero-card-visual { border-radius: 0 14px 14px 0; height: 220px; }
-  .hero-card--right .hero-card-visual { border-radius: 14px 0 0 14px; height: 220px; }
 
   .hero-card-number dd {
     font-size: 24px;

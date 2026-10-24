@@ -1,0 +1,94 @@
+.announce {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
+  height: var(--banner-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 var(--side-pad);
+  background: #D9E3FF;
+  color: var(--ink);
+  font-size: 15px;
+  text-align: center;
+}
+
+[data-theme='dark'] .announce {
+  background: var(--brand-blue);
+  color: var(--white);
+}
+
+.announce-text strong {
+  font-weight: 600;
+}
+
+.announce-link {
+  color: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.announce-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Four cells set down one after another, then cleared and set again:
+   the site under construction, in the brand's own grid. */
+.announce-cells {
+  display: grid;
+  grid-template-columns: repeat(2, 7px);
+  gap: 2px;
+  flex: none;
+}
+
+.announce-cells i {
+  width: 7px;
+  height: 7px;
+  background: var(--px-body);
+  opacity: 0;
+  animation: announceCell 2.4s steps(1, end) infinite;
+}
+
+[data-theme='dark'] .announce-cells i {
+  background: var(--px-light);
+}
+
+.announce-cells i:nth-child(2) { animation-delay: 0.3s; }
+.announce-cells i:nth-child(4) { animation-delay: 0.6s; }
+.announce-cells i:nth-child(3) { animation-delay: 0.9s; }
+
+@keyframes announceCell {
+  0%   { opacity: 0; }
+  12%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announce-cells i {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .announce {
+    font-size: 13px;
+    gap: 10px;
+    text-align: left;
+  }
+
+  .announce-more {
+    display: none;
+  }
+
+  .announce-text::after {
+    content: ' The new site is going up live.';
+  }
+}

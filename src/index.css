@@ -90,12 +90,14 @@
 
   --side-pad: 24px;
   --nav-h:    84px;
+  --banner-h: 44px;   /* the announcement strip above the navbar */
 }
 
 @media (max-width: 900px) {
   :root {
     --side-pad: 20px;
     --nav-h:    64px;
+    --banner-h: 52px;
   }
 }
 
@@ -103,6 +105,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* The announcement strip and the navbar are both fixed; the page starts
+   below the strip and every section already clears the navbar. */
+body {
+  padding-top: var(--banner-h);
 }
 
 html, body {

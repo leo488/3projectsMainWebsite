@@ -3,12 +3,12 @@ import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
 import useReveal from '../components/useReveal'
 import { Link } from '../router'
-import { POSTS, POST_CATEGORIES, formatDate } from '../data/posts'
+import { POSTS, POST_CATEGORIES } from '../data/posts'
 import './Blog.css'
 
 export default function Blog() {
   const [active, setActive] = useState('All')
-  const gridRef = useReveal('is-visible')
+  const gridRef = useReveal('is-visible', 0)
 
   const shown = active === 'All'
     ? POSTS
@@ -65,7 +65,7 @@ export default function Blog() {
                   </div>
                   <div className="blog-card-body">
                     <p className="tiny blog-card-meta">
-                      {formatDate(p.date)} · {p.read}
+                      {p.read} read
                     </p>
                     <h2 className="blog-card-title">{p.title}</h2>
                     <p className="blog-card-excerpt">{p.excerpt}</p>

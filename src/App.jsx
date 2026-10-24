@@ -21,6 +21,7 @@ import { useRoute } from './router'
 import { LEGAL_PAGES } from './data/legal'
 import useSeo       from './components/useSeo'
 import ThemeToggle  from './components/ThemeToggle'
+import Announcement from './components/Announcement'
 import './App.css'
 
 const LEGAL_PATHS = Object.keys(LEGAL_PAGES).map((k) => `/${k}`)
@@ -69,6 +70,7 @@ export default function App() {
 
   return (
     <>
+      <Announcement />
       <main>{page}</main>
       <ThemeToggle />
     </>
