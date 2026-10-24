@@ -8,15 +8,14 @@
 .hero-section {
   --hero-ground: #F5F5F5;
   --hero-box: #D6D8DC;
-  --card-r: 24px;
   background: var(--hero-ground);
   padding-top: var(--nav-h);
   overflow: hidden;
 }
 
 [data-theme='dark'] .hero-section {
-  --hero-ground: #000000;
-  --hero-box: #1C2333;
+  --hero-ground: var(--carbon);
+  --hero-box: rgb(255 255 255 / 0.08);
 }
 
 .hero-headline-row {
@@ -180,84 +179,45 @@
 }
 
 /* ─────────────────────────────
-   Carousel — centre card full size, neighbours lower and faded
+   Case-study card — the full container width, like the feature card
+   below, so the two read as one system.
 ───────────────────────────── */
-.hero-carousel {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr min(69vw, 1376px) 1fr;
-  gap: clamp(16px, 2vw, 30px);
-  align-items: start;
+.hero-stage {
+  padding: 0 var(--side-pad) clamp(56px, 6vw, 88px);
   opacity: 0;
   animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
 }
 
 .hero-card {
-  display: block;
-  min-width: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  font: inherit;
-  color: inherit;
-  text-align: left;
-}
-
-.hero-card--center {
   animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-card--left,
-.hero-card--right {
-  margin-top: 96px;
-  opacity: 0.5;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-
-.hero-card--left:hover,
-.hero-card--right:hover {
-  opacity: 0.8;
-}
-
-/* The neighbours are cut by the screen edge; only their inner corners
-   are rounded, as in the reference. */
-.hero-card--left .hero-card-visual {
-  border-radius: 0 var(--card-r) var(--card-r) 0;
-}
-
-.hero-card--right .hero-card-visual {
-  border-radius: var(--card-r) 0 0 var(--card-r);
-}
-
 .hero-card-link {
-  display: block;
-  color: inherit;
+  display: grid;
+  grid-template-columns: 60.5% 39.5%;
+  height: clamp(380px, 32vw, 620px);
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--carbon);
+  color: var(--white);
   text-decoration: none;
 }
 
 .hero-card-visual {
   position: relative;
-  aspect-ratio: 2.15 / 1;
+  min-height: 0;
   overflow: hidden;
-  border-radius: var(--card-r);
   background: var(--hero-box);
-}
-
-.hero-card--left .hero-card-visual,
-.hero-card--right .hero-card-visual {
-  aspect-ratio: auto;
-  height: clamp(200px, 22vw, 420px);
 }
 
 /* A placeholder box builds out of the grid: it stays empty while the
    cells assemble, then the solid grey takes over. */
-.hero-card--center .hero-card-visual.is-placeholder {
+.hero-card-visual.is-placeholder {
   background: transparent;
   transition: background 0.35s ease;
 }
 
-.hero-card--center .hero-card-visual.is-placeholder:has(.hero-card-canvas[data-settled='true']) {
+.hero-card-visual.is-placeholder:has(.hero-card-canvas[data-settled='true']) {
   background: var(--hero-box);
 }
 
@@ -290,22 +250,19 @@
   pointer-events: none;
 }
 
-/* The box under the picture that carries the numbers. */
+/* The panel beside the picture: the story at the top, the numbers
+   underneath. Same padding as the feature card's copy. */
 .hero-card-stats {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 24px 48px;
-  /* Set straight on the hero ground, no box: the numbers read as the
-     caption to the picture above. */
-  margin-top: 28px;
-  padding: 0 4px;
-  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 44px 44px 48px;
 }
 
 .hero-card-head {
   display: grid;
-  gap: 10px;
+  gap: 16px;
 }
 
 .hero-card-client {
@@ -313,32 +270,38 @@
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--cta-blue);
+  color: var(--sky);
 }
 
 .hero-card-line {
-  max-width: 30ch;
-  font-size: clamp(20px, 1.8vw, 28px);
+  max-width: 22ch;
+  font-size: clamp(22px, 2vw, 32px);
+  font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
 .hero-card-numbers {
   display: grid;
-  grid-template-columns: repeat(2, minmax(150px, auto));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
 }
 
 .hero-card-number {
   display: flex;
   flex-direction: column-reverse;
-  gap: 8px;
+  gap: 10px;
   padding: 0 20px;
-  border-left: 1px solid rgb(var(--fg-rgb) / 0.16);
+  border-left: 1px solid rgb(255 255 255 / 0.16);
+}
+
+.hero-card-number:first-child {
+  padding-left: 0;
+  border-left: 0;
 }
 
 .hero-card-number dd {
-  font-size: clamp(28px, 2.8vw, 46px);
+  font-size: clamp(34px, 3.6vw, 60px);
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -346,30 +309,10 @@
 }
 
 .hero-card-number dt {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 1.4;
-  color: rgb(var(--fg-rgb) / 0.6);
-}
-
-.hero-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding: 28px 0 clamp(56px, 6vw, 88px);
-}
-
-.hero-dot {
-  width: 28px;
-  height: 3px;
-  padding: 0;
-  border: 0;
-  border-radius: 2px;
-  background: rgb(var(--fg-rgb) / 0.2);
-  cursor: pointer;
-}
-
-.hero-dot.is-active {
-  background: var(--fg);
+  color: rgb(255 255 255 / 0.68);
 }
 
 /* ─────────────────────────────
@@ -399,14 +342,27 @@
     border-left: 0;
   }
 
-  .hero-card-stats {
-    grid-template-columns: 1fr;
-    align-items: start;
+  .hero-card-link {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .hero-card-number:first-child {
-    padding-left: 0;
-    border-left: 0;
+  .hero-card-stats {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-card-link {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .hero-card-visual {
+    aspect-ratio: 4 / 3;
+  }
+
+  .hero-card-stats {
+    padding: 28px 24px 32px;
   }
 }
 
@@ -419,31 +375,9 @@
     white-space: normal;
   }
 
-  .hero-carousel {
-    grid-template-columns: 20px minmax(0, 1fr) 20px;
-    gap: 10px;
-  }
-
-  .hero-card--left,
-  .hero-card--right {
-    margin-top: 48px;
-  }
-
-  .hero-card-visual {
-    aspect-ratio: 4 / 3;
-  }
-
-  .hero-card--left .hero-card-visual,
-  .hero-card--right .hero-card-visual {
-    height: 220px;
-  }
-
   .hero-card-number dd {
-    font-size: 24px;
-  }
-
-  .hero-card-numbers {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    font-size: 26px;
+    white-space: normal;
   }
 
   .hero-logo {
@@ -464,4 +398,8 @@
     opacity: 1;
     animation: none;
   }
+}
+
+[data-theme='dark'] .hero-card-link {
+  background: var(--night-raise);
 }

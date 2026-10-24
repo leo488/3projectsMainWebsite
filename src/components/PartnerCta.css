@@ -36,7 +36,7 @@
   align-self: flex-start;
   margin-top: auto;
   padding: 10px 20px;
-  border-radius: 100px;
+  border-radius: var(--radius);
   background: var(--surface);
   color: var(--fg);
   font-size: 12px;
@@ -58,23 +58,10 @@
   background: rgba(255, 255, 255, 0.86);
 }
 
+/* The brand kit's `grid-fine` pattern: 6px Electric Cobalt squares on
+   a 12px pitch on white, tiled at its native size, full bleed. */
 .partner-right {
-  position: relative;
-  background: var(--section-blue);
-}
-
-/* The grid sits inset from all four edges so it reads as living inside
-   the panel rather than being cropped by it. A percentage inset would
-   resolve against width for the sides and height for the top and
-   bottom, giving four different margins — a viewport unit keeps all
-   four equal. */
-.partner-grid {
-  position: absolute;
-  inset: clamp(32px, 4vw, 72px);
-}
-
-.partner-grid svg {
-  display: block;
+  background: #FFFFFF url('/images/pattern-grid-fine.svg') 0 0 / 24px 24px repeat;
 }
 
 @media (max-width: 900px) {

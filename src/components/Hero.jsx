@@ -7,14 +7,13 @@ import { getProject } from '../data/projects'
 import { CLIENT_MARKS } from './ClientLogos'
 import './Hero.css'
 
-/* Laid out after Persona's hero: one centred line, a short subhead, two
-   actions, a grey row of client marks, then a large centre card with
-   the neighbouring cards peeking in at the edges. Each card carries its
-   numbers in a box underneath.
+/* One centred line, a short subhead, two actions and a grey row of
+   client marks, then one case-study card as wide as the feature card
+   below it: the picture on the left, and a Deep Carbon panel on the
+   right with the story at the top and its numbers underneath. The
+   cards turn over on their own and hold while hovered.
 
-   A slide without an `image` shows a grey box in its place. Each image
-   is cropped to the card's 16:9 frame in the file itself, so the pixel
-   assembly and the still land on the same framing. */
+   A slide without an `image` shows a grey box in its place. */
 const PLACEHOLDER = '/images/placeholder-gray.png'
 
 const SLIDES = [
@@ -42,44 +41,26 @@ function ClientMark({ logo }) {
   return Mark ? <Mark /> : <span className="hero-logo-word">{logo.name}</span>
 }
 
-function Card({ slide, position, onSelect }) {
+function Card({ slide }) {
   const project = getProject(slide.slug)
   if (!project) return null
   const src = slide.image || PLACEHOLDER
-  const isCenter = position === 'center'
-
-  const visual = (
-    <div className={`hero-card-visual${slide.image ? '' : ' is-placeholder'}`}>
-      {slide.image && (
-        <img
-          className="hero-card-img"
-          src={slide.image}
-          srcSet={slide.small ? `${slide.small} 900w, ${slide.image} 1600w` : undefined}
-          sizes="(max-width: 700px) 90vw, 69vw"
-          alt=""
-        />
-      )}
-      {isCenter && <HeroParticles className="hero-card-canvas" src={slide.small || src} />}
-    </div>
-  )
-
-  if (!isCenter) {
-    return (
-      <button
-        type="button"
-        className={`hero-card hero-card--${position}`}
-        onClick={onSelect}
-        aria-label={`Show ${project.client.split(' — ')[0]}`}
-      >
-        {visual}
-      </button>
-    )
-  }
 
   return (
-    <article className="hero-card hero-card--center">
+    <article className="hero-card">
       <Link href={`/work/${slide.slug}`} className="hero-card-link">
-        {visual}
+        <div className={`hero-card-visual${slide.image ? '' : ' is-placeholder'}`}>
+          {slide.image && (
+            <img
+              className="hero-card-img"
+              src={slide.image}
+              srcSet={slide.small ? `${slide.small} 900w, ${slide.image} 1600w` : undefined}
+              sizes="(max-width: 900px) 100vw, 60vw"
+              alt=""
+            />
+          )}
+          <HeroParticles className="hero-card-canvas" src={slide.small || src} />
+        </div>
         <div className="hero-card-stats">
           <div className="hero-card-head">
             <p className="hero-card-client">{project.client.split(' — ')[0]}</p>
@@ -102,7 +83,6 @@ function Card({ slide, position, onSelect }) {
 export default function Hero() {
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
-  const other = (current + 1) % SLIDES.length
 
   useEffect(() => {
     if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -161,27 +141,11 @@ export default function Hero() {
       </ul>
 
       <div
-        className="hero-carousel"
+        className="hero-stage"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        <Card key={`l-${other}`} slide={SLIDES[other]} position="left" onSelect={() => setCurrent(other)} />
-        <Card key={`c-${current}`} slide={SLIDES[current]} position="center" />
-        <Card key={`r-${other}`} slide={SLIDES[other]} position="right" onSelect={() => setCurrent(other)} />
-      </div>
-
-      <div className="hero-dots" role="tablist" aria-label="Case studies">
-        {SLIDES.map((s, i) => (
-          <button
-            key={s.slug}
-            type="button"
-            role="tab"
-            aria-selected={i === current}
-            aria-label={`Show ${getProject(s.slug)?.client.split(' — ')[0]}`}
-            className={`hero-dot${i === current ? ' is-active' : ''}`}
-            onClick={() => setCurrent(i)}
-          />
-        ))}
+        <Card key={current} slide={SLIDES[current]} />
       </div>
 
     </section>

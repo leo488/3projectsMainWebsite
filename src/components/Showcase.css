@@ -82,7 +82,7 @@
   justify-content: center;
   aspect-ratio: 4 / 5;
   max-width: 100%;
-  border-radius: 7px;
+  border-radius: var(--radius);
   background: var(--night-raise);
   overflow: hidden;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);

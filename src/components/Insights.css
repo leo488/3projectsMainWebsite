@@ -3,7 +3,7 @@
    home page: one lead story on the left, four smaller cards beside it.
 ───────────────────────────── */
 .insights {
-  background: #000;
+  background: var(--carbon);
   color: var(--white);
   padding: clamp(88px, 10vw, 150px) var(--side-pad);
 }
@@ -78,7 +78,7 @@
   aspect-ratio: 16 / 10;
   overflow: hidden;
   /* Grey stand-in until the article images are supplied. */
-  background: #2A303C;
+  background: rgb(255 255 255 / 0.08);
 }
 
 .insights-item--lead .insights-visual {

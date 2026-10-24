@@ -1,25 +1,28 @@
 import { useEffect, useRef, useState } from 'react'
 import './Featured.css'
 
-/* State 0 is the existing card, unchanged — ground, eyebrow, headline
-   and body all as they were. The two that follow are the slots this
-   section exists to carry: further ideas introduced in place, without
-   the reader leaving the section. */
+/* Three ideas introduced in place, without the reader leaving the
+   section. Each state sets the card's ground and which of the kit's
+   two wave patterns sits beside the copy: wave-blue on Deep
+   Enterprise, wave-multi (the full palette) on Deep Carbon. */
 const STATES = [
   {
     ground: 'var(--section-blue)',
+    pattern: 'wave-blue',
     eyebrow: 'Featured Transformation',
     headline: ['Turning Operational', 'Complexity into Competitive', 'Advantage.'],
     body: 'Every enterprise carries hidden constraints that slow the work and inflate its cost. 3Projects partners with enterprise leaders to find them, redesign how critical operations run, and put in the technology that turns the fix into measurable business value.',
   },
   {
-    ground: 'var(--phase-design)',
+    ground: 'var(--carbon)',
+    pattern: 'wave-multi',
     eyebrow: 'How we engage',
     headline: ['One team at the table,', 'from the first diagnostic', 'to the last handover.'],
     body: 'Strategy, design and delivery do not arrive as separate workstreams. The people who find the constraint are the people who redesign around it, which is why nothing is lost in translation between phases.',
   },
   {
-    ground: 'var(--carbon)',
+    ground: 'var(--section-blue)',
+    pattern: 'wave-blue',
     eyebrow: 'What we leave behind',
     headline: ['The engagement ends.', 'The operating model', 'keeps improving.'],
     body: 'Instrumentation, ownership and a review cadence stay with the teams running the work. We measure against the baseline captured before the first change, so the improvement can be argued with numbers.',
@@ -81,7 +84,16 @@ export default function Featured() {
             </h2>
             <p className="featured-body" key={`b-${index}`}>{state.body}</p>
           </div>
-          <div className="featured-pattern" role="presentation" />
+          {/* Both brand waves are stacked and cross-fade with the
+              state, so the pattern turns over with the ground. */}
+          <div className="featured-pattern" role="presentation">
+            {['wave-blue', 'wave-multi'].map((name) => (
+              <span
+                key={name}
+                className={`featured-wave featured-wave--${name}${state.pattern === name ? ' is-on' : ''}`}
+              />
+            ))}
+          </div>
         </div>
 
         <ol className="featured-dots" aria-hidden="true">
