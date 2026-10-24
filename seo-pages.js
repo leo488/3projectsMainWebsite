@@ -10,7 +10,7 @@ export default function seoPages() {
   let outDir = 'dist'
   return {
     name: 'seo-pages',
-    apply: 'build',
+    apply: () => process.env.SKIP_SEO_PAGES !== '1',
     configResolved(config) {
       outDir = config.build.outDir
     },

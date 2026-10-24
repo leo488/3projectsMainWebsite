@@ -25,3 +25,4 @@ dist-ssr
 
 # Full-resolution source art — derived, optimised copies are committed instead
 public/images/Picture*
+dist-preview

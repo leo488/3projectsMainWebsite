@@ -6,6 +6,12 @@ import { useEffect, useState, createContext, useContext } from 'react'
 
 const PathContext = createContext('/')
 
+// Preview builds (npm run build:preview) are hosted under a path the app
+// doesn't own, so they route on the URL hash instead of the pathname.
+const HASH = import.meta.env.VITE_HASH_ROUTES === '1'
+const currentPath = () =>
+  HASH ? window.location.hash.replace(/^#/, '') || '/' : window.location.pathname
+
 export function useRoute() {
   return useContext(PathContext)
 }
@@ -13,6 +19,10 @@ export function useRoute() {
 export function navigate(href) {
   if (href.startsWith('#') || href.startsWith('http') || href.includes('/#')) {
     window.location.href = href
+    return
+  }
+  if (HASH) {
+    window.location.hash = href
     return
   }
   window.history.pushState({}, '', href)
@@ -29,22 +39,23 @@ export function Link({ href, children, className, ...rest }) {
   }
 
   return (
-    <a href={href} className={className} onClick={onClick} {...rest}>
+    <a href={HASH && href.startsWith('/') ? `#${href}` : href} className={className} onClick={onClick} {...rest}>
       {children}
     </a>
   )
 }
 
 export function Router({ children }) {
-  const [path, setPath] = useState(() => window.location.pathname)
+  const [path, setPath] = useState(currentPath)
 
   useEffect(() => {
+    const event = HASH ? 'hashchange' : 'popstate'
     const onPop = () => {
-      setPath(window.location.pathname)
+      setPath(currentPath())
       window.scrollTo(0, 0)
     }
-    window.addEventListener('popstate', onPop)
-    return () => window.removeEventListener('popstate', onPop)
+    window.addEventListener(event, onPop)
+    return () => window.removeEventListener(event, onPop)
   }, [])
 
   return <PathContext.Provider value={path}>{children}</PathContext.Provider>
