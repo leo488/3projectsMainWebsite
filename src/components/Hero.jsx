@@ -1,20 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import MorphWord from './MorphWord'
-import HeroParticles from './HeroParticles'
 import { Link } from '../router'
 import { CONTACT_EMAIL, CLIENT_LOGOS } from '../data/site'
 import { getProject } from '../data/projects'
 import { CLIENT_MARKS } from './ClientLogos'
 import './Hero.css'
 
-/* One centred line, a short subhead, two actions and a grey row of
-   client marks, then one case-study card as wide as the feature card
-   below it: the picture on the left, and a Deep Carbon panel on the
-   right with the story at the top and its numbers underneath. The
-   cards turn over on their own and hold while hovered.
-
-   A slide without an `image` shows a grey box in its place. */
-const PLACEHOLDER = '/images/placeholder-gray.png'
+/* The hero is one full-width band in three parts: the copy, a
+   case-study picture, and a strip of brand pattern. It turns over on
+   its own, the way the feature band used to on scroll: each turn
+   changes the ground and pattern (Deep Carbon, Deep Enterprise,
+   Electric Cobalt, each with its kit pattern) and the case study.
+   The client marks sit under the band. */
+const STATES = [
+  { ground: 'var(--carbon)',       pattern: 'wave-multi' },
+  { ground: 'var(--section-blue)', pattern: 'wave-blue' },
+  { ground: 'var(--cta-blue)',     pattern: 'pixel-lines-blue' },
+]
 
 const SLIDES = [
   {
@@ -34,96 +36,109 @@ const SLIDES = [
 // The row holds six places, so the marks repeat to fill it.
 const ROW = Array.from({ length: 6 }, (_, i) => CLIENT_LOGOS[i % CLIENT_LOGOS.length])
 
-const SLIDE_INTERVAL = 7000
+const TURN = 6500
 
 function ClientMark({ logo }) {
   const Mark = CLIENT_MARKS[logo.mark]
   return Mark ? <Mark /> : <span className="hero-logo-word">{logo.name}</span>
 }
 
-function Card({ slide }) {
-  const project = getProject(slide.slug)
-  if (!project) return null
-  const src = slide.image || PLACEHOLDER
-
-  return (
-    <article className="hero-card">
-      <Link href={`/work/${slide.slug}`} className="hero-card-link">
-        <div className={`hero-card-visual${slide.image ? '' : ' is-placeholder'}`}>
-          {slide.image && (
-            <img
-              className="hero-card-img"
-              src={slide.image}
-              srcSet={slide.small ? `${slide.small} 900w, ${slide.image} 1600w` : undefined}
-              sizes="(max-width: 900px) 100vw, 60vw"
-              alt=""
-            />
-          )}
-          <HeroParticles className="hero-card-canvas" src={slide.small || src} />
-        </div>
-        <div className="hero-card-stats">
-          <div className="hero-card-head">
-            <p className="hero-card-client">{project.client.split(' — ')[0]}</p>
-            <p className="hero-card-line">{slide.line}</p>
-          </div>
-          <dl className="hero-card-numbers">
-            {project.metrics.slice(0, 2).map((m) => (
-              <div key={m.label} className="hero-card-number">
-                <dt>{m.label}</dt>
-                <dd>{m.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </Link>
-    </article>
-  )
-}
-
 export default function Hero() {
-  const [current, setCurrent] = useState(0)
+  const [tick, setTick] = useState(0)
   const [paused, setPaused] = useState(false)
+  const actionsRef = useRef(null)
+  const state = STATES[tick % STATES.length]
+  const slide = SLIDES[tick % SLIDES.length]
+  const project = getProject(slide.slug)
 
   useEffect(() => {
     if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const id = setInterval(() => setCurrent((i) => (i + 1) % SLIDES.length), SLIDE_INTERVAL)
+    const id = setInterval(() => setTick((t) => t + 1), TURN)
     return () => clearInterval(id)
   }, [paused])
 
+  // Only one animated Start a conversation on screen at a time: while
+  // the hero's is in view, the header's steps aside.
+  useEffect(() => {
+    const el = actionsRef.current
+    if (!el) return
+    const io = new IntersectionObserver(([entry]) => {
+      document.body.classList.toggle('cta-handoff', entry.isIntersecting)
+    })
+    io.observe(el)
+    return () => {
+      io.disconnect()
+      document.body.classList.remove('cta-handoff')
+    }
+  }, [])
+
   return (
     <section className="hero-section">
+      <div
+        className="hero-band"
+        style={{ background: state.ground }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <div className="hero-copy">
+          <h1 className="hero-headline">
+            We make brands
+            <br />
+            <MorphWord words={['Unstoppable', 'Adaptable', 'Decisive', 'Resilient', 'Relentless']} />
+          </h1>
+          <p className="hero-sub">
+            3Projects designs and builds the platforms behind growing brands,
+            from inventory systems to consumer apps.
+          </p>
+          <div className="hero-actions" ref={actionsRef}>
+            <a
+              href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
+              className="hero-cta btn-gradient"
+            >
+              Start a conversation
+              <svg width="22" height="12" viewBox="0 0 22 12" fill="none" aria-hidden="true">
+                <path d="M0 6h20M15 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+            </a>
+            <Link href="/work" className="btn btn--white">See our case studies</Link>
+          </div>
 
-      <div className="hero-headline-row">
-        <h1 className="hero-headline">
-          <span className="line-wrap">
-            <span className="line-inner line-1">
-              We make brands{' '}
-              <MorphWord
-                words={['Unstoppable', 'Adaptable', 'Decisive', 'Resilient', 'Relentless']}
-              />
-            </span>
-          </span>
-        </h1>
-        <p className="hero-sub">
-          3Projects designs and builds the platforms behind growing brands,
-          from inventory systems to consumer apps.
-        </p>
-        <div className="hero-actions">
-          <a
-            href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
-            className="hero-cta btn-gradient"
-          >
-            Start a conversation
-            <svg width="22" height="12" viewBox="0 0 22 12" fill="none" aria-hidden="true">
-              <path d="M0 6h20M15 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" />
-            </svg>
-          </a>
-          <Link href="/work" className="hero-view-link">
-            See our case studies
-            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true">
-              <path d="M1.5 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" />
-            </svg>
-          </Link>
+          {project && (
+            <Link href={`/work/${slide.slug}`} className="hero-case" key={slide.slug}>
+              <p className="tiny hero-case-client">{project.client.split(' — ')[0]}</p>
+              <p className="hero-case-line">{slide.line}</p>
+              <dl className="hero-case-numbers">
+                {project.metrics.slice(0, 2).map((m) => (
+                  <div key={m.label} className="hero-case-number">
+                    <dt>{m.label}</dt>
+                    <dd>{m.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Link>
+          )}
+        </div>
+
+        <Link href={`/work/${slide.slug}`} className="hero-visual" aria-label={project?.client}>
+          {SLIDES.map((s) => (
+            <img
+              key={s.slug}
+              className={`hero-img${s === slide ? ' is-on' : ''}`}
+              src={s.image}
+              srcSet={`${s.small} 900w, ${s.image} 1600w`}
+              sizes="(max-width: 900px) 100vw, 36vw"
+              alt=""
+            />
+          ))}
+        </Link>
+
+        <div className="hero-pattern" role="presentation">
+          {STATES.map((st) => (
+            <span
+              key={st.pattern}
+              className={`hero-wave hero-wave--${st.pattern}${st === state ? ' is-on' : ''}`}
+            />
+          ))}
         </div>
       </div>
 
@@ -132,22 +147,12 @@ export default function Hero() {
           <li
             key={i}
             className="hero-logo"
-            style={{ '--i': i }}
             aria-hidden={i >= CLIENT_LOGOS.length ? 'true' : undefined}
           >
             <ClientMark logo={logo} />
           </li>
         ))}
       </ul>
-
-      <div
-        className="hero-stage"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        <Card key={current} slide={SLIDES[current]} />
-      </div>
-
     </section>
   )
 }

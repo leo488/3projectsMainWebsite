@@ -2,6 +2,9 @@ import { Link } from '../router'
 import { SERVICES, INDUSTRIES, PHASES } from '../data/site'
 import './MegaMenu.css'
 
+/* Three parts, divided by rules: a case-study picture on the left, the
+   services on a solid Deep Enterprise panel, then plain link columns.
+   Every item in the panel is a link. */
 export default function MegaMenu({ open, onNavigate, panelRef, onEnter, onLeave }) {
   return (
     <div
@@ -13,8 +16,16 @@ export default function MegaMenu({ open, onNavigate, panelRef, onEnter, onLeave 
       onMouseLeave={onLeave}
     >
       <div className="mega-inner">
+        <Link href="/work/crunchies-inventory" onClick={onNavigate} className="mega-feature">
+          <img src="/images/hero-crunchies-900.jpg" alt="" loading="lazy" />
+          <span className="mega-feature-caption">
+            <span className="tiny">Case study</span>
+            <span className="mega-feature-title">Crunchies: one live view of stock →</span>
+          </span>
+        </Link>
+
         <section className="mega-col mega-col--services">
-          <p className="tiny mega-label">Services</p>
+          <Link href="/work" onClick={onNavigate} className="tiny mega-label">Services</Link>
           <ul className="mega-list">
             {SERVICES.map((s) => (
               <li key={s.label}>
@@ -28,7 +39,7 @@ export default function MegaMenu({ open, onNavigate, panelRef, onEnter, onLeave 
         </section>
 
         <section className="mega-col">
-          <p className="tiny mega-label">Industries</p>
+          <Link href="/work" onClick={onNavigate} className="tiny mega-label">Industries</Link>
           <ul className="mega-list mega-list--plain">
             {INDUSTRIES.map((i) => (
               <li key={i}>
@@ -39,29 +50,15 @@ export default function MegaMenu({ open, onNavigate, panelRef, onEnter, onLeave 
         </section>
 
         <section className="mega-col">
-          <p className="tiny mega-label">How the work runs</p>
-          <ul className="mega-list mega-list--phases">
+          <Link href="/work" onClick={onNavigate} className="tiny mega-label">How the work runs</Link>
+          <ul className="mega-list mega-list--plain">
             {PHASES.map((p) => (
               <li key={p.label}>
-                <Link href="/work" onClick={onNavigate} className="mega-phase">
-                  <span className="mega-phase-swatch" style={{ background: p.ground }} />
-                  <span>
-                    <span className="mega-phase-name">{p.label}</span>
-                    <span className="mega-phase-note">{p.note}</span>
-                  </span>
-                </Link>
+                <Link href="/work" onClick={onNavigate}>{p.label}</Link>
               </li>
             ))}
           </ul>
-        </section>
-
-        <section className="mega-col mega-col--cta">
-          <p className="tiny mega-label">Selected work</p>
-          <p className="mega-cta-copy">
-            Four engagements, four operating models rebuilt. See how the
-            phases run end to end.
-          </p>
-          <Link href="/work" onClick={onNavigate} className="mega-cta-link">
+          <Link href="/work" onClick={onNavigate} className="mega-all">
             View all work →
           </Link>
         </section>

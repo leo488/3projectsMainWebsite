@@ -53,7 +53,7 @@ export const GEAR = {
 const PITCH = 4
 const CELL = 3.4
 
-export default function BuildMark({ grid = MARK, className = '' }) {
+export default function BuildMark({ grid = MARK, still = false, className = '' }) {
   const { rows, tones, order } = grid
   const cells = rows.flatMap((row, r) =>
     [...row].flatMap((ch, c) => {
@@ -65,7 +65,7 @@ export default function BuildMark({ grid = MARK, className = '' }) {
   const w = rows[0].length * PITCH
   const h = rows.length * PITCH
   return (
-    <svg className={`build-mark ${className}`} viewBox={`0 0 ${w} ${h}`} aria-hidden="true">
+    <svg className={`build-mark${still ? ' build-mark--still' : ''} ${className}`} viewBox={`0 0 ${w} ${h}`} aria-hidden="true">
       {cells.map(({ r, c, fill, d }) => (
         <rect
           key={`${r}-${c}`}

@@ -1,13 +1,13 @@
 import SiteFooter from './components/SiteFooter'
 import Navbar       from './components/Navbar'
 import Hero         from './components/Hero'
-import Featured     from './components/Featured'
-import Capabilities from './components/Capabilities'
-import Showcase     from './components/Showcase'
+// import Featured     from './components/Featured'
+// import Capabilities from './components/Capabilities'
+// import Showcase     from './components/Showcase'
 import PartnerCta   from './components/PartnerCta'
 import Stats        from './components/Stats'
 import Insights     from './components/Insights'
-import FinalCta     from './components/FinalCta'
+// import FinalCta     from './components/FinalCta'
 import Work         from './pages/Work'
 import WorkDetail   from './pages/WorkDetail'
 import Careers      from './pages/Careers'
@@ -31,13 +31,16 @@ function Home() {
     <>
       <Navbar />
       <Hero />
-      <Featured />
-      <Capabilities />
-      <Showcase />
+      {/* Set aside while the home page is cut down to five sections:
+          the hero now carries Featured's band, and What we build has no
+          case material behind it yet. */}
+      {/* <Featured /> */}
+      {/* <Capabilities /> */}
+      {/* <Showcase /> */}
+      <Insights />
       <PartnerCta />
       <Stats />
-      <Insights />
-      <FinalCta />
+      {/* <FinalCta /> */}
       <SiteFooter />
     </>
   )

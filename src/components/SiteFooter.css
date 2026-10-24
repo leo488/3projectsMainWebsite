@@ -1,9 +1,9 @@
-/* The dark close every page uses: newsletter, footer and lockup all on
-   Deep Carbon. */
+/* The close every page uses: newsletter, footer and lockup all on
+   Deep Enterprise. */
 .site-footer--dark .newsletter,
 .site-footer--dark .footer,
 .site-footer--dark .billboard {
-  background: var(--night);
+  background: var(--section-blue);
 }
 
 .site-footer--dark .newsletter {

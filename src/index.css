@@ -178,6 +178,41 @@ html, body {
   animation: spin-border 2.5s linear infinite;
 }
 
+/* The three buttons: Electric Cobalt (.btn-gradient, the one animated
+   call to action, Start a conversation), and the plain black and white
+   pills for everything else — black on light grounds, white on dark
+   or blue ones. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 100px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.86;
+}
+
+.btn--black {
+  background: var(--carbon);
+  color: var(--white);
+}
+
+.btn--white {
+  background: var(--white);
+  color: var(--carbon);
+}
+
 /* Hand-off: once the closing CTA is on screen the header pill steps
    aside, so the two read as one button travelling down the page
    rather than two competing calls to action. */

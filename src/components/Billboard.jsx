@@ -2,9 +2,10 @@ import Logo from './Logo'
 import useReveal from './useReveal'
 import './Billboard.css'
 
-/* The lockup in its own colours on every ground: the Deep Enterprise
-   mark and the Electric Cobalt wordmark. The logo is never recoloured
-   piece by piece. */
+/* The lockup on the Deep Enterprise footer, all in white: the logo is
+   either in its own colours (Deep Enterprise mark, Electric Cobalt
+   wordmark) or one colour throughout, never recoloured piece by
+   piece, and its own blues would vanish on this ground. */
 export default function Billboard() {
   const ref = useReveal('is-visible')
 
@@ -12,9 +13,9 @@ export default function Billboard() {
     <section className="billboard" ref={ref}>
       <Logo
         className="billboard-logo"
-        mark="var(--section-blue)"
-        word="var(--cta-blue)"
-        tm="var(--section-blue)"
+        mark="var(--white)"
+        word="var(--white)"
+        tm="var(--white)"
         title="3Projects"
       />
     </section>

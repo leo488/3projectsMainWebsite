@@ -18,6 +18,12 @@
   100% { opacity: 0; }
 }
 
+/* Drawn whole, with no build. */
+.build-mark--still rect {
+  opacity: 1;
+  animation: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .build-mark rect {
     opacity: 1;
