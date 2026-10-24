@@ -1,6 +1,7 @@
 import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
 import Arrow from '../components/Arrow'
+import PixelGlyph from '../components/PixelGlyph'
 import useReveal from '../components/useReveal'
 import { Link } from '../router'
 import { CONTACT_EMAIL, PHASES } from '../data/site'
@@ -25,14 +26,12 @@ const PRINCIPLES = [
   },
 ]
 
-const ROLES = [
-  { title: 'Senior Transformation Consultant',   team: 'Strategy',   location: 'Lagos · Hybrid' },
-  { title: 'Operations Architect',               team: 'Operations', location: 'Lagos · Hybrid' },
-  { title: 'Principal Systems Designer',         team: 'Design',     location: 'Lagos · Hybrid' },
-  { title: 'Senior Platform Engineer',           team: 'Technology', location: 'Lagos · Hybrid' },
-  { title: 'Data & Instrumentation Lead',        team: 'Technology', location: 'Lagos · Hybrid' },
-  { title: 'Engagement Manager',                 team: 'Operations', location: 'Lagos' },
-]
+// No open roles at the moment. Add entries here, as
+// { title, team, location: 'Lagos · Hybrid' }, when hiring opens and the
+// list replaces the notice below.
+const ROLES = []
+
+const PHASE_GLYPH = { Discover: 'magnifier', Design: 'nib', Deliver: 'carton', Sustain: 'coin' }
 
 function mail(subject) {
   return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`
@@ -54,9 +53,11 @@ export default function Careers() {
         </h1>
         <div className="careers-intro-actions">
           <a href="#open-positions" className="careers-intro-btn">
-            See open positions
+            {ROLES.length ? 'See open positions' : 'Join the talent pool'}
           </a>
-          <span className="tiny careers-intro-count">{ROLES.length} open positions</span>
+          <span className="tiny careers-intro-count">
+            {ROLES.length ? `${ROLES.length} open positions` : 'No open positions right now'}
+          </span>
         </div>
       </header>
 
@@ -94,11 +95,12 @@ export default function Careers() {
         </ol>
       </section>
 
-      {/* ── Image strip — brand plates until the photography exists ── */}
+      {/* ── The four phases, as the What We Do cards drew them ── */}
       <section className="careers-strip" aria-hidden="true">
         {PHASES.map((p) => (
-          <div key={p.label} className="careers-strip-plate" style={{ background: p.ground }}>
+          <div key={p.label} className="careers-strip-plate">
             <span className="tiny">{p.label}</span>
+            <PixelGlyph name={PHASE_GLYPH[p.label]} className="careers-strip-glyph" />
           </div>
         ))}
       </section>
@@ -127,24 +129,30 @@ export default function Careers() {
       <section className="careers-roles" id="open-positions" ref={rolesRef}>
         <div className="careers-roles-head">
           <p className="tiny careers-roles-label">Core positions</p>
-          <h2>Current open positions in our core team</h2>
+          <h2>
+            {ROLES.length
+              ? 'Current open positions in our core team'
+              : 'No open positions in the core team right now'}
+          </h2>
         </div>
 
-        <ul className="careers-roles-list">
-          {ROLES.map((r, i) => (
-            <li key={r.title} className="careers-role" style={{ '--i': i }}>
-              <span className="careers-role-title">{r.title}</span>
-              <span className="tiny careers-role-team">{r.team}</span>
-              <span className="tiny careers-role-location">{r.location}</span>
-              <a
-                href={mail(`Application — ${r.title}`)}
-                className="tiny careers-role-apply"
-              >
-                Apply
-              </a>
-            </li>
-          ))}
-        </ul>
+        {ROLES.length > 0 && (
+          <ul className="careers-roles-list">
+            {ROLES.map((r, i) => (
+              <li key={r.title} className="careers-role" style={{ '--i': i }}>
+                <span className="careers-role-title">{r.title}</span>
+                <span className="tiny careers-role-team">{r.team}</span>
+                <span className="tiny careers-role-location">{r.location}</span>
+                <a
+                  href={mail(`Application — ${r.title}`)}
+                  className="tiny careers-role-apply"
+                >
+                  Apply
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
 
         <div className="careers-pool">
           <p className="tiny careers-roles-label">Talent pool</p>

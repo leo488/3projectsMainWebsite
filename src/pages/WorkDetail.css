@@ -141,19 +141,6 @@
   color: var(--fg);
 }
 
-.detail-progress-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 2px;
-  opacity: 0.3;
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.detail-progress-item.is-active .detail-progress-dot {
-  opacity: 1;
-  transform: scale(1.25);
-}
-
 /* Chapters are stacked on top of each other so the column never jumps
    height as the active one changes. */
 .detail-chapters {
@@ -200,25 +187,33 @@
   padding-bottom: 120px;
 }
 
+/* Each phase on a light card with the faint axis texture of the What We
+   Do cards, its kit glyph centred at 8px a cell so the pixels stay
+   whole. */
 .detail-panel-plate {
   position: relative;
+  display: grid;
+  place-items: center;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  max-height: 620px;
+  aspect-ratio: 3 / 2;
+  max-height: 520px;
   border-radius: var(--radius);
   overflow: hidden;
+  background-color: var(--card);
+  background-image: url("data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'><path%20d='M10%208.5v3M8.5%2010h3'%20stroke='%23141414'%20stroke-width='1'%20opacity='0.08'/></svg>");
+  background-size: 20px 20px;
 }
 
-.detail-panel:nth-child(even) .detail-panel-plate {
-  aspect-ratio: 5 / 4;
-  max-height: 720px;
+.detail-panel-glyph {
+  width: 128px;
+  height: 128px;
 }
 
 .detail-panel-index,
 .detail-panel-label {
   position: absolute;
   bottom: 22px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgb(var(--fg-rgb) / 0.6);
 }
 
 .detail-panel-index { left: 22px; }
@@ -295,12 +290,23 @@
   color: inherit;
 }
 
+/* The project's pixel illustration on the same textured card. */
 .detail-next-plate {
-  display: block;
+  display: grid;
+  place-items: center;
   width: 100%;
   aspect-ratio: 4 / 3;
+  padding: 10%;
   border-radius: var(--radius);
+  background-color: var(--card);
+  background-image: url("data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'><path%20d='M10%208.5v3M8.5%2010h3'%20stroke='%23141414'%20stroke-width='1'%20opacity='0.08'/></svg>");
+  background-size: 20px 20px;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.detail-next-plate .detail-next-art {
+  width: 100%;
+  height: 100%;
 }
 
 .detail-next-link:hover .detail-next-plate {

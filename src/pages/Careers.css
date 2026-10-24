@@ -126,18 +126,29 @@
   padding: 0 var(--side-pad);
 }
 
+/* The four phases as the What We Do cards drew them: a light card with
+   the faint axis texture, the label at the top and the kit glyph at
+   3px a cell in the bottom corner. */
 .careers-strip-plate {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   aspect-ratio: 4 / 3;
+  padding: 20px 22px 22px;
   border-radius: var(--radius);
-  overflow: hidden;
+  background-color: var(--card);
+  background-image: url("data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'><path%20d='M10%208.5v3M8.5%2010h3'%20stroke='%23141414'%20stroke-width='1'%20opacity='0.08'/></svg>");
+  background-size: 20px 20px;
 }
 
 .careers-strip-plate .tiny {
-  position: absolute;
-  left: 18px;
-  bottom: 16px;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--fg);
+}
+
+.careers-strip-glyph {
+  align-self: flex-end;
+  width: 48px;
+  height: 48px;
 }
 
 /* ── Who we look for ── */

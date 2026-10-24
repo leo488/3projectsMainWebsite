@@ -3,6 +3,7 @@ import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
 import useReveal from '../components/useReveal'
 import PixelArt from '../components/PixelArt'
+import PixelGlyph from '../components/PixelGlyph'
 import { Link } from '../router'
 import { PROJECTS, CATEGORIES } from '../data/projects'
 import './Work.css'
@@ -12,25 +13,25 @@ const APPROACH = [
     label: 'Discover',
     title: 'We start where you are',
     body: 'Every engagement opens against the operating model as it actually runs — the workarounds, the queues, the reports nobody reads — not the one on the org chart.',
-    icon: 'icon-strategy',
+    glyph: 'magnifier',
   },
   {
     label: 'Design',
     title: 'Redesign the work first',
     body: 'Process before software. We rebuild each critical path around the decision it exists to support, then specify what has to be built, bought or retired to carry it.',
-    icon: 'icon-design',
+    glyph: 'nib',
   },
   {
     label: 'Deliver',
     title: 'Ship into the live operation',
     body: 'Delivery runs in slices against real work, so every change is measured against the operation it is meant to improve rather than a staging environment.',
-    icon: 'icon-technology',
+    glyph: 'carton',
   },
   {
     label: 'Sustain',
     title: 'Leave the capability behind',
     body: 'Instrumentation, ownership and a review cadence stay with the teams running the work. The engagement ends; the operating model does not.',
-    icon: 'icon-evolution',
+    glyph: 'coin',
   },
 ]
 
@@ -131,7 +132,7 @@ export default function Work() {
         <ol className="approach-list">
           {APPROACH.map((a, i) => (
             <li key={a.label} className="approach-item" style={{ '--i': i }}>
-              <PixelArt name={a.icon} className="approach-icon" sweep={500} />
+              <PixelGlyph name={a.glyph} className="approach-icon" />
               <span className="tiny approach-label">{a.label}</span>
               <h3 className="approach-title">{a.title}</h3>
               <p className="approach-text">{a.body}</p>

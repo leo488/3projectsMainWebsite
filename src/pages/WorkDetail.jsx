@@ -3,12 +3,13 @@ import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
 import { Link } from '../router'
 import PixelArt from '../components/PixelArt'
+import PixelGlyph from '../components/PixelGlyph'
 import { PROJECTS, getProject } from '../data/projects'
 import './WorkDetail.css'
 
-// Each phase panel carries the matching pixel illustration; Deliver
-// shows what the engagement built.
-const PHASE_ART = { Discover: 'icon-strategy', Design: 'icon-design', Sustain: 'icon-evolution' }
+// Each phase panel carries its kit glyph, the same four the What We Do
+// cards used, small on a textured card.
+const PHASE_GLYPH = { Discover: 'magnifier', Design: 'nib', Deliver: 'carton', Sustain: 'coin' }
 
 export default function WorkDetail({ slug }) {
   const project = getProject(slug)
@@ -112,7 +113,6 @@ export default function WorkDetail({ slug }) {
                   key={s.label}
                   className={`tiny detail-progress-item${i === activeIndex ? ' is-active' : ''}`}
                 >
-                  <span className="detail-progress-dot" />
                   {s.label}
                 </li>
               ))}
@@ -141,10 +141,7 @@ export default function WorkDetail({ slug }) {
               ref={(el) => { panelRefs.current[i] = el }}
             >
               <div className="detail-panel-plate">
-                <PixelArt
-                  name={PHASE_ART[s.label] || project.art || 'platform'}
-                  className={`detail-panel-art${PHASE_ART[s.label] ? ' detail-panel-art--icon' : ''}`}
-                />
+                <PixelGlyph name={PHASE_GLYPH[s.label] || 'magnifier'} className="detail-panel-glyph" />
                 <span className="tiny detail-panel-index">
                   {String(i + 1).padStart(2, '0')} / {String(project.sections.length).padStart(2, '0')}
                 </span>
