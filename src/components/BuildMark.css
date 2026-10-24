@@ -1,0 +1,26 @@
+.build-mark {
+  display: block;
+  height: 28px;
+  width: auto;
+  flex: none;
+}
+
+/* Whole cells only, switched on and off — never faded or scaled. */
+.build-mark rect {
+  opacity: 0;
+  animation: buildCell 4.8s steps(1, end) infinite;
+  animation-delay: var(--d);
+}
+
+@keyframes buildCell {
+  0%   { opacity: 1; }
+  66%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .build-mark rect {
+    opacity: 1;
+    animation: none;
+  }
+}

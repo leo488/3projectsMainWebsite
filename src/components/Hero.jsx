@@ -122,7 +122,7 @@ export default function Hero() {
         <div className="hero-actions">
           <a
             href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
-            className="hero-cta"
+            className="hero-cta btn-gradient"
           >
             Start a conversation
             <svg width="22" height="12" viewBox="0 0 22 12" fill="none" aria-hidden="true">
@@ -140,7 +140,12 @@ export default function Hero() {
 
       <ul className="hero-logos" aria-label="Brands we have built for">
         {ROW.map((logo, i) => (
-          <li key={i} className="hero-logo" aria-hidden={i >= CLIENT_LOGOS.length ? 'true' : undefined}>
+          <li
+            key={i}
+            className="hero-logo"
+            style={{ '--i': i }}
+            aria-hidden={i >= CLIENT_LOGOS.length ? 'true' : undefined}
+          >
             <ClientMark logo={logo} />
           </li>
         ))}

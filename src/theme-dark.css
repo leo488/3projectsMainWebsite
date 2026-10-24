@@ -16,15 +16,10 @@
   color-scheme: dark;
 }
 
-/* On black, the case panels and the night sections lift one step so
+/* On black, the night sections lift one step so
    they still read as surfaces. */
-[data-theme='dark'] .hero-case-panel,
 [data-theme='dark'] .showcase {
   background: var(--night);
-}
-
-[data-theme='dark'] .hero-logo {
-  color: #6B7180;
 }
 
 [data-theme='dark'] .insights {

@@ -1,15 +1,14 @@
 import { Link } from '../router'
+import BuildMark from './BuildMark'
 import './Announcement.css'
 
 /* The strip above the navbar, after Persona's announcement bar. While
-   the site is being built it says so, with a few cells laying
-   themselves down like the rest of the pixel system. */
+   the site is being built it says so, beside the brand mark building
+   itself out of the pixel grid. */
 export default function Announcement() {
   return (
     <aside className="announce" aria-label="Announcement">
-      <span className="announce-cells" aria-hidden="true">
-        <i /><i /><i /><i />
-      </span>
+      <BuildMark />
       <p className="announce-text">
         <strong>Pardon the pixels.</strong>{' '}
         <span className="announce-more">Our new site is being built in the open, one block at a time.</span>

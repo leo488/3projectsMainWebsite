@@ -74,23 +74,12 @@
   animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
 }
 
+/* Same pill as the navbar's, with the arrow Persona's carries. */
 .hero-cta {
-  display: inline-flex;
-  align-items: center;
   gap: 18px;
-  padding: 18px 28px;
-  border-radius: 999px;
-  background: var(--fg);
-  color: var(--hero-ground);
+  padding: 17px 28px;
   font-size: 16px;
   font-weight: 500;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-
-.hero-cta:hover {
-  background: var(--brand-blue);
-  color: var(--white);
 }
 
 .hero-view-link {
@@ -134,19 +123,39 @@
   border-left: 1px solid rgb(var(--fg-rgb) / 0.14);
 }
 
+/* Each logo file is a single solid grey (see public/images/clients),
+   so every mark reads equally crisp, the way Persona's row does. */
 .hero-logo-img {
   max-width: 100%;
   max-height: 44px;
   width: auto;
-  filter: grayscale(1) contrast(0.9);
-  opacity: 0.55;
-  mix-blend-mode: multiply;
 }
 
+/* The files are single-tone grey already; on dark they flip to light. */
 [data-theme='dark'] .hero-logo-img {
-  filter: grayscale(1) brightness(1.4);
-  mix-blend-mode: normal;
-  opacity: 0.5;
+  filter: invert(1) brightness(1.15);
+}
+
+/* Alive, quietly: the marks arrive one after another, then a slow
+   wave passes along the row, lifting each in turn. */
+.hero-logo > * {
+  opacity: 0;
+  animation:
+    logoIn   0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+    logoWave 9s ease-in-out infinite;
+  animation-delay:
+    calc(0.8s + var(--i) * 0.09s),
+    calc(2s + var(--i) * 0.75s);
+}
+
+@keyframes logoIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes logoWave {
+  0%, 14%, 100% { transform: none; opacity: 1; }
+  7%            { transform: translateY(-4px) scale(1.06); opacity: 1; }
 }
 
 .hero-logo-img[alt='Crunchies'] {
@@ -155,9 +164,13 @@
 
 .hero-logo-word {
   font-size: 28px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.03em;
-  color: rgb(var(--fg-rgb) / 0.45);
+  color: #585C63;
+}
+
+[data-theme='dark'] .hero-logo-word {
+  color: #B4B8BF;
 }
 
 /* ─────────────────────────────
@@ -292,12 +305,8 @@
   margin-top: 6px;
   padding: clamp(24px, 2.6vw, 40px);
   border-radius: var(--card-r);
-  background: var(--night);
+  background: var(--brand-blue);
   color: var(--white);
-}
-
-[data-theme='dark'] .hero-card-stats {
-  background: var(--night-raise);
 }
 
 .hero-card-head {
@@ -310,7 +319,7 @@
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--sky);
+  color: var(--px-light);
 }
 
 .hero-card-line {
@@ -331,7 +340,7 @@
   flex-direction: column-reverse;
   gap: 8px;
   padding: 0 20px;
-  border-left: 1px solid rgba(255, 255, 255, 0.18);
+  border-left: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 .hero-card-number dd {
@@ -345,7 +354,7 @@
 .hero-card-number dt {
   font-size: 13px;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .hero-dots {
@@ -453,5 +462,12 @@
 
   .hero-logo-word {
     font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo > * {
+    opacity: 1;
+    animation: none;
   }
 }
