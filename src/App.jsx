@@ -34,13 +34,17 @@ function Home() {
       <Hero />
       <Stats />
       <Insights />
-      {/* The pattern band, the four phase cards and the CPA band are one
-          stack of rounded panels, with white space above and below. */}
+      {/* How we engage with the four phase cards straight under it, then
+          white space, a heading and the CPA band. */}
       <div className="home-pair">
         <Featured />
-        <div className="home-phases">
-          <PhaseCards />
-        </div>
+        <PhaseCards compact />
+        <header className="home-cpa-head">
+          <p className="tiny home-cpa-eyebrow">CPA Partners</p>
+          <h2 className="home-cpa-title">
+            Know a business that needs us? Bring it to the table and grow with us.
+          </h2>
+        </header>
         <PartnerCta />
       </div>
       {/* Set aside on this layout; each can come back as it is. */}

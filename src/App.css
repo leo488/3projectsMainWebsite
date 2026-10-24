@@ -5,9 +5,8 @@ main {
   position: relative;
 }
 
-/* The pattern band and the CPA band: two separate rounded cards, one
-   stacked on the other with a small gap, inset from the page edges,
-   with white space all round. */
+/* The pattern band, the phase cards and the CPA band, inset from the
+   page edges with white space all round. */
 .home-pair {
   display: grid;
   gap: 16px;
@@ -15,14 +14,27 @@ main {
   background: var(--surface);
 }
 
-.home-pair > * {
+.home-pair > .featured,
+.home-pair > .partner {
   border-radius: var(--radius);
   overflow: hidden;
 }
 
-/* The phase cards from Case Studies, on a Deep Carbon panel under How
-   we engage. */
-.home-phases {
-  padding: var(--band-pad);
-  background: var(--carbon);
+/* White space and a heading between the phase cards and the CPA. */
+.home-cpa-head {
+  padding: clamp(72px, 8vw, 128px) 0 24px;
+}
+
+.home-cpa-eyebrow {
+  color: var(--cta-blue);
+  margin-bottom: 24px;
+}
+
+.home-cpa-title {
+  max-width: 28ch;
+  font-size: clamp(28px, 3.4vw, 50px);
+  font-weight: 400;
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+  color: var(--fg);
 }

@@ -63,6 +63,22 @@
   align-self: flex-end;
 }
 
+/* Home page: shorter cards, solid so they hold up on white. */
+.approach-list--compact {
+  gap: 16px;
+}
+
+.approach-list--compact .approach-item {
+  min-height: 360px;
+  background-color: #1F1F1F;
+}
+
+.approach-list--compact .approach-icon {
+  width: 72px;
+  height: 72px;
+  padding-top: 32px;
+}
+
 @media (max-width: 1100px) {
   .approach-list {
     grid-template-columns: repeat(2, 1fr);
@@ -70,6 +86,10 @@
 
   .approach-item {
     min-height: 460px;
+  }
+
+  .approach-list--compact .approach-item {
+    min-height: 340px;
   }
 }
 
@@ -79,7 +99,8 @@
     gap: 16px;
   }
 
-  .approach-item {
+  .approach-item,
+  .approach-list--compact .approach-item {
     min-height: 0;
   }
 
