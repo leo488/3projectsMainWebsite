@@ -1,17 +1,17 @@
 import { Link } from '../router'
-import BuildMark from './BuildMark'
+import BuildMark, { GEAR } from './BuildMark'
 import './Announcement.css'
 
 /* The strip above the navbar, after Persona's announcement bar. While
-   the site is being built it says so, beside the brand mark building
-   itself out of the pixel grid. */
+   the site is being built it says so, beside the kit's gear icon
+   building itself out of the pixel grid. */
 export default function Announcement() {
   return (
     <aside className="announce" aria-label="Announcement">
-      <BuildMark />
+      <BuildMark grid={GEAR} />
       <p className="announce-text">
-        <strong>Pardon the pixels.</strong>{' '}
-        <span className="announce-more">Our new site is being built in the open, one block at a time.</span>
+        <strong>Our new site is on its way.</strong>{' '}
+        <span className="announce-more">New pages go live as each one is finished.</span>
       </p>
       <Link href="/work" className="announce-link">
         See what&rsquo;s live <span aria-hidden="true">→</span>

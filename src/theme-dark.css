@@ -12,7 +12,6 @@
   --fg-rgb:       238 241 246;
   --ink-rgb:      238 241 246;
   --logo-mark:    var(--white);
-  --billboard-mark: var(--white);
   color-scheme: dark;
 }
 

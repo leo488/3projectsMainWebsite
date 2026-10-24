@@ -92,7 +92,6 @@
      cards are Deep Enterprise. Nothing else is a flat blue. */
   --cta-blue:     #004BFF;
   --section-blue: #0031B8;
-  --billboard-mark: var(--section-blue);
 
   /* One corner radius for every card, panel and image on the site, so
      nothing is rounder than its neighbour. Buttons are always pills. */

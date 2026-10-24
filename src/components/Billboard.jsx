@@ -2,17 +2,19 @@ import Logo from './Logo'
 import useReveal from './useReveal'
 import './Billboard.css'
 
-export default function Billboard({ tone = 'light' }) {
-  const dark = tone === 'dark'
+/* The lockup in its own colours on every ground: the Deep Enterprise
+   mark and the Electric Cobalt wordmark. The logo is never recoloured
+   piece by piece. */
+export default function Billboard() {
   const ref = useReveal('is-visible')
 
   return (
     <section className="billboard" ref={ref}>
       <Logo
         className="billboard-logo"
-        mark={dark ? 'var(--white)' : 'var(--billboard-mark)'}
-        word="var(--bright)"
-        tm={dark ? 'var(--white)' : 'var(--section-blue)'}
+        mark="var(--section-blue)"
+        word="var(--cta-blue)"
+        tm="var(--section-blue)"
         title="3Projects"
       />
     </section>

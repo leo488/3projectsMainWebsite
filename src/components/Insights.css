@@ -77,7 +77,6 @@
 .insights-visual {
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  border-radius: var(--radius);
   background: rgb(255 255 255 / 0.08);
 }
 

@@ -12,8 +12,8 @@
   padding: 0 var(--side-pad);
   background: #D9E3FF;
   color: var(--ink);
-  /* The pixel mark steps down to the deeper blues so it holds on the
-     pale strip: bottom slab darkest, top slab brightest. */
+  /* The pixel icon steps down to the deeper blues so it holds on the
+     pale strip. */
   --px-body: #001A66;
   --px-mid: #0031B8;
   --px-light: #004BFF;
@@ -55,9 +55,5 @@
 
   .announce-more {
     display: none;
-  }
-
-  .announce-text::after {
-    content: ' The new site is going up live.';
   }
 }

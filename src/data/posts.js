@@ -16,7 +16,7 @@ export const POSTS = [
     read: '3 min',
     ground: 'var(--phase-discover)',
     ratio: '4 / 3',
-    image: "/images/blog/why-technology-projects-fail-even-when-the-technology-works.jpg",
+    image: null,
     blocks: [
       ["p", "There is a strange kind of failure that happens in business."],
       ["p", "Everything works."],
@@ -85,7 +85,7 @@ export const POSTS = [
     read: '3 min',
     ground: 'var(--phase-design)',
     ratio: '4 / 5',
-    image: "/images/blog/the-business-doesnt-need-another-app.jpg",
+    image: null,
     blocks: [
       ["p", "Everywhere you look, there is another app."],
       ["p", "An app for this."],
@@ -163,7 +163,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--phase-deliver)',
     ratio: '4 / 5',
-    image: "/images/blog/the-people-who-know-where-the-problem-is.jpg",
+    image: null,
     blocks: [
       ["p", "If you want to understand an organisation, don’t start with the boardroom."],
       ["p", "Go where the work happens."],
@@ -235,7 +235,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--phase-sustain)',
     ratio: '4 / 3',
-    image: "/images/blog/growth-can-hide-a-problem-until-it-becomes-too-expensive-to-ignore.jpg",
+    image: null,
     blocks: [
       ["p", "Growth is usually celebrated."],
       ["p", "More customers."],
@@ -304,7 +304,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--enterprise)',
     ratio: '4 / 3',
-    image: "/images/blog/build-buy-or-integrate-the-technology-decision-businesses-often-get-wrong.jpg",
+    image: null,
     blocks: [
       ["p", "There is a moment in almost every growing business when someone says:"],
       ["pull", "“We need a system.”"],
@@ -388,7 +388,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--phase-discover)',
     ratio: '4 / 5',
-    image: "/images/blog/the-most-expensive-person-in-the-company-may-be-the-person-everyone-has-to-ask.jpg",
+    image: null,
     blocks: [
       ["p", "Every organisation has one."],
       ["p", "Maybe nobody put it in the job description."],
@@ -457,7 +457,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--phase-design)',
     ratio: '4 / 5',
-    image: "/images/blog/your-business-may-not-have-a-communication-problem.jpg",
+    image: null,
     blocks: [
       ["p", "“We need better communication.”"],
       ["p", "How many times have you heard that?"],
@@ -538,7 +538,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--phase-deliver)',
     ratio: '4 / 3',
-    image: "/images/blog/the-day-your-business-outgrows-its-first-system.jpg",
+    image: null,
     blocks: [
       ["p", "There was nothing wrong with the first system."],
       ["p", "That is the part businesses sometimes struggle to accept."],
@@ -606,7 +606,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--phase-sustain)',
     ratio: '4 / 3',
-    image: "/images/blog/what-happens-when-every-department-has-its-own-version-of-the-truth.jpg",
+    image: null,
     blocks: [
       ["p", "Sales has one number."],
       ["p", "Finance has another."],
@@ -676,7 +676,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--enterprise)',
     ratio: '4 / 5',
-    image: "/images/blog/the-best-technology-project-may-be-the-one-the-customer-never-notices.jpg",
+    image: null,
     blocks: [
       ["p", "We celebrate technology when it is visible."],
       ["p", "A new app."],

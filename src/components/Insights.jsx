@@ -9,7 +9,7 @@ import './Insights.css'
    articles the way a journal would run it. */
 const CASE_CARD = {
   slug: 'myspotlyt',
-  image: '/images/hero-myspotlyt-900.jpg',
+  image: null,
 }
 
 export default function Insights() {

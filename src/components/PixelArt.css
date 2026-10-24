@@ -22,7 +22,11 @@
 
 /* The banner mark's cycle: each cell is on for two thirds of it, so
    the art builds, holds, then clears in the order it arrived. */
-.pixel-art--loop.is-drawn rect {
+.pixel-art--loop g {
+  opacity: 0;
+}
+
+.pixel-art--loop.is-drawn g {
   animation: px-build 6s steps(1, end) infinite;
   animation-delay: var(--d);
 }
@@ -35,6 +39,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .pixel-art rect { opacity: 1; }
+  .pixel-art--loop g { opacity: 1; }
   .pixel-art.is-drawn rect,
-  .pixel-art--loop.is-drawn rect { animation: none; }
+  .pixel-art--loop.is-drawn g { animation: none; }
 }

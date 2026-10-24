@@ -1,43 +1,72 @@
 import './BuildMark.css'
 
-/* The 3Projects mark redrawn on the brand grid, three slabs of cells
-   that lay themselves down from the bottom slab up, hold, then clear —
-   the site under construction, told in the identity's own pixels. */
-const ROWS = [
-  '...........TT.',
-  '.........TTTT.',
-  '......TTTTT...',
-  '....TTTTT..MMM',
-  '..TTTT...MMMMM',
-  'TTTT...MMMMMMM',
-  'T...MMMMMMMMM.',
-  '..MMMMMMMM....',
-  'MMMMMM........',
-  'MM............',
-  'BBBBBBBBBBBBBB',
-  'BBBBBBBBBBBBBB',
-]
+/* A pixel grid that lays itself down cell by cell, holds, then clears:
+   the site under construction, told in the identity's own pixels.
 
-const TONE = { B: 'var(--px-body)', M: 'var(--px-mid)', T: 'var(--px-light)' }
-const ORDER = { B: 0, M: 1, T: 2 }
+   MARK is the 3Projects mark redrawn on the brand grid (three slabs,
+   bottom slab first). It is kept here, and exported as
+   public/brand/3projects-pixel-mark.svg, for when the pixel version of
+   the mark is wanted. */
+export const MARK = {
+  rows: [
+    '...........TT.',
+    '.........TTTT.',
+    '......TTTTT...',
+    '....TTTTT..MMM',
+    '..TTTT...MMMMM',
+    'TTTT...MMMMMMM',
+    'T...MMMMMMMMM.',
+    '..MMMMMMMM....',
+    'MMMMMM........',
+    'MM............',
+    'BBBBBBBBBBBBBB',
+    'BBBBBBBBBBBBBB',
+  ],
+  tones: { B: 'var(--px-body)', M: 'var(--px-mid)', T: 'var(--px-light)' },
+  order: { B: 0, M: 1, T: 2 },
+}
+
+/* The brand kit's `automation` icon (16 × 16, two-tone): a gear, for a
+   site that is still being built. Stroke cells first, then the tone. */
+export const GEAR = {
+  rows: [
+    '......###.......',
+    '......#+#.......',
+    '..##.##+##.##...',
+    '..#+##+++##+#...',
+    '..##+++++++##...',
+    '...#++###++#....',
+    '###++#...#++###.',
+    '#++++#...#++++#.',
+    '###++#...#++###.',
+    '...#++###++#....',
+    '..##+++++++##...',
+    '..#+##+++##+#...',
+    '..##.##+##.##...',
+    '......#+#.......',
+    '......###.......',
+  ],
+  tones: { '#': 'var(--px-body)', '+': 'var(--px-light)' },
+  order: { '#': 0, '+': 1 },
+}
+
 const PITCH = 4
 const CELL = 3.4
 
-const CELLS = ROWS.flatMap((row, r) =>
-  [...row].flatMap((ch, c) => {
-    if (ch === '.') return []
-    // Bottom slab first, each slab laid left to right.
-    const d = ORDER[ch] * 420 + c * 26
-    return [{ r, c, fill: TONE[ch], d }]
-  }),
-)
-
-export default function BuildMark({ className = '' }) {
-  const w = ROWS[0].length * PITCH
-  const h = ROWS.length * PITCH
+export default function BuildMark({ grid = MARK, className = '' }) {
+  const { rows, tones, order } = grid
+  const cells = rows.flatMap((row, r) =>
+    [...row].flatMap((ch, c) => {
+      if (!tones[ch]) return []
+      // One group at a time, each laid left to right.
+      return [{ r, c, fill: tones[ch], d: order[ch] * 420 + c * 26 }]
+    }),
+  )
+  const w = rows[0].length * PITCH
+  const h = rows.length * PITCH
   return (
     <svg className={`build-mark ${className}`} viewBox={`0 0 ${w} ${h}`} aria-hidden="true">
-      {CELLS.map(({ r, c, fill, d }) => (
+      {cells.map(({ r, c, fill, d }) => (
         <rect
           key={`${r}-${c}`}
           x={c * PITCH}

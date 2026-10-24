@@ -12,7 +12,7 @@ export default function SiteFooter({ tone = 'dark' }) {
     <div className={`site-footer site-footer--${tone}`}>
       <Newsletter />
       <Footer />
-      <Billboard tone={tone} />
+      <Billboard />
       <CookieBanner />
     </div>
   )

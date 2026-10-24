@@ -2,9 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import './Featured.css'
 
 /* Three ideas introduced in place, without the reader leaving the
-   section. Each state sets the card's ground and which of the kit's
-   two wave patterns sits beside the copy: wave-blue on Deep
-   Enterprise, wave-multi (the full palette) on Deep Carbon. */
+   section. Each state has its own ground and its own pattern from the
+   brand kit: wave-blue on Deep Enterprise, wave-multi (the full
+   palette) on Deep Carbon, pixel-lines-blue on Electric Cobalt.
+
+   All three states are always in the page, stacked, and the active one
+   cross-fades in, so a change never re-mounts or jumps. */
 const STATES = [
   {
     ground: 'var(--section-blue)',
@@ -21,8 +24,8 @@ const STATES = [
     body: 'Strategy, design and delivery do not arrive as separate workstreams. The people who find the constraint are the people who redesign around it, which is why nothing is lost in translation between phases.',
   },
   {
-    ground: 'var(--section-blue)',
-    pattern: 'wave-blue',
+    ground: 'var(--cta-blue)',
+    pattern: 'pixel-lines-blue',
     eyebrow: 'What we leave behind',
     headline: ['The engagement ends.', 'The operating model', 'keeps improving.'],
     body: 'Instrumentation, ownership and a review cadence stay with the teams running the work. We measure against the baseline captured before the first change, so the improvement can be argued with numbers.',
@@ -74,23 +77,29 @@ export default function Featured() {
           style={{ background: state.ground }}
         >
           <div className="featured-copy">
-            <p className="featured-eyebrow">{state.eyebrow}</p>
-            <h2 className="featured-headline" key={`h-${index}`}>
-              {state.headline.map((line, i) => (
-                <span key={i} className="featured-line" style={{ '--i': i }}>
-                  {line}
-                </span>
-              ))}
-            </h2>
-            <p className="featured-body" key={`b-${index}`}>{state.body}</p>
+            {STATES.map((st, i) => (
+              <div
+                key={st.eyebrow}
+                className={`featured-state${i === index ? ' is-on' : ''}`}
+                aria-hidden={i === index ? undefined : true}
+              >
+                <p className="featured-eyebrow">{st.eyebrow}</p>
+                <h2 className="featured-headline">
+                  {st.headline.map((line, j) => (
+                    <span key={j} className="featured-line" style={{ '--i': j }}>
+                      {line}
+                    </span>
+                  ))}
+                </h2>
+                <p className="featured-body">{st.body}</p>
+              </div>
+            ))}
           </div>
-          {/* Both brand waves are stacked and cross-fade with the
-              state, so the pattern turns over with the ground. */}
           <div className="featured-pattern" role="presentation">
-            {['wave-blue', 'wave-multi'].map((name) => (
+            {STATES.map((st) => (
               <span
-                key={name}
-                className={`featured-wave featured-wave--${name}${state.pattern === name ? ' is-on' : ''}`}
+                key={st.pattern + st.eyebrow}
+                className={`featured-wave featured-wave--${st.pattern}${state === st ? ' is-on' : ''}`}
               />
             ))}
           </div>

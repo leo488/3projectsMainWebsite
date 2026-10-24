@@ -31,6 +31,15 @@ function negative(cols, rows, cells) {
   return out
 }
 
+function rowsOf(cells) {
+  const byRow = new Map()
+  for (const cell of cells) {
+    if (!byRow.has(cell[0])) byRow.set(cell[0], [])
+    byRow.get(cell[0]).push(cell)
+  }
+  return [...byRow.entries()]
+}
+
 /* One illustration from the pixel-grid system, drawn as SVG cells.
    When it scrolls into view the cells switch on in row order, which is
    the only motion the system allows: whole cells, on the grid.
@@ -67,17 +76,32 @@ export default function PixelArt({ name, variant = 'A', title, className = '', s
       aria-label={title}
       aria-hidden={title ? undefined : true}
     >
-      {cells.map(([r, c, t]) => (
-        <rect
-          key={`${r}-${c}`}
-          x={(c - 1) * PITCH}
-          y={(r - 1) * PITCH}
-          width={CELL}
-          height={CELL}
-          fill={TONES[t]}
-          style={{ '--d': `${Math.round(((loop ? rows - r : r) / rows) * sweep + ((c * 7) % 5) * 18)}ms` }}
-        />
-      ))}
+      {loop
+        ? rowsOf(cells).map(([r, row]) => (
+            // Looping art animates one row at a time rather than every
+            // cell, and draws each row as one path per tone, so the
+            // browser handles a few hundred shapes, not thousands.
+            <g key={r} style={{ '--d': `${Math.round(((rows - r) / rows) * sweep)}ms` }}>
+              {Object.entries(TONES).map(([t, fill]) => {
+                const d = row
+                  .filter(([, , tt]) => tt === t)
+                  .map(([, c]) => `M${(c - 1) * PITCH} ${(r - 1) * PITCH}h${CELL}v${CELL}h-${CELL}z`)
+                  .join('')
+                return d ? <path key={t} d={d} fill={fill} /> : null
+              })}
+            </g>
+          ))
+        : cells.map(([r, c, t]) => (
+            <rect
+              key={`${r}-${c}`}
+              x={(c - 1) * PITCH}
+              y={(r - 1) * PITCH}
+              width={CELL}
+              height={CELL}
+              fill={TONES[t]}
+              style={{ '--d': `${Math.round((r / rows) * sweep + ((c * 7) % 5) * 18)}ms` }}
+            />
+          ))}
     </svg>
   )
 }

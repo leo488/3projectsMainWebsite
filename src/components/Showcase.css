@@ -75,8 +75,8 @@
   text-decoration: none;
 }
 
-/* Every card on the announcement banner's ground, and the art in the
-   banner mark's blues, so the drawings read as the same family. */
+/* Dark cards on the dark section, square-cornered, with the art in the
+   banner's blues and white highlights. */
 .showcase-visual {
   --px-shadow: #001A66;
   --px-body:   #0031B8;
@@ -88,8 +88,7 @@
   justify-content: center;
   aspect-ratio: 4 / 5;
   max-width: 100%;
-  border-radius: var(--radius);
-  background: #D9E3FF;
+  background: var(--night-raise);
   overflow: hidden;
 }
 
