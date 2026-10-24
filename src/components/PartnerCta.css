@@ -58,10 +58,19 @@
   background: rgba(255, 255, 255, 0.86);
 }
 
-/* The brand kit's `grid-fine` pattern: 6px Electric Cobalt squares on
-   a 12px pitch on white, tiled at its native size, full bleed. */
+/* The partner photograph, full bleed against the copy panel. */
 .partner-right {
-  background: #FFFFFF url('/images/pattern-grid-fine.svg') 0 0 / 24px 24px repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.partner-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
 }
 
 @media (max-width: 900px) {

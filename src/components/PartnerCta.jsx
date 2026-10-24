@@ -19,7 +19,16 @@ export default function PartnerCta() {
           Become a CPA Partner
         </a>
       </div>
-      <div className="partner-right" role="presentation" />
+      <div className="partner-right">
+        <img
+          className="partner-img"
+          src="/images/partner-cpa-1024.jpg"
+          srcSet="/images/partner-cpa-700.jpg 700w, /images/partner-cpa-1024.jpg 1024w"
+          sizes="(max-width: 900px) 100vw, 48vw"
+          alt="A partner team talking around a table"
+          loading="lazy"
+        />
+      </div>
     </section>
   )
 }
