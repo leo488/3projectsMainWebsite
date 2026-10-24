@@ -2,71 +2,64 @@
    Variables
 ───────────────────────────── */
 /* ─────────────────────────────
-   Section
+   Section — after Persona's hero: a soft grey ground, everything
+   centred, the cards running off both edges.
 ───────────────────────────── */
 .hero-section {
-  background: var(--surface);
+  --hero-ground: #F5F5F5;
+  --hero-box: #D6D8DC;
+  background: var(--hero-ground);
   padding-top: var(--nav-h);
   overflow: hidden;
 }
 
-/* ─────────────────────────────
-   Headline — centred over the artwork
-───────────────────────────── */
+[data-theme='dark'] .hero-section {
+  --hero-ground: #000000;
+  --hero-box: #1C2333;
+}
+
 .hero-headline-row {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  padding: 92px var(--side-pad) 44px;
+  gap: 20px;
+  padding: clamp(64px, 8vw, 110px) var(--side-pad) 0;
   text-align: center;
 }
 
 .hero-headline {
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(34px, 4.8vw, 78px);
-  font-weight: 500;
-  color: var(--fg-ink);
-  line-height: 1.12;
-  letter-spacing: -0.035em;
+  font-size: clamp(40px, 5.6vw, 96px);
+  font-weight: 400;
+  color: var(--fg);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
   margin: 0;
 }
 
-/* Each line is authored as one line and must stay that way — the mask
-   reveal animates per line, so a reflow would break the effect. */
-.line-inner {
-  white-space: nowrap;
-}
-
-/* ── Text mask reveal ── */
 .line-wrap {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.08em;
+  padding-bottom: 0.1em;
 }
 
 .line-inner {
   display: block;
+  white-space: nowrap;
   transform: translateY(110%);
   opacity: 0;
-  animation: revealLine 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.line-1 { animation-delay: 0.2s; }
-.line-2 { animation-delay: 0.35s; }
-
-.hero-accent {
-  color: var(--bright);
+  animation: revealLine 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
 }
 
 .hero-sub {
   max-width: 620px;
   margin: 0;
-  font-size: clamp(16px, 1.3vw, 19px);
-  line-height: 1.55;
-  color: var(--fg-ink);
+  font-size: clamp(17px, 1.4vw, 22px);
+  font-weight: 300;
+  line-height: 1.45;
+  color: rgb(var(--fg-rgb) / 0.8);
   opacity: 0;
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
 }
 
 .hero-actions {
@@ -74,29 +67,39 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 16px 32px;
-  margin-top: 8px;
+  gap: 14px 24px;
+  margin-top: 16px;
   opacity: 0;
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
 }
 
 .hero-cta {
-  padding: 13px 26px;
-  font-size: 15px;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 28px;
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--hero-ground);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.hero-cta:hover {
+  background: var(--brand-blue);
+  color: var(--white);
 }
 
 .hero-view-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-family: 'Manrope', sans-serif;
-  font-size: 17px;
+  gap: 12px;
+  font-size: 16px;
   font-weight: 500;
-  color: var(--fg-ink);
+  color: var(--fg);
   text-decoration: none;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
 }
 
 .hero-view-link:hover {
@@ -104,120 +107,142 @@
 }
 
 /* ─────────────────────────────
-   Brand strip — grey marks drifting under the headline
+   Client row — six grey marks between thin rules
 ───────────────────────────── */
 .hero-logos {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   align-items: center;
-  gap: 22px;
-  padding: 8px 0 56px;
-  opacity: 0;
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
-}
-
-.hero-logos-label {
-  color: rgb(var(--fg-rgb) / 0.45);
-}
-
-.hero-logos-window {
-  width: min(100%, 1080px);
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
-}
-
-.hero-logos-track {
-  display: flex;
-  align-items: center;
-  width: max-content;
+  max-width: 1380px;
+  margin: clamp(64px, 6vw, 96px) auto clamp(36px, 3vw, 44px);
+  padding: 0 var(--side-pad);
   list-style: none;
-  animation: logoDrift 48s linear infinite;
-}
-
-.hero-logos-window:hover .hero-logos-track {
-  animation-play-state: paused;
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
 }
 
 .hero-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 44px;
-  padding: 0 clamp(28px, 4vw, 56px);
-  color: #9A9DA3;
-  filter: grayscale(1);
+  height: 52px;
+  padding: 0 16px;
+}
+
+.hero-logo + .hero-logo {
+  border-left: 1px solid rgb(var(--fg-rgb) / 0.14);
 }
 
 .hero-logo-img {
-  max-height: 32px;
+  max-width: 100%;
+  max-height: 44px;
   width: auto;
-  opacity: 0.6;
+  filter: grayscale(1) contrast(0.9);
+  opacity: 0.55;
+  mix-blend-mode: multiply;
 }
 
-/* Lettering stand-ins until the real marks are supplied. */
+[data-theme='dark'] .hero-logo-img {
+  filter: grayscale(1) brightness(1.4);
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
+
+.hero-logo-img[alt='Crunchies'] {
+  max-height: 64px;
+}
+
 .hero-logo-word {
-  font-size: 26px;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.hero-logo-word--crunchies {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  font-size: 22px;
-}
-
-.hero-logo-word--myspotlyt {
-  font-family: 'Manrope', sans-serif;
+  font-size: 28px;
   font-weight: 600;
-  letter-spacing: -0.02em;
-  text-transform: lowercase;
-}
-
-.hero-logo-word--lola {
-  font-family: 'Canela', Georgia, serif;
-  font-style: italic;
-  font-size: 30px;
+  letter-spacing: -0.03em;
+  color: rgb(var(--fg-rgb) / 0.45);
 }
 
 /* ─────────────────────────────
-   Case cards — photograph over a panel of numbers
+   Carousel — centre card full size, neighbours lower and faded
 ───────────────────────────── */
-.hero-cases {
+.hero-carousel {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  padding: 0 var(--side-pad) clamp(32px, 3vw, 48px);
-  list-style: none;
-}
-
-.hero-case {
+  grid-template-columns: 1fr min(69vw, 1376px) 1fr;
+  gap: clamp(16px, 2vw, 30px);
+  align-items: start;
   opacity: 0;
-  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: calc(0.55s + var(--i) * 0.12s);
+  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
 }
 
-.hero-case-link {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.hero-card {
+  display: block;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.hero-card--center {
+  animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-card--left,
+.hero-card--right {
+  margin-top: 96px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.hero-card--left:hover,
+.hero-card--right:hover {
+  opacity: 0.8;
+}
+
+/* The neighbours are cut by the screen edge; only their inner corners
+   are rounded, as in the reference. */
+.hero-card--left .hero-card-visual {
+  border-radius: 0 28px 28px 0;
+}
+
+.hero-card--right .hero-card-visual {
+  border-radius: 28px 0 0 28px;
+}
+
+.hero-card-link {
+  display: block;
   color: inherit;
   text-decoration: none;
 }
 
-.hero-case-visual {
+.hero-card-visual {
   position: relative;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 1376 / 620;
   overflow: hidden;
-  border-radius: 6px 6px 0 0;
-  background: var(--night-raise);
+  border-radius: 28px 28px 0 0;
+  background: var(--hero-box);
 }
 
-.hero-case-img,
-.hero-case-canvas {
+.hero-card--left .hero-card-visual,
+.hero-card--right .hero-card-visual {
+  aspect-ratio: auto;
+  height: clamp(220px, 26vw, 500px);
+}
+
+/* A placeholder box builds out of the grid: it stays empty while the
+   cells assemble, then the solid grey takes over. */
+.hero-card--center .hero-card-visual.is-placeholder {
+  background: transparent;
+  transition: background 0.35s ease;
+}
+
+.hero-card--center .hero-card-visual.is-placeholder:has(.hero-card-canvas[data-settled='true']) {
+  background: var(--hero-box);
+}
+
+.hero-card-img,
+.hero-card-canvas {
   position: absolute;
   inset: 0;
   display: block;
@@ -225,62 +250,60 @@
   height: 100%;
 }
 
-.hero-case-img {
+.hero-card-img {
   object-fit: cover;
-  transition:
-    opacity   0.35s ease,
-    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-case-link:hover .hero-case-img {
-  transform: scale(1.03);
-}
-
-/* The still steps back only while the grid is assembling; once the
-   canvas has resolved into the photograph it fades and the sharp
-   original carries on underneath. */
-.hero-case-visual:has(.hero-case-canvas[data-ready='true']:not([data-settled='true'])) .hero-case-img {
+.hero-card-visual:has(.hero-card-canvas[data-ready='true']:not([data-settled='true'])) .hero-card-img {
   opacity: 0;
 }
 
-.hero-case-canvas {
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+.hero-card-canvas {
+  transition: opacity 0.6s ease 0.1s;
 }
 
-.hero-case-canvas[data-settled='true'] {
+.hero-card-canvas[data-settled='true'] {
   opacity: 0;
   pointer-events: none;
 }
 
-.hero-case-sector {
+.hero-card-sector {
   position: absolute;
-  top: 16px;
-  left: 16px;
-  padding: 7px 10px;
-  border-radius: 3px;
-  background: rgba(7, 11, 20, 0.72);
-  color: var(--white);
-  backdrop-filter: blur(6px);
+  top: 22px;
+  left: 22px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--carbon);
 }
 
-/* The rectangle under each picture that carries the numbers. */
-.hero-case-panel {
-  flex: 1;
+.hero-card--left .hero-card-sector,
+.hero-card--right .hero-card-sector {
+  display: none;
+}
+
+/* The box under the picture that carries the numbers. */
+.hero-card-stats {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-  padding: clamp(22px, 2.4vw, 32px);
-  border-radius: 0 0 6px 6px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 24px 48px;
+  padding: clamp(24px, 2.6vw, 40px);
+  border-radius: 0 0 28px 28px;
   background: var(--night);
   color: var(--white);
 }
 
-.hero-case-head {
-  display: grid;
-  gap: 8px;
+[data-theme='dark'] .hero-card-stats {
+  background: var(--night-raise);
 }
 
-.hero-case-client {
+.hero-card-head {
+  display: grid;
+  gap: 10px;
+}
+
+.hero-card-client {
   font-family: 'Bitroad', 'Manrope', sans-serif;
   font-size: 13px;
   letter-spacing: 0.08em;
@@ -288,53 +311,60 @@
   color: var(--sky);
 }
 
-.hero-case-line {
-  max-width: 34ch;
-  font-size: clamp(18px, 1.5vw, 22px);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+.hero-card-line {
+  max-width: 30ch;
+  font-size: clamp(20px, 1.8vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
-.hero-case-stats {
+.hero-card-numbers {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  grid-template-columns: repeat(2, minmax(150px, auto));
+  align-items: start;
 }
 
-.hero-case-stat {
+.hero-card-number {
   display: flex;
   flex-direction: column-reverse;
-  justify-content: flex-end;
   gap: 8px;
-  padding: 20px 20px 0 0;
+  padding: 0 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.hero-case-stat + .hero-case-stat {
-  padding-left: 20px;
-  border-left: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-.hero-case-stat-value {
-  font-size: clamp(28px, 2.8vw, 44px);
+.hero-card-number dd {
+  font-size: clamp(28px, 2.8vw, 46px);
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.04em;
+  white-space: nowrap;
 }
 
-.hero-case-stat-label {
+.hero-card-number dt {
   font-size: 13px;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.6);
 }
 
-.hero-case-cta {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.82);
-  transition: color 0.2s ease;
+.hero-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 28px 0 clamp(56px, 6vw, 88px);
 }
 
-.hero-case-link:hover .hero-case-cta {
-  color: var(--white);
+.hero-dot {
+  width: 28px;
+  height: 3px;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  background: rgb(var(--fg-rgb) / 0.2);
+  cursor: pointer;
+}
+
+.hero-dot.is-active {
+  background: var(--fg);
 }
 
 /* ─────────────────────────────
@@ -344,78 +374,85 @@
   to { transform: translateY(0); opacity: 1; }
 }
 
-@keyframes logoDrift {
-  to { transform: translateX(-50%); }
-}
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-logos-track {
-    animation: none;
+@keyframes cardIn {
+  from { opacity: 0.4; }
+  to   { opacity: 1; }
+}
+
+@media (max-width: 1100px) {
+  .hero-logos {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 20px;
+  }
+
+  .hero-logo:nth-child(3n + 1) {
+    border-left: 0;
+  }
+
+  .hero-card-stats {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .hero-card-number:first-child {
+    padding-left: 0;
+    border-left: 0;
   }
 }
 
-@media (max-width: 900px) {
-    .hero-headline-row {
-    gap: 14px;
-    padding: 40px 20px 28px;
-  }
-
-  /* Below 900px the lines are allowed to reflow rather than shrink
-     the type any further. */
-  .hero-headline {
-    max-width: 100%;
-  }
-
-  /* Phones swipe between the two cards, with the next one peeking. */
-  .hero-cases {
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: 86%;
-    gap: 12px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 0 20px;
-    padding: 0 20px 56px;
-    scrollbar-width: none;
-  }
-
-  .hero-cases::-webkit-scrollbar {
-    display: none;
-  }
-
-  .hero-case {
-    scroll-snap-align: start;
-  }
-
-  .hero-logos {
-    padding-bottom: 36px;
-  }
-
-  .hero-logo-word {
-    font-size: 21px;
-  }
-
-  .hero-case-stat-value {
-    font-size: 24px;
-    white-space: nowrap;
-  }
-
-  .hero-case-stat {
-    padding-right: 12px;
-  }
-
-  .hero-case-stat + .hero-case-stat {
-    padding-left: 12px;
+@media (max-width: 700px) {
+  .hero-headline-row {
+    padding-top: 48px;
   }
 
   .line-inner {
     white-space: normal;
   }
 
-}
+  .hero-carousel {
+    grid-template-columns: 20px minmax(0, 1fr) 20px;
+    gap: 10px;
+  }
 
+  .hero-card--left,
+  .hero-card--right {
+    margin-top: 48px;
+  }
+
+  .hero-card-visual {
+    aspect-ratio: 4 / 3;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .hero-card-stats {
+    border-radius: 0 0 18px 18px;
+  }
+
+  .hero-card--left .hero-card-visual { border-radius: 0 14px 14px 0; height: 220px; }
+  .hero-card--right .hero-card-visual { border-radius: 14px 0 0 14px; height: 220px; }
+
+  .hero-card-number dd {
+    font-size: 24px;
+  }
+
+  .hero-card-numbers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-logo {
+    height: 40px;
+  }
+
+  .hero-logo-img {
+    max-height: 32px;
+  }
+
+  .hero-logo-word {
+    font-size: 20px;
+  }
+}

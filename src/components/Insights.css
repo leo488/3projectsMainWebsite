@@ -77,7 +77,8 @@
 .insights-visual {
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: var(--night-raise);
+  /* Grey stand-in until the article images are supplied. */
+  background: #2A303C;
 }
 
 .insights-item--lead .insights-visual {

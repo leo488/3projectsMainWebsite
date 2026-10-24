@@ -9,12 +9,12 @@ import './Insights.css'
    articles the way a journal would run it. */
 const CASE_CARD = {
   slug: 'myspotlyt',
-  image: '/images/insight-phone-800.jpg',
+  image: null,
 }
 
 export default function Insights() {
   const ref = useReveal('is-visible')
-  const [lead, ...rest] = POSTS.filter((p) => p.image)
+  const [lead, ...rest] = POSTS
   const study = getProject(CASE_CARD.slug)
 
   const cards = rest.slice(0, 3).map((p) => ({
@@ -51,7 +51,7 @@ export default function Insights() {
         <li className="insights-item insights-item--lead" style={{ '--i': 0 }}>
           <Link href={`/blog/${lead.slug}`} className="insights-card">
             <div className="insights-visual">
-              <img src={lead.image} alt="" loading="lazy" />
+              {lead.image && <img src={lead.image} alt="" loading="lazy" />}
             </div>
             <div className="insights-copy">
               <p className="tiny insights-label">Blog post</p>
@@ -66,7 +66,7 @@ export default function Insights() {
           <li key={c.key} className="insights-item" style={{ '--i': i + 1 }}>
             <Link href={c.href} className="insights-card">
               <div className="insights-visual">
-                <img src={c.image} alt="" loading="lazy" />
+                {c.image && <img src={c.image} alt="" loading="lazy" />}
               </div>
               <div className="insights-copy">
                 <p className="tiny insights-label">{c.label}</p>

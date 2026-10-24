@@ -49,12 +49,11 @@ export const SOCIAL_LINKS = {
   YouTube:   '',
 }
 
-/* Brands 3Projects has built for, shown in grey under the hero. Until
-   the real files arrive each one is set as a type-only wordmark; give
-   an entry a `src` (an SVG in /public/images/clients) and the logo
-   replaces the lettering. */
+/* Brands 3Projects has built for, shown in grey under the hero the way
+   Persona runs its customer row. An entry with a `src` shows the logo
+   file; one without is set in type until its file arrives. */
 export const CLIENT_LOGOS = [
-  { name: 'Crunchies', style: 'crunchies' },
-  { name: 'Myspotlyt', style: 'myspotlyt' },
-  { name: 'Lola', style: 'lola' },
+  { name: 'Crunchies', src: '/images/clients/crunchies.png' },
+  { name: 'Lola', src: '/images/clients/lola.png' },
+  { name: 'Myspotlyt' },
 ]

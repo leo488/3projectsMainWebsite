@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import MorphWord from './MorphWord'
 import HeroParticles from './HeroParticles'
 import { Link } from '../router'
@@ -5,52 +6,109 @@ import { CONTACT_EMAIL, CLIENT_LOGOS } from '../data/site'
 import { getProject } from '../data/projects'
 import './Hero.css'
 
-/* The two engagements the hero leads with. Each photograph is cropped
-   to the card's 3:2 frame in the file itself, so the pixel assembly and
-   the still underneath land on exactly the same framing. */
-const CASES = [
+/* Laid out after Persona's hero: one centred line, a short subhead, two
+   actions, a grey row of client marks, then a large centre card with
+   the neighbouring cards peeking in at the edges. Each card carries its
+   numbers in a box underneath.
+
+   The pictures are grey placeholders until the final images are
+   supplied; set `image` on a slide and it replaces the grey box. */
+const PLACEHOLDER = '/images/placeholder-gray.png'
+
+const SLIDES = [
   {
     slug: 'crunchies-inventory',
-    sector: 'Food & hospitality',
+    sector: 'Food',
     line: 'One live view of stock across every outlet, warehouse and kitchen.',
-    small: '/images/case-food-900.jpg',
-    large: '/images/case-food-1600.jpg',
-    alt: 'A restaurant manager checking stock on a tablet at the shop door',
+    image: null,
   },
   {
     slug: 'myspotlyt',
-    sector: 'Arts & entertainment',
+    sector: 'Entertainment',
     line: 'A live platform rebuilt for stability, with the features to grow it.',
-    small: '/images/case-spotlyt-900.jpg',
-    large: '/images/case-spotlyt-1224.jpg',
-    alt: 'A creator smiling at her phone against an open sky',
+    image: null,
   },
 ]
 
-// The strip scrolls, so the set repeats until it is wider than any
-// screen; the second half is a copy and is hidden from assistive tech.
-const STRIP = Array.from({ length: 4 }, () => CLIENT_LOGOS).flat()
+// The row holds six places, so the marks repeat to fill it.
+const ROW = Array.from({ length: 6 }, (_, i) => CLIENT_LOGOS[i % CLIENT_LOGOS.length])
+
+const SLIDE_INTERVAL = 7000
 
 function ClientMark({ logo }) {
-  if (logo.src) {
-    return <img className="hero-logo-img" src={logo.src} alt={logo.name} />
+  if (logo.src) return <img className="hero-logo-img" src={logo.src} alt={logo.name} />
+  return <span className="hero-logo-word">{logo.name}</span>
+}
+
+function Card({ slide, position, onSelect }) {
+  const project = getProject(slide.slug)
+  if (!project) return null
+  const src = slide.image || PLACEHOLDER
+  const isCenter = position === 'center'
+
+  const visual = (
+    <div className={`hero-card-visual${slide.image ? '' : ' is-placeholder'}`}>
+      {slide.image && <img className="hero-card-img" src={src} alt="" />}
+      {isCenter && <HeroParticles className="hero-card-canvas" src={src} />}
+      <span className="tiny hero-card-sector">{slide.sector}</span>
+    </div>
+  )
+
+  if (!isCenter) {
+    return (
+      <button
+        type="button"
+        className={`hero-card hero-card--${position}`}
+        onClick={onSelect}
+        aria-label={`Show ${project.client.split(' — ')[0]}`}
+      >
+        {visual}
+      </button>
+    )
   }
-  return <span className={`hero-logo-word hero-logo-word--${logo.style}`}>{logo.name}</span>
+
+  return (
+    <article className="hero-card hero-card--center">
+      <Link href={`/work/${slide.slug}`} className="hero-card-link">
+        {visual}
+        <div className="hero-card-stats">
+          <div className="hero-card-head">
+            <p className="hero-card-client">{project.client.split(' — ')[0]}</p>
+            <p className="hero-card-line">{slide.line}</p>
+          </div>
+          <dl className="hero-card-numbers">
+            {project.metrics.slice(0, 2).map((m) => (
+              <div key={m.label} className="hero-card-number">
+                <dt>{m.label}</dt>
+                <dd>{m.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </Link>
+    </article>
+  )
 }
 
 export default function Hero() {
+  const [current, setCurrent] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const other = (current + 1) % SLIDES.length
+
+  useEffect(() => {
+    if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const id = setInterval(() => setCurrent((i) => (i + 1) % SLIDES.length), SLIDE_INTERVAL)
+    return () => clearInterval(id)
+  }, [paused])
+
   return (
     <section className="hero-section">
 
-      {/* ── Headline ── */}
       <div className="hero-headline-row">
         <h1 className="hero-headline">
           <span className="line-wrap">
-            <span className="line-inner line-1">We build the platforms that make</span>
-          </span>
-          <span className="line-wrap">
-            <span className="line-inner line-2">
-              your brand{' '}
+            <span className="line-inner line-1">
+              We make brands{' '}
               <MorphWord
                 words={['Unstoppable', 'Adaptable', 'Decisive', 'Resilient', 'Relentless']}
               />
@@ -58,90 +116,59 @@ export default function Hero() {
           </span>
         </h1>
         <p className="hero-sub">
-          Strategy, design and engineering at one table. We find what is
-          holding your business back, then design and ship the product
-          that moves the number.
+          3Projects designs and builds the platforms behind growing brands,
+          from inventory systems to consumer apps.
         </p>
         <div className="hero-actions">
           <a
             href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
-            className="hero-cta btn-gradient"
+            className="hero-cta"
           >
-            Start a Conversation
+            Start a conversation
+            <svg width="22" height="12" viewBox="0 0 22 12" fill="none" aria-hidden="true">
+              <path d="M0 6h20M15 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
           </a>
           <Link href="/work" className="hero-view-link">
-            View Case Studies
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            See our case studies
+            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true">
+              <path d="M1.5 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" />
             </svg>
           </Link>
         </div>
       </div>
 
-      {/* ── Brands we've built for ── */}
-      <div className="hero-logos">
-        <p className="tiny hero-logos-label">Brands we have built for</p>
-        <div className="hero-logos-window">
-          <ul className="hero-logos-track">
-            {[...STRIP, ...STRIP].map((logo, i) => (
-              <li
-                key={i}
-                className="hero-logo"
-                aria-hidden={i >= CLIENT_LOGOS.length ? 'true' : undefined}
-              >
-                <ClientMark logo={logo} />
-              </li>
-            ))}
-          </ul>
-        </div>
+      <ul className="hero-logos" aria-label="Brands we have built for">
+        {ROW.map((logo, i) => (
+          <li key={i} className="hero-logo" aria-hidden={i >= CLIENT_LOGOS.length ? 'true' : undefined}>
+            <ClientMark logo={logo} />
+          </li>
+        ))}
+      </ul>
+
+      <div
+        className="hero-carousel"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <Card key={`l-${other}`} slide={SLIDES[other]} position="left" onSelect={() => setCurrent(other)} />
+        <Card key={`c-${current}`} slide={SLIDES[current]} position="center" />
+        <Card key={`r-${other}`} slide={SLIDES[other]} position="right" onSelect={() => setCurrent(other)} />
       </div>
 
-      {/* ── Two engagements, each with its numbers underneath ──
-         The photographs assemble out of the brand grid on load, then
-         the sharp stills take over. */}
-      <ul className="hero-cases">
-        {CASES.map((c, i) => {
-          const project = getProject(c.slug)
-          if (!project) return null
-          return (
-            <li key={c.slug} className="hero-case" style={{ '--i': i }}>
-              <Link href={`/work/${c.slug}`} className="hero-case-link">
-                <div className="hero-case-visual">
-                  <img
-                    className="hero-case-img"
-                    src={c.large}
-                    srcSet={`${c.small} 900w, ${c.large} 1600w`}
-                    sizes="(max-width: 900px) 86vw, 48vw"
-                    width="1600"
-                    height="1067"
-                    alt={c.alt}
-                    fetchPriority={i === 0 ? 'high' : 'auto'}
-                  />
-                  <HeroParticles className="hero-case-canvas" src={c.small} />
-                  <span className="tiny hero-case-sector">{c.sector}</span>
-                </div>
-                <div className="hero-case-panel">
-                  <div className="hero-case-head">
-                    <p className="hero-case-client">{project.client.split(' — ')[0]}</p>
-                    <p className="hero-case-line">{c.line}</p>
-                  </div>
-                  <dl className="hero-case-stats">
-                    {project.metrics.slice(0, 2).map((m) => (
-                      <div key={m.label} className="hero-case-stat">
-                        <dt className="hero-case-stat-label">{m.label}</dt>
-                        <dd className="hero-case-stat-value">{m.value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <span className="hero-case-cta">
-                    Read the case study <span aria-hidden="true">→</span>
-                  </span>
-                </div>
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
+      <div className="hero-dots" role="tablist" aria-label="Case studies">
+        {SLIDES.map((s, i) => (
+          <button
+            key={s.slug}
+            type="button"
+            role="tab"
+            aria-selected={i === current}
+            aria-label={s.sector}
+            className={`hero-dot${i === current ? ' is-active' : ''}`}
+            onClick={() => setCurrent(i)}
+          />
+        ))}
+      </div>
 
     </section>
   )
