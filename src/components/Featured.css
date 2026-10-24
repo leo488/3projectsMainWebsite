@@ -1,9 +1,10 @@
-/* Three viewport-heights of travel, one pinned card: the page holds
-   while the states turn over, then releases. */
+/* Three viewport-heights of travel, one pinned band: the page holds
+   while the states turn over, then releases. The band runs edge to
+   edge with square corners, so the hero card above stays the page's
+   only card. */
 .featured {
   position: relative;
   height: 300vh;
-  padding: 0 var(--side-pad);
   background: var(--surface);
 }
 
@@ -13,9 +14,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 24px;
-  padding: calc(var(--banner-h) + var(--nav-h) + 24px) 0 32px;
+  padding-top: calc(var(--banner-h) + var(--nav-h));
 }
 
 .featured-card {
@@ -23,7 +22,6 @@
   grid-template-columns: 60.5% 39.5%;
   flex: 1;
   min-height: 0;
-  border-radius: var(--radius);
   overflow: hidden;
   transition: background 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -34,7 +32,7 @@
    pushed to the bottom edge. */
 .featured-copy {
   display: grid;
-  padding: 44px 44px 48px;
+  padding: 56px 44px 64px var(--band-pad);
 }
 
 .featured-state {
@@ -84,23 +82,26 @@
 }
 
 /* Progress through the states. */
+/* Sits on the band itself, under the copy. */
 .featured-dots {
+  position: absolute;
+  left: var(--band-pad);
+  bottom: 28px;
   display: flex;
   gap: 8px;
   list-style: none;
-  justify-content: center;
 }
 
 .featured-dot {
   width: 28px;
   height: 3px;
   border-radius: 2px;
-  background: rgb(var(--fg-rgb) / 0.18);
+  background: rgb(255 255 255 / 0.28);
   transition: background 0.4s ease;
 }
 
 .featured-dot.is-active {
-  background: var(--cobalt);
+  background: var(--white);
 }
 
 .featured-headline {
@@ -161,7 +162,10 @@
      plain stack of one card. */
   .featured {
     height: auto;
-    padding-top: 64px;
+  }
+
+  .featured-dots {
+    display: none;
   }
 
   .featured-pin {

@@ -5,7 +5,7 @@
 .showcase {
   background: var(--night);
   color: var(--white);
-  padding: clamp(88px, 10vw, 150px) var(--side-pad) clamp(96px, 11vw, 170px);
+  padding: var(--section-y) var(--side-pad);
 }
 
 .showcase-head {

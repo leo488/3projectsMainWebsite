@@ -1,8 +1,6 @@
 .caps {
   background: var(--surface);
-  /* The reference leaves a deliberate ~385px white break between the
-     rail and the partner split; it collapses on narrow screens. */
-  padding: 30px 0 clamp(80px, 19vw, 272px);
+  padding: var(--section-y) 0;
 }
 
 /* Five equal columns spanning the full container width, so the row's

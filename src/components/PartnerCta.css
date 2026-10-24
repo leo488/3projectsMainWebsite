@@ -10,7 +10,7 @@
 .partner-left {
   display: flex;
   flex-direction: column;
-  padding: 72px var(--side-pad) 64px 64px;
+  padding: 72px var(--band-pad) 64px;
   background: var(--section-blue);
 }
 

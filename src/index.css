@@ -97,6 +97,12 @@
      nothing is rounder than its neighbour. Buttons are always pills. */
   --radius:   8px;
 
+  /* Vertical space above and below a section's content, and the inset
+     of copy inside a full-width band, shared so the page keeps one
+     rhythm. */
+  --section-y: clamp(80px, 9vw, 136px);
+  --band-pad:  clamp(24px, 4.4vw, 64px);
+
   --side-pad: 24px;
   --nav-h:    84px;
   --banner-h: 44px;   /* the announcement strip above the navbar */

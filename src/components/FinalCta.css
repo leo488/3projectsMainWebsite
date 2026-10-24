@@ -1,7 +1,7 @@
 /* Opens the bone-coloured run that carries through to the legal bar. */
 .final-cta {
   background: var(--surface-alt);
-  padding: clamp(96px, 27vw, 390px) var(--side-pad) clamp(72px, 15.8vw, 228px);
+  padding: var(--section-y) var(--side-pad);
   text-align: center;
 }
 

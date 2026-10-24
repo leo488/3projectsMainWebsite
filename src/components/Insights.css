@@ -5,7 +5,7 @@
 .insights {
   background: var(--carbon);
   color: var(--white);
-  padding: clamp(88px, 10vw, 150px) var(--side-pad);
+  padding: var(--section-y) var(--side-pad);
 }
 
 .insights-head {
