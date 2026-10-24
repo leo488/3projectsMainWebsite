@@ -3,6 +3,7 @@ import MorphWord from './MorphWord'
 import { Link } from '../router'
 import { CONTACT_EMAIL, CLIENT_LOGOS } from '../data/site'
 import { getProject } from '../data/projects'
+import { photo } from '../data/images'
 import { CLIENT_MARKS } from './ClientLogos'
 import './Hero.css'
 
@@ -10,10 +11,10 @@ import './Hero.css'
    client marks, then a full-width band in three parts: the case study
    in play with its numbers, its picture, and a strip of brand pattern.
    The band turns over on its own: each turn changes the ground and
-   pattern (Deep Carbon, Deep Enterprise, Electric Cobalt, each with
+   pattern (Pale Blue, Deep Enterprise, Electric Cobalt, each with
    its kit pattern) and the case study. It holds while hovered. */
 const STATES = [
-  { ground: 'var(--carbon)',       pattern: 'wave-multi' },
+  { ground: 'var(--pale-blue)',    pattern: 'wave-multi', light: true },
   { ground: 'var(--section-blue)', pattern: 'wave-blue' },
   { ground: 'var(--cta-blue)',     pattern: 'pixel-lines-blue' },
 ]
@@ -22,14 +23,12 @@ const SLIDES = [
   {
     slug: 'crunchies-inventory',
     line: 'One live view of stock across every outlet, warehouse and kitchen.',
-    image: '/images/hero-pos-1536.jpg',
-    small: '/images/hero-pos-900.jpg',
+    image: 'hero-pos',
   },
   {
     slug: 'myspotlyt',
     line: 'A live platform rebuilt for stability, with the features to grow it.',
-    image: '/images/hero-apps-1536.jpg',
-    small: '/images/hero-apps-900.jpg',
+    image: 'hero-apps',
   },
 ]
 
@@ -115,7 +114,7 @@ export default function Hero() {
       </ul>
 
       <div
-        className="hero-band"
+        className={`hero-band${state.light ? ' hero-band--light' : ''}`}
         style={{ background: state.ground }}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
@@ -140,9 +139,8 @@ export default function Hero() {
             <img
               key={s.slug}
               className={`hero-img${s === slide ? ' is-on' : ''}`}
-              src={s.image}
-              srcSet={`${s.small} 900w, ${s.image} 1536w`}
-              sizes="(max-width: 900px) 100vw, 36vw"
+              {...photo(s.image)}
+              sizes="(max-width: 760px) 100vw, 80vw"
               alt=""
             />
           ))}

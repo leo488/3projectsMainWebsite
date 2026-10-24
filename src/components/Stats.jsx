@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react'
 import './Stats.css'
 
-// Our own numbers, from the live case studies (src/data/projects.js).
-// The Crunchies figures are the projections in its case study.
+// Our own numbers. Myspotlyt's come from its case study
+// (src/data/projects.js); the transaction total is Leo's figure.
 const STATS = [
   { to: 30,   suffix: '×',  label: ['Revenue growth for', 'Myspotlyt since 2022'] },
   { to: 5000, suffix: '',   label: ['Active users on a', 'platform we rebuilt'] },
-  { raw: '₦25M+',           label: ['Estimated value for', 'Crunchies (projected)'] },
+  { raw: '₦20B+',           label: ['In transactions through', 'platforms we built'] },
   { to: 100,  suffix: '%',  label: ['Inventory requests', 'made digital (projected)'] },
 ]
 

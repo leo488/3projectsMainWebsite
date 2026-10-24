@@ -1,6 +1,7 @@
 import useReveal from './useReveal'
 import Arrow from './Arrow'
 import { CONTACT_EMAIL } from '../data/site'
+import { photo } from '../data/images'
 import './PartnerCta.css'
 
 export default function PartnerCta() {
@@ -23,9 +24,8 @@ export default function PartnerCta() {
       <div className="partner-right">
         <img
           className="partner-img"
-          src="/images/cpa-partners-1448.jpg"
-          srcSet="/images/cpa-partners-900.jpg 900w, /images/cpa-partners-1448.jpg 1448w"
-          sizes="(max-width: 900px) 100vw, 48vw"
+          {...photo('cpa-partners')}
+          sizes="(max-width: 900px) 100vw, 70vw"
           alt="Two partners in a studio, one seated and one standing beside him"
           loading="lazy"
         />

@@ -2,8 +2,8 @@
    list of blocks: ['p', text] a paragraph, ['h2', text] a subheading,
    ['pull', text] a standalone bold line. **text** inside a paragraph is
    bold. A line break inside a paragraph is kept as written. Set `image`
-   on a post once its picture is supplied; until then a grey box stands
-   in. The articles carry no publication dates, so none is shown. */
+   to a photo name from data/images.js once its picture is supplied;
+   until then a grey box stands in. The articles carry no publication dates, so none is shown. */
 
 export const POST_CATEGORIES = ['All', 'Technology', 'People', 'Growth', 'Operations', 'Customers']
 
@@ -16,7 +16,7 @@ export const POSTS = [
     read: '3 min',
     ground: 'var(--phase-discover)',
     ratio: '4 / 3',
-    image: "/images/blog-pos-900.jpg",
+    image: "blog-pos",
     blocks: [
       ["p", "There is a strange kind of failure that happens in business."],
       ["p", "Everything works."],
@@ -85,7 +85,7 @@ export const POSTS = [
     read: '3 min',
     ground: 'var(--phase-design)',
     ratio: '4 / 5',
-    image: "/images/blog-laptop-900.jpg",
+    image: "blog-laptop",
     blocks: [
       ["p", "Everywhere you look, there is another app."],
       ["p", "An app for this."],
@@ -163,7 +163,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--phase-deliver)',
     ratio: '4 / 5',
-    image: "/images/blog-conversation-900.jpg",
+    image: "blog-conversation",
     blocks: [
       ["p", "If you want to understand an organisation, don’t start with the boardroom."],
       ["p", "Go where the work happens."],
@@ -235,7 +235,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--phase-sustain)',
     ratio: '4 / 3',
-    image: "/images/blog-team-1024.jpg",
+    image: "blog-team",
     blocks: [
       ["p", "Growth is usually celebrated."],
       ["p", "More customers."],

@@ -5,7 +5,7 @@ import Featured     from './components/Featured'
 // import Capabilities from './components/Capabilities'
 // import Showcase     from './components/Showcase'
 import PartnerCta   from './components/PartnerCta'
-// import Stats        from './components/Stats'
+import Stats        from './components/Stats'
 import Insights     from './components/Insights'
 // import FinalCta     from './components/FinalCta'
 import Work         from './pages/Work'
@@ -31,6 +31,7 @@ function Home() {
     <>
       <Navbar />
       <Hero />
+      <Stats />
       <Insights />
       {/* The pattern band and the CPA band are one stacked pair, with
           white space above and below. */}
@@ -41,7 +42,6 @@ function Home() {
       {/* Set aside on this layout; each can come back as it is. */}
       {/* <Capabilities /> */}
       {/* <Showcase /> */}
-      {/* <Stats /> */}
       {/* <FinalCta /> */}
       <SiteFooter />
     </>

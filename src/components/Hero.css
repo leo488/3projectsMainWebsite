@@ -133,6 +133,9 @@
 .hero-band {
   display: grid;
   grid-template-columns: 44% 34% 22%;
+  margin: 0 var(--side-pad);
+  border-radius: var(--radius);
+  overflow: hidden;
   height: calc(100vh - var(--nav-h) - var(--banner-h));
   min-height: 640px;
   max-height: 980px;
@@ -154,6 +157,24 @@
 
 .hero-case-client {
   color: var(--pale-blue);
+}
+
+/* The Pale Blue turn carries carbon text, so it reads apart from the
+   dark insights section below. */
+.hero-band--light {
+  color: var(--carbon);
+}
+
+.hero-band--light .hero-case-client {
+  color: var(--section-blue);
+}
+
+.hero-band--light .hero-case-numbers {
+  border-top-color: rgb(var(--ink-rgb) / 0.2);
+}
+
+.hero-band--light .hero-case-number dt {
+  color: rgb(var(--ink-rgb) / 0.7);
 }
 
 .hero-case-line {

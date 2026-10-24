@@ -4,6 +4,7 @@ import { Link } from '../router'
 import { usePostModal, postHref } from './PostModal'
 import { POSTS } from '../data/posts'
 import { getProject } from '../data/projects'
+import { photo } from '../data/images'
 import './Insights.css'
 
 /* Laid out after McKinsey's home page: the heading and a round arrow in
@@ -14,7 +15,7 @@ import './Insights.css'
 const CASE = {
   slug: 'myspotlyt',
   title: 'A live platform lacking stability, rebuilt to grow',
-  image: '/images/blog-platform-1600.jpg',
+  image: 'blog-platform',
 }
 
 const SLOTS = ['a', 'b', 'c', 'd']
@@ -23,7 +24,7 @@ function Card({ post, slot, label, onOpen }) {
   return (
     <a href={postHref(post.slug)} className={`ins-card ins-card--${slot}`} onClick={onOpen}>
       <span className="ins-media">
-        {post.image && <img src={post.image} alt="" loading="lazy" />}
+        {post.image && <img {...photo(post.image)} sizes="(max-width: 600px) 100vw, 33vw" alt="" loading="lazy" />}
       </span>
       <span className="tiny ins-label">{label}</span>
       <span className="ins-card-title">
@@ -58,7 +59,7 @@ export default function Insights() {
         {study && (
           <Link href={`/work/${study.slug}`} className="ins-case">
             <span className="ins-media">
-              {CASE.image && <img src={CASE.image} alt="" loading="lazy" />}
+              {CASE.image && <img {...photo(CASE.image)} sizes="(max-width: 600px) 100vw, 60vw" alt="" loading="lazy" />}
             </span>
             <span className="tiny ins-label">Case study</span>
             <span className="ins-case-title">{CASE.title}</span>

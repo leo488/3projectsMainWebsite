@@ -1,23 +1,16 @@
-/* Aerial plate behind the numbers. The navy base is not a placeholder
-   colour — it is what shows through the image's darker passages, and it
-   keeps the band readable if the photograph is slow to arrive. */
+/* The numbers, straight after the hero: a grey rounded rectangle the
+   same width as the hero band, black figures and grey labels. */
 .stats {
-  position: relative;
-  min-height: 620px;
-  display: flex;
-  align-items: flex-end;
-  background:
-    linear-gradient(0deg, rgba(14, 27, 46, 0.45) 0%, rgba(14, 27, 46, 0.12) 60%),
-    var(--ink)
-      image-set(url('/images/stats-road.jpg') 2x, url('/images/stats-road-1400.jpg') 1x)
-      center / cover no-repeat;
+  padding: 16px var(--side-pad) var(--section-y);
+  background: var(--hero-ground, #F5F5F5);
 }
 
 .stats-row {
-  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding: 0 var(--side-pad) 64px;
+  padding: clamp(56px, 6vw, 96px) 0;
+  border-radius: var(--radius);
+  background: #E6E7EA;
 }
 
 .stat {
@@ -25,15 +18,18 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 10px;
+  gap: 14px;
   padding: 0 16px;
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
   opacity: 0;
   transform: translateY(16px);
   transition:
     opacity   0.7s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: calc(var(--i) * 80ms);
+}
+
+.stat + .stat {
+  border-left: 1px solid rgb(var(--fg-rgb) / 0.12);
 }
 
 .stats.is-visible .stat {
@@ -48,7 +44,7 @@
   font-weight: 500;
   line-height: 0.95;
   letter-spacing: -0.045em;
-  color: var(--white);
+  color: var(--carbon);
   font-variant-numeric: tabular-nums;
 }
 
@@ -56,18 +52,24 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.45;
-  color: rgba(255, 255, 255, 0.88);
+  color: #585C63;
 }
 
 @media (max-width: 900px) {
-  .stats {
-    min-height: 0;
-    padding-top: 220px;
-  }
-
   .stats-row {
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 28px;
-    padding-bottom: 32px;
+    row-gap: 40px;
+  }
+
+  .stat:nth-child(3) {
+    border-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

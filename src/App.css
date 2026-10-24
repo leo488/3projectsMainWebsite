@@ -5,9 +5,20 @@ main {
   position: relative;
 }
 
-/* The pattern band stacked on the CPA band, with white space above and
-   below to set the pair apart from the dark sections either side. */
+/* The pattern band stacked on the CPA band: two rectangles inset from
+   the page edges, touching, with the pair's outer corners rounded and
+   white space all round. */
 .home-pair {
-  padding: var(--section-y) 0;
+  padding: var(--section-y) var(--side-pad);
   background: var(--surface);
+}
+
+.home-pair > :first-child {
+  border-radius: var(--radius) var(--radius) 0 0;
+  overflow: hidden;
+}
+
+.home-pair > :last-child {
+  border-radius: 0 0 var(--radius) var(--radius);
+  overflow: hidden;
 }

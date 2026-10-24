@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import PostBody from './PostBody'
 import { absoluteUrl, hrefFor } from '../router'
 import { getPost } from '../data/posts'
+import { photo } from '../data/images'
 import '../pages/Blog.css'
 import './PostModal.css'
 
@@ -96,7 +97,7 @@ function PostModal({ slug, onClose }) {
 
         {post.image && (
           <figure className="post-modal-cover">
-            <img src={post.image} alt="" />
+            <img {...photo(post.image)} sizes="(max-width: 900px) 100vw, 800px" alt="" />
           </figure>
         )}
 
