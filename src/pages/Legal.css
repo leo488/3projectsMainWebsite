@@ -1,31 +1,5 @@
-.legal-intro {
-  padding: calc(var(--nav-h) + 120px) var(--side-pad) 64px;
-  max-width: 980px;
-}
-
-.legal-eyebrow {
-  color: var(--cobalt);
-  margin-bottom: 32px;
-}
-
-.legal-title {
-  font-size: clamp(36px, 5vw, 72px);
-  font-weight: 400;
-  line-height: 1.06;
-  letter-spacing: -0.04em;
-  color: var(--fg-ink);
-}
-
-.legal-lede {
-  margin-top: 32px;
-  max-width: 60ch;
-  font-size: 19px;
-  line-height: 1.6;
-  color: var(--fg-ink);
-}
-
 .legal-body {
-  padding: 0 var(--side-pad) 140px;
+  padding: 88px var(--side-pad) 140px;
   max-width: 980px;
 }
 
@@ -51,7 +25,5 @@
 }
 
 @media (max-width: 900px) {
-  .legal-intro { padding: calc(var(--nav-h) + 64px) var(--side-pad) 40px; }
-  .legal-lede { font-size: 17px; }
   .legal-body { padding-bottom: 96px; }
 }

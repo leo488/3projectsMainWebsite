@@ -269,12 +269,12 @@ export default function Brand() {
     <>
       <Navbar />
 
-      <header className="brand-intro">
-        <p className="tiny brand-intro-eyebrow">Brand assets</p>
-        <h1 className="brand-intro-headline">
-          Everything you need to<br />use the brand correctly
+      <header className="page-intro">
+        <p className="tiny page-intro-eyebrow">Brand assets</p>
+        <h1 className="page-intro-headline">
+          Everything you need to <br />use the brand correctly
         </h1>
-        <p className="brand-intro-body">
+        <p className="page-intro-body">
           Logo files, the palette and its rules, the typefaces and the patterns
           that carry them. If you are producing something on our behalf, take it
           from here rather than from a screenshot.

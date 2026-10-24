@@ -46,16 +46,16 @@ export default function Careers() {
       <Navbar />
 
       {/* ── Masthead on a solid brand ground ── */}
-      <header className="careers-intro">
-        <p className="tiny careers-intro-eyebrow">Careers</p>
-        <h1 className="careers-intro-headline">
-          Where strategy, design and<br />technology work at one table
+      <header className="page-intro">
+        <p className="tiny page-intro-eyebrow">Careers</p>
+        <h1 className="page-intro-headline">
+          Where strategy, design and <br />technology work at one table
         </h1>
-        <div className="careers-intro-actions">
-          <a href="#open-positions" className="careers-intro-btn">
+        <div className="page-intro-actions">
+          <a href="#open-positions" className="btn btn--white">
             {ROLES.length ? 'See open positions' : 'Join the talent pool'}
           </a>
-          <span className="tiny careers-intro-count">
+          <span className="tiny page-intro-note">
             {ROLES.length ? `${ROLES.length} open positions` : 'No open positions right now'}
           </span>
         </div>

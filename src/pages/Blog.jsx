@@ -22,20 +22,16 @@ export default function Blog() {
 
       {/* Same opening as the work index: a solid brand ground carrying
           the heading. */}
-      <header className="blog-intro">
-        <p className="tiny blog-intro-eyebrow">Insights</p>
-        <h1 className="blog-intro-headline">
-          Field notes from inside<br />the operating model
+      <header className="page-intro">
+        <p className="tiny page-intro-eyebrow">Insights</p>
+        <h1 className="page-intro-headline">
+          Field notes from inside <br />the operating model
         </h1>
-        <p className="blog-intro-body">
+        <p className="page-intro-body">
           What we are learning on live engagements — where constraints hide,
           what actually moves a number, and which transformations still hold up
           a year later.
         </p>
-        <dl className="blog-intro-stats">
-          <div><dt className="tiny">Articles</dt><dd>{POSTS.length}</dd></div>
-          <div><dt className="tiny">Topics</dt><dd>{POST_CATEGORIES.length - 1}</dd></div>
-        </dl>
       </header>
 
       <nav className="blog-filter" aria-label="Filter articles by topic">

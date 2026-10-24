@@ -202,7 +202,7 @@ export const PROJECTS = [
     year: 'In progress',
     ground: 'var(--enterprise)',
     tone: 'dark',
-    ratio: '4 / 3',
+    ratio: '4 / 5',
     services: ['Centralised item database', 'Digital inventory workflows', 'SAGE ERP integration'],
     metrics: [
       { value: '₦25M–₦36M', label: 'Estimated internal value (projected)' },

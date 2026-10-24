@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import useReveal from '../components/useReveal'
 import PixelArt from '../components/PixelArt'
 import PixelGlyph from '../components/PixelGlyph'
+import Arrow from '../components/Arrow'
 import { Link } from '../router'
 import { PROJECTS, CATEGORIES } from '../data/projects'
 import './Work.css'
@@ -42,7 +43,7 @@ function ProjectCard({ project, index }) {
       style={{ '--i': index, '--ratio': project.ratio }}
     >
       <Link href={`/work/${project.slug}`} className="work-card-link">
-        <div className="work-card-visual">
+        <div className={`work-card-visual${project.art ? ` work-card-visual--${project.art}` : ''}`}>
           {project.art && <PixelArt name={project.art} className="work-card-art" />}
           <span className="tiny work-card-industry">{project.industry}</span>
         </div>
@@ -70,21 +71,16 @@ export default function Work() {
       <Navbar />
 
       {/* ── Introduction ── */}
-      <header className="work-intro">
-        <p className="tiny work-intro-eyebrow">Selected Work</p>
-        <h1 className="work-intro-headline">
-          The work we do and<br />the organisations we do it with
+      <header className="page-intro">
+        <p className="tiny page-intro-eyebrow">Selected Work</p>
+        <h1 className="page-intro-headline">
+          The work we do and <br />the organisations we do it with
         </h1>
-        <p className="work-intro-body">
+        <p className="page-intro-body">
           We are brought in when the operating model is the problem — when the
           work has outgrown the way it is organised and no single team can see
           the whole of it. What follows is a selection of those engagements.
         </p>
-        <dl className="work-intro-stats">
-          <div><dt className="tiny">Engagements</dt><dd>{PROJECTS.length}</dd></div>
-          <div><dt className="tiny">Sectors</dt><dd>{new Set(PROJECTS.map((p) => p.industry)).size}</dd></div>
-          <div><dt className="tiny">Disciplines</dt><dd>4</dd></div>
-        </dl>
       </header>
 
       {/* ── Category filter ── */}
@@ -116,7 +112,7 @@ export default function Work() {
         )}
       </section>
 
-      {/* ── How the work runs — carries the page between grid and close ── */}
+      {/* ── How the work runs — Deep Carbon from here into the footer ── */}
       <section className="approach" ref={approachRef}>
         <div className="approach-head">
           <p className="tiny approach-eyebrow">How the work runs</p>
@@ -132,10 +128,15 @@ export default function Work() {
         <ol className="approach-list">
           {APPROACH.map((a, i) => (
             <li key={a.label} className="approach-item" style={{ '--i': i }}>
-              <PixelGlyph name={a.glyph} className="approach-icon" />
-              <span className="tiny approach-label">{a.label}</span>
+              <span className="tiny approach-label">
+                {String(i + 1).padStart(2, '0')} / {a.label}
+              </span>
               <h3 className="approach-title">{a.title}</h3>
               <p className="approach-text">{a.body}</p>
+              <PixelGlyph name={a.glyph} className="approach-icon" />
+              {i < APPROACH.length - 1 && (
+                <span className="approach-next" aria-hidden="true"><Arrow size={16} /></span>
+              )}
             </li>
           ))}
         </ol>

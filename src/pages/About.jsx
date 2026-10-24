@@ -41,9 +41,10 @@ export default function About() {
       <Navbar />
 
       {/* ── Statement ── */}
-      <header className="about-hero">
-        <h1 className="about-hero-headline">
-          We exist between the operating<br />model and what it has to become
+      <header className="page-intro">
+        <p className="tiny page-intro-eyebrow">About</p>
+        <h1 className="page-intro-headline">
+          We exist between the operating <br />model and what it has to become
         </h1>
       </header>
 

@@ -11,10 +11,10 @@ export default function Legal({ page }) {
     <>
       <Navbar />
 
-      <header className="legal-intro">
-        <p className="tiny legal-eyebrow">Last updated {formatDate(LEGAL_UPDATED)}</p>
-        <h1 className="legal-title">{doc.title}</h1>
-        <p className="legal-lede">{doc.intro}</p>
+      <header className="page-intro">
+        <p className="tiny page-intro-eyebrow">Last updated {formatDate(LEGAL_UPDATED)}</p>
+        <h1 className="page-intro-headline">{doc.title}</h1>
+        <p className="page-intro-body">{doc.intro}</p>
       </header>
 
       <article className="legal-body">
