@@ -252,34 +252,57 @@ export const PROJECTS = [
     ratio: '4 / 5',
     services: ['NestJS backend', 'Vite + Express frontend', 'MongoDB'],
     metrics: [
-      { value: '30×',   label: 'Revenue growth since 2022, to ₦3M+' },
-      { value: '5,000', label: 'Active user base' },
+      { value: '30×',    label: 'Revenue growth, 2022 to 2026' },
+      { value: '₦3M+',   label: 'Revenue in 2026, up from ₦100K+ in 2022' },
+      { value: '5,000',  label: 'Active users on the platform' },
+      { value: '3',      label: 'Major features shipped: awards, agents and payments' },
     ],
     intro:
       'Myspotlyt was already live when 3Projects came in. The platform lacked stability, was not fully user friendly and was missing features, with a user base between zero and five thousand.',
+    story: [
+      'People could sign up, but there was little reason for them to stay. Releases were unstable, key journeys were hard to use and the features the audience expected were not there, so retention was flat and new users had stopped arriving.',
+      'We took the platform on as it ran. First we made what was live stable, then we shipped what it was missing, the Award, agent and payment features among them, on a steady cadence of one considered release every two to three months.',
+      'Four years on, revenue has grown thirtyfold, from ₦100K+ in 2022 to over ₦3M in 2026, and the platform holds an active base of five thousand users.',
+    ],
+    outcome: {
+      headline: 'From a platform nobody stayed on to thirtyfold revenue growth.',
+      body: 'Myspotlyt now runs on a stable stack, ships features on a predictable cadence and holds an active base of five thousand users. The work continues one release at a time.',
+    },
     sections: [
       {
         label: 'Discover',
         heading: 'Live, but not holding anyone',
-        body: 'The platform was shipping without the stability or the feature set to keep people on it. The two problems that mattered were plain: no user retention, and no new user acquisition.',
+        body: [
+          'The platform was shipping without the stability or the feature set to keep people on it. The two problems that mattered were plain: no user retention, and no new user acquisition.',
+          'We started by finding where the platform broke and where people dropped off, so the first releases went to the problems costing the most users.',
+        ],
         ground: 'var(--phase-discover)',
       },
       {
         label: 'Design',
         heading: 'Build the features the platform was missing',
-        body: 'The team deployed new features to lift the platform — the Award feature, the agent feature and the payment feature among them.',
+        body: [
+          'The team deployed new features to lift the platform: the Award feature, the agent feature and the payment feature among them.',
+          'Each feature was chosen for one job: give the people already on the platform a reason to come back, and give new people a reason to join.',
+        ],
         ground: 'var(--phase-design)',
       },
       {
         label: 'Deliver',
         heading: 'The stack underneath',
-        body: 'NestJS for the backend, Vite with Express for the frontend, and MongoDB as the database.',
+        body: [
+          'NestJS for the backend, Vite with Express for the frontend, and MongoDB as the database.',
+          'A modern, well-supported stack means new features can be added without unsettling what is already live, which is what made a steady release rhythm possible.',
+        ],
         ground: 'var(--phase-deliver)',
       },
       {
         label: 'Sustain',
         heading: 'A measured delivery cadence',
-        body: 'Deploying a feature on Myspotlyt takes approximately two to three months. Revenue over the engagement moved from ₦100K+ in 2022 to over ₦3M by 2026, against an active user base under five thousand.',
+        body: [
+          'Deploying a feature on Myspotlyt takes approximately two to three months. Revenue over the engagement moved from ₦100K+ in 2022 to over ₦3M by 2026, against an active user base under five thousand.',
+          'That rhythm, one considered release at a time, is what turned a stalled platform into one that keeps growing.',
+        ],
         ground: 'var(--phase-sustain)',
       },
     ],

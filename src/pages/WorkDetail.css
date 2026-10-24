@@ -3,33 +3,8 @@
 ───────────────────────────── */
 .detail-intro {
   color: var(--white);
+  background: var(--section-blue);
   padding: calc(var(--nav-h) + 96px) var(--side-pad) 72px;
-}
-
-/* Amber and the other light grounds cannot carry white text — the
-   masthead flips to carbon on those. */
-.detail-intro--light {
-  color: var(--fg);
-}
-
-.detail-intro--light .detail-back {
-  color: rgb(var(--fg-rgb) / 0.66);
-}
-
-.detail-intro--light .detail-back:hover {
-  color: var(--fg);
-}
-
-.detail-intro--light .detail-summary {
-  color: rgb(var(--fg-rgb) / 0.74);
-}
-
-.detail-intro--light .detail-meta {
-  border-top-color: rgb(var(--fg-rgb) / 0.28);
-}
-
-.detail-intro--light .detail-meta dt {
-  color: rgb(var(--fg-rgb) / 0.58);
 }
 
 .detail-back {
@@ -45,7 +20,7 @@
 }
 
 .detail-title {
-  font-size: clamp(32px, 4.8vw, 72px);
+  font-size: clamp(36px, 5.6vw, 84px);
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.04em;
@@ -70,7 +45,7 @@
 }
 
 .detail-meta dt {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--pale-blue);
   margin-bottom: 12px;
 }
 
@@ -83,15 +58,61 @@
   max-width: 40ch;
 }
 
+.detail-story {
+  padding: 120px var(--side-pad) 128px;
+}
+
+.detail-story-eyebrow,
+.detail-story-label {
+  color: var(--cta-blue);
+  margin-bottom: 32px;
+}
+
+/* The opening statement, large and left aligned. */
 .detail-lede {
-  max-width: 68ch;
-  margin: 0 auto;
-  padding: 104px var(--side-pad) 96px;
-  font-size: clamp(20px, 2vw, 28px);
+  max-width: 30ch;
+  font-size: clamp(30px, 3.8vw, 56px);
   font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
+  line-height: 1.16;
+  letter-spacing: -0.035em;
   color: var(--fg);
+}
+
+.detail-story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 96px;
+}
+
+.detail-story-copy p:not(.tiny) {
+  max-width: 52ch;
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgb(var(--fg-rgb) / 0.72);
+}
+
+.detail-story-copy p:not(.tiny) + p {
+  margin-top: 20px;
+}
+
+/* The numbers behind the story, two by two. */
+.detail-proof {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px 32px;
+  align-content: start;
+  list-style: none;
+}
+
+.detail-proof li {
+  padding-top: 20px;
+  border-top: 1px solid rgb(var(--fg-rgb) / 0.18);
+}
+
+.detail-story-grid > .detail-proof:only-child {
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 /* ─────────────────────────────
@@ -163,6 +184,10 @@
   pointer-events: auto;
 }
 
+.detail-chapter-title + .detail-chapter-body {
+  margin-top: 20px;
+}
+
 .detail-chapter-title {
   font-size: clamp(24px, 2.3vw, 34px);
   font-weight: 500;
@@ -172,7 +197,7 @@
 }
 
 .detail-chapter-body {
-  margin-top: 20px;
+  margin-top: 16px;
   max-width: 40ch;
   font-size: 16px;
   line-height: 1.7;
@@ -225,33 +250,11 @@
 }
 
 /* ─────────────────────────────
-   Outcome
+   Figures, used in the proof grid
 ───────────────────────────── */
-.detail-metrics {
-  padding: 120px var(--side-pad);
-  background: var(--surface-alt);
-}
-
-.detail-metrics-eyebrow {
-  color: var(--cobalt);
-  margin-bottom: 48px;
-}
-
-.detail-metrics-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 48px;
-  list-style: none;
-}
-
-.detail-metrics-list li {
-  padding-top: 28px;
-  border-top: 1px solid rgb(var(--fg-rgb) / 0.18);
-}
-
 .detail-metric-value {
   display: block;
-  font-size: clamp(44px, 6vw, 96px);
+  font-size: clamp(40px, 4.4vw, 72px);
   font-weight: 500;   /* see Stats.css — one weight for all figures */
   line-height: 1;
   letter-spacing: -0.045em;
@@ -260,20 +263,53 @@
 
 .detail-metric-label {
   display: block;
-  margin-top: 16px;
+  margin-top: 14px;
+  max-width: 28ch;
   font-size: 15px;
+  line-height: 1.5;
   color: rgb(var(--fg-rgb) / 0.6);
 }
 
 /* ─────────────────────────────
-   More work
+   Close: where it stands and more work, on Deep Carbon so the page
+   runs straight into the footer.
 ───────────────────────────── */
+.detail-close {
+  background: var(--carbon);
+  color: var(--white);
+}
+
+.detail-outcome {
+  padding: 128px var(--side-pad) 24px;
+}
+
+.detail-outcome-eyebrow {
+  color: var(--pale-blue);
+  margin-bottom: 32px;
+}
+
+.detail-outcome-headline {
+  max-width: 24ch;
+  font-size: clamp(30px, 3.8vw, 56px);
+  font-weight: 400;
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+}
+
+.detail-outcome-body {
+  margin-top: 28px;
+  max-width: 56ch;
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .detail-next {
-  padding: 120px var(--side-pad);
+  padding: 104px var(--side-pad) 120px;
 }
 
 .detail-next-eyebrow {
-  color: rgb(var(--fg-rgb) / 0.45);
+  color: var(--pale-blue);
   margin-bottom: 40px;
 }
 
@@ -322,7 +358,7 @@
 }
 
 .detail-next-link .tiny {
-  color: rgb(var(--fg-rgb) / 0.5);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 /* ─────────────────────────────
@@ -395,17 +431,27 @@
     margin-top: 44px;
   }
 
-  .detail-lede {
-    padding: 64px var(--side-pad) 56px;
-  }
-
-  .detail-metrics,
-  .detail-next {
+  .detail-story {
     padding: 72px var(--side-pad);
   }
 
-  .detail-metrics-list {
+  .detail-story-grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 56px;
+    margin-top: 56px;
+  }
+
+  .detail-proof,
+  .detail-story-grid > .detail-proof:only-child {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 20px;
+  }
+
+  .detail-outcome {
+    padding: 72px var(--side-pad) 8px;
+  }
+
+  .detail-next {
+    padding: 72px var(--side-pad);
   }
 }

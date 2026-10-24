@@ -178,9 +178,22 @@
   color: var(--white);
 }
 
+/* Headline on the left, its short paragraph on the right, both sitting
+   on the same bottom line. */
 .approach-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'eyebrow  .'
+    'headline body';
+  column-gap: 64px;
+  align-items: end;
   margin-bottom: 64px;
 }
+
+.approach-eyebrow { grid-area: eyebrow; }
+.approach-headline { grid-area: headline; }
+.approach-body { grid-area: body; }
 
 .approach-eyebrow {
   color: var(--pale-blue);
@@ -197,13 +210,24 @@
 }
 
 .approach-body {
-  margin-top: 26px;
+  max-width: 46ch;
+  justify-self: end;
   font-size: 17px;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.66);
 }
 
 @media (max-width: 900px) {
+  .approach-head {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'eyebrow' 'headline' 'body';
+  }
+
+  .approach-body {
+    margin-top: 24px;
+    justify-self: start;
+  }
+
   .work-grid {
     grid-template-columns: 1fr;
     row-gap: 56px;

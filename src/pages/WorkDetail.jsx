@@ -11,6 +11,9 @@ import './WorkDetail.css'
 // cards used, small on a textured card.
 const PHASE_GLYPH = { Discover: 'magnifier', Design: 'nib', Deliver: 'carton', Sustain: 'coin' }
 
+// A section body is one paragraph or a list of them.
+const paragraphs = (body) => [].concat(body)
+
 export default function WorkDetail({ slug }) {
   const project = getProject(slug)
   const [activeIndex, setActiveIndex] = useState(0)
@@ -73,7 +76,7 @@ export default function WorkDetail({ slug }) {
       <Navbar />
 
       {/* ── Project masthead ── */}
-      <header className="detail-intro detail-intro--light">
+      <header className="detail-intro">
         <Link href="/work" className="tiny detail-back"><span aria-hidden="true">←</span> All work</Link>
         <h1 className="detail-title">{project.title}</h1>
         <p className="detail-summary">{project.summary}</p>
@@ -101,7 +104,27 @@ export default function WorkDetail({ slug }) {
         </dl>
       </header>
 
-      <p className="detail-lede">{project.intro}</p>
+      {/* ── The starting point, what happened, and the proof ── */}
+      <section className="detail-story">
+        <p className="tiny detail-story-eyebrow">The starting point</p>
+        <p className="detail-lede">{project.intro}</p>
+        <div className="detail-story-grid">
+          {project.story && (
+            <div className="detail-story-copy">
+              <p className="tiny detail-story-label">What happened</p>
+              {project.story.map((para) => <p key={para}>{para}</p>)}
+            </div>
+          )}
+          <ul className="detail-proof">
+            {project.metrics.map((m) => (
+              <li key={m.label}>
+                <span className="detail-metric-value">{m.value}</span>
+                <span className="detail-metric-label">{m.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       {/* ── Paired columns: text holds, visuals scroll ── */}
       <div className="detail-body">
@@ -126,7 +149,9 @@ export default function WorkDetail({ slug }) {
                   aria-hidden={i !== activeIndex}
                 >
                   <h2 className="detail-chapter-title">{s.heading}</h2>
-                  <p className="detail-chapter-body">{s.body}</p>
+                  {paragraphs(s.body).map((para) => (
+                    <p key={para} className="detail-chapter-body">{para}</p>
+                  ))}
                 </article>
               ))}
             </div>
@@ -150,43 +175,41 @@ export default function WorkDetail({ slug }) {
               {/* Repeated on small screens, where the columns stack. */}
               <div className="detail-panel-copy">
                 <h2>{s.heading}</h2>
-                <p>{s.body}</p>
+                {paragraphs(s.body).map((para) => <p key={para}>{para}</p>)}
               </div>
             </section>
           ))}
         </div>
       </div>
 
-      {/* ── Outcome ── */}
-      <section className="detail-metrics">
-        <p className="tiny detail-metrics-eyebrow">Outcome</p>
-        <ul className="detail-metrics-list">
-          {project.metrics.map((m) => (
-            <li key={m.label}>
-              <span className="detail-metric-value">{m.value}</span>
-              <span className="detail-metric-label">{m.label}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* ── Close: Deep Carbon from here into the footer ── */}
+      <div className="detail-close">
+        {project.outcome && (
+          <section className="detail-outcome">
+            <p className="tiny detail-outcome-eyebrow">Where it stands</p>
+            <h2 className="detail-outcome-headline">{project.outcome.headline}</h2>
+            <p className="detail-outcome-body">{project.outcome.body}</p>
+          </section>
+        )}
 
-      {/* ── Next projects ── */}
-      <section className="detail-next">
-        <p className="tiny detail-next-eyebrow">More work</p>
-        <ul className="detail-next-list">
-          {others.map((p) => (
-            <li key={p.slug}>
-              <Link href={`/work/${p.slug}`} className="detail-next-link">
-                <span className="detail-next-plate">
-                  {p.art && <PixelArt name={p.art} className="detail-next-art" />}
-                </span>
-                <h3>{p.title}</h3>
-                <span className="tiny">{p.tag}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
+        {/* ── Next projects ── */}
+        <section className="detail-next">
+          <p className="tiny detail-next-eyebrow">More work</p>
+          <ul className="detail-next-list">
+            {others.map((p) => (
+              <li key={p.slug}>
+                <Link href={`/work/${p.slug}`} className="detail-next-link">
+                  <span className="detail-next-plate">
+                    {p.art && <PixelArt name={p.art} className="detail-next-art" />}
+                  </span>
+                  <h3>{p.title}</h3>
+                  <span className="tiny">{p.tag}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
 
       <SiteFooter />
     </div>
