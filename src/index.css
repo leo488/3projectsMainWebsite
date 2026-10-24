@@ -233,6 +233,11 @@ body.cta-handoff .navbar .btn-start {
 }
 
 /* Tiny label face — section eyebrows, category filters, metadata. */
+/* Paragraphs avoid orphans and ragged last lines everywhere. */
+p {
+  text-wrap: pretty;
+}
+
 .tiny {
   font-family: 'Bitroad', 'Manrope', sans-serif;
   font-size: 11px;

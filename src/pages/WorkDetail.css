@@ -35,10 +35,16 @@
   color: rgba(255, 255, 255, 0.78);
 }
 
+/* Fixed columns, so Industry always starts at the same line, the line
+   the story below is set from (--detail-indent). */
+.detail-intro,
+.detail-story {
+  --detail-indent: 22%;
+}
+
 .detail-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 64px;
+  display: grid;
+  grid-template-columns: var(--detail-indent) 22% 14% 1fr;
   margin-top: 64px;
   padding-top: 28px;
   border-top: 1px solid rgba(255, 255, 255, 0.24);
@@ -49,9 +55,14 @@
   margin-bottom: 12px;
 }
 
+.detail-meta > div {
+  padding-right: 32px;
+}
+
 .detail-meta dd {
   font-size: 16px;
   line-height: 1.5;
+  text-wrap: pretty;
 }
 
 .detail-meta-services dd {
@@ -62,6 +73,10 @@
   padding: 120px var(--side-pad) 128px;
 }
 
+.detail-story > * {
+  margin-left: var(--detail-indent);
+}
+
 .detail-story-eyebrow,
 .detail-story-label {
   color: var(--cta-blue);
@@ -69,13 +84,14 @@
 }
 
 /* The opening statement, large and left aligned. */
-/* What happened, left aligned under the statement. */
+/* What happened, directly under the statement on the same line. */
 .detail-story-copy {
-  max-width: 64ch;
+  max-width: 62ch;
   margin-top: 72px;
 }
 
 .detail-story-copy p:not(.tiny) {
+  text-wrap: pretty;
   font-size: 18px;
   line-height: 1.7;
   color: rgb(var(--fg-rgb) / 0.72);
@@ -86,7 +102,8 @@
 }
 
 .detail-lede {
-  max-width: 30ch;
+  max-width: 28ch;
+  text-wrap: pretty;
   font-size: clamp(30px, 3.8vw, 56px);
   font-weight: 400;
   line-height: 1.16;
@@ -118,6 +135,7 @@
 .detail-text-sticky {
   position: sticky;
   top: calc(var(--nav-h) + var(--banner-h) + 72px);
+  max-width: 440px;
   padding-right: 48px;
 }
 
@@ -135,6 +153,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  font-size: 15px;
   color: rgb(var(--fg-rgb) / 0.35);
   transition: color 0.35s ease;
 }
@@ -170,7 +189,8 @@
 }
 
 .detail-chapter-title {
-  font-size: clamp(24px, 2.3vw, 34px);
+  text-wrap: balance;
+  font-size: clamp(24px, 2.1vw, 32px);
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.03em;
@@ -179,7 +199,8 @@
 
 .detail-chapter-body {
   margin-top: 16px;
-  max-width: 40ch;
+  max-width: 38ch;
+  text-wrap: pretty;
   font-size: 16px;
   line-height: 1.7;
   color: rgb(var(--fg-rgb) / 0.64);
@@ -266,16 +287,18 @@
 }
 
 .detail-outcome-headline {
-  max-width: 24ch;
-  font-size: clamp(30px, 3.8vw, 56px);
-  font-weight: 400;
-  line-height: 1.14;
+  max-width: 20ch;
+  font-size: clamp(38px, 5.4vw, 84px);
+  font-weight: 600;
+  line-height: 1.06;
+  text-wrap: balance;
   letter-spacing: -0.035em;
 }
 
 .detail-outcome-body {
-  margin-top: 28px;
+  margin-top: 32px;
   max-width: 56ch;
+  text-wrap: pretty;
   font-size: 17px;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.7);
@@ -294,8 +317,14 @@
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* The figures in the brand blues, white through Pale Blue to the
+   pattern blue, so the growth reads first. */
 .detail-proof .detail-metric-value {
-  color: var(--white);
+  font-size: clamp(48px, 5.6vw, 96px);
+  background: linear-gradient(100deg, #FFFFFF 0%, #A3C0FF 40%, #2973FD 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .detail-proof .detail-metric-label {
@@ -389,8 +418,13 @@
   }
 
   .detail-meta {
-    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 0;
     margin-top: 44px;
+  }
+
+  .detail-story > * {
+    margin-left: 0;
   }
 
   .detail-story {

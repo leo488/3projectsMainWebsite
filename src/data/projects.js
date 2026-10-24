@@ -209,7 +209,16 @@ export const PROJECTS = [
       { value: '100%', label: 'Digital inventory requests (projected)' },
     ],
     intro:
-      'Stock management ran on manual tracking, documentation and reporting, leaving no reliable view of levels across outlets, warehouses and kitchens. Without a connected system, gaps opened between Inventory, Procurement, Production and Operations — delays, stock-outs, overstocking and avoidable waste.',
+      'Crunchies had no reliable view of its stock across outlets, warehouses and kitchens. Most of it was still tracked by hand.',
+    story: [
+      'Stock management ran on manual tracking, documentation and reporting, leaving no reliable view of levels across outlets, warehouses and kitchens. Without a connected system, gaps opened between Inventory, Procurement, Production and Operations: delays, stock-outs, overstocking and avoidable waste.',
+      'We are building one connected Inventory Operations Hub. Digital requests, warehouse issuance, kitchen records, approvals and real-time dashboards run over a single standard item list, integrated with SAGE ERP.',
+      'Delivery is planned in eight phases. Phase one is in build.',
+    ],
+    outcome: {
+      headline: 'From paper and spreadsheets to one traceable view of every item.',
+      body: 'Once phase one is live, every request, issue and kitchen record moves through one system, and management can see stock across every location for the first time. The figures below are projected.',
+    },
     sections: [
       {
         label: 'Discover',
