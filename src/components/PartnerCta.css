@@ -5,10 +5,7 @@
   display: grid;
   grid-template-columns: 52% 48%;
   min-height: clamp(520px, 44vw, 700px);
-  background: var(--carbon);
-  /* A hairline where it meets the pattern band, for the turns when the
-     band is on the same blue. */
-  border-top: 1px solid rgb(255 255 255 / 0.16);
+  background: var(--section-blue);
 }
 
 .partner-left {

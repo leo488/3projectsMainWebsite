@@ -1,26 +1,42 @@
 /* Leo's photographs, each at its full resolution plus a 1080px copy for
-   small screens (regenerate both from the originals, never re-compress
-   a copy). The numbers are the files' real pixel widths, for srcset, so
-   the browser picks the sharp one for the screen it is on. Paths are written out in full, not built from the name, so the
-   preview build (preview-build.js) can see which files the site uses. */
-const PHOTOS = {
-  'hero-pos': { full: ['/images/hero-pos-full.jpg', 1536], sm: ['/images/hero-pos-sm.jpg', 1080] },
-  'hero-apps': { full: ['/images/hero-apps-full.jpg', 1536], sm: ['/images/hero-apps-sm.jpg', 1080] },
-  'cpa-partners': { full: ['/images/cpa-partners-full.jpg', 1448], sm: ['/images/cpa-partners-sm.jpg', 1080] },
-  'blog-laptop': { full: ['/images/blog-laptop-full.jpg', 3200], sm: ['/images/blog-laptop-sm.jpg', 1080] },
-  'blog-conversation': { full: ['/images/blog-conversation-full.jpg', 3200], sm: ['/images/blog-conversation-sm.jpg', 1080] },
-  'blog-pos': { full: ['/images/blog-pos-full.jpg', 1448], sm: ['/images/blog-pos-sm.jpg', 1080] },
-  'blog-platform': { full: ['/images/blog-platform-full.jpg', 1672], sm: ['/images/blog-platform-sm.jpg', 1080] },
-  'blog-team': { full: ['/images/blog-team-full.jpg', 1024] },
+   small screens, in three formats: AVIF and WebP (the same picture in
+   about half the bytes) and baseline JPEG for any browser without them.
+   All are encoded from the originals, never from another copy, by
+   scripts/build-photos.py. `w` is each file's real pixel width, so
+   srcset can pick the sharp one for the screen. Paths are written out
+   in full so the preview build (preview-build.js) can see them. */
+export const PHOTOS = {
+  'hero-pos': [
+    { w: 1080, jpg: '/images/hero-pos-sm.jpg', webp: '/images/hero-pos-sm.webp', avif: '/images/hero-pos-sm.avif' },
+    { w: 1536, jpg: '/images/hero-pos-full.jpg', webp: '/images/hero-pos-full.webp', avif: '/images/hero-pos-full.avif' },
+  ],
+  'hero-apps': [
+    { w: 1080, jpg: '/images/hero-apps-sm.jpg', webp: '/images/hero-apps-sm.webp', avif: '/images/hero-apps-sm.avif' },
+    { w: 1536, jpg: '/images/hero-apps-full.jpg', webp: '/images/hero-apps-full.webp', avif: '/images/hero-apps-full.avif' },
+  ],
+  'cpa-partners': [
+    { w: 1080, jpg: '/images/cpa-partners-sm.jpg', webp: '/images/cpa-partners-sm.webp', avif: '/images/cpa-partners-sm.avif' },
+    { w: 1448, jpg: '/images/cpa-partners-full.jpg', webp: '/images/cpa-partners-full.webp', avif: '/images/cpa-partners-full.avif' },
+  ],
+  'blog-laptop': [
+    { w: 1080, jpg: '/images/blog-laptop-sm.jpg', webp: '/images/blog-laptop-sm.webp', avif: '/images/blog-laptop-sm.avif' },
+    { w: 3200, jpg: '/images/blog-laptop-full.jpg', webp: '/images/blog-laptop-full.webp', avif: '/images/blog-laptop-full.avif' },
+  ],
+  'blog-conversation': [
+    { w: 1080, jpg: '/images/blog-conversation-sm.jpg', webp: '/images/blog-conversation-sm.webp', avif: '/images/blog-conversation-sm.avif' },
+    { w: 3200, jpg: '/images/blog-conversation-full.jpg', webp: '/images/blog-conversation-full.webp', avif: '/images/blog-conversation-full.avif' },
+  ],
+  'blog-pos': [
+    { w: 1080, jpg: '/images/blog-pos-sm.jpg', webp: '/images/blog-pos-sm.webp', avif: '/images/blog-pos-sm.avif' },
+    { w: 1448, jpg: '/images/blog-pos-full.jpg', webp: '/images/blog-pos-full.webp', avif: '/images/blog-pos-full.avif' },
+  ],
+  'blog-platform': [
+    { w: 1080, jpg: '/images/blog-platform-sm.jpg', webp: '/images/blog-platform-sm.webp', avif: '/images/blog-platform-sm.avif' },
+    { w: 1672, jpg: '/images/blog-platform-full.jpg', webp: '/images/blog-platform-full.webp', avif: '/images/blog-platform-full.avif' },
+  ],
+  'blog-team': [
+    { w: 1024, jpg: '/images/blog-team-full.jpg', webp: '/images/blog-team-full.webp', avif: '/images/blog-team-full.avif' },
+  ],
 }
 
-// Props for an <img>: the full file as src, and a srcset when there is
-// a smaller copy.
-export function photo(name) {
-  const p = PHOTOS[name]
-  if (!p) return {}
-  const [full, fullW] = p.full
-  if (!p.sm) return { src: full }
-  const [sm, smW] = p.sm
-  return { src: full, srcSet: `${sm} ${smW}w, ${full} ${fullW}w` }
-}
+export const srcset = (files, fmt) => files.map((f) => `${f[fmt]} ${f.w}w`).join(', ')

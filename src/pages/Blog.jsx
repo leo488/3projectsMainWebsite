@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import useReveal from '../components/useReveal'
 import { usePostModal, postHref } from '../components/PostModal'
 import { POSTS, POST_CATEGORIES } from '../data/posts'
-import { photo } from '../data/images'
+import Photo from '../components/Photo'
 import './Blog.css'
 
 export default function Blog() {
@@ -62,7 +62,7 @@ export default function Blog() {
               <li key={p.slug} className="blog-card" style={{ '--i': i, '--ratio': p.ratio }}>
                 <a href={postHref(p.slug)} className="blog-card-link" onClick={openPost(p.slug)}>
                   <div className="blog-card-visual">
-                    {p.image && <img className="blog-card-img" {...photo(p.image)} sizes="(max-width: 700px) 100vw, 50vw" alt="" loading="lazy" />}
+                    {p.image && <Photo name={p.image} className="blog-card-img" sizes="(max-width: 700px) 100vw, 50vw" loading="lazy" />}
                     <span className="tiny blog-card-category">{p.category}</span>
                   </div>
                   <div className="blog-card-body">

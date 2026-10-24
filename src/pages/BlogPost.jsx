@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import PostBody from '../components/PostBody'
 import { Link } from '../router'
 import { POSTS, getPost } from '../data/posts'
-import { photo } from '../data/images'
+import Photo from '../components/Photo'
 import './Blog.css'
 
 export default function BlogPost({ slug }) {
@@ -38,7 +38,7 @@ export default function BlogPost({ slug }) {
 
       {post.image && (
         <figure className="post-cover">
-          <img {...photo(post.image)} sizes="100vw" alt="" />
+          <Photo name={post.image} sizes="100vw" />
         </figure>
       )}
 
@@ -51,7 +51,7 @@ export default function BlogPost({ slug }) {
             <li key={p.slug}>
               <Link href={`/blog/${p.slug}`} className="post-next-link">
                 <span className="post-next-plate" style={{ background: p.ground }}>
-                  {p.image && <img {...photo(p.image)} sizes="(max-width: 900px) 100vw, 33vw" alt="" loading="lazy" />}
+                  {p.image && <Photo name={p.image} sizes="(max-width: 900px) 100vw, 33vw" loading="lazy" />}
                 </span>
                 <h3>{p.title}</h3>
                 <span className="tiny">{p.category} · {p.read}</span>

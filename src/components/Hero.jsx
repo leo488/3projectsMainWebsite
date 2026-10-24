@@ -3,7 +3,7 @@ import MorphWord from './MorphWord'
 import { Link } from '../router'
 import { CONTACT_EMAIL, CLIENT_LOGOS } from '../data/site'
 import { getProject } from '../data/projects'
-import { photo } from '../data/images'
+import Photo from './Photo'
 import { CLIENT_MARKS } from './ClientLogos'
 import './Hero.css'
 
@@ -136,12 +136,12 @@ export default function Hero() {
 
         <Link href={`/work/${slide.slug}`} className="hero-visual" aria-label={project?.client}>
           {SLIDES.map((s) => (
-            <img
+            <Photo
               key={s.slug}
+              name={s.image}
               className={`hero-img${s === slide ? ' is-on' : ''}`}
-              {...photo(s.image)}
               sizes="(max-width: 760px) 100vw, 80vw"
-              alt=""
+              fetchPriority={s === SLIDES[0] ? 'high' : undefined}
             />
           ))}
         </Link>

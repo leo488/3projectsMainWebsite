@@ -5,20 +5,17 @@ main {
   position: relative;
 }
 
-/* The pattern band stacked on the CPA band: two rectangles inset from
-   the page edges, touching, with the pair's outer corners rounded and
-   white space all round. */
+/* The pattern band and the CPA band: two separate rounded cards, one
+   stacked on the other with a small gap, inset from the page edges,
+   with white space all round. */
 .home-pair {
+  display: grid;
+  gap: 16px;
   padding: var(--section-y) var(--side-pad);
   background: var(--surface);
 }
 
-.home-pair > :first-child {
-  border-radius: var(--radius) var(--radius) 0 0;
-  overflow: hidden;
-}
-
-.home-pair > :last-child {
-  border-radius: 0 0 var(--radius) var(--radius);
+.home-pair > * {
+  border-radius: var(--radius);
   overflow: hidden;
 }
