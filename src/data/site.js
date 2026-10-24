@@ -50,10 +50,12 @@ export const SOCIAL_LINKS = {
 }
 
 /* Brands 3Projects has built for, shown in grey under the hero the way
-   Persona runs its customer row. An entry with a `src` shows the logo
-   file; one without is set in type until its file arrives. */
+   Persona runs its customer row. `mark` names a vector in
+   components/ClientLogos.jsx; the row repeats the list to fill six
+   places. */
 export const CLIENT_LOGOS = [
-  { name: 'Crunchies', src: '/images/clients/crunchies.png' },
-  { name: 'Lola', src: '/images/clients/lola.png' },
-  { name: 'Myspotlyt' },
+  { name: 'Crunchies', mark: 'Crunchies' },
+  { name: 'Bistro 23', mark: 'Bistro23' },
+  { name: 'Myspotlyt', mark: 'Myspotlyt' },
+  { name: 'Lola', mark: 'Lola' },
 ]

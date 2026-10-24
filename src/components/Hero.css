@@ -8,7 +8,7 @@
 .hero-section {
   --hero-ground: #F5F5F5;
   --hero-box: #D6D8DC;
-  --card-r: 4px;
+  --card-r: 24px;
   background: var(--hero-ground);
   padding-top: var(--nav-h);
   overflow: hidden;
@@ -123,17 +123,27 @@
   border-left: 1px solid rgb(var(--fg-rgb) / 0.14);
 }
 
-/* Each logo file is a single solid grey (see public/images/clients),
-   so every mark reads equally crisp, the way Persona's row does. */
-.hero-logo-img {
-  max-width: 100%;
-  max-height: 44px;
-  width: auto;
+/* The marks are vectors drawn in currentColor (ClientLogos.jsx), so
+   they stay sharp and share one grey. */
+.hero-logos {
+  --logo-cut: var(--hero-ground);
+  color: #585C63;
 }
 
-/* The files are single-tone grey already; on dark they flip to light. */
-[data-theme='dark'] .hero-logo-img {
-  filter: invert(1) brightness(1.15);
+[data-theme='dark'] .hero-logos {
+  color: #B4B8BF;
+}
+
+.hero-logo svg {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.hero-logo .mark-crunchies {
+  height: 58px;
 }
 
 /* Alive, quietly: the marks arrive one after another, then a slow
@@ -156,10 +166,6 @@
 @keyframes logoWave {
   0%, 14%, 100% { transform: none; opacity: 1; }
   7%            { transform: translateY(-4px) scale(1.06); opacity: 1; }
-}
-
-.hero-logo-img[alt='Crunchies'] {
-  max-height: 64px;
 }
 
 .hero-logo-word {
@@ -232,7 +238,7 @@
 
 .hero-card-visual {
   position: relative;
-  aspect-ratio: 1376 / 620;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: var(--card-r);
   background: var(--hero-box);
@@ -281,21 +287,6 @@
   pointer-events: none;
 }
 
-.hero-card-sector {
-  position: absolute;
-  top: 22px;
-  left: 22px;
-  padding: 8px 12px;
-  border-radius: 2px;
-  background: var(--white);
-  color: var(--carbon);
-}
-
-.hero-card--left .hero-card-sector,
-.hero-card--right .hero-card-sector {
-  display: none;
-}
-
 /* The box under the picture that carries the numbers. */
 .hero-card-stats {
   display: grid;
@@ -305,8 +296,12 @@
   margin-top: 6px;
   padding: clamp(24px, 2.6vw, 40px);
   border-radius: var(--card-r);
-  background: var(--brand-blue);
+  background: var(--night);
   color: var(--white);
+}
+
+[data-theme='dark'] .hero-card-stats {
+  background: var(--night-raise);
 }
 
 .hero-card-head {
@@ -319,7 +314,7 @@
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--px-light);
+  color: var(--sky);
 }
 
 .hero-card-line {
@@ -340,7 +335,7 @@
   flex-direction: column-reverse;
   gap: 8px;
   padding: 0 20px;
-  border-left: 1px solid rgba(255, 255, 255, 0.28);
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .hero-card-number dd {
@@ -354,7 +349,7 @@
 .hero-card-number dt {
   font-size: 13px;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .hero-dots {
@@ -456,8 +451,8 @@
     height: 40px;
   }
 
-  .hero-logo-img {
-    max-height: 32px;
+  .hero-logo svg {
+    height: 32px;
   }
 
   .hero-logo-word {

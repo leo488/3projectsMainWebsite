@@ -4,6 +4,7 @@ import HeroParticles from './HeroParticles'
 import { Link } from '../router'
 import { CONTACT_EMAIL, CLIENT_LOGOS } from '../data/site'
 import { getProject } from '../data/projects'
+import { CLIENT_MARKS } from './ClientLogos'
 import './Hero.css'
 
 /* Laid out after Persona's hero: one centred line, a short subhead, two
@@ -11,22 +12,23 @@ import './Hero.css'
    the neighbouring cards peeking in at the edges. Each card carries its
    numbers in a box underneath.
 
-   The pictures are grey placeholders until the final images are
-   supplied; set `image` on a slide and it replaces the grey box. */
+   A slide without an `image` shows a grey box in its place. Each image
+   is cropped to the card's 16:9 frame in the file itself, so the pixel
+   assembly and the still land on the same framing. */
 const PLACEHOLDER = '/images/placeholder-gray.png'
 
 const SLIDES = [
   {
     slug: 'crunchies-inventory',
-    sector: 'Food',
     line: 'One live view of stock across every outlet, warehouse and kitchen.',
-    image: null,
+    image: '/images/hero-crunchies-1448.jpg',
+    small: '/images/hero-crunchies-900.jpg',
   },
   {
     slug: 'myspotlyt',
-    sector: 'Entertainment',
     line: 'A live platform rebuilt for stability, with the features to grow it.',
-    image: null,
+    image: '/images/hero-myspotlyt-1600.jpg',
+    small: '/images/hero-myspotlyt-900.jpg',
   },
 ]
 
@@ -36,8 +38,8 @@ const ROW = Array.from({ length: 6 }, (_, i) => CLIENT_LOGOS[i % CLIENT_LOGOS.le
 const SLIDE_INTERVAL = 7000
 
 function ClientMark({ logo }) {
-  if (logo.src) return <img className="hero-logo-img" src={logo.src} alt={logo.name} />
-  return <span className="hero-logo-word">{logo.name}</span>
+  const Mark = CLIENT_MARKS[logo.mark]
+  return Mark ? <Mark /> : <span className="hero-logo-word">{logo.name}</span>
 }
 
 function Card({ slide, position, onSelect }) {
@@ -48,9 +50,16 @@ function Card({ slide, position, onSelect }) {
 
   const visual = (
     <div className={`hero-card-visual${slide.image ? '' : ' is-placeholder'}`}>
-      {slide.image && <img className="hero-card-img" src={src} alt="" />}
-      {isCenter && <HeroParticles className="hero-card-canvas" src={src} />}
-      <span className="tiny hero-card-sector">{slide.sector}</span>
+      {slide.image && (
+        <img
+          className="hero-card-img"
+          src={slide.image}
+          srcSet={slide.small ? `${slide.small} 900w, ${slide.image} 1600w` : undefined}
+          sizes="(max-width: 700px) 90vw, 69vw"
+          alt=""
+        />
+      )}
+      {isCenter && <HeroParticles className="hero-card-canvas" src={slide.small || src} />}
     </div>
   )
 
@@ -168,7 +177,7 @@ export default function Hero() {
             type="button"
             role="tab"
             aria-selected={i === current}
-            aria-label={s.sector}
+            aria-label={`Show ${getProject(s.slug)?.client.split(' — ')[0]}`}
             className={`hero-dot${i === current ? ' is-active' : ''}`}
             onClick={() => setCurrent(i)}
           />
