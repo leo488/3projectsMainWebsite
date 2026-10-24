@@ -1,0 +1,26 @@
+.pixel-art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Cells wait off until the art is in view, then switch on in row
+   order. No fades or easing on the cells themselves: each one is
+   simply off, then on. */
+.pixel-art rect {
+  opacity: 0;
+}
+
+.pixel-art.is-drawn rect {
+  animation: px-on 1ms linear forwards;
+  animation-delay: var(--d);
+}
+
+@keyframes px-on {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-art rect { opacity: 1; }
+  .pixel-art.is-drawn rect { animation: none; }
+}

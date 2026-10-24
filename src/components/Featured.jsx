@@ -13,7 +13,7 @@ const STATES = [
     body: 'Every enterprise carries hidden constraints that slow the work and inflate its cost. 3Projects partners with enterprise leaders to find them, redesign how critical operations run, and put in the technology that turns the fix into measurable business value.',
   },
   {
-    ground: 'var(--indigo)',
+    ground: 'var(--phase-design)',
     eyebrow: 'How we engage',
     headline: ['One team at the table,', 'from the first diagnostic', 'to the last handover.'],
     body: 'Strategy, design and delivery do not arrive as separate workstreams. The people who find the constraint are the people who redesign around it, which is why nothing is lost in translation between phases.',

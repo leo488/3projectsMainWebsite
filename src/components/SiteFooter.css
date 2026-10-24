@@ -1,0 +1,33 @@
+/* Dark close for the case-study pages: the footer and lockup sit on the
+   same night ground as the page above them. */
+.site-footer--dark .newsletter,
+.site-footer--dark .footer,
+.site-footer--dark .billboard {
+  background: var(--night);
+}
+
+.site-footer--dark .newsletter {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.site-footer--dark .footer-blurb,
+.site-footer--dark .footer-col-links a {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.site-footer--dark .footer-col-title,
+.site-footer--dark .footer-legal-links a,
+.site-footer--dark .footer-legal-btn,
+.site-footer--dark .footer-copyright,
+.site-footer--dark .footer-dedication {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.site-footer--dark .footer-col-links a:hover,
+.site-footer--dark .footer-legal-links a:hover {
+  color: var(--white);
+}
+
+.site-footer--dark .footer-legal {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}

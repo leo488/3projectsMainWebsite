@@ -99,8 +99,8 @@
 
 /* The brand hues travelling through the stroke as it is traced. */
 @keyframes morph-edge {
-  0%   { -webkit-text-stroke-color: var(--cyan); }
-  35%  { -webkit-text-stroke-color: var(--violet); }
+  0%   { -webkit-text-stroke-color: var(--px-light); }
+  35%  { -webkit-text-stroke-color: var(--px-mid); }
   70%  { -webkit-text-stroke-color: var(--bright); }
   100% { -webkit-text-stroke-color: var(--cobalt); }
 }

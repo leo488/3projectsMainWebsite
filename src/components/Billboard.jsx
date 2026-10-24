@@ -2,16 +2,17 @@ import Logo from './Logo'
 import useReveal from './useReveal'
 import './Billboard.css'
 
-export default function Billboard() {
+export default function Billboard({ tone = 'light' }) {
+  const dark = tone === 'dark'
   const ref = useReveal('is-visible')
 
   return (
     <section className="billboard" ref={ref}>
       <Logo
         className="billboard-logo"
-        mark="var(--navy)"
+        mark={dark ? 'var(--white)' : 'var(--navy)'}
         word="var(--bright)"
-        tm="var(--navy)"
+        tm={dark ? 'var(--white)' : 'var(--navy)'}
         title="3Projects"
       />
     </section>

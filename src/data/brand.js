@@ -1,17 +1,14 @@
 /* The palette as published, with the role each colour is allowed to
-   play. Roles are the point — cobalt is the only accent, the six hues
-   below belong to the phase they name and are not decorative. */
+   play. Cobalt is the only accent; everything else is a step on the
+   same blue ramp or a neutral, so the site stays within the blues. */
 export const PALETTE = [
   { name: 'Electric Cobalt',  hex: '#004BFF', role: 'The only primary accent', wide: true },
   { name: 'Deep Enterprise',  hex: '#0031B8', role: 'Large grounds', wide: true },
   { name: 'Deep Carbon',      hex: '#141414', role: 'All text', wide: true },
-  { name: 'Amber',            hex: '#F2A61D', role: 'Discover' },
-  { name: 'Indigo',           hex: '#2E2A8C', role: 'Design' },
-  { name: 'Cyan',             hex: '#00C2E8', role: 'Deliver' },
-  { name: 'Mint',             hex: '#2FD39A', role: 'Sustain' },
-  { name: 'Violet',           hex: '#6E4CE8', role: 'Support' },
-  { name: 'Slate',            hex: '#44506B', role: 'Structure' },
-  { name: 'Signal Red',       hex: '#D92D22', role: 'Prohibition' },
+  { name: 'Navy',             hex: '#0A2072', role: 'Deep grounds, Deliver' },
+  { name: 'Ink',              hex: '#0E1B2E', role: 'Dark panels, Sustain' },
+  { name: 'Pixel Mid',        hex: '#6F95FF', role: 'Illustration shade' },
+  { name: 'Pixel Light',      hex: '#A3C0FF', role: 'Illustration surfaces' },
   { name: 'Sky',              hex: '#7FA5FF', role: 'On dark' },
   { name: 'Bone',             hex: '#E9E9E4', role: 'Light ground' },
 ]

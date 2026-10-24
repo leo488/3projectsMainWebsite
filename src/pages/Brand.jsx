@@ -218,8 +218,8 @@ function MerchPanel() {
     { label: 'Tote',           ground: 'var(--bone)',       ratio: '1 / 1' },
     { label: 'Lanyard',        ground: 'var(--cobalt)',     ratio: '1 / 1' },
     { label: 'Notebook',       ground: 'var(--carbon)',     ratio: '3 / 4' },
-    { label: 'Signage',        ground: 'var(--indigo)',     ratio: '16 / 9' },
-    { label: 'Apparel',        ground: 'var(--slate)',      ratio: '16 / 9' },
+    { label: 'Signage',        ground: 'var(--phase-design)',     ratio: '16 / 9' },
+    { label: 'Apparel',        ground: 'var(--ink)',      ratio: '16 / 9' },
   ]
 
   return (

@@ -3,6 +3,7 @@ import Navbar       from './components/Navbar'
 import Hero         from './components/Hero'
 import Featured     from './components/Featured'
 import Capabilities from './components/Capabilities'
+import Showcase     from './components/Showcase'
 import PartnerCta   from './components/PartnerCta'
 import Stats        from './components/Stats'
 import FinalCta     from './components/FinalCta'
@@ -29,6 +30,7 @@ function Home() {
       <Hero />
       <Featured />
       <Capabilities />
+      <Showcase />
       <PartnerCta />
       <Stats />
       <FinalCta />

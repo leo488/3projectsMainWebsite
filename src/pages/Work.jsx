@@ -2,34 +2,36 @@ import { useState } from 'react'
 import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
 import useReveal from '../components/useReveal'
+import PixelArt from '../components/PixelArt'
 import { Link } from '../router'
 import { PROJECTS, CATEGORIES } from '../data/projects'
 import './Work.css'
+import './WorkDark.css'
 
 const APPROACH = [
   {
     label: 'Discover',
     title: 'We start where you are',
     body: 'Every engagement opens against the operating model as it actually runs — the workarounds, the queues, the reports nobody reads — not the one on the org chart.',
-    ground: 'var(--amber)',
+    icon: 'icon-strategy',
   },
   {
     label: 'Design',
     title: 'Redesign the work first',
     body: 'Process before software. We rebuild each critical path around the decision it exists to support, then specify what has to be built, bought or retired to carry it.',
-    ground: 'var(--indigo)',
+    icon: 'icon-design',
   },
   {
     label: 'Deliver',
     title: 'Ship into the live operation',
     body: 'Delivery runs in slices against real work, so every change is measured against the operation it is meant to improve rather than a staging environment.',
-    ground: 'var(--cyan)',
+    icon: 'icon-technology',
   },
   {
     label: 'Sustain',
     title: 'Leave the capability behind',
     body: 'Instrumentation, ownership and a review cadence stay with the teams running the work. The engagement ends; the operating model does not.',
-    ground: 'var(--mint)',
+    icon: 'icon-evolution',
   },
 ]
 
@@ -40,7 +42,8 @@ function ProjectCard({ project, index }) {
       style={{ '--i': index, '--ratio': project.ratio }}
     >
       <Link href={`/work/${project.slug}`} className="work-card-link">
-        <div className="work-card-visual" style={{ background: project.ground }}>
+        <div className="work-card-visual">
+          {project.art && <PixelArt name={project.art} className="work-card-art" />}
           <span className="tiny work-card-industry">{project.industry}</span>
         </div>
         <div className="work-card-body">
@@ -63,10 +66,10 @@ export default function Work() {
     : PROJECTS.filter((p) => p.categories.includes(active))
 
   return (
-    <>
+    <div className="work-dark">
       <Navbar theme="dark" />
 
-      {/* ── Introduction on a solid brand ground ── */}
+      {/* ── Introduction ── */}
       <header className="work-intro">
         <p className="tiny work-intro-eyebrow">Selected Work</p>
         <h1 className="work-intro-headline">
@@ -79,7 +82,7 @@ export default function Work() {
         </p>
         <dl className="work-intro-stats">
           <div><dt className="tiny">Engagements</dt><dd>{PROJECTS.length}</dd></div>
-          <div><dt className="tiny">Sectors</dt><dd>4</dd></div>
+          <div><dt className="tiny">Sectors</dt><dd>{new Set(PROJECTS.map((p) => p.industry)).size}</dd></div>
           <div><dt className="tiny">Disciplines</dt><dd>4</dd></div>
         </dl>
       </header>
@@ -129,7 +132,7 @@ export default function Work() {
         <ol className="approach-list">
           {APPROACH.map((a, i) => (
             <li key={a.label} className="approach-item" style={{ '--i': i }}>
-              <span className="approach-swatch" style={{ background: a.ground }} />
+              <PixelArt name={a.icon} className="approach-icon" sweep={500} />
               <span className="tiny approach-label">{a.label}</span>
               <h3 className="approach-title">{a.title}</h3>
               <p className="approach-text">{a.body}</p>
@@ -138,7 +141,7 @@ export default function Work() {
         </ol>
       </section>
 
-      <SiteFooter />
-    </>
+      <SiteFooter tone="dark" />
+    </div>
   )
 }

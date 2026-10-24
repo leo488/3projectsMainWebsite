@@ -1,29 +1,33 @@
-import PixelGlyph from './PixelGlyph'
+import PixelArt from './PixelArt'
 import useReveal from './useReveal'
 import './Capabilities.css'
 
-/* One glyph per phase, in the order the work runs: Discover, Design,
-   Deliver, Sustain. */
+/* One illustration per discipline, in the order the work runs:
+   Discover, Design, Deliver, Sustain. */
 const CAPABILITIES = [
   {
     title: 'Business Strategy',
     desc: 'Every decision starts with understanding your business, customers, and market.',
-    glyph: 'magnifier',
+    phase: 'Discover',
+    art: 'icon-strategy',
   },
   {
     title: 'Human-Centered Design',
     desc: 'Products designed around real user behavior, not assumptions.',
-    glyph: 'nib',
+    phase: 'Design',
+    art: 'icon-design',
   },
   {
     title: 'Technology & Delivery',
     desc: 'Modern systems engineered for reliability, performance, and growth.',
-    glyph: 'carton',
+    phase: 'Deliver',
+    art: 'icon-technology',
   },
   {
     title: 'Continuous Evolution',
     desc: 'We measure, learn, and improve long after launch.',
-    glyph: 'coin',
+    phase: 'Sustain',
+    art: 'icon-evolution',
   },
 ]
 
@@ -44,9 +48,14 @@ export default function Capabilities() {
 
         {CAPABILITIES.map((c, i) => (
           <li key={c.title} className="cap-card" style={{ '--i': i + 1 }}>
-            <h3 className="cap-title">{c.title}</h3>
-            <p className="cap-desc">{c.desc}</p>
-            <PixelGlyph name={c.glyph} className="cap-glyph" />
+            <PixelArt name={c.art} className="cap-art" sweep={520} />
+            <div className="cap-copy">
+              <p className="cap-phase">
+                <span>{String(i + 1).padStart(2, '0')}</span>{c.phase}
+              </p>
+              <h3 className="cap-title">{c.title}</h3>
+              <p className="cap-desc">{c.desc}</p>
+            </div>
           </li>
         ))}
       </ul>

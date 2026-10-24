@@ -36,7 +36,7 @@ export const POSTS = [
     category: 'Method',
     date: '2026-08-12',
     read: '5 min',
-    ground: 'var(--indigo)',
+    ground: 'var(--phase-design)',
     ratio: '4 / 5',
     sections: [
       {
@@ -60,7 +60,7 @@ export const POSTS = [
     category: 'Technology',
     date: '2026-07-24',
     read: '7 min',
-    ground: 'var(--cyan)',
+    ground: 'var(--phase-deliver)',
     ratio: '4 / 5',
     sections: [
       {
@@ -84,7 +84,7 @@ export const POSTS = [
     category: 'Practice',
     date: '2026-07-03',
     read: '4 min',
-    ground: 'var(--mint)',
+    ground: 'var(--phase-sustain)',
     ratio: '4 / 3',
     sections: [
       {

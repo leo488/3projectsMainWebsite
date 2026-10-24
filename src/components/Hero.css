@@ -111,25 +111,32 @@
 .hero-visual {
   position: relative;
   width: 100%;
-  aspect-ratio: 1440 / 930;
+  aspect-ratio: 2880 / 1643;
   overflow: hidden;
   opacity: 0;
   animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
 
 .hero-visual-img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 41%;
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-visual-img.is-active {
+  opacity: 1;
 }
 
 /* The still steps back only while the grid is assembling. Once the
    assembly finishes the canvas fades out and the sharp original comes
    back, so the hero never rests on the pixel grid. */
-.hero-visual:has(.hero-visual-canvas[data-ready='true']:not([data-settled='true'])) .hero-visual-img {
+.hero-visual:has(.hero-visual-canvas[data-ready='true']:not([data-settled='true'])) .hero-visual-img.is-active {
   opacity: 0;
 }
 

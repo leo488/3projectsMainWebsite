@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-const SRC = '/images/hero-1600.jpg'
-
 /* Brand hues the grid borrows from. Flat areas of the artwork get
    nudged toward these so the field reads as data rather than as a
    photograph cut into squares; the face keeps its own colour. */
@@ -15,7 +13,7 @@ const BRAND = [
 
 const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3)
 
-export default function HeroParticles({ className }) {
+export default function HeroParticles({ className, src }) {
   const canvasRef = useRef(null)
   const [ready, setReady] = useState(false)
   const [settled, setSettled] = useState(false)
@@ -239,7 +237,7 @@ export default function HeroParticles({ className }) {
     }
 
     image.onerror = () => setReady(false)
-    image.src = SRC
+    image.src = src
 
     const onResize = () => {
       if (!image.complete || disposed) return
@@ -254,7 +252,7 @@ export default function HeroParticles({ className }) {
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onResize)
     }
-  }, [])
+  }, [src])
 
   return (
     <canvas

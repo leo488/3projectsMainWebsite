@@ -1,10 +1,30 @@
+import { useEffect, useState } from 'react'
 import MorphWord from './MorphWord'
 import HeroParticles from './HeroParticles'
 import { Link } from '../router'
 import { CONTACT_EMAIL } from '../data/site'
 import './Hero.css'
 
+/* The photographs the hero turns through, in order. Each is cut into
+   the brand's pixel edge in the artwork itself. */
+const SLIDES = [
+  { name: 'retail', small: '/images/hero-retail-1600.jpg', large: '/images/hero-retail-2880.jpg' },
+  { name: 'cargo',  small: '/images/hero-cargo-1600.jpg',  large: '/images/hero-cargo-2880.jpg' },
+]
+
+const WORD_INTERVAL = 5200
+
 export default function Hero() {
+  const [slide, setSlide] = useState(0)
+
+  // The photograph changes on every other word, so each picture holds
+  // for two turns of the headline.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const id = setInterval(() => setSlide((i) => (i + 1) % SLIDES.length), WORD_INTERVAL * 2)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <section className="hero-section">
 
@@ -44,25 +64,25 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Pixel-art hero image ──
-         Served as a flat raster for now. public/images/Hero.svg holds the
-         same artwork with the pixel blocks as individual vector shapes —
-         swap to that (inlined) when we animate the pixels. */}
+      {/* ── Hero photographs ──
+         The first one is rebuilt out of grid particles on load, then the
+         stills take over and cross-fade in turn. */}
       <div className="hero-visual">
-        {/* The still is the ground truth and the no-JS fallback; the
-            canvas rebuilds it out of grid particles on top and hides
-            the still once it has something to show. */}
-        <img
-          className="hero-visual-img"
-          src="/images/hero-2880.jpg"
-          srcSet="/images/hero-1600.jpg 1600w, /images/hero-2880.jpg 2880w"
-          sizes="100vw"
-          width="2880"
-          height="2035"
-          alt=""
-          fetchPriority="high"
-        />
-        <HeroParticles className="hero-visual-canvas" />
+        {SLIDES.map((sl, i) => (
+          <img
+            key={sl.name}
+            className={`hero-visual-img${i === slide ? ' is-active' : ''}`}
+            src={sl.large}
+            srcSet={`${sl.small} 1600w, ${sl.large} 2880w`}
+            sizes="100vw"
+            width="2880"
+            height="1643"
+            alt=""
+            fetchPriority={i === 0 ? 'high' : 'low'}
+            loading={i === 0 ? 'eager' : 'lazy'}
+          />
+        ))}
+        <HeroParticles className="hero-visual-canvas" src={SLIDES[0].small} />
       </div>
 
     </section>

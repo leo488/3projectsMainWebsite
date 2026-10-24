@@ -22,10 +22,10 @@ export const INDUSTRIES = [
 ]
 
 export const PHASES = [
-  { label: 'Discover', ground: 'var(--amber)',  note: 'Start with the constraint' },
-  { label: 'Design',   ground: 'var(--indigo)', note: 'Redesign the work first' },
-  { label: 'Deliver',  ground: 'var(--cyan)',   note: 'Ship into the live operation' },
-  { label: 'Sustain',  ground: 'var(--mint)',   note: 'Leave the capability behind' },
+  { label: 'Discover', ground: 'var(--phase-discover)',  note: 'Start with the constraint' },
+  { label: 'Design',   ground: 'var(--phase-design)', note: 'Redesign the work first' },
+  { label: 'Deliver',  ground: 'var(--phase-deliver)',   note: 'Ship into the live operation' },
+  { label: 'Sustain',  ground: 'var(--phase-sustain)',   note: 'Leave the capability behind' },
 ]
 
 export const OFFICES = ['New York', 'London', 'Frankfurt', 'Dubai', 'Singapore', 'São Paulo']

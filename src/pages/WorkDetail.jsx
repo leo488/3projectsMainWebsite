@@ -2,8 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import SiteFooter from '../components/SiteFooter'
 import Navbar from '../components/Navbar'
 import { Link } from '../router'
+import PixelArt from '../components/PixelArt'
 import { PROJECTS, getProject } from '../data/projects'
 import './WorkDetail.css'
+import './WorkDark.css'
+
+// Each phase panel carries the matching pixel illustration; Deliver
+// shows what the engagement built.
+const PHASE_ART = { Discover: 'icon-strategy', Design: 'icon-design', Sustain: 'icon-evolution' }
 
 export default function WorkDetail({ slug }) {
   const project = getProject(slug)
@@ -63,15 +69,11 @@ export default function WorkDetail({ slug }) {
   const others = PROJECTS.filter((p) => p.slug !== project.slug).slice(0, 3)
 
   return (
-    <>
-      {/* A light project ground cannot carry a white lockup. */}
-      <Navbar theme={project.tone === 'light' ? 'onlight' : 'dark'} />
+    <div className="work-dark">
+      <Navbar theme="dark" />
 
       {/* ── Project masthead ── */}
-      <header
-        className={`detail-intro detail-intro--${project.tone || 'dark'}`}
-        style={{ background: project.ground }}
-      >
+      <header className="detail-intro detail-intro--dark">
         <Link href="/work" className="tiny detail-back">← All work</Link>
         <h1 className="detail-title">{project.title}</h1>
         <p className="detail-summary">{project.summary}</p>
@@ -111,7 +113,7 @@ export default function WorkDetail({ slug }) {
                   key={s.label}
                   className={`tiny detail-progress-item${i === activeIndex ? ' is-active' : ''}`}
                 >
-                  <span className="detail-progress-dot" style={{ background: s.ground }} />
+                  <span className="detail-progress-dot" />
                   {s.label}
                 </li>
               ))}
@@ -139,8 +141,11 @@ export default function WorkDetail({ slug }) {
               className="detail-panel"
               ref={(el) => { panelRefs.current[i] = el }}
             >
-              {/* Placeholder ground — real project imagery drops in here. */}
-              <div className="detail-panel-plate" style={{ background: s.ground }}>
+              <div className="detail-panel-plate">
+                <PixelArt
+                  name={PHASE_ART[s.label] || project.art || 'platform'}
+                  className={`detail-panel-art${PHASE_ART[s.label] ? ' detail-panel-art--icon' : ''}`}
+                />
                 <span className="tiny detail-panel-index">
                   {String(i + 1).padStart(2, '0')} / {String(project.sections.length).padStart(2, '0')}
                 </span>
@@ -176,7 +181,9 @@ export default function WorkDetail({ slug }) {
           {others.map((p) => (
             <li key={p.slug}>
               <Link href={`/work/${p.slug}`} className="detail-next-link">
-                <span className="detail-next-plate" style={{ background: p.ground }} />
+                <span className="detail-next-plate">
+                  {p.art && <PixelArt name={p.art} className="detail-next-art" />}
+                </span>
                 <h3>{p.title}</h3>
                 <span className="tiny">{p.tag}</span>
               </Link>
@@ -185,7 +192,7 @@ export default function WorkDetail({ slug }) {
         </ul>
       </section>
 
-      <SiteFooter />
-    </>
+      <SiteFooter tone="dark" />
+    </div>
   )
 }

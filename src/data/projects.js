@@ -1,25 +1,14 @@
 /* ──────────────────────────────────────────────────────────────
-   PLACEHOLDER DATA — awaiting the project CSV.
-
-   The CSV had not landed when this page was built, so nothing here
-   claims a client name, a figure or an outcome. Titles and summaries
-   are drawn from copy already published on this site (the home page
-   feature card, the capabilities list and the industries list); the
-   metric slots keep the site's existing XX / $XM+ placeholders.
-
-   Each record maps one-to-one onto the CSV columns, so replacing this
-   array is the whole job — no component changes required.
+   Case studies. Only engagements with real content are live; the
+   placeholder studies are kept below in a comment until their content
+   arrives. Each record maps one-to-one onto the case-study intake CSV.
+   `art` names the pixel illustration that stands in for imagery.
    ────────────────────────────────────────────────────────────── */
 
-export const CATEGORIES = [
-  'All',
-  'Strategy',
-  'Design',
-  'Platform',
-  'Operations',
-]
-
 export const PROJECTS = [
+  /* ── Inactive: placeholder studies awaiting real content. Hidden from
+     the site for now; uncomment an entry to bring it back. ──
+
   {
     slug: 'operational-complexity',
     title: 'Turning Operational Complexity into Competitive Advantage',
@@ -42,25 +31,25 @@ export const PROJECTS = [
         label: 'Discover',
         heading: 'Start with the constraint, not the brief',
         body: 'Discovery ran against the real operating model rather than the documented one — the handoffs people work around, the approvals that queue, the reporting nobody reads. The map that came out of it was the first time the whole picture sat in one place.',
-        ground: 'var(--amber)',
+        ground: 'var(--phase-discover)',
       },
       {
         label: 'Design',
         heading: 'Redesign the work, then the system',
         body: 'Process came before software. Each critical path was rebuilt around the decision it exists to support, and only then did we specify what had to be built, bought or retired to carry it.',
-        ground: 'var(--indigo)',
+        ground: 'var(--phase-design)',
       },
       {
         label: 'Deliver',
         heading: 'Ship into the live operation',
         body: 'Delivery ran in slices against live work, so every change was measured against the operation it was meant to improve rather than a staging environment that never had to hold up.',
-        ground: 'var(--cyan)',
+        ground: 'var(--phase-deliver)',
       },
       {
         label: 'Sustain',
         heading: 'Leave the capability behind',
         body: 'The engagement ends; the operating model does not. Instrumentation, ownership and a review cadence stayed with the teams running the work, so improvement continues without us in the room.',
-        ground: 'var(--mint)',
+        ground: 'var(--phase-sustain)',
       },
     ],
   },
@@ -72,7 +61,7 @@ export const PROJECTS = [
     categories: ['Operations', 'Platform'],
     industry: 'Financial Services',
     year: '2025',
-    ground: 'var(--slate)',
+    ground: 'var(--ink)',
     ratio: '4 / 5',
     services: ['Transformation Architecture', 'Technology Integration', 'Continuous Evolution'],
     metrics: [
@@ -86,25 +75,25 @@ export const PROJECTS = [
         label: 'Discover',
         heading: 'Separate the rule from the habit',
         body: 'Every control was traced back to its origin. A large share turned out to be institutional memory rather than obligation — which is what made the rest of the work possible.',
-        ground: 'var(--amber)',
+        ground: 'var(--phase-discover)',
       },
       {
         label: 'Design',
         heading: 'Architecture that survives the next decade',
         body: 'The target architecture was specified around the parts most likely to change, so the components with the shortest half-life could be replaced without disturbing the ones carrying regulatory weight.',
-        ground: 'var(--indigo)',
+        ground: 'var(--phase-design)',
       },
       {
         label: 'Deliver',
         heading: 'Modernize without stopping the bank',
         body: 'Migration ran path by path, each one proved in parallel before the old route was retired. No cutover weekend, no freeze on the business.',
-        ground: 'var(--cyan)',
+        ground: 'var(--phase-deliver)',
       },
       {
         label: 'Sustain',
         heading: 'Measure what modernization bought',
         body: 'Baselines were captured before the first change so the improvement could be argued with numbers rather than impressions, and the same instrumentation now drives the roadmap.',
-        ground: 'var(--mint)',
+        ground: 'var(--phase-sustain)',
       },
     ],
   },
@@ -116,7 +105,7 @@ export const PROJECTS = [
     categories: ['Strategy', 'Operations'],
     industry: 'Infrastructure',
     year: '2024',
-    ground: 'var(--violet)',
+    ground: 'var(--navy)',
     ratio: '4 / 5',
     services: ['Enterprise Discovery', 'Transformation Architecture', 'Operational Optimization'],
     metrics: [
@@ -130,25 +119,25 @@ export const PROJECTS = [
         label: 'Discover',
         heading: 'Find where certainty is lost',
         body: 'Programmes were traced end to end to locate the points where an estimate stops being reliable. The same three handoffs accounted for most of the drift.',
-        ground: 'var(--amber)',
+        ground: 'var(--phase-discover)',
       },
       {
         label: 'Design',
         heading: 'One picture, many programmes',
         body: 'A common structure for scope, schedule and spend let independent programmes stay independent while still rolling up into a portfolio view that meant something.',
-        ground: 'var(--indigo)',
+        ground: 'var(--phase-design)',
       },
       {
         label: 'Deliver',
         heading: 'Adopt without a mandate',
         body: 'Rollout led with the reporting burden it removed rather than the compliance it added, so teams took it up because it was less work, not because they were told to.',
-        ground: 'var(--cyan)',
+        ground: 'var(--phase-deliver)',
       },
       {
         label: 'Sustain',
         heading: 'Keep the picture current',
         body: 'Ownership sits with the programme teams who generate the data, which is the only arrangement under which a portfolio view stays accurate past its first quarter.',
-        ground: 'var(--mint)',
+        ground: 'var(--phase-sustain)',
       },
     ],
   },
@@ -174,34 +163,36 @@ export const PROJECTS = [
         label: 'Discover',
         heading: 'How long is the loop, really',
         body: 'We measured elapsed time from signal to decision to action. The technology was rarely the delay; the wait for the next scheduled forum usually was.',
-        ground: 'var(--amber)',
+        ground: 'var(--phase-discover)',
       },
       {
         label: 'Design',
         heading: 'Plan at the speed of the network',
         body: 'Planning was restructured around a short cycle with a standing decision forum, and the field tooling was rebuilt around what crews actually need at the point of work.',
-        ground: 'var(--indigo)',
+        ground: 'var(--phase-design)',
       },
       {
         label: 'Deliver',
         heading: 'Prove it in one region first',
         body: 'A single region ran the new cycle end to end for a full quarter. Rollout arguments are easier to make once one part of the business has already done it.',
-        ground: 'var(--cyan)',
+        ground: 'var(--phase-deliver)',
       },
       {
         label: 'Sustain',
         heading: 'Hold the cadence',
         body: 'The cadence is the product. Governance, instrumentation and ownership were set up so the short cycle survives leadership changes and busy quarters.',
-        ground: 'var(--mint)',
+        ground: 'var(--phase-sustain)',
       },
     ],
   },
+  ── end inactive ── */
   /* ── From the case-study intake CSV (responses of 2/9/2026 and
      7/9/2026). Everything below is taken from those responses; where a
      field was left blank or answered "Nil" it is simply absent rather
      than filled in. ── */
   {
     slug: 'crunchies-inventory',
+    art: 'pos-terminal',
     title: 'Inventory Innovation / Solution',
     client: 'Crunchies Group — Crunchies Fried Chicken',
     summary: 'Limited real-time visibility into stock across outlets, warehouses and kitchens, with much of the process still dependent on manual tracking and reporting.',
@@ -209,7 +200,7 @@ export const PROJECTS = [
     categories: ['Operations', 'Platform'],
     industry: 'Hospitality / Food chain',
     year: 'In progress',
-    ground: 'var(--signal-red)',
+    ground: 'var(--enterprise)',
     tone: 'dark',
     ratio: '4 / 3',
     services: ['Centralised item database', 'Digital inventory workflows', 'SAGE ERP integration'],
@@ -224,30 +215,31 @@ export const PROJECTS = [
         label: 'Discover',
         heading: 'Where the inventory picture breaks down',
         body: 'No real-time visibility across branches, warehouses and kitchens. Daily records uploaded by hand, no structured database for branch requests or transactions, and data integrity weak enough to allow manipulation across outlets. Item descriptions were not standardised, which made reconciliation difficult and submissions late.',
-        ground: 'var(--amber)',
+        ground: 'var(--phase-discover)',
       },
       {
         label: 'Design',
         heading: 'One connected Inventory Operations Hub',
         body: 'A digital system bringing the department onto one platform, replacing Excel, email and paper with digital inventory requests, warehouse issuance, kitchen records, approvals, reports and real-time dashboards. A standard item list and a digital record of stock movement make stock traceable across every location. Delivery is planned across eight phases; phase one is in build.',
-        ground: 'var(--indigo)',
+        ground: 'var(--phase-design)',
       },
       {
         label: 'Deliver',
         heading: 'Mobile-first, and built to reconcile',
         body: 'A mobile-first approach over a centralised item database, with digital workflows, dashboards, barcode support, audit logs, automated reporting, alerts and real-time tracking. API integration with SAGE ERP and data validation sit underneath, alongside demand forecasting.',
-        ground: 'var(--cyan)',
+        ground: 'var(--phase-deliver)',
       },
       {
         label: 'Sustain',
         heading: 'From manual process to traceable workflow',
         body: 'The aim is to move inventory management from a largely manual process to a structured digital workflow — changing how staff submit requests, track stock, record daily activity and share information across branches, warehouses and kitchens, and giving management visibility it did not previously have. The roadmap carries further phases including demand forecasting and AI features such as smart reorder suggestions, overstock alerts and waste prediction.',
-        ground: 'var(--mint)',
+        ground: 'var(--phase-sustain)',
       },
     ],
   },
   {
     slug: 'myspotlyt',
+    art: 'hand-phone',
     title: 'Myspotlyt',
     client: 'Myspotlyt',
     summary: 'A live platform lacking stability and features, with no user retention and no new user acquisition.',
@@ -255,8 +247,8 @@ export const PROJECTS = [
     categories: ['Platform', 'Design'],
     industry: 'Arts and Entertainment',
     year: '2022–2026',
-    ground: 'var(--amber)',
-    tone: 'light',
+    ground: 'var(--phase-discover)',
+    tone: 'dark',
     ratio: '4 / 5',
     services: ['NestJS backend', 'Vite + Express frontend', 'MongoDB'],
     metrics: [
@@ -270,28 +262,31 @@ export const PROJECTS = [
         label: 'Discover',
         heading: 'Live, but not holding anyone',
         body: 'The platform was shipping without the stability or the feature set to keep people on it. The two problems that mattered were plain: no user retention, and no new user acquisition.',
-        ground: 'var(--amber)',
+        ground: 'var(--phase-discover)',
       },
       {
         label: 'Design',
         heading: 'Build the features the platform was missing',
         body: 'The team deployed new features to lift the platform — the Award feature, the agent feature and the payment feature among them.',
-        ground: 'var(--indigo)',
+        ground: 'var(--phase-design)',
       },
       {
         label: 'Deliver',
         heading: 'The stack underneath',
         body: 'NestJS for the backend, Vite with Express for the frontend, and MongoDB as the database.',
-        ground: 'var(--cyan)',
+        ground: 'var(--phase-deliver)',
       },
       {
         label: 'Sustain',
         heading: 'A measured delivery cadence',
         body: 'Deploying a feature on Myspotlyt takes approximately two to three months. Revenue over the engagement moved from ₦100K+ in 2022 to over ₦3M by 2026, against an active user base under five thousand.',
-        ground: 'var(--mint)',
+        ground: 'var(--phase-sustain)',
       },
     ],
   },
 ]
+
+// Filters offered on the work index: only disciplines with live work.
+export const CATEGORIES = ['All', ...new Set(PROJECTS.flatMap((p) => p.categories))]
 
 export const getProject = (slug) => PROJECTS.find((p) => p.slug === slug)

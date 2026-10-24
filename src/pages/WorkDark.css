@@ -1,0 +1,179 @@
+/* ─────────────────────────────
+   Case studies run dark end to end: the index, every study and its
+   footer sit on one night ground, with the pixel illustrations as the
+   only colour.
+───────────────────────────── */
+.work-dark {
+  background: var(--night);
+  color: var(--white);
+}
+
+/* ── Index ── */
+.work-dark .work-intro {
+  background: var(--night);
+}
+
+.work-dark .work-filter {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.work-dark .work-filter-btn {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.work-dark .work-filter-btn:hover {
+  color: var(--white);
+}
+
+.work-dark .work-filter-btn.is-active {
+  color: var(--sky);
+}
+
+.work-dark .work-filter-count {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.work-dark .work-card-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--night-raise);
+}
+
+.work-dark .work-card-art {
+  width: auto;
+  height: 82%;
+}
+
+.work-dark .work-card-industry {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.work-dark .work-card-title {
+  color: var(--white);
+}
+
+.work-dark .work-card-summary {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.work-dark .work-card-tag {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.work-dark .work-empty {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.work-dark .approach-eyebrow {
+  color: var(--sky);
+}
+
+.work-dark .approach-headline,
+.work-dark .approach-title {
+  color: var(--white);
+}
+
+.work-dark .approach-body,
+.work-dark .approach-text {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.work-dark .approach-label {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.work-dark .approach-item {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+.approach-icon {
+  width: 56px;
+  margin-bottom: 22px;
+}
+
+/* ── Study ── */
+.work-dark .detail-intro {
+  background: var(--night);
+}
+
+.work-dark .detail-meta {
+  border-top-color: rgba(255, 255, 255, 0.18);
+}
+
+.work-dark .detail-lede,
+.work-dark .detail-chapter-title,
+.work-dark .detail-progress-item.is-active,
+.work-dark .detail-metric-value,
+.work-dark .detail-next-link h3,
+.work-dark .detail-panel-copy h2 {
+  color: var(--white);
+}
+
+.work-dark .detail-chapter-body,
+.work-dark .detail-metric-label,
+.work-dark .detail-panel-copy p {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.work-dark .detail-progress-item,
+.work-dark .detail-next-eyebrow,
+.work-dark .detail-next-link .tiny {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.work-dark .detail-progress-dot {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.work-dark .detail-progress-item.is-active .detail-progress-dot {
+  background: var(--cobalt);
+}
+
+.work-dark .detail-panel-plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--night-raise);
+}
+
+.detail-panel-art {
+  width: auto;
+  height: 84%;
+}
+
+/* The 24-cell icons read as bold marks; keep them smaller than the
+   full illustrations so the cells stay in proportion. */
+.detail-panel-art--icon {
+  height: 44%;
+}
+
+.work-dark .detail-panel-index,
+.work-dark .detail-panel-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.work-dark .detail-metrics {
+  background: var(--night-raise);
+}
+
+.work-dark .detail-metrics-eyebrow {
+  color: var(--sky);
+}
+
+.work-dark .detail-metrics-list li {
+  border-top-color: rgba(255, 255, 255, 0.16);
+}
+
+.work-dark .detail-next-plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--night-raise);
+}
+
+.detail-next-art {
+  width: auto;
+  height: 80%;
+}
