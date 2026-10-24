@@ -29,13 +29,12 @@ const PHASES = [
   },
 ]
 
-/* The four phases of every engagement, one textured card each.
-   `compact` is the shorter set on the home page, sitting on white. */
-export default function PhaseCards({ compact = false }) {
+/* The four phases of every engagement, one textured card each. */
+export default function PhaseCards() {
   const ref = useReveal('is-visible')
 
   return (
-    <ol className={`approach-list${compact ? ' approach-list--compact' : ''}`} ref={ref}>
+    <ol className="approach-list" ref={ref}>
       {PHASES.map((a, i) => (
         <li key={a.label} className="approach-item" style={{ '--i': i }}>
           <span className="tiny approach-label">

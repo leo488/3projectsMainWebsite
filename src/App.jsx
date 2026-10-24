@@ -4,7 +4,6 @@ import Hero         from './components/Hero'
 import Featured     from './components/Featured'
 // import Capabilities from './components/Capabilities'
 // import Showcase     from './components/Showcase'
-import PhaseCards   from './components/PhaseCards'
 import PartnerCta   from './components/PartnerCta'
 import Stats        from './components/Stats'
 import Insights     from './components/Insights'
@@ -34,17 +33,10 @@ function Home() {
       <Hero />
       <Stats />
       <Insights />
-      {/* How we engage with the four phase cards straight under it, then
-          white space, a heading and the CPA band. */}
+      {/* The pattern band and the CPA band are one stacked pair, with
+          white space above and below. */}
       <div className="home-pair">
         <Featured />
-        <PhaseCards compact />
-        <header className="home-cpa-head">
-          <p className="tiny home-cpa-eyebrow">CPA Partners</p>
-          <h2 className="home-cpa-title">
-            Know a business that needs us? Bring it to the table and grow with us.
-          </h2>
-        </header>
         <PartnerCta />
       </div>
       {/* Set aside on this layout; each can come back as it is. */}
