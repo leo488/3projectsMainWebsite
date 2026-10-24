@@ -21,7 +21,7 @@ export default function PartnerCta() {
         </a>
       </div>
       <div className="partner-right" role="presentation">
-        <PartnerGrid className="partner-grid" fill="var(--navy)" />
+        <PartnerGrid className="partner-grid" fill="#001A66" />
       </div>
     </section>
   )

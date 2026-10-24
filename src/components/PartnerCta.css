@@ -60,7 +60,7 @@
 
 .partner-right {
   position: relative;
-  background: var(--hero-blue);
+  background: var(--section-blue);
 }
 
 /* The grid sits inset from all four edges so it reads as living inside

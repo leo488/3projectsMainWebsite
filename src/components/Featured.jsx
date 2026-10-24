@@ -7,7 +7,7 @@ import './Featured.css'
    the reader leaving the section. */
 const STATES = [
   {
-    ground: 'var(--navy)',
+    ground: 'var(--section-blue)',
     eyebrow: 'Featured Transformation',
     headline: ['Turning Operational', 'Complexity into Competitive', 'Advantage.'],
     body: 'Every enterprise carries hidden constraints that slow the work and inflate its cost. 3Projects partners with enterprise leaders to find them, redesign how critical operations run, and put in the technology that turns the fix into measurable business value.',

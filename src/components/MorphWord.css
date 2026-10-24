@@ -18,6 +18,9 @@
 
 .morph-measure span {
   display: block;
+  /* Each word at its own width; as plain blocks they would all stretch
+     to the widest and the line would stop re-centring. */
+  width: max-content;
 }
 
 /* In flow and invisible: gives .morph its line box so the absolutely

@@ -10,10 +10,23 @@
   justify-content: center;
   gap: 14px;
   padding: 0 var(--side-pad);
-  background: #000;
-  color: var(--white);
+  background: #D9E3FF;
+  color: var(--ink);
+  /* The pixel mark steps down to the deeper blues so it holds on the
+     pale strip: bottom slab darkest, top slab brightest. */
+  --px-body: #001A66;
+  --px-mid: #0031B8;
+  --px-light: #004BFF;
   font-size: 15px;
   text-align: center;
+}
+
+[data-theme='dark'] .announce {
+  background: var(--section-blue);
+  color: var(--white);
+  --px-body: #004BFF;
+  --px-mid: #7FA5FF;
+  --px-light: #C9DAFF;
 }
 
 .announce-text strong {

@@ -238,7 +238,7 @@
 
 .hero-card-visual {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2.15 / 1;
   overflow: hidden;
   border-radius: var(--card-r);
   background: var(--hero-box);
@@ -247,7 +247,7 @@
 .hero-card--left .hero-card-visual,
 .hero-card--right .hero-card-visual {
   aspect-ratio: auto;
-  height: clamp(220px, 26vw, 500px);
+  height: clamp(200px, 22vw, 420px);
 }
 
 /* A placeholder box builds out of the grid: it stays empty while the
@@ -272,6 +272,9 @@
 
 .hero-card-img {
   object-fit: cover;
+  /* Matches the framing the pixel assembly uses, so the hand-over from
+     grid to still is seamless. */
+  object-position: center 41%;
 }
 
 .hero-card-visual:has(.hero-card-canvas[data-ready='true']:not([data-settled='true'])) .hero-card-img {
@@ -293,15 +296,11 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
   gap: 24px 48px;
-  margin-top: 6px;
-  padding: clamp(24px, 2.6vw, 40px);
-  border-radius: var(--card-r);
-  background: var(--night);
-  color: var(--white);
-}
-
-[data-theme='dark'] .hero-card-stats {
-  background: var(--night-raise);
+  /* Set straight on the hero ground, no box: the numbers read as the
+     caption to the picture above. */
+  margin-top: 28px;
+  padding: 0 4px;
+  color: var(--fg);
 }
 
 .hero-card-head {
@@ -314,7 +313,7 @@
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--sky);
+  color: var(--cta-blue);
 }
 
 .hero-card-line {
@@ -335,7 +334,7 @@
   flex-direction: column-reverse;
   gap: 8px;
   padding: 0 20px;
-  border-left: 1px solid rgba(255, 255, 255, 0.18);
+  border-left: 1px solid rgb(var(--fg-rgb) / 0.16);
 }
 
 .hero-card-number dd {
@@ -349,7 +348,7 @@
 .hero-card-number dt {
   font-size: 13px;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.62);
+  color: rgb(var(--fg-rgb) / 0.6);
 }
 
 .hero-dots {
