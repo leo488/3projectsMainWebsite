@@ -235,7 +235,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--phase-sustain)',
     ratio: '4 / 3',
-    image: "blog-team",
+    image: "blog-arrival",
     blocks: [
       ["p", "Growth is usually celebrated."],
       ["p", "More customers."],

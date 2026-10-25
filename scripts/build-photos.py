@@ -25,6 +25,7 @@ PHOTOS = {
     'blog-platform':     ('1e7d4def-image.png', 0),
     'blog-team':         ('cd286a50-image.png', 0),
     'blog-tap':          ('bb5d3f6b-image.png', 0),
+    'blog-arrival':      ('ffd5c45a-image.png', 0),
 }
 SIZES = (('full', 3200), ('sm', 1080))
 OUT = os.path.join(os.path.dirname(__file__), '..', 'public', 'images')
