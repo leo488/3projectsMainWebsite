@@ -307,8 +307,8 @@ export const PROJECTS = [
     // large type and a mock-up across the width (Leo is sending it).
     interlude: {
       after: 1,
-      eyebrow: 'What changed',
-      text: 'With the platform steady and the **Award, agent and payment** features live, the work turned to what sits underneath: a stack that could take **a release every two to three months** without unsettling what was already running.',
+      eyebrow: 'What we built for',
+      text: 'A talent platform lives on one feeling: **being seen**. Every screen we shipped was made to get people there faster.',
       label: 'Mock-up',
     },
     sections: [

@@ -605,6 +605,10 @@
 
 .detail-interlude .detail-lede {
   margin-top: 28px;
+  max-width: 820px;
+  /* A step down from the opening, so it reads as a pause, not a
+     second start. */
+  font-size: clamp(26px, 3vw, 44px);
 }
 
 .detail-interlude-shot {
