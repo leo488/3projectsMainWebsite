@@ -240,7 +240,7 @@ export default function WorkDetail({ slug }) {
           <p className="detail-lede">{rich(project.interlude.text)}</p>
           <figure className={`detail-interlude-shot${project.interlude.photo ? '' : ' is-empty'}`}>
             {project.interlude.photo
-              ? <Photo name={project.interlude.photo} alt={project.interlude.alt || ''} sizes="100vw" loading="lazy" />
+              ? <Photo name={project.interlude.photo} alt={project.interlude.alt || ''} sizes="100vw" loading="lazy" style={project.interlude.position ? { objectPosition: project.interlude.position } : undefined} />
               : <span className="tiny detail-shot-label">{project.interlude.label || 'Image'}</span>}
           </figure>
         </section>

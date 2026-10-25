@@ -30,6 +30,7 @@ PHOTOS = {
     'talent-hats':       ('f2d36d16-image.png', 0),
     'talent-runner':     ('f4f3b3b6-image.png', 0),
     'talent-studio':     ('17d979bc-image.png', 0),
+    'talent-billboard':  ('bca8f132-image.png', 0),
 }
 SIZES = (('full', 3200), ('sm', 1080))
 OUT = os.path.join(os.path.dirname(__file__), '..', 'public', 'images')

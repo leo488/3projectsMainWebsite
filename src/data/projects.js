@@ -304,12 +304,14 @@ export const PROJECTS = [
       caption: 'Talent, a search away.',
     },
     // Breaks the phases after Design with a statement in the opening's
-    // large type and a mock-up across the width (Leo is sending it).
+    // large type and Leo's billboard mock-up across the width.
     interlude: {
       after: 1,
       eyebrow: 'What we built for',
       text: 'A talent platform lives on one feeling: **being seen**. Every screen we shipped was made to get people there faster.',
-      label: 'Mock-up',
+      photo: 'talent-billboard',
+      alt: 'A billboard reading "Easy talent search." beside a woman smiling at her phone',
+      position: '50% 48%',
     },
     sections: [
       {
