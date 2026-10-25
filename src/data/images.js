@@ -42,6 +42,10 @@ export const PHOTOS = {
     { w: 1080, jpg: '/images/blog-arrival-sm.jpg', webp: '/images/blog-arrival-sm.webp', avif: '/images/blog-arrival-sm.avif' },
     { w: 1536, jpg: '/images/blog-arrival-full.jpg', webp: '/images/blog-arrival-full.webp', avif: '/images/blog-arrival-full.avif' },
   ],
+  'blog-taxi': [
+    { w: 1080, jpg: '/images/blog-taxi-sm.jpg', webp: '/images/blog-taxi-sm.webp', avif: '/images/blog-taxi-sm.avif' },
+    { w: 1536, jpg: '/images/blog-taxi-full.jpg', webp: '/images/blog-taxi-full.webp', avif: '/images/blog-taxi-full.avif' },
+  ],
   'blog-team': [
     { w: 1024, jpg: '/images/blog-team-full.jpg', webp: '/images/blog-team-full.webp', avif: '/images/blog-team-full.avif' },
   ],
