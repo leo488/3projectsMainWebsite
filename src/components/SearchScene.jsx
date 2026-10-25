@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import Photo from './Photo'
 import { PHOTOS } from '../data/images'
+import { Icon, StatusBar, TabBar, useAppFont } from './msApp'
+import { useFit } from './useScene'
 import './SearchScene.css'
 
 /* A scene from the Myspotlyt app, rebuilt in code rather than pasted in
@@ -21,41 +23,15 @@ const PICK_AT = SUGGEST_AT + 1400
 const PROFILE_AT = PICK_AT + 600
 const LOOP_AT = PROFILE_AT + 4200
 
-function useAppFont() {
-  useEffect(() => {
-    const id = 'font-poppins'
-    if (document.getElementById(id)) return
-    const link = document.createElement('link')
-    link.id = id
-    link.rel = 'stylesheet'
-    link.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap'
-    document.head.appendChild(link)
-  }, [])
-}
-
-const Icon = {
-  search: (
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="M16 16l4.5 4.5" /></svg>
-  ),
-  filter: (
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4" /></svg>
-  ),
-  home: (
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-4v-5h-6v5H5a1 1 0 0 1-1-1z" /></svg>
-  ),
-  award: (
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4a5 5 0 0 1-10 0zM12 13v4M8 20h8M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3" /></svg>
-  ),
-  profile: (
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><circle cx="12" cy="10" r="3" /><path d="M6.5 18a6.5 6.5 0 0 1 11 0" /></svg>
-  ),
-}
-
 export default function SearchScene({ photo, position, caption, also }) {
   useAppFont()
   const ref = useRef(null)
   const [t, setT] = useState(0)          // ms into the current pass
   const [on, setOn] = useState(false)    // on screen
+  // The phone shrinks to fit a shorter scene, text and all, rather than
+  // being cut at the top and bottom on tablets. Narrow screens keep room
+  // for the caption above it.
+  const k = useFit(ref, (w, h) => Math.min(1, (h - (w < 700 ? 150 : 96)) / 640))
   const still = typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -90,13 +66,13 @@ export default function SearchScene({ photo, position, caption, also }) {
   const other = PHOTOS[also]?.[0]?.webp || avatar
 
   return (
-    <section ref={ref} className={`search-scene${on || still ? ' is-on' : ''}`}>
+    <section ref={ref} className={`search-scene${on || still ? ' is-on' : ''}`} style={{ '--k': k }}>
       <div className="search-scene-photo">
         <Photo name={photo} alt="" sizes="100vw" loading="lazy" style={position ? { objectPosition: position } : undefined} />
       </div>
 
-      <div className="ms-phone" role="img" aria-label="The Myspotlyt app: a search for a talent opens her profile">
-        <div className="ms-status"><span>9:41</span><span className="ms-status-icons" /></div>
+      <div className="ms-phone ms-app" role="img" aria-label="The Myspotlyt app: a search for a talent opens her profile">
+        <StatusBar />
 
         <div className={`ms-screen ms-discover${profile ? ' is-away' : ''}`}>
           <p className="ms-title">Discover</p>
@@ -147,13 +123,7 @@ export default function SearchScene({ photo, position, caption, also }) {
           </div>
         </div>
 
-        <nav className="ms-nav" aria-hidden="true">
-          <span>{Icon.home}Home</span>
-          <span className={profile ? '' : 'is-on'}>{Icon.search}Discover</span>
-          <span className="ms-plus">+</span>
-          <span>{Icon.award}Awards</span>
-          <span>{Icon.profile}Profile</span>
-        </nav>
+        <TabBar active={profile ? '' : 'Discover'} />
       </div>
 
       {caption && <p className="search-scene-caption">{caption}</p>}

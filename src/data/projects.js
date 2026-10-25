@@ -287,7 +287,7 @@ export const PROJECTS = [
     scene: {
       photo: 'talent-runner',
       also: 'talent-hats',
-      position: '70% 24%',
+      position: '70% 30%',
       caption: 'Talent, a search away.',
     },
     sections: [
@@ -298,8 +298,8 @@ export const PROJECTS = [
           'The platform was shipping without the stability or the feature set to keep people on it. The two problems that mattered were plain: no user retention, and no new user acquisition.',
           'We started by finding where the platform broke and where people dropped off, so the first releases went to the problems costing the most users.',
         ],
-        image: '/images/work/myspotlyt-discover.webp',
-        imageAlt: 'Myspotlyt home feed and Discover search',
+        screen: 'live',
+        imageAlt: 'The Myspotlyt home feed, live, with comments and hearts coming in',
         ground: 'var(--phase-discover)',
       },
       {
@@ -309,8 +309,8 @@ export const PROJECTS = [
           'The team deployed new features to lift the platform: the Award feature, the agent feature and the payment feature among them.',
           'Each feature was chosen for one job: give the people already on the platform a reason to come back, and give new people a reason to join.',
         ],
-        image: '/images/work/myspotlyt-design.webp',
-        imageAlt: 'Myspotlyt Awards list and vote confirmation',
+        screen: 'vote',
+        imageAlt: 'The Myspotlyt Awards screen, with a vote being paid for and confirmed',
         ground: 'var(--phase-design)',
       },
       {
@@ -320,8 +320,8 @@ export const PROJECTS = [
           'NestJS for the backend, Vite with Express for the frontend, and MongoDB as the database.',
           'A modern, well-supported stack means new features can be added without unsettling what is already live, which is what made a steady release rhythm possible.',
         ],
-        image: '/images/work/myspotlyt-deliver.webp',
-        imageAlt: 'Myspotlyt admin dashboard',
+        screen: 'dashboard',
+        imageAlt: 'The Myspotlyt admin dashboard, its figures counting up and revenue lines drawing in',
         ground: 'var(--phase-deliver)',
       },
       {
@@ -331,8 +331,8 @@ export const PROJECTS = [
           'Deploying a feature on Myspotlyt takes approximately two to three months. Revenue over the engagement moved from ₦100K+ in 2022 to over ₦3M by 2026, against an active user base under five thousand.',
           'That rhythm, one considered release at a time, is what turned a stalled platform into one that keeps growing.',
         ],
-        image: '/images/work/myspotlyt-sustain.webp',
-        imageAlt: 'Myspotlyt admin ticketing',
+        screen: 'tickets',
+        imageAlt: 'The Myspotlyt tickets screen, with tickets selling',
         ground: 'var(--phase-sustain)',
       },
     ],

@@ -1,14 +1,6 @@
-/* The scene: a photograph across the full width, the phone standing in
-   front of it. The app inside keeps Myspotlyt's own look (its dark
-   ground, its violet and Poppins) since it is their product, not ours. */
+/* The scene: a photograph across the full width, the phone standing
+   at its centre. The phone's chrome and the app's look are in MsApp.css. */
 .search-scene {
-  --ms-ground: #141118;
-  --ms-field: #1b1820;
-  --ms-line: #2a2731;
-  --ms-violet: #7158e2;
-  --ms-text: #ffffff;
-  --ms-muted: rgb(255 255 255 / 0.6);
-
   position: relative;
   display: grid;
   place-items: center;
@@ -19,9 +11,11 @@
   background: var(--card);
 }
 
+/* The photograph runs a fifth wider than the scene and off its right
+   edge, which carries her clear of the phone in the middle. */
 .search-scene-photo {
   position: absolute;
-  inset: 0;
+  inset: 0 -20% 0 0;
 }
 
 .search-scene-photo picture {
@@ -34,6 +28,7 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1.14);
+  transform-origin: 70% 30%;
   transition: transform 9s cubic-bezier(0.2, 0.6, 0.2, 1);
   will-change: transform;
 }
@@ -50,26 +45,12 @@
   font-size: 22px;
   line-height: 1.35;
   color: var(--white);
-  text-shadow: 0 1px 24px rgb(0 0 0 / 0.35);
 }
 
-/* ── The phone ── */
-.ms-phone {
-  position: relative;
+/* ── The phone, centred, scaled by the scene to fit its height ── */
+.search-scene .ms-phone {
   z-index: 1;
-  width: 300px;
-  height: 640px;
-  /* Over the open sky, clear of her face. */
-  margin-right: 38%;
-  border-radius: 44px;
-  overflow: hidden;
-  background: var(--ms-ground);
-  color: var(--ms-text);
-  font-family: 'Poppins', 'Manrope', sans-serif;
-  box-shadow:
-    0 0 0 8px #0b0a0d,
-    0 0 0 9px rgb(255 255 255 / 0.12),
-    0 40px 80px -20px rgb(0 0 0 / 0.55);
+  scale: var(--k, 1);
   transform: translateY(40px);
   opacity: 0;
   transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.6s ease;
@@ -80,37 +61,9 @@
   opacity: 1;
 }
 
-.ms-phone svg {
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  flex: none;
-}
-
-.ms-status {
-  display: flex;
-  justify-content: space-between;
-  padding: 16px 24px 0;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.ms-status-icons {
-  width: 48px;
-  height: 10px;
-  border-radius: 3px;
-  background: linear-gradient(90deg, #fff 0 30%, transparent 30% 38%, #fff 38% 62%, transparent 62% 70%, #fff 70%);
-  opacity: 0.9;
-  align-self: center;
-}
-
 .ms-screen {
   position: absolute;
-  inset: 44px 0 64px;
+  inset: 40px 0 60px;
   padding: 0 16px;
   transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.4s ease;
 }
@@ -339,56 +292,19 @@
   background-size: 260% auto;
 }
 
-.ms-nav {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 64px;
-  padding-bottom: 6px;
-  border-top: 1px solid var(--ms-line);
-  background: var(--ms-ground);
-  font-size: 9.5px;
-  color: var(--ms-muted);
-}
-
-.ms-nav span {
-  display: grid;
-  justify-items: center;
-  gap: 3px;
-}
-
-.ms-nav .is-on {
-  color: var(--ms-violet);
-}
-
-.ms-plus {
-  width: 26px;
-  height: 26px;
-  place-content: center;
-  border-radius: 7px;
-  background: linear-gradient(135deg, #8a5cf6, #3b7bff);
-  color: #fff;
-  font-size: 16px;
-}
-
 @media (max-width: 900px) {
   .search-scene {
     margin-bottom: 72px;
     height: 760px;
   }
 
-  .ms-phone {
-    margin-right: 0;
-    margin-top: 56px;
-    transform: translateY(40px) scale(0.92);
+  /* Her, whole, behind the phone; the caption above it. */
+  .search-scene-photo {
+    inset: 0;
   }
 
-  .search-scene.is-on .ms-phone {
-    transform: scale(0.92);
+  .search-scene .ms-phone {
+    margin-top: 54px;
   }
 
   .search-scene-caption {

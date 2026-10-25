@@ -1,0 +1,111 @@
+/* Myspotlyt's own look, shared by every screen rebuilt from their app:
+   its dark ground, its violet and Poppins, since it is their product,
+   not ours. No shadows: the phone is a flat bezel on the ground. */
+.ms-app {
+  --ms-ground: #141118;
+  --ms-field: #1b1820;
+  --ms-line: #2a2731;
+  --ms-violet: #7158e2;
+  --ms-text: #ffffff;
+  --ms-muted: rgb(255 255 255 / 0.6);
+  /* Where a photograph from the app will go once Leo sends it. */
+  --ms-photo: linear-gradient(160deg, #3a3641, #24212a);
+  --ms-photo-light: linear-gradient(160deg, #e4e5ea, #d3d5dc);
+
+  font-family: 'Poppins', 'Manrope', sans-serif;
+  color: var(--ms-text);
+}
+
+.ms-app svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+.ms-phone {
+  position: relative;
+  width: 300px;
+  height: 640px;
+  border: 8px solid #0b0a0d;
+  border-radius: 48px;
+  outline: 1px solid rgb(255 255 255 / 0.1);
+  outline-offset: -1px;
+  overflow: hidden;
+  background: var(--ms-ground);
+}
+
+.ms-status {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 22px 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ms-status-icons {
+  width: 48px;
+  height: 10px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #fff 0 30%, transparent 30% 38%, #fff 38% 62%, transparent 62% 70%, #fff 70%);
+  opacity: 0.9;
+  align-self: center;
+}
+
+.ms-nav {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  padding-bottom: 4px;
+  border-top: 1px solid var(--ms-line);
+  background: var(--ms-ground);
+  font-size: 9.5px;
+  color: var(--ms-muted);
+}
+
+.ms-nav span {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+}
+
+.ms-nav .is-on {
+  color: var(--ms-violet);
+}
+
+.ms-plus {
+  width: 26px;
+  height: 26px;
+  place-content: center;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #8a5cf6, #3b7bff);
+  color: #fff;
+  font-size: 16px;
+}
+
+.ms-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.ms-app .ms-logo svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--ms-violet);
+  stroke-width: 2.4;
+}

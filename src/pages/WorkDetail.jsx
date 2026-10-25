@@ -7,6 +7,7 @@ import PixelGlyph from '../components/PixelGlyph'
 import Photo from '../components/Photo'
 import PixelReveal from '../components/PixelReveal'
 import SearchScene from '../components/SearchScene'
+import MsScreen from '../components/MsScreens'
 import { PROJECTS, getProject } from '../data/projects'
 import './WorkDetail.css'
 
@@ -181,8 +182,10 @@ export default function WorkDetail({ slug }) {
               className="detail-panel"
               ref={(el) => { panelRefs.current[i] = el }}
             >
-              <div className={`detail-panel-plate${s.image ? ' has-image' : ''}`}>
-                {s.image
+              <div className={`detail-panel-plate${s.image || s.screen ? ' has-image' : ''}${s.screen ? ` is-coded is-coded--${s.screen}` : ''}`}>
+                {s.screen
+                  ? <MsScreen kind={s.screen} label={s.imageAlt} />
+                  : s.image
                   ? <img src={s.image} alt={s.imageAlt || ''} className="detail-panel-img" loading="lazy" decoding="async" />
                   : <PixelGlyph name={PHASE_GLYPH[s.label] || 'magnifier'} className="detail-panel-glyph" />}
                 <span className="tiny detail-panel-index">
