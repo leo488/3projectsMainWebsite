@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import MorphWord from './MorphWord'
 import { Link } from '../router'
-import { CONTACT_EMAIL, CLIENT_LOGOS } from '../data/site'
+import { CLIENT_LOGOS } from '../data/site'
 import { getProject } from '../data/projects'
 import Photo from './Photo'
 import { CLIENT_MARKS } from './ClientLogos'
@@ -87,15 +87,12 @@ export default function Hero() {
           from inventory systems to consumer apps.
         </p>
         <div className="hero-actions" ref={actionsRef}>
-          <a
-            href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
-            className="hero-cta btn-gradient"
-          >
+          <Link href="/contact" className="hero-cta btn-gradient">
             Start a conversation
             <svg width="22" height="12" viewBox="0 0 22 12" fill="none" aria-hidden="true">
               <path d="M0 6h20M15 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" />
             </svg>
-          </a>
+          </Link>
           <Link href="/work" className="btn btn--black">See our case studies</Link>
         </div>
       </div>

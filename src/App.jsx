@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import SiteFooter from './components/SiteFooter'
 import Navbar       from './components/Navbar'
 import Hero         from './components/Hero'
@@ -8,14 +9,17 @@ import PartnerCta   from './components/PartnerCta'
 import Stats        from './components/Stats'
 import Insights     from './components/Insights'
 // import FinalCta     from './components/FinalCta'
-import Work         from './pages/Work'
-import WorkDetail   from './pages/WorkDetail'
-import Careers      from './pages/Careers'
-import About        from './pages/About'
-import Brand        from './pages/Brand'
-import Blog         from './pages/Blog'
-import BlogPost     from './pages/BlogPost'
-import Legal        from './pages/Legal'
+// The home page ships in the first download; every other page is its
+// own small file, fetched when someone goes there.
+const Work       = lazy(() => import('./pages/Work'))
+const WorkDetail = lazy(() => import('./pages/WorkDetail'))
+const Careers    = lazy(() => import('./pages/Careers'))
+const About      = lazy(() => import('./pages/About'))
+const Brand      = lazy(() => import('./pages/Brand'))
+const Blog       = lazy(() => import('./pages/Blog'))
+const BlogPost   = lazy(() => import('./pages/BlogPost'))
+const Legal      = lazy(() => import('./pages/Legal'))
+const Contact    = lazy(() => import('./pages/Contact'))
 import NotFound     from './pages/NotFound'
 import { useRoute } from './router'
 import { LEGAL_PAGES } from './data/legal'
@@ -49,7 +53,7 @@ function Home() {
 }
 
 export default function App() {
-  const path = useRoute().replace(/\/+$/, '') || '/'
+  const path = useRoute().split('?')[0].replace(/\/+$/, '') || '/'
   useSeo(path)
 
   let page = <NotFound />
@@ -63,6 +67,8 @@ export default function App() {
     page = <Careers />
   } else if (path === '/about') {
     page = <About />
+  } else if (path === '/contact') {
+    page = <Contact />
   } else if (path === '/brand') {
     page = <Brand />
   } else if (path === '/blog') {
@@ -76,7 +82,7 @@ export default function App() {
   return (
     <>
       <Announcement />
-      <main>{page}</main>
+      <main><Suspense fallback={null}>{page}</Suspense></main>
       <ThemeToggle />
     </>
   )

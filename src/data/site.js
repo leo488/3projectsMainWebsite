@@ -4,6 +4,16 @@
 
 export const CONTACT_EMAIL = 'hello@3projects.com'
 
+/* The contact page. Both are optional:
+   - BOOKING_URL: a Cal.com or Calendly booking link. When set, Schedule
+     a call shows the live calendar; until then visitors pick a day and a
+     time and the request comes to CONTACT_EMAIL.
+   - FORM_ENDPOINT: a form service URL (Formspree, Basin, Getform) that
+     accepts a JSON POST. When set, messages are sent from the page;
+     until then the form opens the visitor's email app, filled in. */
+export const BOOKING_URL = ''
+export const FORM_ENDPOINT = ''
+
 export const SERVICES = [
   { label: 'Enterprise Discovery',       desc: 'Map the operating model as it actually runs.' },
   { label: 'Strategic Analysis',         desc: 'Find where certainty is lost, and what it costs.' },
@@ -35,7 +45,7 @@ export const FIRM_LINKS = [
   { label: 'Careers',    href: '/careers' },
   { label: 'Insights',   href: '/blog' },
   { label: 'Brand Assets', href: '/brand', tag: 'New' },
-  { label: 'Contact',    href: `mailto:${CONTACT_EMAIL}` },
+  { label: 'Contact',    href: '/contact' },
 ]
 
 /* Social profiles. Paste the real profile URLs here and the footer row

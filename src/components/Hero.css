@@ -255,17 +255,17 @@
 
 .hero-wave--wave-blue {
   background-color: #001A66;
-  background-image: url('/images/pattern-wave-blue.svg');
+  background-image: url('/images/pattern-wave-blue.webp');
 }
 
 .hero-wave--wave-multi {
   background-color: #0031B8;
-  background-image: url('/images/pattern-wave-multi.svg');
+  background-image: url('/images/pattern-wave-multi.webp');
 }
 
 .hero-wave--pixel-lines-blue {
   background-color: #001A66;
-  background-image: url('/images/pattern-pixel-lines-blue.svg');
+  background-image: url('/images/pattern-pixel-lines-blue.webp');
 }
 
 /* ─────────────────────────────

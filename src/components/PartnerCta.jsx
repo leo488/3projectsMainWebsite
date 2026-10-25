@@ -1,6 +1,6 @@
 import useReveal from './useReveal'
 import Arrow from './Arrow'
-import { CONTACT_EMAIL } from '../data/site'
+import { Link } from '../router'
 import Photo from './Photo'
 import './PartnerCta.css'
 
@@ -14,12 +14,9 @@ export default function PartnerCta() {
           Turn relationships into lasting
           business opportunities.
         </h2>
-        <a
-          href={`mailto:${CONTACT_EMAIL}?subject=CPA%20Partner%20enquiry`}
-          className="btn btn--white partner-btn"
-        >
+        <Link href="/contact?topic=cpa" className="btn btn--white partner-btn">
           Become a CPA Partner <Arrow size={18} />
-        </a>
+        </Link>
       </div>
       <div className="partner-right">
         <Photo

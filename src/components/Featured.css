@@ -86,6 +86,11 @@
   overflow: hidden;
 }
 
+/* The Pale Blue state carries carbon text. */
+.featured-state--light .featured-eyebrow { color: var(--section-blue); }
+.featured-state--light .featured-headline { color: var(--carbon); }
+.featured-state--light .featured-body { color: rgb(20 20 20 / 0.72); }
+
 .featured-wave {
   position: absolute;
   inset: 0;
@@ -96,17 +101,17 @@
 
 .featured-wave--wave-blue {
   background-color: #001A66;
-  background-image: url('/images/pattern-wave-blue.svg');
+  background-image: url('/images/pattern-wave-blue.webp');
 }
 
 .featured-wave--wave-multi {
   background-color: #0031B8;
-  background-image: url('/images/pattern-wave-multi.svg');
+  background-image: url('/images/pattern-wave-multi.webp');
 }
 
 .featured-wave--pixel-lines-blue {
   background-color: #001A66;
-  background-image: url('/images/pattern-pixel-lines-blue.svg');
+  background-image: url('/images/pattern-pixel-lines-blue.webp');
 }
 
 .featured-wave.is-on {

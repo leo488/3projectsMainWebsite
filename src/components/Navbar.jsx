@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import Logo from './Logo'
 import MegaMenu from './MegaMenu'
 import { Link } from '../router'
-import { CONTACT_EMAIL } from '../data/site'
 import './Navbar.css'
 
 export default function Navbar({ theme = 'light' }) {
@@ -113,12 +112,9 @@ export default function Navbar({ theme = 'light' }) {
           <li><Link href="/careers">Careers</Link></li>
         </ul>
 
-        <a
-          href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20conversation`}
-          className="btn-start btn-gradient"
-        >
+        <Link href="/contact" className="btn-start btn-gradient">
           Start a conversation
-        </a>
+        </Link>
       </div>
     </nav>
   )

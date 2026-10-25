@@ -4,7 +4,7 @@ import './Featured.css'
 /* Three ideas introduced in place, without the reader leaving the
    section. Each state has its own ground and its own pattern from the
    brand kit: wave-multi (the full palette) on Deep Carbon, wave-blue
-   on Deep Enterprise, pixel-lines-blue on Electric Cobalt.
+   on Pale Blue, pixel-lines-blue on Electric Cobalt.
 
    All three states are always in the page, stacked, and the active one
    cross-fades in, so a change never re-mounts or jumps. The states turn
@@ -22,7 +22,10 @@ const STATES = [
     body: 'Strategy, design and delivery do not arrive as separate workstreams. The people who find the constraint are the people who redesign around it, which is why nothing is lost in translation between phases.',
   },
   {
-    ground: 'var(--section-blue)',
+    // Pale Blue, not Deep Enterprise: the CPA band right under this one
+    // is Deep Enterprise, and two blues touching read as one block.
+    ground: 'var(--pale-blue)',
+    light: true,
     pattern: 'wave-blue',
     eyebrow: 'Featured Transformation',
     headline: ['Turning Operational', 'Complexity into Competitive', 'Advantage.'],
@@ -60,7 +63,7 @@ export default function Featured() {
         {STATES.map((st, i) => (
           <div
             key={st.eyebrow}
-            className={`featured-state${i === index ? ' is-on' : ''}`}
+            className={`featured-state${st.light ? ' featured-state--light' : ''}${i === index ? ' is-on' : ''}`}
             aria-hidden={i === index ? undefined : true}
           >
             <p className="tiny featured-eyebrow">{st.eyebrow}</p>

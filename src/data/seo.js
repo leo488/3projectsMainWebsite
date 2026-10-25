@@ -40,6 +40,11 @@ const PAGES = {
     description:
       'Field notes from inside the operating model: practical thinking on transformation, process, technology and what makes change last.',
   },
+  '/contact': {
+    title: 'Contact | 3Projects',
+    description:
+      'Start a conversation with 3Projects. Send us a message about a project or partnership, or schedule a 30 minute call with the team in Lagos.',
+  },
   '/brand': {
     title: 'Brand Assets | 3Projects',
     description:
@@ -79,7 +84,9 @@ export function getSeo(rawPath) {
       url,
       image: DEFAULT_IMAGE,
       type: 'website',
-      jsonLd: path === '/' ? ORGANIZATION : null,
+      jsonLd: path === '/' ? ORGANIZATION
+        : path === '/contact' ? { '@context': 'https://schema.org', '@type': 'ContactPage', url, mainEntity: ORGANIZATION }
+        : null,
     }
   }
 
@@ -88,11 +95,22 @@ export function getSeo(rawPath) {
     if (project) {
       return {
         title: `${project.title} | 3Projects Case Study`,
-        description: clip(project.summary),
+        // The result leads where a case study has one, so search shows
+        // the change before the problem.
+        description: clip(project.outcome ? `${project.outcome.headline} ${project.summary}` : project.summary),
         url,
         image: DEFAULT_IMAGE,
         type: 'article',
-        jsonLd: null,
+        jsonLd: {
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: project.title,
+          description: project.summary,
+          about: project.industry,
+          author: { '@type': 'Organization', name: SITE_NAME },
+          publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+          mainEntityOfPage: url,
+        },
       }
     }
     return notFound(url)
