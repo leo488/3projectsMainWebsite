@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import { Link } from '../router'
 import Arrow from '../components/Arrow'
 import PixelGlyph from '../components/PixelGlyph'
+import Photo from '../components/Photo'
 import { PROJECTS, getProject } from '../data/projects'
 import './WorkDetail.css'
 
@@ -125,10 +126,12 @@ export default function WorkDetail({ slug }) {
       {project.gallery?.length > 0 && (
         <section className="detail-gallery">
           {project.gallery.map((g, i) => (
-            <figure key={i} className={`detail-shot${g.src ? '' : ' is-empty'}`}>
-              {g.src
-                ? <img src={g.src} alt={g.alt || ''} loading="lazy" decoding="async" />
-                : <span className="tiny detail-shot-label">{g.label || 'Image'}</span>}
+            <figure key={i} className={`detail-shot${g.photo || g.src ? '' : ' is-empty'}`}>
+              {g.photo
+                ? <Photo name={g.photo} alt={g.alt || ''} sizes={i === 0 ? '100vw' : '(max-width: 900px) 100vw, 50vw'} loading="lazy" style={g.position ? { objectPosition: g.position } : undefined} />
+                : g.src
+                  ? <img src={g.src} alt={g.alt || ''} loading="lazy" decoding="async" />
+                  : <span className="tiny detail-shot-label">{g.label || 'Image'}</span>}
             </figure>
           ))}
         </section>

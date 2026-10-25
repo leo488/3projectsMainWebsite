@@ -279,7 +279,8 @@ export const PROJECTS = [
     },
     // Talent photographs from Leo; a slot with no src shows as a plate.
     gallery: [
-      { label: 'Talent photograph, wide' },
+      // Framed on her face and the hat she holds.
+      { photo: 'talent-hats', alt: 'A milliner seated among her hats', position: '50% 35%' },
       { label: 'Talent photograph' },
       { label: 'Talent photograph' },
     ],

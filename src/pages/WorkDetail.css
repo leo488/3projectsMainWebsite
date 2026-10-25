@@ -282,6 +282,10 @@
   aspect-ratio: 21 / 9;
 }
 
+.detail-shot picture {
+  display: contents;
+}
+
 .detail-shot img {
   width: 100%;
   height: 100%;
