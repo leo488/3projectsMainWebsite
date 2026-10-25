@@ -47,7 +47,8 @@
 }
 
 .hero-sub {
-  max-width: 620px;
+  max-width: 640px;
+  text-wrap: balance;
   margin: 0;
   font-size: clamp(17px, 1.4vw, 22px);
   font-weight: 300;
@@ -55,6 +56,13 @@
   color: rgb(var(--fg-rgb) / 0.8);
   opacity: 0;
   animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+}
+
+/* The subcopy breaks after its first clause on wider screens. */
+@media (max-width: 700px) {
+  .hero-sub-break {
+    display: none;
+  }
 }
 
 .hero-actions {
