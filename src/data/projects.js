@@ -281,7 +281,7 @@ export const PROJECTS = [
     gallery: [
       // Framed on her face and the hat she holds.
       { photo: 'talent-hats', alt: 'A milliner seated among her hats', position: '50% 35%' },
-      { label: 'Talent photograph' },
+      { photo: 'talent-runner', alt: 'An athlete stretching on a grassy hill', position: '50% 40%' },
       { label: 'Talent photograph' },
     ],
     sections: [

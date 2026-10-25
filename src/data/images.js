@@ -50,6 +50,9 @@ export const PHOTOS = {
     { w: 1080, jpg: '/images/talent-hats-sm.jpg', webp: '/images/talent-hats-sm.webp', avif: '/images/talent-hats-sm.avif' },
     { w: 1448, jpg: '/images/talent-hats-full.jpg', webp: '/images/talent-hats-full.webp', avif: '/images/talent-hats-full.avif' },
   ],
+  'talent-runner': [
+    { w: 1024, jpg: '/images/talent-runner-full.jpg', webp: '/images/talent-runner-full.webp', avif: '/images/talent-runner-full.avif' },
+  ],
   'blog-team': [
     { w: 1024, jpg: '/images/blog-team-full.jpg', webp: '/images/blog-team-full.webp', avif: '/images/blog-team-full.avif' },
   ],
