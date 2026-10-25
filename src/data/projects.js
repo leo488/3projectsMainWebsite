@@ -277,6 +277,12 @@ export const PROJECTS = [
       headline: 'From a platform nobody stayed on to thirtyfold revenue growth.',
       body: 'Myspotlyt now runs on a stable stack, ships features on a predictable cadence and holds an active base of five thousand users. The work continues one release at a time.',
     },
+    // Talent photographs from Leo; a slot with no src shows as a plate.
+    gallery: [
+      { label: 'Talent photograph, wide' },
+      { label: 'Talent photograph' },
+      { label: 'Talent photograph' },
+    ],
     sections: [
       {
         label: 'Discover',

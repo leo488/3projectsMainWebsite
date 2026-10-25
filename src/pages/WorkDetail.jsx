@@ -120,6 +120,20 @@ export default function WorkDetail({ slug }) {
       </section>
 
       {/* ── Paired columns: text holds, visuals scroll ── */}
+      {/* Photographs between the story and the phases: one wide, then a
+          pair. A slot without a file yet shows as a labelled plate. */}
+      {project.gallery?.length > 0 && (
+        <section className="detail-gallery">
+          {project.gallery.map((g, i) => (
+            <figure key={i} className={`detail-shot${g.src ? '' : ' is-empty'}`}>
+              {g.src
+                ? <img src={g.src} alt={g.alt || ''} loading="lazy" decoding="async" />
+                : <span className="tiny detail-shot-label">{g.label || 'Image'}</span>}
+            </figure>
+          ))}
+        </section>
+      )}
+
       <div className="detail-body">
         <aside className="detail-text-col">
           <div className="detail-text-sticky">
@@ -158,8 +172,10 @@ export default function WorkDetail({ slug }) {
               className="detail-panel"
               ref={(el) => { panelRefs.current[i] = el }}
             >
-              <div className="detail-panel-plate">
-                <PixelGlyph name={PHASE_GLYPH[s.label] || 'magnifier'} className="detail-panel-glyph" />
+              <div className={`detail-panel-plate${s.image ? ' has-image' : ''}`}>
+                {s.image
+                  ? <img src={s.image} alt={s.imageAlt || ''} className="detail-panel-img" loading="lazy" decoding="async" />
+                  : <PixelGlyph name={PHASE_GLYPH[s.label] || 'magnifier'} className="detail-panel-glyph" />}
                 <span className="tiny detail-panel-index">
                   {String(i + 1).padStart(2, '0')} / {String(project.sections.length).padStart(2, '0')}
                 </span>
