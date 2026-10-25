@@ -8,6 +8,7 @@ import Photo from '../components/Photo'
 import PixelReveal from '../components/PixelReveal'
 import SearchScene from '../components/SearchScene'
 import MsScreen from '../components/MsScreens'
+import TalentFinale from '../components/TalentFinale'
 import { PROJECTS, getProject } from '../data/projects'
 import './WorkDetail.css'
 
@@ -17,6 +18,11 @@ const PHASE_GLYPH = { Discover: 'magnifier', Design: 'nib', Deliver: 'carton', S
 
 // A section body is one paragraph or a list of them.
 const paragraphs = (body) => [].concat(body)
+
+// Figures marked **like this** in the data are set in bold, so the
+// numbers stand out from the sentences around them.
+const rich = (text) =>
+  text.split(/\*\*(.+?)\*\*/).map((part, i) => (i % 2 ? <strong key={i}>{part}</strong> : part))
 
 export default function WorkDetail({ slug }) {
   const project = getProject(slug)
@@ -114,11 +120,11 @@ export default function WorkDetail({ slug }) {
       {/* ── The starting point and what happened ── */}
       <section className="detail-story">
         <p className="tiny detail-story-eyebrow">The starting point</p>
-        <p className="detail-lede">{project.intro}</p>
+        <p className="detail-lede">{rich(project.intro)}</p>
         {project.story && (
           <div className="detail-story-copy">
             <p className="tiny detail-story-label">What happened</p>
-            {project.story.map((para) => <p key={para}>{para}</p>)}
+            {project.story.map((para) => <p key={para}>{rich(para)}</p>)}
           </div>
         )}
       </section>
@@ -167,7 +173,7 @@ export default function WorkDetail({ slug }) {
                 >
                   <h2 className="detail-chapter-title">{s.heading}</h2>
                   {paragraphs(s.body).map((para) => (
-                    <p key={para} className="detail-chapter-body">{para}</p>
+                    <p key={para} className="detail-chapter-body">{rich(para)}</p>
                   ))}
                 </article>
               ))}
@@ -196,12 +202,14 @@ export default function WorkDetail({ slug }) {
               {/* Repeated on small screens, where the columns stack. */}
               <div className="detail-panel-copy">
                 <h2>{s.heading}</h2>
-                {paragraphs(s.body).map((para) => <p key={para}>{para}</p>)}
+                {paragraphs(s.body).map((para) => <p key={para}>{rich(para)}</p>)}
               </div>
             </section>
           ))}
         </div>
       </div>
+
+      {project.finale && <TalentFinale {...project.finale} />}
 
       {/* ── Close: where it stands and the numbers behind it, on Deep
           Carbon so the page runs straight into the footer ── */}
@@ -210,7 +218,7 @@ export default function WorkDetail({ slug }) {
         {project.outcome && (
           <>
             <h2 className="detail-outcome-headline">{project.outcome.headline}</h2>
-            <p className="detail-outcome-body">{project.outcome.body}</p>
+            <p className="detail-outcome-body">{rich(project.outcome.body)}</p>
           </>
         )}
         <ul className="detail-proof">

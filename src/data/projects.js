@@ -213,7 +213,7 @@ export const PROJECTS = [
     story: [
       'Stock management ran on manual tracking, documentation and reporting, leaving no reliable view of levels across outlets, warehouses and kitchens. Without a connected system, gaps opened between Inventory, Procurement, Production and Operations: delays, stock-outs, overstocking and avoidable waste.',
       'We are building one connected Inventory Operations Hub. Digital requests, warehouse issuance, kitchen records, approvals and real-time dashboards run over a single standard item list, integrated with SAGE ERP.',
-      'Delivery is planned in eight phases. Phase one is in build.',
+      'Delivery is planned in **eight phases**. **Phase one** is in build.',
     ],
     outcome: {
       headline: 'From paper and spreadsheets to one traceable view of every item.',
@@ -229,7 +229,7 @@ export const PROJECTS = [
       {
         label: 'Design',
         heading: 'One connected Inventory Operations Hub',
-        body: 'A digital system bringing the department onto one platform, replacing Excel, email and paper with digital inventory requests, warehouse issuance, kitchen records, approvals, reports and real-time dashboards. A standard item list and a digital record of stock movement make stock traceable across every location. Delivery is planned across eight phases; phase one is in build.',
+        body: 'A digital system bringing the department onto one platform, replacing Excel, email and paper with digital inventory requests, warehouse issuance, kitchen records, approvals, reports and real-time dashboards. A standard item list and a digital record of stock movement make stock traceable across every location. Delivery is planned across **eight phases**; **phase one** is in build.',
         ground: 'var(--phase-design)',
       },
       {
@@ -267,15 +267,15 @@ export const PROJECTS = [
       { value: '3',      label: 'Major features shipped: awards, agents and payments' },
     ],
     intro:
-      'Myspotlyt was already live when 3Projects came in. The platform lacked stability, was not fully user friendly and was missing features, with a user base between zero and five thousand.',
+      'Myspotlyt was already live when 3Projects came in. The platform lacked stability, was not fully user friendly and was missing features, with a user base **between zero and five thousand**.',
     story: [
       'People could sign up, but there was little reason for them to stay. Releases were unstable, key journeys were hard to use and the features the audience expected were not there, so retention was flat and new users had stopped arriving.',
-      'We took the platform on as it ran. First we made what was live stable, then we shipped what it was missing, the Award, agent and payment features among them, on a steady cadence of one considered release every two to three months.',
-      'Four years on, revenue has grown thirtyfold, from ₦100K+ in 2022 to over ₦3M in 2026, and the platform holds an active base of five thousand users.',
+      'We took the platform on as it ran. First we made what was live stable, then we shipped what it was missing, the Award, agent and payment features among them, on a steady cadence of **one considered release every two to three months**.',
+      'Four years on, revenue has grown **thirtyfold**, from **₦100K+ in 2022** to **over ₦3M in 2026**, and the platform holds an active base of **five thousand users**.',
     ],
     outcome: {
       headline: 'From a platform nobody stayed on to thirtyfold revenue growth.',
-      body: 'Myspotlyt now runs on a stable stack, ships features on a predictable cadence and holds an active base of five thousand users. The work continues one release at a time.',
+      body: 'Myspotlyt now runs on a stable stack, ships features on a predictable cadence and holds an active base of **five thousand users**. The work continues one release at a time.',
     },
     // Talent photographs from Leo. The first arrives as pixels on every
     // case study that has one.
@@ -283,6 +283,19 @@ export const PROJECTS = [
       // Framed on her face and the hat she holds.
       { photo: 'talent-hats', alt: 'A milliner seated among her hats', position: '50% 35%' },
     ],
+    // Near the close: the talent the platform is for, her photograph
+    // beside her profile in the app.
+    finale: {
+      photo: 'talent-studio',
+      alt: 'A performer laughing, seated in a sunlit studio',
+      position: '42% 50%',
+      eyebrow: 'Who it is for',
+      heading: 'Every release was for someone like her.',
+      body: 'Behind every vote, ticket and follow on Myspotlyt is a performer waiting to be seen. A platform that stays up and does what its audience expects is how more of them get found, and how that audience keeps coming back.',
+      name: 'Adaeze Okafor',
+      role: 'Actor · Lagos',
+      badge: 'Nominee · Fessa Awards',
+    },
     // The app rebuilt in code over a photograph: a search that finds her.
     scene: {
       photo: 'talent-runner',
@@ -328,7 +341,7 @@ export const PROJECTS = [
         label: 'Sustain',
         heading: 'A measured delivery cadence',
         body: [
-          'Deploying a feature on Myspotlyt takes approximately two to three months. Revenue over the engagement moved from ₦100K+ in 2022 to over ₦3M by 2026, against an active user base under five thousand.',
+          'Deploying a feature on Myspotlyt takes approximately **two to three months**. Revenue over the engagement moved from **₦100K+ in 2022** to **over ₦3M by 2026**, against an active user base **under five thousand**.',
           'That rhythm, one considered release at a time, is what turned a stalled platform into one that keeps growing.',
         ],
         screen: 'tickets',

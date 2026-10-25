@@ -532,3 +532,22 @@
     margin-top: 72px;
   }
 }
+
+/* Figures in running text: full weight and full colour, so the numbers
+   stand out of the sentence around them. */
+.detail-lede strong,
+.detail-story-copy strong,
+.detail-chapter-body strong,
+.detail-panel-copy strong {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.detail-lede strong {
+  font-weight: 500;
+}
+
+.detail-outcome-body strong {
+  font-weight: 600;
+  color: var(--white);
+}

@@ -53,6 +53,10 @@ export const PHOTOS = {
   'talent-runner': [
     { w: 1024, jpg: '/images/talent-runner-full.jpg', webp: '/images/talent-runner-full.webp', avif: '/images/talent-runner-full.avif' },
   ],
+  'talent-studio': [
+    { w: 1080, jpg: '/images/talent-studio-sm.jpg', webp: '/images/talent-studio-sm.webp', avif: '/images/talent-studio-sm.avif' },
+    { w: 1536, jpg: '/images/talent-studio-full.jpg', webp: '/images/talent-studio-full.webp', avif: '/images/talent-studio-full.avif' },
+  ],
   'blog-team': [
     { w: 1024, jpg: '/images/blog-team-full.jpg', webp: '/images/blog-team-full.webp', avif: '/images/blog-team-full.avif' },
   ],
