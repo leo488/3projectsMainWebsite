@@ -108,9 +108,7 @@
   --section-y: clamp(80px, 9vw, 136px);
   --band-pad:  clamp(24px, 4.4vw, 64px);
 
-  /* The page's left and right margin: wider as the screen grows, so
-     content never runs to the edges on large displays. */
-  --side-pad: clamp(24px, 4.5vw, 80px);
+  --side-pad: 24px;
   --nav-h:    84px;
   --banner-h: 44px;   /* the announcement strip above the navbar */
 }
