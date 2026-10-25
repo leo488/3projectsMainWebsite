@@ -551,3 +551,101 @@
   font-weight: 600;
   color: var(--white);
 }
+
+/* A phase panel split in two: the coded screen and a photograph. */
+.detail-panel-plate.has-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: stretch;
+  gap: 16px;
+  background: none;
+}
+
+.detail-panel-half {
+  position: relative;
+  margin: 0;
+  min-width: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--ice);
+}
+
+.detail-panel-pair {
+  display: grid;
+  place-items: center;
+  background-color: var(--card);
+}
+
+.detail-panel-pair picture {
+  display: contents;
+}
+
+.detail-panel-pair img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-panel-pair.is-empty {
+  background-image: url("data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'><path%20d='M10%208.5v3M8.5%2010h3'%20stroke='%23141414'%20stroke-width='1'%20opacity='0.08'/></svg>");
+  background-size: 20px 20px;
+}
+
+/* The break between phases: the opening's large type again, then a
+   mock-up across the width. */
+.detail-interlude {
+  padding: 32px var(--side-pad) 128px;
+}
+
+.detail-interlude > :not(figure) {
+  margin-left: 22%;
+}
+
+.detail-interlude .detail-lede {
+  margin-top: 28px;
+}
+
+.detail-interlude-shot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: 72px 0 0;
+  aspect-ratio: 21 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: var(--card);
+}
+
+.detail-interlude-shot picture {
+  display: contents;
+}
+
+.detail-interlude-shot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-interlude-shot.is-empty {
+  background-image: url("data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'><path%20d='M10%208.5v3M8.5%2010h3'%20stroke='%23141414'%20stroke-width='1'%20opacity='0.08'/></svg>");
+  background-size: 20px 20px;
+}
+
+@media (max-width: 900px) {
+  .detail-interlude {
+    padding: 8px var(--side-pad) 72px;
+  }
+
+  .detail-interlude > :not(figure) {
+    margin-left: 0;
+  }
+
+  .detail-interlude-shot {
+    margin-top: 40px;
+    aspect-ratio: 4 / 3;
+  }
+}

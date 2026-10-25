@@ -84,6 +84,87 @@ export default function WorkDetail({ slug }) {
     ? PROJECTS[(PROJECTS.indexOf(project) + 1) % PROJECTS.length]
     : null
 
+  // One run of phases, from..to: the held text on the left, the panels
+  // on the right. Each run shows the whole progress list; its text shows
+  // the active phase, or the nearest of its own while another run is in
+  // view.
+  const phaseBlock = (from, to) => {
+    const blockSections = project.sections.map((s, i) => [s, i]).slice(from, to)
+    const shown = Math.min(Math.max(activeIndex, from), to - 1)
+    return (
+        <div className="detail-body">
+          <aside className="detail-text-col">
+            <div className="detail-text-sticky">
+              <ol className="detail-progress">
+                {project.sections.map((s, i) => (
+                  <li
+                    key={s.label}
+                    className={`tiny detail-progress-item${i === activeIndex ? ' is-active' : ''}`}
+                  >
+                    {s.label}
+                  </li>
+                ))}
+              </ol>
+
+              <div className="detail-chapters">
+                {blockSections.map(([s, i]) => (
+                  <article
+                    key={s.label}
+                    className={`detail-chapter${i === shown ? ' is-active' : ''}`}
+                    aria-hidden={i !== shown}
+                  >
+                    <h2 className="detail-chapter-title">{s.heading}</h2>
+                    {paragraphs(s.body).map((para) => (
+                      <p key={para} className="detail-chapter-body">{rich(para)}</p>
+                    ))}
+                  </article>
+                ))}
+              </div>
+            </div>
+          </aside>
+
+          <div className="detail-visual-col">
+            {blockSections.map(([s, i]) => (
+              <section
+                key={s.label}
+                className="detail-panel"
+                ref={(el) => { panelRefs.current[i] = el }}
+              >
+                <div className={`detail-panel-plate${s.image || s.screen ? ' has-image' : ''}${s.screen ? ` is-coded is-coded--${s.screen}` : ''}${s.pair ? ' has-pair' : ''}`}>
+                  {s.screen && s.pair
+                    ? (
+                      <>
+                        {/* The screen and a photograph side by side. */}
+                        <div className="detail-panel-half"><MsScreen kind={s.screen} label={s.imageAlt} /></div>
+                        <figure className={`detail-panel-half detail-panel-pair${s.pair.photo ? '' : ' is-empty'}`}>
+                          {s.pair.photo
+                            ? <Photo name={s.pair.photo} alt={s.pair.alt || ''} sizes="(max-width: 1000px) 50vw, 32vw" loading="lazy" style={s.pair.position ? { objectPosition: s.pair.position } : undefined} />
+                            : <span className="tiny detail-shot-label">{s.pair.label || 'Image'}</span>}
+                        </figure>
+                      </>
+                    )
+                    : s.screen
+                    ? <MsScreen kind={s.screen} label={s.imageAlt} />
+                    : s.image
+                    ? <img src={s.image} alt={s.imageAlt || ''} className="detail-panel-img" loading="lazy" decoding="async" />
+                    : <PixelGlyph name={PHASE_GLYPH[s.label] || 'magnifier'} className="detail-panel-glyph" />}
+                  <span className="tiny detail-panel-index">
+                    {String(i + 1).padStart(2, '0')} / {String(project.sections.length).padStart(2, '0')}
+                  </span>
+                  <span className="tiny detail-panel-label">{s.label}</span>
+                </div>
+                {/* Repeated on small screens, where the columns stack. */}
+                <div className="detail-panel-copy">
+                  <h2>{s.heading}</h2>
+                  {paragraphs(s.body).map((para) => <p key={para}>{rich(para)}</p>)}
+                </div>
+              </section>
+            ))}
+          </div>
+        </div>
+    )
+  }
+
   return (
     <div>
       <Navbar />
@@ -150,64 +231,22 @@ export default function WorkDetail({ slug }) {
 
       {project.scene && <SearchScene {...project.scene} />}
 
-      <div className="detail-body">
-        <aside className="detail-text-col">
-          <div className="detail-text-sticky">
-            <ol className="detail-progress">
-              {project.sections.map((s, i) => (
-                <li
-                  key={s.label}
-                  className={`tiny detail-progress-item${i === activeIndex ? ' is-active' : ''}`}
-                >
-                  {s.label}
-                </li>
-              ))}
-            </ol>
+      {/* An interlude can break the phases in two, after a given phase. */}
+      {phaseBlock(0, project.interlude ? project.interlude.after + 1 : project.sections.length)}
 
-            <div className="detail-chapters">
-              {project.sections.map((s, i) => (
-                <article
-                  key={s.label}
-                  className={`detail-chapter${i === activeIndex ? ' is-active' : ''}`}
-                  aria-hidden={i !== activeIndex}
-                >
-                  <h2 className="detail-chapter-title">{s.heading}</h2>
-                  {paragraphs(s.body).map((para) => (
-                    <p key={para} className="detail-chapter-body">{rich(para)}</p>
-                  ))}
-                </article>
-              ))}
-            </div>
-          </div>
-        </aside>
+      {project.interlude && (
+        <section className="detail-interlude">
+          <p className="tiny detail-story-eyebrow">{project.interlude.eyebrow}</p>
+          <p className="detail-lede">{rich(project.interlude.text)}</p>
+          <figure className={`detail-interlude-shot${project.interlude.photo ? '' : ' is-empty'}`}>
+            {project.interlude.photo
+              ? <Photo name={project.interlude.photo} alt={project.interlude.alt || ''} sizes="100vw" loading="lazy" />
+              : <span className="tiny detail-shot-label">{project.interlude.label || 'Image'}</span>}
+          </figure>
+        </section>
+      )}
 
-        <div className="detail-visual-col">
-          {project.sections.map((s, i) => (
-            <section
-              key={s.label}
-              className="detail-panel"
-              ref={(el) => { panelRefs.current[i] = el }}
-            >
-              <div className={`detail-panel-plate${s.image || s.screen ? ' has-image' : ''}${s.screen ? ` is-coded is-coded--${s.screen}` : ''}`}>
-                {s.screen
-                  ? <MsScreen kind={s.screen} label={s.imageAlt} />
-                  : s.image
-                  ? <img src={s.image} alt={s.imageAlt || ''} className="detail-panel-img" loading="lazy" decoding="async" />
-                  : <PixelGlyph name={PHASE_GLYPH[s.label] || 'magnifier'} className="detail-panel-glyph" />}
-                <span className="tiny detail-panel-index">
-                  {String(i + 1).padStart(2, '0')} / {String(project.sections.length).padStart(2, '0')}
-                </span>
-                <span className="tiny detail-panel-label">{s.label}</span>
-              </div>
-              {/* Repeated on small screens, where the columns stack. */}
-              <div className="detail-panel-copy">
-                <h2>{s.heading}</h2>
-                {paragraphs(s.body).map((para) => <p key={para}>{rich(para)}</p>)}
-              </div>
-            </section>
-          ))}
-        </div>
-      </div>
+      {project.interlude && phaseBlock(project.interlude.after + 1, project.sections.length)}
 
       {project.finale && <TalentFinale {...project.finale} />}
 

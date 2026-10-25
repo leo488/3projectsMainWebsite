@@ -303,6 +303,14 @@ export const PROJECTS = [
       position: '70% 30%',
       caption: 'Talent, a search away.',
     },
+    // Breaks the phases after Design with a statement in the opening's
+    // large type and a mock-up across the width (Leo is sending it).
+    interlude: {
+      after: 1,
+      eyebrow: 'What changed',
+      text: 'With the platform steady and the **Award, agent and payment** features live, the work turned to what sits underneath: a stack that could take **a release every two to three months** without unsettling what was already running.',
+      label: 'Mock-up',
+    },
     sections: [
       {
         label: 'Discover',
@@ -312,6 +320,8 @@ export const PROJECTS = [
           'We started by finding where the platform broke and where people dropped off, so the first releases went to the problems costing the most users.',
         ],
         screen: 'live',
+        // Beside the feed: a photograph Leo is sending.
+        pair: { label: 'Image' },
         imageAlt: 'The Myspotlyt home feed, live, with comments and hearts coming in',
         ground: 'var(--phase-discover)',
       },

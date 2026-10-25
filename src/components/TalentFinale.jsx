@@ -6,7 +6,7 @@ import { countUp, useClock, useInView } from './useScene'
 import './TalentFinale.css'
 
 /* Near the close of the case study: the talent the platform is for.
-   Her photograph takes the wider column; beside it, on the kit's wave
+   Her photograph takes the wider column; beside it, on the kit's fine grid
    pattern, a few lines on why the work mattered and her profile in the
    app, rising from the foot of the column. She is followed once the
    column is on screen, and the count moves with it. */
