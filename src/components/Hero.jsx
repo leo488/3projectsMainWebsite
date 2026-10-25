@@ -83,8 +83,8 @@ export default function Hero() {
           </span>
         </h1>
         <p className="hero-sub">
-          3Projects designs and builds the platforms behind growing brands,
-          from inventory systems to consumer apps.
+          We help businesses grow. We find what is holding them back,
+          prove it with data, and build what moves them forward.
         </p>
         <div className="hero-actions" ref={actionsRef}>
           <Link href="/contact" className="hero-cta btn-gradient">
