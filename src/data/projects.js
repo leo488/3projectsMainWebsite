@@ -322,8 +322,8 @@ export const PROJECTS = [
           'We started by finding where the platform broke and where people dropped off, so the first releases went to the problems costing the most users.',
         ],
         screen: 'live',
-        // Beside the feed: a photograph Leo is sending.
-        pair: { label: 'Image' },
+        // Beside the feed: someone mid-stretch, smiling into the day.
+        pair: { photo: 'talent-stretch', alt: 'A woman stretching in a garden, laughing', position: '62% 30%' },
         imageAlt: 'The Myspotlyt home feed, live, with comments and hearts coming in',
         ground: 'var(--phase-discover)',
       },
