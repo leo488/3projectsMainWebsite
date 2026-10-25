@@ -5,7 +5,7 @@ a 1080px copy, each in AVIF, WebP and baseline JPEG, into public/images/.
 Always run it on the originals, never on files it wrote, so no picture
 is compressed twice. List new photos in src/data/images.js too.
 
-    python3 scripts/build-photos.py <folder with the originals>
+    python3 scripts/build-photos.py <folder with the originals> [names...]
 """
 import os
 import sys
@@ -24,6 +24,7 @@ PHOTOS = {
     'blog-pos':          ('dfc2d8b8-image.png', 0),
     'blog-platform':     ('1e7d4def-image.png', 0),
     'blog-team':         ('cd286a50-image.png', 0),
+    'blog-tap':          ('bb5d3f6b-image.png', 0),
 }
 SIZES = (('full', 3200), ('sm', 1080))
 OUT = os.path.join(os.path.dirname(__file__), '..', 'public', 'images')
@@ -42,8 +43,10 @@ def load(path, trim):
     return im
 
 
-def main(src):
+def main(src, only=()):
     for name, (file, trim) in PHOTOS.items():
+        if only and name not in only:
+            continue
         im = load(os.path.join(src, file), trim)
         for tag, cap in SIZES:
             # No small copy when the original is already that small.
@@ -60,4 +63,4 @@ def main(src):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2:])

@@ -85,7 +85,7 @@ export const POSTS = [
     read: '3 min',
     ground: 'var(--phase-design)',
     ratio: '4 / 5',
-    image: "blog-laptop",
+    image: "blog-tap",
     blocks: [
       ["p", "Everywhere you look, there is another app."],
       ["p", "An app for this."],

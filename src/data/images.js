@@ -34,6 +34,10 @@ export const PHOTOS = {
     { w: 1080, jpg: '/images/blog-platform-sm.jpg', webp: '/images/blog-platform-sm.webp', avif: '/images/blog-platform-sm.avif' },
     { w: 1672, jpg: '/images/blog-platform-full.jpg', webp: '/images/blog-platform-full.webp', avif: '/images/blog-platform-full.avif' },
   ],
+  'blog-tap': [
+    { w: 1080, jpg: '/images/blog-tap-sm.jpg', webp: '/images/blog-tap-sm.webp', avif: '/images/blog-tap-sm.avif' },
+    { w: 1536, jpg: '/images/blog-tap-full.jpg', webp: '/images/blog-tap-full.webp', avif: '/images/blog-tap-full.avif' },
+  ],
   'blog-team': [
     { w: 1024, jpg: '/images/blog-team-full.jpg', webp: '/images/blog-team-full.webp', avif: '/images/blog-team-full.avif' },
   ],
