@@ -83,7 +83,8 @@ export default function Hero() {
           </span>
         </h1>
         <p className="hero-sub">
-          We help businesses grow. We find what is holding them back,
+          We help businesses grow. We find what is holding them back,{' '}
+          <br className="hero-sub-break" />
           prove it with data, and build what moves them forward.
         </p>
         <div className="hero-actions" ref={actionsRef}>
