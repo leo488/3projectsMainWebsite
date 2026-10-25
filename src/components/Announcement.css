@@ -10,7 +10,7 @@
   justify-content: center;
   gap: 14px;
   padding: 0 var(--side-pad);
-  background: #D9E3FF;
+  background: var(--ice);
   color: var(--ink);
   /* The pixel icon steps down to the deeper blues so it holds on the
      pale strip. */

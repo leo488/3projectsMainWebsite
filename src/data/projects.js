@@ -277,13 +277,19 @@ export const PROJECTS = [
       headline: 'From a platform nobody stayed on to thirtyfold revenue growth.',
       body: 'Myspotlyt now runs on a stable stack, ships features on a predictable cadence and holds an active base of five thousand users. The work continues one release at a time.',
     },
-    // Talent photographs from Leo; a slot with no src shows as a plate.
+    // Talent photographs from Leo. The first arrives as pixels on every
+    // case study that has one.
     gallery: [
       // Framed on her face and the hat she holds.
       { photo: 'talent-hats', alt: 'A milliner seated among her hats', position: '50% 35%' },
-      { photo: 'talent-runner', alt: 'An athlete stretching on a grassy hill', position: '50% 40%' },
-      { label: 'Talent photograph' },
     ],
+    // The app rebuilt in code over a photograph: a search that finds her.
+    scene: {
+      photo: 'talent-runner',
+      also: 'talent-hats',
+      position: '70% 24%',
+      caption: 'Talent, a search away.',
+    },
     sections: [
       {
         label: 'Discover',

@@ -246,7 +246,12 @@
 .detail-panel-index { left: 22px; }
 .detail-panel-label { right: 22px; }
 
-/* A screen or photograph in place of the glyph, filling the plate. */
+/* A screen or photograph in place of the glyph, filling the plate,
+   on the light blue that app screens sit on. */
+.detail-panel-plate.has-image {
+  background: var(--ice);
+}
+
 .detail-panel-plate.has-image .detail-panel-index,
 .detail-panel-plate.has-image .detail-panel-label {
   display: none;

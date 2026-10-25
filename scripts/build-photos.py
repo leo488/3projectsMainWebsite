@@ -27,7 +27,7 @@ PHOTOS = {
     'blog-tap':          ('bb5d3f6b-image.png', 0),
     'blog-arrival':      ('ffd5c45a-image.png', 0),
     'blog-taxi':         ('a0c0d17e-image.png', 0),
-    'talent-hats':       ('54c28d56-image.png', 0),
+    'talent-hats':       ('f2d36d16-image.png', 0),
     'talent-runner':     ('f4f3b3b6-image.png', 0),
 }
 SIZES = (('full', 3200), ('sm', 1080))

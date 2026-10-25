@@ -1,0 +1,410 @@
+/* The scene: a photograph across the full width, the phone standing in
+   front of it. The app inside keeps Myspotlyt's own look (its dark
+   ground, its violet and Poppins) since it is their product, not ours. */
+.search-scene {
+  --ms-ground: #141118;
+  --ms-field: #1b1820;
+  --ms-line: #2a2731;
+  --ms-violet: #7158e2;
+  --ms-text: #ffffff;
+  --ms-muted: rgb(255 255 255 / 0.6);
+
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: 0 var(--side-pad) 128px;
+  height: clamp(640px, 56vw, 860px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card);
+}
+
+.search-scene-photo {
+  position: absolute;
+  inset: 0;
+}
+
+.search-scene-photo picture {
+  display: contents;
+}
+
+/* The photograph draws back while the search plays. */
+.search-scene-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.14);
+  transition: transform 9s cubic-bezier(0.2, 0.6, 0.2, 1);
+  will-change: transform;
+}
+
+.search-scene.is-on .search-scene-photo img {
+  transform: scale(1);
+}
+
+.search-scene-caption {
+  position: absolute;
+  left: 40px;
+  top: 36px;
+  max-width: 30ch;
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--white);
+  text-shadow: 0 1px 24px rgb(0 0 0 / 0.35);
+}
+
+/* ── The phone ── */
+.ms-phone {
+  position: relative;
+  z-index: 1;
+  width: 300px;
+  height: 640px;
+  /* Over the open sky, clear of her face. */
+  margin-right: 38%;
+  border-radius: 44px;
+  overflow: hidden;
+  background: var(--ms-ground);
+  color: var(--ms-text);
+  font-family: 'Poppins', 'Manrope', sans-serif;
+  box-shadow:
+    0 0 0 8px #0b0a0d,
+    0 0 0 9px rgb(255 255 255 / 0.12),
+    0 40px 80px -20px rgb(0 0 0 / 0.55);
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.6s ease;
+}
+
+.search-scene.is-on .ms-phone {
+  transform: none;
+  opacity: 1;
+}
+
+.ms-phone svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+.ms-status {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ms-status-icons {
+  width: 48px;
+  height: 10px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #fff 0 30%, transparent 30% 38%, #fff 38% 62%, transparent 62% 70%, #fff 70%);
+  opacity: 0.9;
+  align-self: center;
+}
+
+.ms-screen {
+  position: absolute;
+  inset: 44px 0 64px;
+  padding: 0 16px;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.4s ease;
+}
+
+.ms-title {
+  margin: 14px 0 18px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.ms-title--small {
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+.ms-search-row {
+  display: flex;
+  gap: 8px;
+}
+
+.ms-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--ms-line);
+  border-radius: 10px;
+  background: var(--ms-field);
+  font-size: 12px;
+  transition: border-color 0.3s ease;
+}
+
+.ms-field.is-focus {
+  border-color: var(--ms-violet);
+}
+
+.ms-placeholder {
+  color: var(--ms-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ms-caret {
+  display: inline-block;
+  width: 1px;
+  height: 14px;
+  margin-left: 1px;
+  vertical-align: -2px;
+  background: var(--ms-text);
+}
+
+.ms-filter {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--ms-line);
+  border-radius: 10px;
+  background: var(--ms-field);
+}
+
+.ms-suggest {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ms-suggest li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  font-size: 12.5px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.ms-suggest.is-in li,
+.ms-accounts.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.ms-accounts {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--ms-line);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease 0.3s, transform 0.3s ease 0.3s;
+}
+
+.ms-label {
+  margin-bottom: 10px;
+  font-size: 12.5px;
+  color: var(--ms-muted);
+}
+
+.ms-account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 -8px;
+  padding: 8px;
+  border-radius: 10px;
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.ms-account.is-picked {
+  background: rgb(113 88 226 / 0.22);
+}
+
+.ms-avatar {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 50%;
+  background-color: var(--ms-line);
+  /* Close on the face in the scene's own photograph. */
+  background-size: 620% auto;
+  background-position: 64% 29%;
+}
+
+.ms-avatar--large {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 10px;
+}
+
+/* Discover steps aside as the profile comes in from the right. */
+.ms-discover.is-away {
+  transform: translateX(-30%);
+  opacity: 0;
+}
+
+.ms-profile {
+  text-align: center;
+  transform: translateX(100%);
+}
+
+.ms-profile.is-in {
+  transform: none;
+}
+
+.ms-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ms-handle {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--ms-muted);
+}
+
+.ms-stats {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 14px;
+  font-size: 10px;
+  color: var(--ms-muted);
+}
+
+.ms-stats b {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ms-text);
+}
+
+.ms-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.ms-btn {
+  padding: 7px 18px;
+  border-radius: 8px;
+  background: var(--ms-field);
+  border: 1px solid var(--ms-line);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.ms-btn--primary {
+  background: var(--ms-violet);
+  border-color: var(--ms-violet);
+}
+
+.ms-tabs {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+  font-size: 11px;
+  color: var(--ms-muted);
+}
+
+.ms-tabs .is-on {
+  color: var(--ms-text);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.ms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 14px;
+}
+
+.ms-grid span {
+  aspect-ratio: 3 / 4;
+  border-radius: 4px;
+  background-color: var(--ms-line);
+  background-size: 260% auto;
+}
+
+.ms-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 64px;
+  padding-bottom: 6px;
+  border-top: 1px solid var(--ms-line);
+  background: var(--ms-ground);
+  font-size: 9.5px;
+  color: var(--ms-muted);
+}
+
+.ms-nav span {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+}
+
+.ms-nav .is-on {
+  color: var(--ms-violet);
+}
+
+.ms-plus {
+  width: 26px;
+  height: 26px;
+  place-content: center;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #8a5cf6, #3b7bff);
+  color: #fff;
+  font-size: 16px;
+}
+
+@media (max-width: 900px) {
+  .search-scene {
+    margin-bottom: 72px;
+    height: 760px;
+  }
+
+  .ms-phone {
+    margin-right: 0;
+    margin-top: 56px;
+    transform: translateY(40px) scale(0.92);
+  }
+
+  .search-scene.is-on .ms-phone {
+    transform: scale(0.92);
+  }
+
+  .search-scene-caption {
+    left: 20px;
+    right: 20px;
+    top: 20px;
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search-scene-photo img,
+  .ms-phone,
+  .ms-screen,
+  .ms-suggest li,
+  .ms-accounts {
+    transition: none;
+  }
+}

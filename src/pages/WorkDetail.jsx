@@ -5,6 +5,8 @@ import { Link } from '../router'
 import Arrow from '../components/Arrow'
 import PixelGlyph from '../components/PixelGlyph'
 import Photo from '../components/Photo'
+import PixelReveal from '../components/PixelReveal'
+import SearchScene from '../components/SearchScene'
 import { PROJECTS, getProject } from '../data/projects'
 import './WorkDetail.css'
 
@@ -127,7 +129,9 @@ export default function WorkDetail({ slug }) {
         <section className="detail-gallery">
           {project.gallery.map((g, i) => (
             <figure key={i} className={`detail-shot${g.photo || g.src ? '' : ' is-empty'}`}>
-              {g.photo
+              {g.photo && i === 0
+                ? <PixelReveal name={g.photo} alt={g.alt || ''} sizes="100vw" position={g.position} />
+                : g.photo
                 ? <Photo name={g.photo} alt={g.alt || ''} sizes={i === 0 ? '100vw' : '(max-width: 900px) 100vw, 50vw'} loading="lazy" style={g.position ? { objectPosition: g.position } : undefined} />
                 : g.src
                   ? <img src={g.src} alt={g.alt || ''} loading="lazy" decoding="async" />
@@ -136,6 +140,8 @@ export default function WorkDetail({ slug }) {
           ))}
         </section>
       )}
+
+      {project.scene && <SearchScene {...project.scene} />}
 
       <div className="detail-body">
         <aside className="detail-text-col">
