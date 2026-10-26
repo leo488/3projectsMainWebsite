@@ -24,7 +24,7 @@ const SLIDES = [
   {
     slug: 'crunchies-inventory',
     line: 'One live view of stock across every outlet, warehouse and kitchen.',
-    image: 'hero-notes',
+    image: 'hero-pos',
   },
   {
     slug: 'myspotlyt',

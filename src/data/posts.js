@@ -163,7 +163,7 @@ export const POSTS = [
     read: '2 min',
     ground: 'var(--phase-deliver)',
     ratio: '4 / 5',
-    image: "blog-call",
+    image: "blog-taxi",
     blocks: [
       ["p", "If you want to understand an organisation, don’t start with the boardroom."],
       ["p", "Go where the work happens."],
