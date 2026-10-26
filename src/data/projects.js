@@ -291,7 +291,7 @@ export const PROJECTS = [
       avatar: { size: '440%', x: 40, y: 22 },
       eyebrow: 'Who it is for',
       heading: 'Every release was for someone like her.',
-      body: 'Behind every vote, ticket and follow on Myspotlyt is a performer waiting to be seen. A platform that stays up and does what its audience expects is how more of them get found, and how that audience keeps coming back.',
+      body: 'Behind every vote, ticket and follow on Myspotlyt is a performer waiting to be seen. A platform that stays up and does what its audience expects is how more of them get found, and how that audience keeps coming back. For an actor in Lagos, being found on a phone during the ride to work can be the difference between an audition and another year of waiting.',
       name: 'Adaeze Okafor',
       role: 'Actor · Lagos',
       badge: 'Nominee · Fessa Awards',
