@@ -34,7 +34,7 @@ PHOTOS = {
     'crunchies-team':    ('5f3e8419-image.png', 0),
     'crunchies-home':    ('23d6de34-image.png', 0),
     'talent-commute':    ('60ccd251-image.png', 0),
-    'talent-listening':  ('2ca4ea29-image.png', 0),
+    'talent-listening':  ('2309b9a7-image.png', 0),
     'talent-stretch':    ('ab66ead1-image.png', 0),
     'talent-dance':      ('688387f2-image.png', 0),
     'talent-walk':       ('fc8e97f9-image.png', 0),
@@ -42,7 +42,6 @@ PHOTOS = {
     'talent-hand':       ('99d345b3-image.png', 0),
     'talent-desk':       ('85dad75d-image.png', 0),
     'talent-billboard':  ('05aa6b0c-image.png', 0),
-    'talent-feed':       ('3ed72cef-image.png', 0),
 }
 SIZES = (('full', 3200), ('sm', 1080))
 OUT = os.path.join(os.path.dirname(__file__), '..', 'public', 'images')

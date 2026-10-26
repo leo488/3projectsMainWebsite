@@ -299,8 +299,6 @@ export const PROJECTS = [
       { photo: 'talent-walk', alt: 'A painting of a young man walking past a brown wall, headphones round his neck', position: '40% 50%' },
       { photo: 'talent-blue', alt: 'A painting of a woman in a blue shirt smiling at her phone over tea', position: '50% 40%' },
     ],
-    // Where it stands: the feed in someone's hands, under the numbers.
-    closingShot: { photo: 'talent-feed', alt: 'A painting of hands holding a phone open on the Myspotlyt home feed', position: '50% 50%' },
     // Near the close: the talent the platform is for, her photograph
     // beside her profile in the app.
     finale: {
@@ -308,7 +306,7 @@ export const PROJECTS = [
       alt: 'A painting of a woman in headphones by a sunlit bus window, on her phone',
       position: '50% 40%',
       // Her face, cropped from the same painting for the app's avatar.
-      avatar: { size: '440%', x: 40, y: 22 },
+      avatar: { size: '560%', x: 41, y: 29 },
       eyebrow: 'Who it is for',
       text: 'Behind every vote, ticket and follow on Myspotlyt is **a performer waiting to be seen**. For an actor in Lagos, being found on a phone during the ride to work can be the difference between an audition and **another year of waiting**.',
       name: 'Adaeze Okafor',
