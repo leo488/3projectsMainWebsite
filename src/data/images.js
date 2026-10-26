@@ -101,10 +101,6 @@ export const PHOTOS = {
     { w: 1080, jpg: '/images/talent-listening-sm.jpg', webp: '/images/talent-listening-sm.webp', avif: '/images/talent-listening-sm.avif' },
     { w: 1254, jpg: '/images/talent-listening-full.jpg', webp: '/images/talent-listening-full.webp', avif: '/images/talent-listening-full.avif' },
   ],
-  'talent-feed': [
-    { w: 1080, jpg: '/images/talent-feed-sm.jpg', webp: '/images/talent-feed-sm.webp', avif: '/images/talent-feed-sm.avif' },
-    { w: 1672, jpg: '/images/talent-feed-full.jpg', webp: '/images/talent-feed-full.webp', avif: '/images/talent-feed-full.avif' },
-  ],
 }
 
 export const srcset = (files, fmt) => files.map((f) => `${f[fmt]} ${f.w}w`).join(', ')
