@@ -73,6 +73,14 @@ export const PHOTOS = {
     { w: 1080, jpg: '/images/talent-feed-sm.jpg', webp: '/images/talent-feed-sm.webp', avif: '/images/talent-feed-sm.avif' },
     { w: 1672, jpg: '/images/talent-feed-full.jpg', webp: '/images/talent-feed-full.webp', avif: '/images/talent-feed-full.avif' },
   ],
+  'crunchies-team': [
+    { w: 1080, jpg: '/images/crunchies-team-sm.jpg', webp: '/images/crunchies-team-sm.webp', avif: '/images/crunchies-team-sm.avif' },
+    { w: 1673, jpg: '/images/crunchies-team-full.jpg', webp: '/images/crunchies-team-full.webp', avif: '/images/crunchies-team-full.avif' },
+  ],
+  'crunchies-home': [
+    { w: 1080, jpg: '/images/crunchies-home-sm.jpg', webp: '/images/crunchies-home-sm.webp', avif: '/images/crunchies-home-sm.avif' },
+    { w: 1567, jpg: '/images/crunchies-home-full.jpg', webp: '/images/crunchies-home-full.webp', avif: '/images/crunchies-home-full.avif' },
+  ],
 }
 
 export const srcset = (files, fmt) => files.map((f) => `${f[fmt]} ${f.w}w`).join(', ')

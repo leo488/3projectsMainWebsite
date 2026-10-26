@@ -28,6 +28,9 @@ PHOTOS = {
     'blog-van':          ('cc5052d2-image.png', 0),
     'blog-call':         ('542cf487-image.png', 0),
     # Myspotlyt, Leo's painted set.
+    # Crunchies, from the same painted set.
+    'crunchies-team':    ('5f3e8419-image.png', 0),
+    'crunchies-home':    ('23d6de34-image.png', 0),
     'talent-glasses':    ('9661d3b9-image.png', 0),
     'talent-commute':    ('cb242c12-image.png', 0),
     'talent-listening':  ('2ca4ea29-image.png', 0),
