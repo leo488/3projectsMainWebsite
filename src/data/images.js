@@ -10,6 +10,10 @@ export const PHOTOS = {
     { w: 1080, jpg: '/images/hero-notes-sm.jpg', webp: '/images/hero-notes-sm.webp', avif: '/images/hero-notes-sm.avif' },
     { w: 1536, jpg: '/images/hero-notes-full.jpg', webp: '/images/hero-notes-full.webp', avif: '/images/hero-notes-full.avif' },
   ],
+  'hero-pos': [
+    { w: 1080, jpg: '/images/hero-pos-sm.jpg', webp: '/images/hero-pos-sm.webp', avif: '/images/hero-pos-sm.avif' },
+    { w: 1536, jpg: '/images/hero-pos-full.jpg', webp: '/images/hero-pos-full.webp', avif: '/images/hero-pos-full.avif' },
+  ],
   'hero-apps': [
     { w: 1080, jpg: '/images/hero-apps-sm.jpg', webp: '/images/hero-apps-sm.webp', avif: '/images/hero-apps-sm.avif' },
     { w: 1536, jpg: '/images/hero-apps-full.jpg', webp: '/images/hero-apps-full.webp', avif: '/images/hero-apps-full.avif' },
@@ -37,6 +41,10 @@ export const PHOTOS = {
   'blog-tap': [
     { w: 1080, jpg: '/images/blog-tap-sm.jpg', webp: '/images/blog-tap-sm.webp', avif: '/images/blog-tap-sm.avif' },
     { w: 1536, jpg: '/images/blog-tap-full.jpg', webp: '/images/blog-tap-full.webp', avif: '/images/blog-tap-full.avif' },
+  ],
+  'blog-taxi': [
+    { w: 1080, jpg: '/images/blog-taxi-sm.jpg', webp: '/images/blog-taxi-sm.webp', avif: '/images/blog-taxi-sm.avif' },
+    { w: 1536, jpg: '/images/blog-taxi-full.jpg', webp: '/images/blog-taxi-full.webp', avif: '/images/blog-taxi-full.avif' },
   ],
   'blog-van': [
     { w: 1080, jpg: '/images/blog-van-sm.jpg', webp: '/images/blog-van-sm.webp', avif: '/images/blog-van-sm.avif' },
