@@ -38,7 +38,8 @@
 /* Fixed columns, so Industry always starts at the same line, the line
    the story below is set from (--detail-indent). */
 .detail-intro,
-.detail-story {
+.detail-story,
+.detail-outcome {
   --detail-indent: 22%;
 }
 
@@ -337,8 +338,58 @@
 }
 
 /* ─────────────────────────────
-   Close: where it stands, the numbers and the next case study, on
-   Deep Carbon so the page runs straight into the footer.
+   Where it stands: the opening's layout again, on white, so it reads
+   as the end of the story rather than the start of the footer.
+───────────────────────────── */
+.detail-outcome {
+  padding: 128px var(--side-pad);
+}
+
+.detail-outcome > :not(figure) {
+  margin-left: var(--detail-indent);
+}
+
+.detail-proof {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  margin-top: 88px;
+  list-style: none;
+}
+
+.detail-proof li {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid rgb(var(--fg-rgb) / 0.14);
+}
+
+/* The figures in full weight, the way they are bold in the text. */
+.detail-proof .detail-metric-value {
+  font-size: clamp(40px, 4.4vw, 72px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: var(--fg);
+}
+
+.detail-proof .detail-metric-label {
+  max-width: 26ch;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgb(var(--fg-rgb) / 0.62);
+}
+
+.detail-outcome-shot {
+  aspect-ratio: 16 / 9;
+  margin-top: 112px;
+}
+
+/* ─────────────────────────────
+   Close: the way in and the next case study, on Deep Carbon so the
+   footer starts here.
 ───────────────────────────── */
 .detail-close {
   padding: 128px var(--side-pad) 112px;
@@ -346,63 +397,10 @@
   color: var(--white);
 }
 
-.detail-outcome-eyebrow {
-  color: var(--pale-blue);
-  margin-bottom: 32px;
-}
-
-.detail-outcome-headline {
-  font-size: clamp(38px, 5.4vw, 84px);
-  font-weight: 500;   /* the bold headline weight of Featured and the CPA */
-  line-height: 1.08;
-  text-wrap: balance;
-  letter-spacing: -0.035em;
-}
-
-.detail-outcome-body {
-  margin-top: 32px;
-  max-width: 1160px;
-  text-wrap: pretty;
-  font-size: 20px;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.detail-proof {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 32px;
-  margin-top: 88px;
-  list-style: none;
-}
-
-.detail-proof li {
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* The figures in the brand's growth gradient, so the growth reads
-   first. */
-.detail-proof .detail-metric-value {
-  font-size: clamp(48px, 5.6vw, 96px);
-  white-space: nowrap;
-  background: var(--gradient-growth);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.detail-proof .detail-metric-label {
-  color: rgba(255, 255, 255, 0.6);
-}
-
 /* Start a conversation, the size of a headline: a light passes across
    the words now and then, and the arrow leans forward with it. */
 .detail-cta {
   display: block;
-  margin-top: 128px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--white);
   text-decoration: none;
 }
@@ -416,7 +414,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.25em;
-  margin-top: 24px;
+  margin-top: 28px;
   font-size: clamp(48px, 8.4vw, 148px);
   font-weight: 500;
   line-height: 1;
@@ -579,8 +577,18 @@
     padding-bottom: 72px;
   }
 
-  .detail-close {
+  .detail-close,
+  .detail-outcome {
     padding: 72px var(--side-pad);
+  }
+
+  .detail-outcome > :not(figure) {
+    margin-left: 0;
+  }
+
+  .detail-outcome-shot {
+    margin-top: 64px;
+    aspect-ratio: 4 / 3;
   }
 
   .detail-proof .detail-metric-value {
@@ -588,7 +596,7 @@
   }
 
   .detail-proof {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 36px 20px;
     margin-top: 56px;
   }
@@ -597,9 +605,6 @@
     margin-top: 72px;
   }
 
-  .detail-cta {
-    margin-top: 80px;
-  }
 }
 
 /* Figures in running text: full weight and full colour, so the numbers
@@ -616,9 +621,18 @@
   font-weight: 500;
 }
 
-.detail-outcome-body strong {
-  font-weight: 600;
-  color: var(--white);
+/* Her words before the finale: the interlude's type, with room above
+   since no mock-up leads into it. */
+.detail-finale-lead {
+  padding-top: 128px;
+  padding-bottom: 72px;
+}
+
+@media (max-width: 900px) {
+  .detail-finale-lead {
+    padding-top: 72px;
+    padding-bottom: 40px;
+  }
 }
 
 /* A phase panel split in two: the coded screen and a photograph. */
