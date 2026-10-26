@@ -274,13 +274,15 @@ export const PROJECTS = [
       'Four years on, revenue has grown **thirtyfold**, from **₦100K+ in 2022** to **over ₦3M in 2026**, and the platform holds an active base of **five thousand users**.',
     ],
     outcome: {
-      headline: 'From a platform nobody stayed on to thirtyfold revenue growth.',
+      headline: 'From a platform nobody stayed on to **thirtyfold revenue growth**.',
       body: 'Myspotlyt now runs on a stable stack, ships features on a predictable cadence and holds an active base of **five thousand users**. The work continues one release at a time.',
     },
     // Leo's painted set: people on the move, on their phones.
     gallery: [
       { photo: 'talent-glasses', alt: 'A painting of a woman on a city bus, smiling at her phone', position: '50% 35%' },
     ],
+    // Where it stands: the feed in someone's hands, under the numbers.
+    closingShot: { photo: 'talent-feed', alt: 'A painting of hands holding a phone open on the Myspotlyt home feed', position: '50% 50%' },
     // Near the close: the talent the platform is for, her photograph
     // beside her profile in the app.
     finale: {
@@ -290,8 +292,7 @@ export const PROJECTS = [
       // Her face, cropped from the same painting for the app's avatar.
       avatar: { size: '440%', x: 40, y: 22 },
       eyebrow: 'Who it is for',
-      heading: 'Every release was for someone like her.',
-      body: 'Behind every vote, ticket and follow on Myspotlyt is a performer waiting to be seen. A platform that stays up and does what its audience expects is how more of them get found, and how that audience keeps coming back. For an actor in Lagos, being found on a phone during the ride to work can be the difference between an audition and another year of waiting.',
+      text: 'Behind every vote, ticket and follow on Myspotlyt is **a performer waiting to be seen**. For an actor in Lagos, being found on a phone during the ride to work can be the difference between an audition and **another year of waiting**.',
       name: 'Adaeze Okafor',
       role: 'Actor · Lagos',
       badge: 'Nominee · Fessa Awards',

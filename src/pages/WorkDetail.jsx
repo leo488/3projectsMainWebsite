@@ -246,16 +246,28 @@ export default function WorkDetail({ slug }) {
 
       {project.interlude && phaseBlock(project.interlude.after + 1, project.sections.length)}
 
-      {project.finale && <TalentFinale {...project.finale} />}
+      {/* Who it was for: her words on their own, then her picture beside
+          her profile in the app. */}
+      {project.finale && (
+        <>
+          <section className="detail-interlude detail-finale-lead">
+            <p className="tiny detail-story-eyebrow">{project.finale.eyebrow}</p>
+            <p className="detail-lede">{rich(project.finale.text)}</p>
+          </section>
+          <TalentFinale {...project.finale} />
+        </>
+      )}
 
-      {/* ── Close: where it stands and the numbers behind it, on Deep
-          Carbon so the page runs straight into the footer ── */}
-      <section className="detail-close">
-        <p className="tiny detail-outcome-eyebrow">Where it stands</p>
+      {/* ── Where it stands: set like the starting point, on the same
+          line, with the numbers in full weight ── */}
+      <section className="detail-outcome">
+        <p className="tiny detail-story-eyebrow">Where it stands</p>
         {project.outcome && (
           <>
-            <h2 className="detail-outcome-headline">{project.outcome.headline}</h2>
-            <p className="detail-outcome-body">{rich(project.outcome.body)}</p>
+            <p className="detail-lede">{rich(project.outcome.headline)}</p>
+            <div className="detail-story-copy">
+              <p>{rich(project.outcome.body)}</p>
+            </div>
           </>
         )}
         <ul className="detail-proof">
@@ -266,6 +278,16 @@ export default function WorkDetail({ slug }) {
             </li>
           ))}
         </ul>
+        {project.closingShot && (
+          <figure className="detail-interlude-shot detail-outcome-shot">
+            <Photo name={project.closingShot.photo} alt={project.closingShot.alt || ''} sizes="100vw" loading="lazy" style={project.closingShot.position ? { objectPosition: project.closingShot.position } : undefined} />
+          </figure>
+        )}
+      </section>
+
+      {/* ── The way in and the next case study, on Deep Carbon so the
+          footer starts here ── */}
+      <section className="detail-close">
         {/* The way in, as big as the page allows. */}
         <ContactLink className="detail-cta">
           <span className="tiny detail-cta-eyebrow">Have a problem like this?</span>
