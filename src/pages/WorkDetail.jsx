@@ -131,7 +131,7 @@ export default function WorkDetail({ slug }) {
                 className="detail-panel"
                 ref={(el) => { panelRefs.current[i] = el }}
               >
-                <div className={`detail-panel-plate${s.image || s.screen ? ' has-image' : ''}${s.screen ? ` is-coded is-coded--${s.screen}` : ''}${s.pair ? ' has-pair' : ''}`}>
+                <div className={`detail-panel-plate${s.image || s.photo || s.screen ? ' has-image' : ''}${s.screen ? ` is-coded is-coded--${s.screen}` : ''}${s.pair ? ' has-pair' : ''}`}>
                   {s.screen && s.pair
                     ? (
                       <>
@@ -146,6 +146,8 @@ export default function WorkDetail({ slug }) {
                     )
                     : s.screen
                     ? <MsScreen kind={s.screen} label={s.imageAlt} />
+                    : s.photo
+                    ? <Photo name={s.photo} alt={s.imageAlt || ''} sizes="(max-width: 1000px) 100vw, 64vw" loading="lazy" className="detail-panel-img" style={s.position ? { objectPosition: s.position } : undefined} />
                     : s.image
                     ? <img src={s.image} alt={s.imageAlt || ''} className="detail-panel-img" loading="lazy" decoding="async" />
                     : <PixelGlyph name={PHASE_GLYPH[s.label] || 'magnifier'} className="detail-panel-glyph" />}
