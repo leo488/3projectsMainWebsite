@@ -1,195 +1,7 @@
-/* ──────────────────────────────────────────────────────────────
-   Case studies. Only engagements with real content are live; the
-   placeholder studies are kept below in a comment until their content
-   arrives. Each record maps one-to-one onto the case-study intake CSV.
-   `art` names the pixel illustration that stands in for imagery.
-   ────────────────────────────────────────────────────────────── */
+// Case studies, one record per engagement from the case-study intake.
+// `art` names the pixel illustration shown on the work index.
 
 export const PROJECTS = [
-  /* ── Inactive: placeholder studies awaiting real content. Hidden from
-     the site for now; uncomment an entry to bring it back. ──
-
-  {
-    slug: 'operational-complexity',
-    title: 'Turning Operational Complexity into Competitive Advantage',
-    summary: 'Uncovering the hidden constraints inside a complex operating model, then redesigning how the critical work actually runs.',
-    tag: 'Full operating model redesign',
-    categories: ['Strategy', 'Operations'],
-    industry: 'Financial Services',
-    year: '2025',
-    ground: 'var(--enterprise)',
-    ratio: '4 / 3',
-    services: ['Enterprise Discovery', 'Strategic Analysis', 'Operational Optimization'],
-    metrics: [
-      { value: '₦XM+', label: 'Operational efficiency improvement' },
-      { value: 'XX',   label: 'Processes redesigned' },
-    ],
-    intro:
-      'Scale hides its own cost. Work that made sense at one size becomes the thing that slows the next, and the constraint is rarely where the organisation thinks it is. This engagement started by finding out where the time actually went.',
-    sections: [
-      {
-        label: 'Discover',
-        heading: 'Start with the constraint, not the brief',
-        body: 'Discovery ran against the real operating model rather than the documented one — the handoffs people work around, the approvals that queue, the reporting nobody reads. The map that came out of it was the first time the whole picture sat in one place.',
-        ground: 'var(--phase-discover)',
-      },
-      {
-        label: 'Design',
-        heading: 'Redesign the work, then the system',
-        body: 'Process came before software. Each critical path was rebuilt around the decision it exists to support, and only then did we specify what had to be built, bought or retired to carry it.',
-        ground: 'var(--phase-design)',
-      },
-      {
-        label: 'Deliver',
-        heading: 'Ship into the live operation',
-        body: 'Delivery ran in slices against live work, so every change was measured against the operation it was meant to improve rather than a staging environment that never had to hold up.',
-        ground: 'var(--phase-deliver)',
-      },
-      {
-        label: 'Sustain',
-        heading: 'Leave the capability behind',
-        body: 'The engagement ends; the operating model does not. Instrumentation, ownership and a review cadence stayed with the teams running the work, so improvement continues without us in the room.',
-        ground: 'var(--phase-sustain)',
-      },
-    ],
-  },
-  {
-    slug: 'banking-operations',
-    title: 'Modernizing Banking Operations',
-    summary: 'Reducing operational bottlenecks through enterprise process redesign and technology modernization.',
-    tag: 'Process redesign + modernization',
-    categories: ['Operations', 'Platform'],
-    industry: 'Financial Services',
-    year: '2025',
-    ground: 'var(--ink)',
-    ratio: '4 / 5',
-    services: ['Transformation Architecture', 'Technology Integration', 'Continuous Evolution'],
-    metrics: [
-      { value: 'XX',   label: 'Bottlenecks removed' },
-      { value: '30%+', label: 'Operational efficiency improvement' },
-    ],
-    intro:
-      'Core banking work accumulates sediment: a control added after an incident, a spreadsheet that became load-bearing, a system kept alive because nothing else knows the rules. Modernization here meant separating what is regulation from what is only habit.',
-    sections: [
-      {
-        label: 'Discover',
-        heading: 'Separate the rule from the habit',
-        body: 'Every control was traced back to its origin. A large share turned out to be institutional memory rather than obligation — which is what made the rest of the work possible.',
-        ground: 'var(--phase-discover)',
-      },
-      {
-        label: 'Design',
-        heading: 'Architecture that survives the next decade',
-        body: 'The target architecture was specified around the parts most likely to change, so the components with the shortest half-life could be replaced without disturbing the ones carrying regulatory weight.',
-        ground: 'var(--phase-design)',
-      },
-      {
-        label: 'Deliver',
-        heading: 'Modernize without stopping the bank',
-        body: 'Migration ran path by path, each one proved in parallel before the old route was retired. No cutover weekend, no freeze on the business.',
-        ground: 'var(--phase-deliver)',
-      },
-      {
-        label: 'Sustain',
-        heading: 'Measure what modernization bought',
-        body: 'Baselines were captured before the first change so the improvement could be argued with numbers rather than impressions, and the same instrumentation now drives the roadmap.',
-        ground: 'var(--phase-sustain)',
-      },
-    ],
-  },
-  {
-    slug: 'infrastructure-delivery',
-    title: 'Rebuilding How Capital Projects Get Delivered',
-    summary: 'A single operating picture across planning, procurement and delivery for an infrastructure portfolio.',
-    tag: 'Portfolio operating model',
-    categories: ['Strategy', 'Operations'],
-    industry: 'Infrastructure',
-    year: '2024',
-    ground: 'var(--navy)',
-    ratio: '4 / 5',
-    services: ['Enterprise Discovery', 'Transformation Architecture', 'Operational Optimization'],
-    metrics: [
-      { value: 'XX',  label: 'Programmes brought onto one model' },
-      { value: '10M', label: 'Portfolio value under management' },
-    ],
-    intro:
-      'Capital delivery fails in the gaps — between the plan and the procurement, the procurement and the site. The work was to make those gaps visible early enough to act on them.',
-    sections: [
-      {
-        label: 'Discover',
-        heading: 'Find where certainty is lost',
-        body: 'Programmes were traced end to end to locate the points where an estimate stops being reliable. The same three handoffs accounted for most of the drift.',
-        ground: 'var(--phase-discover)',
-      },
-      {
-        label: 'Design',
-        heading: 'One picture, many programmes',
-        body: 'A common structure for scope, schedule and spend let independent programmes stay independent while still rolling up into a portfolio view that meant something.',
-        ground: 'var(--phase-design)',
-      },
-      {
-        label: 'Deliver',
-        heading: 'Adopt without a mandate',
-        body: 'Rollout led with the reporting burden it removed rather than the compliance it added, so teams took it up because it was less work, not because they were told to.',
-        ground: 'var(--phase-deliver)',
-      },
-      {
-        label: 'Sustain',
-        heading: 'Keep the picture current',
-        body: 'Ownership sits with the programme teams who generate the data, which is the only arrangement under which a portfolio view stays accurate past its first quarter.',
-        ground: 'var(--phase-sustain)',
-      },
-    ],
-  },
-  {
-    slug: 'energy-operations',
-    title: 'An Operating Model Built for Volatile Demand',
-    summary: 'Rebuilding planning and field operations around conditions that change faster than the annual cycle.',
-    tag: 'Planning + field operations',
-    categories: ['Strategy', 'Design', 'Platform'],
-    industry: 'Energy & Utilities',
-    year: '2024',
-    ground: 'var(--carbon)',
-    ratio: '4 / 3',
-    services: ['Strategic Analysis', 'Technology Integration', 'Continuous Evolution'],
-    metrics: [
-      { value: 'XX',   label: 'Planning cycle reduced to' },
-      { value: '₦XM+', label: 'Operational efficiency improvement' },
-    ],
-    intro:
-      'An annual planning cycle cannot answer a weekly question. The brief was to shorten the loop between what the network is doing and what the organisation decides to do about it.',
-    sections: [
-      {
-        label: 'Discover',
-        heading: 'How long is the loop, really',
-        body: 'We measured elapsed time from signal to decision to action. The technology was rarely the delay; the wait for the next scheduled forum usually was.',
-        ground: 'var(--phase-discover)',
-      },
-      {
-        label: 'Design',
-        heading: 'Plan at the speed of the network',
-        body: 'Planning was restructured around a short cycle with a standing decision forum, and the field tooling was rebuilt around what crews actually need at the point of work.',
-        ground: 'var(--phase-design)',
-      },
-      {
-        label: 'Deliver',
-        heading: 'Prove it in one region first',
-        body: 'A single region ran the new cycle end to end for a full quarter. Rollout arguments are easier to make once one part of the business has already done it.',
-        ground: 'var(--phase-deliver)',
-      },
-      {
-        label: 'Sustain',
-        heading: 'Hold the cadence',
-        body: 'The cadence is the product. Governance, instrumentation and ownership were set up so the short cycle survives leadership changes and busy quarters.',
-        ground: 'var(--phase-sustain)',
-      },
-    ],
-  },
-  ── end inactive ── */
-  /* ── From the case-study intake CSV (responses of 2/9/2026 and
-     7/9/2026). Everything below is taken from those responses; where a
-     field was left blank or answered "Nil" it is simply absent rather
-     than filled in. ── */
   {
     slug: 'crunchies-inventory',
     art: 'pos-terminal',
@@ -215,7 +27,7 @@ export const PROJECTS = [
       'We are building one connected Inventory Operations Hub. Digital requests, warehouse issuance, kitchen records, approvals and real-time dashboards run over a single standard item list, integrated with SAGE ERP.',
       'Delivery is planned in **eight phases**. **Phase one** is in build.',
     ],
-    // Leo's painted set: one wide picture before the phases.
+    // one wide picture before the phases.
     gallery: [
       { photo: 'hero-notes', alt: 'A painting of a restaurant manager writing up stock by hand while on the phone', position: '50% 60%' },
     ],
@@ -293,7 +105,7 @@ export const PROJECTS = [
       headline: 'From a platform nobody stayed on to **thirtyfold revenue growth**.',
       body: 'Myspotlyt now runs on a stable stack, ships features on a predictable cadence and holds an active base of **five thousand users**. The work continues one release at a time.',
     },
-    // Leo's painted set: one wide picture, then two side by side.
+    // one wide picture, then two side by side.
     gallery: [
       { photo: 'talent-dance', alt: 'A painting of a woman dancing alone in a sunlit kitchen', position: '50% 45%' },
       { photo: 'talent-walk', alt: 'A painting of a young man walking past a brown wall, headphones round his neck', position: '40% 50%' },
@@ -313,7 +125,7 @@ export const PROJECTS = [
       role: 'Actor · Lagos',
       badge: 'Nominee · Fessa Awards',
     },
-    // The app rebuilt in code inside the phone in Leo's painting of
+    // The app rebuilt in code inside the phone in the painting of
     // hands holding one: a search that finds her. `screen` is the painted
     // screen's corners in the painting's pixels (top left, top right,
     // bottom right, bottom left); `focus` is the point kept in view.
@@ -328,7 +140,7 @@ export const PROJECTS = [
       caption: 'Talent, a search away.',
     },
     // Breaks the phases after Design with a statement in the opening's
-    // large type and Leo's billboard mock-up across the width.
+    // large type and the billboard painting across the width.
     interlude: {
       after: 1,
       eyebrow: 'What we built for',

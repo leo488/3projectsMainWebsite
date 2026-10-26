@@ -8,7 +8,7 @@
   --ms-violet: #7158e2;
   --ms-text: #ffffff;
   --ms-muted: rgb(255 255 255 / 0.6);
-  /* Where a photograph from the app will go once Leo sends it. */
+  /* Placeholder for an in-app photograph. */
   --ms-photo: linear-gradient(160deg, #3a3641, #24212a);
   --ms-photo-light: linear-gradient(160deg, #e4e5ea, #d3d5dc);
 

@@ -40,7 +40,7 @@
   --pattern-mid:  #0036C5;
   --pattern-lite: #2973FD;
   --bone:         #E9E9E4;   /* light ground — closing CTA, footer */
-  --card:         #E7E8E3;   /* capability cards */
+  --card:         #E7E8E3;   /* card and panel ground */
   --white:        #ffffff;
   --night:        #141414;   /* dark ground: Deep Carbon, same as --carbon */
   --night-raise:  rgb(255 255 255 / 0.06);   /* panels sitting on --night */
