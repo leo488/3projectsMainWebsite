@@ -16,8 +16,8 @@ from PIL import Image
 # blog-laptop's original has rounded transparent corners; the trim
 # clears them.
 PHOTOS = {
-    'hero-pos':          ('29d29810-image.png', 0),
     'hero-apps':         ('9916ef55-image.png', 0),
+    'hero-notes':        ('fdd953fc-image.png', 0),
     'cpa-partners':      ('afbf9b61-image.png', 0),
     'blog-laptop':       ('9b625c6d-image.png', 48),
     'blog-conversation': ('3aeab1c0-image.png', 0),
@@ -25,8 +25,8 @@ PHOTOS = {
     'blog-platform':     ('1e7d4def-image.png', 0),
     'blog-team':         ('cd286a50-image.png', 0),
     'blog-tap':          ('bb5d3f6b-image.png', 0),
-    'blog-arrival':      ('ffd5c45a-image.png', 0),
-    'blog-taxi':         ('a0c0d17e-image.png', 0),
+    'blog-van':          ('cc5052d2-image.png', 0),
+    'blog-call':         ('542cf487-image.png', 0),
     # Myspotlyt, Leo's painted set.
     'talent-glasses':    ('9661d3b9-image.png', 0),
     'talent-commute':    ('cb242c12-image.png', 0),
