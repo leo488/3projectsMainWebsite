@@ -3,12 +3,9 @@ import SiteFooter from './components/SiteFooter'
 import Navbar       from './components/Navbar'
 import Hero         from './components/Hero'
 import Featured     from './components/Featured'
-// import Capabilities from './components/Capabilities'
-// import Showcase     from './components/Showcase'
 import PartnerCta   from './components/PartnerCta'
 import Stats        from './components/Stats'
 import Insights     from './components/Insights'
-// import FinalCta     from './components/FinalCta'
 // The home page ships in the first download; every other page is its
 // own small file, fetched when someone goes there.
 const Work       = lazy(() => import('./pages/Work'))
@@ -38,16 +35,10 @@ function Home() {
       <Hero />
       <Stats />
       <Insights />
-      {/* The pattern band and the CPA band are one stacked pair, with
-          white space above and below. */}
       <div className="home-pair">
         <Featured />
         <PartnerCta />
       </div>
-      {/* Set aside on this layout; each can come back as it is. */}
-      {/* <Capabilities /> */}
-      {/* <Showcase /> */}
-      {/* <FinalCta /> */}
       <SiteFooter />
     </>
   )

@@ -17,10 +17,6 @@
 
 /* On black, the night sections lift one step so
    they still read as surfaces. */
-[data-theme='dark'] .showcase {
-  background: var(--night);
-}
-
 [data-theme='dark'] .insights {
   background: var(--night);
 }

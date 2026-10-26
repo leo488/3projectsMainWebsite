@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import './Stats.css'
 
 // Our own numbers. Myspotlyt's come from its case study
-// (src/data/projects.js); the transaction total is Leo's figure.
+// (src/data/projects.js); the transaction total is set here.
 const STATS = [
   { to: 30,   suffix: '×',  label: ['Revenue growth for', 'Myspotlyt since 2022'] },
   { to: 5000, suffix: '',   label: ['Active users on a', 'platform we rebuilt'] },

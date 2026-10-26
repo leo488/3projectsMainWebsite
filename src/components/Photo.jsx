@@ -1,6 +1,6 @@
 import { PHOTOS, srcset } from '../data/images'
 
-/* One of Leo's photographs as a <picture>: AVIF, then WebP, then JPEG,
+/* One photograph as a <picture>: AVIF, then WebP, then JPEG,
    each at two widths. `sizes` says how wide it is drawn so the browser
    fetches the right width; className and the rest land on the <img>. */
 export default function Photo({ name, sizes = '100vw', alt = '', ...rest }) {

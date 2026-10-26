@@ -1,4 +1,4 @@
-/* Leo's photographs, each at its full resolution plus a 1080px copy for
+/* The site's photographs, each at its full resolution plus a 1080px copy for
    small screens, in three formats: AVIF and WebP (the same picture in
    about half the bytes) and baseline JPEG for any browser without them.
    All are encoded from the originals, never from another copy, by
@@ -21,14 +21,6 @@ export const PHOTOS = {
   'cpa-partners': [
     { w: 1080, jpg: '/images/cpa-partners-sm.jpg', webp: '/images/cpa-partners-sm.webp', avif: '/images/cpa-partners-sm.avif' },
     { w: 1448, jpg: '/images/cpa-partners-full.jpg', webp: '/images/cpa-partners-full.webp', avif: '/images/cpa-partners-full.avif' },
-  ],
-  'blog-laptop': [
-    { w: 1080, jpg: '/images/blog-laptop-sm.jpg', webp: '/images/blog-laptop-sm.webp', avif: '/images/blog-laptop-sm.avif' },
-    { w: 3200, jpg: '/images/blog-laptop-full.jpg', webp: '/images/blog-laptop-full.webp', avif: '/images/blog-laptop-full.avif' },
-  ],
-  'blog-conversation': [
-    { w: 1080, jpg: '/images/blog-conversation-sm.jpg', webp: '/images/blog-conversation-sm.webp', avif: '/images/blog-conversation-sm.avif' },
-    { w: 3200, jpg: '/images/blog-conversation-full.jpg', webp: '/images/blog-conversation-full.webp', avif: '/images/blog-conversation-full.avif' },
   ],
   'blog-pos': [
     { w: 1080, jpg: '/images/blog-pos-sm.jpg', webp: '/images/blog-pos-sm.webp', avif: '/images/blog-pos-sm.avif' },
@@ -53,9 +45,6 @@ export const PHOTOS = {
   'blog-call': [
     { w: 1080, jpg: '/images/blog-call-sm.jpg', webp: '/images/blog-call-sm.webp', avif: '/images/blog-call-sm.avif' },
     { w: 1536, jpg: '/images/blog-call-full.jpg', webp: '/images/blog-call-full.webp', avif: '/images/blog-call-full.avif' },
-  ],
-  'blog-team': [
-    { w: 1024, jpg: '/images/blog-team-full.jpg', webp: '/images/blog-team-full.webp', avif: '/images/blog-team-full.avif' },
   ],
   'crunchies-team': [
     { w: 1080, jpg: '/images/crunchies-team-sm.jpg', webp: '/images/crunchies-team-sm.webp', avif: '/images/crunchies-team-sm.avif' },
