@@ -1,4 +1,6 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import Photo from './Photo'
+import { PHOTOS } from '../data/images'
 import { Icon, MsLogo, StatusBar, TabBar, useAppFont } from './msApp'
 import { countUp, prefersStill, useClock, useFit, useInView } from './useScene'
 import './MsScreens.css'
@@ -27,7 +29,7 @@ const COMMENTS = [
   ['Bisi', 'Sharing this now'],
 ]
 
-function Live({ on }) {
+function Live({ on, through }) {
   // A clock that never wraps, so each comment keeps its place as the
   // next one pushes it up.
   const t = useClock(on, 1e9, { rest: 3 * 1500 + 1 })
@@ -39,7 +41,7 @@ function Live({ on }) {
 
   return (
     <div className="ms-live ms-phone">
-      <div className="ms-live-video" />
+      <div className="ms-live-video" style={through} />
       <StatusBar />
       <div className="ms-live-tabs">
         <span className="is-on">Home feed</span><span>Following</span><span>Auditions</span>
@@ -307,7 +309,47 @@ function Tickets({ on }) {
 
 const SCREENS = { live: Live, vote: Vote, dashboard: Dashboard, tickets: Tickets }
 
-export default function MsScreen({ kind, label }) {
+// Where the backdrop's painting falls inside the phone's stream, so the
+// stream shows the same picture, sharp, exactly over the blurred one:
+// the phone reads as a window onto the scene behind it.
+function useThrough(ref, backdrop, k) {
+  const [style, setStyle] = useState(undefined)
+  useEffect(() => {
+    const stage = ref.current
+    const files = backdrop?.through && PHOTOS[backdrop.photo]
+    if (!stage || !files) return
+    const src = files[files.length - 1].webp
+    const [px, py] = (backdrop.position || '50% 50%').split(' ').map((v) => parseFloat(v) / 100)
+    let ratio = 0
+    const place = () => {
+      const video = stage.querySelector('.ms-live-video')
+      const back = stage.querySelector('.ms-backdrop img')
+      if (!video || !back || !ratio) return
+      // The backdrop as drawn, its slight zoom included.
+      const box = back.getBoundingClientRect()
+      const v = video.getBoundingClientRect()
+      const s = v.width / video.offsetWidth   // screen pixels per CSS pixel inside the phone
+      const w = Math.max(box.width, box.height * ratio)
+      const h = w / ratio
+      const x = (box.width - w) * px - (v.left - box.left)
+      const y = (box.height - h) * py - (v.top - box.top)
+      setStyle({
+        backgroundImage: `linear-gradient(180deg, rgb(20 17 24 / 0.45), transparent 22%, transparent 52%, rgb(20 17 24 / 0.9) 90%), url(${src})`,
+        backgroundSize: `100% 100%, ${w / s}px ${h / s}px`,
+        backgroundPosition: `0 0, ${x / s}px ${y / s}px`,
+      })
+    }
+    const img = new Image()
+    img.onload = () => { ratio = img.naturalWidth / img.naturalHeight; place() }
+    img.src = src
+    const ro = new ResizeObserver(() => requestAnimationFrame(place))
+    ro.observe(stage)
+    return () => ro.disconnect()
+  }, [ref, backdrop, k])
+  return style
+}
+
+export default function MsScreen({ kind, label, backdrop }) {
   useAppFont()
   const ref = useRef(null)
   const on = useInView(ref, 0.35)
@@ -315,6 +357,7 @@ export default function MsScreen({ kind, label }) {
   // screens; the desktop windows always show whole.
   const isWindow = kind === 'dashboard' || kind === 'tickets'
   const k = useFit(ref, (w, h) => (isWindow ? Math.min(w / 780, h / 520) : h / 520))
+  const through = useThrough(ref, backdrop, k)
   const Screen = SCREENS[kind]
   if (!Screen) return null
 
@@ -326,8 +369,14 @@ export default function MsScreen({ kind, label }) {
       role="img"
       aria-label={label}
     >
+      {/* A painting behind the screen, blurred to a wash of its colours. */}
+      {backdrop && (
+        <div className={`ms-backdrop${backdrop.through ? ' is-through' : ''}`}>
+          <Photo name={backdrop.photo} alt="" sizes="(max-width: 1000px) 100vw, 64vw" loading="lazy" style={backdrop.position ? { objectPosition: backdrop.position } : undefined} />
+        </div>
+      )}
       <div className="ms-stage-inner ms-app" aria-hidden="true">
-        <Screen on={on} />
+        <Screen on={on} through={through} />
       </div>
     </div>
   )

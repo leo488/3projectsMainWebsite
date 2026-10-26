@@ -131,12 +131,18 @@ export default function WorkDetail({ slug }) {
                 className="detail-panel"
                 ref={(el) => { panelRefs.current[i] = el }}
               >
+                {/* A painting stacked above the panel, as its own plate. */}
+                {s.lead && (
+                  <figure className="detail-panel-plate detail-panel-lead">
+                    <Photo name={s.lead.photo} alt={s.lead.alt || ''} sizes="(max-width: 1000px) 100vw, 64vw" loading="lazy" className="detail-panel-img" style={s.lead.position ? { objectPosition: s.lead.position } : undefined} />
+                  </figure>
+                )}
                 <div className={`detail-panel-plate${s.image || s.photo || s.screen ? ' has-image' : ''}${s.screen ? ` is-coded is-coded--${s.screen}` : ''}${s.pair ? ' has-pair' : ''}`}>
                   {s.screen && s.pair
                     ? (
                       <>
                         {/* The screen and a photograph side by side. */}
-                        <div className="detail-panel-half"><MsScreen kind={s.screen} label={s.imageAlt} /></div>
+                        <div className="detail-panel-half"><MsScreen kind={s.screen} label={s.imageAlt} backdrop={s.backdrop} /></div>
                         <figure className={`detail-panel-half detail-panel-pair${s.pair.photo ? '' : ' is-empty'}`}>
                           {s.pair.photo
                             ? <Photo name={s.pair.photo} alt={s.pair.alt || ''} sizes="(max-width: 1000px) 50vw, 32vw" loading="lazy" style={s.pair.position ? { objectPosition: s.pair.position } : undefined} />
@@ -145,7 +151,7 @@ export default function WorkDetail({ slug }) {
                       </>
                     )
                     : s.screen
-                    ? <MsScreen kind={s.screen} label={s.imageAlt} />
+                    ? <MsScreen kind={s.screen} label={s.imageAlt} backdrop={s.backdrop} />
                     : s.photo
                     ? <Photo name={s.photo} alt={s.imageAlt || ''} sizes="(max-width: 1000px) 100vw, 64vw" loading="lazy" className="detail-panel-img" style={s.position ? { objectPosition: s.position } : undefined} />
                     : s.image

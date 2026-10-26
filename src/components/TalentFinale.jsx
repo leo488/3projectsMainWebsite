@@ -7,7 +7,7 @@ import './TalentFinale.css'
 
 /* Near the close of the case study: the talent the platform is for.
    Her picture takes the wide column; beside it, her profile in the app
-   rises from the foot of a plain column. The words about her are set
+   rises from the foot of a column washed in the painting's colours. The words about her are set
    above, by the page. She is followed once the
    column is on screen, and the count moves with it. */
 
@@ -31,6 +31,10 @@ export default function TalentFinale({ photo, alt, position, avatar = { size: '4
       </figure>
 
       <div className="finale-side">
+        {/* Her painting again, blurred to a wash of its colours. */}
+        <div className="finale-wash" aria-hidden="true">
+          <Photo name={photo} alt="" sizes="30vw" loading="lazy" />
+        </div>
         <div className="finale-stage">
           <div className="finale-phone ms-phone ms-app" role="img" aria-label={`${name}'s profile in the Myspotlyt app`}>
             <StatusBar />

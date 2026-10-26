@@ -293,9 +293,11 @@ export const PROJECTS = [
       headline: 'From a platform nobody stayed on to **thirtyfold revenue growth**.',
       body: 'Myspotlyt now runs on a stable stack, ships features on a predictable cadence and holds an active base of **five thousand users**. The work continues one release at a time.',
     },
-    // Leo's painted set: people on the move, on their phones.
+    // Leo's painted set: one wide picture, then two side by side.
     gallery: [
-      { photo: 'talent-glasses', alt: 'A painting of a woman on a city bus, smiling at her phone', position: '50% 35%' },
+      { photo: 'talent-dance', alt: 'A painting of a woman dancing alone in a sunlit kitchen', position: '50% 45%' },
+      { photo: 'talent-walk', alt: 'A painting of a young man walking past a brown wall, headphones round his neck', position: '40% 50%' },
+      { photo: 'talent-blue', alt: 'A painting of a woman in a blue shirt smiling at her phone over tea', position: '50% 40%' },
     ],
     // Where it stands: the feed in someone's hands, under the numbers.
     closingShot: { photo: 'talent-feed', alt: 'A painting of hands holding a phone open on the Myspotlyt home feed', position: '50% 50%' },
@@ -313,12 +315,18 @@ export const PROJECTS = [
       role: 'Actor · Lagos',
       badge: 'Nominee · Fessa Awards',
     },
-    // The app rebuilt in code over a photograph: a search that finds her.
+    // The app rebuilt in code inside the phone in Leo's painting of
+    // hands holding one: a search that finds her. `screen` is the painted
+    // screen's corners in the painting's pixels (top left, top right,
+    // bottom right, bottom left); `focus` is the point kept in view.
     scene: {
-      photo: 'talent-commute',
-      also: 'talent-glasses',
-      position: '50% 40%',
-      avatar: { size: '500%', x: 30, y: 24 },
+      photo: 'talent-hand',
+      size: [1672, 941],
+      screen: [[547.5, 102.5], [816, 84], [895, 671.5], [621.5, 698.5]],
+      focus: [720, 390],
+      face: 'talent-blue',
+      also: 'talent-commute',
+      avatar: { size: '520%', x: 50, y: 27 },
       caption: 'Talent, a search away.',
     },
     // Breaks the phases after Design with a statement in the opening's
@@ -340,8 +348,9 @@ export const PROJECTS = [
           'We started by finding where the platform broke and where people dropped off, so the first releases went to the problems costing the most users.',
         ],
         screen: 'live',
-        // Beside the feed: someone mid-stretch, smiling into the day.
-        pair: { photo: 'talent-stretch', alt: 'A painting of a woman stretching in a garden, laughing', position: '58% 30%' },
+        // The feed's stream shows the painting sharp; around the phone the
+        // same painting carries on, softened.
+        backdrop: { photo: 'talent-stretch', position: '50% 30%', through: true },
         imageAlt: 'The Myspotlyt home feed, live, with comments and hearts coming in',
         ground: 'var(--phase-discover)',
       },
@@ -353,6 +362,7 @@ export const PROJECTS = [
           'Each feature was chosen for one job: give the people already on the platform a reason to come back, and give new people a reason to join.',
         ],
         screen: 'vote',
+        backdrop: { photo: 'talent-commute', position: '30% 50%' },
         imageAlt: 'The Myspotlyt Awards screen, with a vote being paid for and confirmed',
         ground: 'var(--phase-design)',
       },
@@ -364,6 +374,9 @@ export const PROJECTS = [
           'A modern, well-supported stack means new features can be added without unsettling what is already live, which is what made a steady release rhythm possible.',
         ],
         screen: 'dashboard',
+        // Above the dashboard: the person at the desk behind the figures.
+        lead: { photo: 'talent-desk', alt: 'A painting of a woman at her desk, thinking, a laptop open in front of her', position: '50% 35%' },
+        backdrop: { photo: 'talent-desk', position: '50% 50%' },
         imageAlt: 'The Myspotlyt admin dashboard, its figures counting up and revenue lines drawing in',
         ground: 'var(--phase-deliver)',
       },
@@ -375,6 +388,7 @@ export const PROJECTS = [
           'That rhythm, one considered release at a time, is what turned a stalled platform into one that keeps growing.',
         ],
         screen: 'tickets',
+        backdrop: { photo: 'talent-dance', position: '50% 50%' },
         imageAlt: 'The Myspotlyt tickets screen, with tickets selling',
         ground: 'var(--phase-sustain)',
       },

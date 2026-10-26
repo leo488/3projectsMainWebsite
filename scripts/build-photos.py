@@ -33,11 +33,15 @@ PHOTOS = {
     # Crunchies, from the same painted set.
     'crunchies-team':    ('5f3e8419-image.png', 0),
     'crunchies-home':    ('23d6de34-image.png', 0),
-    'talent-glasses':    ('9661d3b9-image.png', 0),
-    'talent-commute':    ('cb242c12-image.png', 0),
+    'talent-commute':    ('60ccd251-image.png', 0),
     'talent-listening':  ('2ca4ea29-image.png', 0),
-    'talent-stretch':    ('a7f400bb-image.png', 0),
-    'talent-billboard':  ('1958e3a7-image.png', 0),
+    'talent-stretch':    ('ab66ead1-image.png', 0),
+    'talent-dance':      ('688387f2-image.png', 0),
+    'talent-walk':       ('fc8e97f9-image.png', 0),
+    'talent-blue':       ('e1326874-image.png', 0),
+    'talent-hand':       ('99d345b3-image.png', 0),
+    'talent-desk':       ('85dad75d-image.png', 0),
+    'talent-billboard':  ('05aa6b0c-image.png', 0),
     'talent-feed':       ('3ed72cef-image.png', 0),
 }
 SIZES = (('full', 3200), ('sm', 1080))

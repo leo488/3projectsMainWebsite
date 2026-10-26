@@ -752,3 +752,15 @@
     aspect-ratio: 4 / 3;
   }
 }
+
+/* A painting stacked above a phase's panel, with the column's gap. */
+.detail-panel-lead {
+  margin-bottom: 40px;
+  background: var(--card);
+}
+
+@media (max-width: 900px) {
+  .detail-panel-lead {
+    margin-bottom: 16px;
+  }
+}

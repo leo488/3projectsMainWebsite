@@ -15,6 +15,32 @@
   transform-origin: top center;
 }
 
+/* The painting behind a screen: blurred to a soft wash of its colours,
+   like frosted glass. Behind the live phone it is only softened, so the
+   sharp copy in the phone's stream reads as the same scene. */
+.ms-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.ms-backdrop picture {
+  display: contents;
+}
+
+.ms-backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(56px) saturate(1.25);
+  transform: scale(1.3);
+}
+
+.ms-backdrop.is-through img {
+  filter: blur(14px) saturate(1.1) brightness(0.92);
+  transform: scale(1.04);
+}
+
 .ms-stage:not(.is-on) * {
   animation-play-state: paused !important;
 }
