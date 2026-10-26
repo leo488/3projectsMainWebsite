@@ -164,6 +164,22 @@
   color: var(--fg);
 }
 
+/* Each phase's pixel icon beside its name, faded with it until its
+   chapter is the one on screen. */
+.detail-progress-glyph {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  opacity: 0.35;
+  filter: grayscale(1);
+  transition: opacity 0.35s ease, filter 0.35s ease;
+}
+
+.detail-progress-item.is-active .detail-progress-glyph {
+  opacity: 1;
+  filter: none;
+}
+
 /* Chapters are stacked on top of each other so the column never jumps
    height as the active one changes. */
 .detail-chapters {

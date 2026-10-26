@@ -101,6 +101,7 @@ export default function WorkDetail({ slug }) {
                     key={s.label}
                     className={`tiny detail-progress-item${i === activeIndex ? ' is-active' : ''}`}
                   >
+                    <PixelGlyph name={PHASE_GLYPH[s.label] || 'magnifier'} className="detail-progress-glyph" />
                     {s.label}
                   </li>
                 ))}

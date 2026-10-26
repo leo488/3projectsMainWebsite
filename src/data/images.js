@@ -6,9 +6,9 @@
    srcset can pick the sharp one for the screen. Paths are written out
    in full so the preview build (preview-build.js) can see them. */
 export const PHOTOS = {
-  'hero-pos': [
-    { w: 1080, jpg: '/images/hero-pos-sm.jpg', webp: '/images/hero-pos-sm.webp', avif: '/images/hero-pos-sm.avif' },
-    { w: 1536, jpg: '/images/hero-pos-full.jpg', webp: '/images/hero-pos-full.webp', avif: '/images/hero-pos-full.avif' },
+  'hero-notes': [
+    { w: 1080, jpg: '/images/hero-notes-sm.jpg', webp: '/images/hero-notes-sm.webp', avif: '/images/hero-notes-sm.avif' },
+    { w: 1536, jpg: '/images/hero-notes-full.jpg', webp: '/images/hero-notes-full.webp', avif: '/images/hero-notes-full.avif' },
   ],
   'hero-apps': [
     { w: 1080, jpg: '/images/hero-apps-sm.jpg', webp: '/images/hero-apps-sm.webp', avif: '/images/hero-apps-sm.avif' },
@@ -38,13 +38,13 @@ export const PHOTOS = {
     { w: 1080, jpg: '/images/blog-tap-sm.jpg', webp: '/images/blog-tap-sm.webp', avif: '/images/blog-tap-sm.avif' },
     { w: 1536, jpg: '/images/blog-tap-full.jpg', webp: '/images/blog-tap-full.webp', avif: '/images/blog-tap-full.avif' },
   ],
-  'blog-arrival': [
-    { w: 1080, jpg: '/images/blog-arrival-sm.jpg', webp: '/images/blog-arrival-sm.webp', avif: '/images/blog-arrival-sm.avif' },
-    { w: 1536, jpg: '/images/blog-arrival-full.jpg', webp: '/images/blog-arrival-full.webp', avif: '/images/blog-arrival-full.avif' },
+  'blog-van': [
+    { w: 1080, jpg: '/images/blog-van-sm.jpg', webp: '/images/blog-van-sm.webp', avif: '/images/blog-van-sm.avif' },
+    { w: 1672, jpg: '/images/blog-van-full.jpg', webp: '/images/blog-van-full.webp', avif: '/images/blog-van-full.avif' },
   ],
-  'blog-taxi': [
-    { w: 1080, jpg: '/images/blog-taxi-sm.jpg', webp: '/images/blog-taxi-sm.webp', avif: '/images/blog-taxi-sm.avif' },
-    { w: 1536, jpg: '/images/blog-taxi-full.jpg', webp: '/images/blog-taxi-full.webp', avif: '/images/blog-taxi-full.avif' },
+  'blog-call': [
+    { w: 1080, jpg: '/images/blog-call-sm.jpg', webp: '/images/blog-call-sm.webp', avif: '/images/blog-call-sm.avif' },
+    { w: 1536, jpg: '/images/blog-call-full.jpg', webp: '/images/blog-call-full.webp', avif: '/images/blog-call-full.avif' },
   ],
   'blog-team': [
     { w: 1024, jpg: '/images/blog-team-full.jpg', webp: '/images/blog-team-full.webp', avif: '/images/blog-team-full.avif' },
