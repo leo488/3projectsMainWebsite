@@ -26,6 +26,7 @@ import { LEGAL_PAGES } from './data/legal'
 import useSeo       from './components/useSeo'
 import ThemeToggle  from './components/ThemeToggle'
 import Announcement from './components/Announcement'
+import ContactModal from './components/ContactModal'
 import './App.css'
 
 const LEGAL_PATHS = Object.keys(LEGAL_PAGES).map((k) => `/${k}`)
@@ -84,6 +85,7 @@ export default function App() {
       <Announcement />
       <main><Suspense fallback={null}>{page}</Suspense></main>
       <ThemeToggle />
+      <ContactModal />
     </>
   )
 }

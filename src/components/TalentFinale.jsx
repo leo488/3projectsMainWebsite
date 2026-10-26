@@ -13,7 +13,7 @@ import './TalentFinale.css'
 
 const FOLLOW_AT = 1800
 
-export default function TalentFinale({ photo, alt, position, eyebrow, heading, body, name, role, badge }) {
+export default function TalentFinale({ photo, alt, position, avatar = { size: '440%', x: 50, y: 20 }, eyebrow, heading, body, name, role, badge }) {
   useAppFont()
   const ref = useRef(null)
   const on = useInView(ref, 0.3)
@@ -42,7 +42,7 @@ export default function TalentFinale({ photo, alt, position, eyebrow, heading, b
             <StatusBar />
             <div className="finale-screen" aria-hidden="true">
               <p className="finale-title">Talent</p>
-              <span className="finale-avatar" style={crop('1180%', 45, 22)} />
+              <span className="finale-avatar" style={crop(avatar.size, avatar.x, avatar.y)} />
               <p className="finale-name">{name}</p>
               <p className="finale-role">{role}</p>
               <span className="finale-badge">{badge}</span>

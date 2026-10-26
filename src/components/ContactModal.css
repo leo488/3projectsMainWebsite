@@ -1,0 +1,121 @@
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: start center;
+  padding: 32px var(--side-pad);
+  overflow-y: auto;
+  background: rgb(20 20 20 / 0.6);
+  animation: contactFade 0.25s ease both;
+}
+
+.contact-modal-box {
+  position: relative;
+  width: min(1180px, 100%);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--fg);
+  animation: contactRise 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.contact-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 48px 48px 0;
+}
+
+.contact-modal-eyebrow {
+  color: rgb(var(--fg-rgb) / 0.55);
+}
+
+.contact-modal-title {
+  margin-top: 14px;
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.contact-modal-body {
+  margin-top: 16px;
+  max-width: 56ch;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgb(var(--fg-rgb) / 0.7);
+}
+
+.contact-modal-close {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex: none;
+  border: 1px solid rgb(var(--fg-rgb) / 0.16);
+  border-radius: 50%;
+  background: none;
+  color: var(--fg);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.contact-modal-close:hover {
+  background: rgb(var(--fg-rgb) / 0.06);
+}
+
+.contact-modal-close svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+
+/* The contact page's layout, tightened to the box. */
+.contact.contact--modal {
+  grid-template-columns: 26% 1fr;
+  gap: 48px;
+  padding: 40px 48px 48px;
+}
+
+.contact-modal-wait {
+  min-height: 480px;
+}
+
+@keyframes contactFade {
+  from { opacity: 0; }
+}
+
+@keyframes contactRise {
+  from { opacity: 0; transform: translateY(24px); }
+}
+
+@media (max-width: 900px) {
+  .contact-modal {
+    padding: 0;
+  }
+
+  .contact-modal-box {
+    min-height: 100%;
+    border-radius: 0;
+  }
+
+  .contact-modal-head {
+    padding: 28px var(--side-pad) 0;
+  }
+
+  .contact.contact--modal {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 28px var(--side-pad) 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-modal,
+  .contact-modal-box {
+    animation: none;
+  }
+}
