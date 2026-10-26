@@ -57,30 +57,6 @@ export const PHOTOS = {
   'blog-team': [
     { w: 1024, jpg: '/images/blog-team-full.jpg', webp: '/images/blog-team-full.webp', avif: '/images/blog-team-full.avif' },
   ],
-  'talent-glasses': [
-    { w: 1080, jpg: '/images/talent-glasses-sm.jpg', webp: '/images/talent-glasses-sm.webp', avif: '/images/talent-glasses-sm.avif' },
-    { w: 1672, jpg: '/images/talent-glasses-full.jpg', webp: '/images/talent-glasses-full.webp', avif: '/images/talent-glasses-full.avif' },
-  ],
-  'talent-commute': [
-    { w: 1080, jpg: '/images/talent-commute-sm.jpg', webp: '/images/talent-commute-sm.webp', avif: '/images/talent-commute-sm.avif' },
-    { w: 1672, jpg: '/images/talent-commute-full.jpg', webp: '/images/talent-commute-full.webp', avif: '/images/talent-commute-full.avif' },
-  ],
-  'talent-listening': [
-    { w: 1080, jpg: '/images/talent-listening-sm.jpg', webp: '/images/talent-listening-sm.webp', avif: '/images/talent-listening-sm.avif' },
-    { w: 1254, jpg: '/images/talent-listening-full.jpg', webp: '/images/talent-listening-full.webp', avif: '/images/talent-listening-full.avif' },
-  ],
-  'talent-stretch': [
-    { w: 1080, jpg: '/images/talent-stretch-sm.jpg', webp: '/images/talent-stretch-sm.webp', avif: '/images/talent-stretch-sm.avif' },
-    { w: 1254, jpg: '/images/talent-stretch-full.jpg', webp: '/images/talent-stretch-full.webp', avif: '/images/talent-stretch-full.avif' },
-  ],
-  'talent-billboard': [
-    { w: 1080, jpg: '/images/talent-billboard-sm.jpg', webp: '/images/talent-billboard-sm.webp', avif: '/images/talent-billboard-sm.avif' },
-    { w: 1484, jpg: '/images/talent-billboard-full.jpg', webp: '/images/talent-billboard-full.webp', avif: '/images/talent-billboard-full.avif' },
-  ],
-  'talent-feed': [
-    { w: 1080, jpg: '/images/talent-feed-sm.jpg', webp: '/images/talent-feed-sm.webp', avif: '/images/talent-feed-sm.avif' },
-    { w: 1672, jpg: '/images/talent-feed-full.jpg', webp: '/images/talent-feed-full.webp', avif: '/images/talent-feed-full.avif' },
-  ],
   'crunchies-team': [
     { w: 1080, jpg: '/images/crunchies-team-sm.jpg', webp: '/images/crunchies-team-sm.webp', avif: '/images/crunchies-team-sm.avif' },
     { w: 1673, jpg: '/images/crunchies-team-full.jpg', webp: '/images/crunchies-team-full.webp', avif: '/images/crunchies-team-full.avif' },
@@ -88,6 +64,46 @@ export const PHOTOS = {
   'crunchies-home': [
     { w: 1080, jpg: '/images/crunchies-home-sm.jpg', webp: '/images/crunchies-home-sm.webp', avif: '/images/crunchies-home-sm.avif' },
     { w: 1567, jpg: '/images/crunchies-home-full.jpg', webp: '/images/crunchies-home-full.webp', avif: '/images/crunchies-home-full.avif' },
+  ],
+  'talent-dance': [
+    { w: 1080, jpg: '/images/talent-dance-sm.jpg', webp: '/images/talent-dance-sm.webp', avif: '/images/talent-dance-sm.avif' },
+    { w: 1536, jpg: '/images/talent-dance-full.jpg', webp: '/images/talent-dance-full.webp', avif: '/images/talent-dance-full.avif' },
+  ],
+  'talent-walk': [
+    { w: 1080, jpg: '/images/talent-walk-sm.jpg', webp: '/images/talent-walk-sm.webp', avif: '/images/talent-walk-sm.avif' },
+    { w: 1538, jpg: '/images/talent-walk-full.jpg', webp: '/images/talent-walk-full.webp', avif: '/images/talent-walk-full.avif' },
+  ],
+  'talent-blue': [
+    { w: 1080, jpg: '/images/talent-blue-sm.jpg', webp: '/images/talent-blue-sm.webp', avif: '/images/talent-blue-sm.avif' },
+    { w: 1536, jpg: '/images/talent-blue-full.jpg', webp: '/images/talent-blue-full.webp', avif: '/images/talent-blue-full.avif' },
+  ],
+  'talent-hand': [
+    { w: 1080, jpg: '/images/talent-hand-sm.jpg', webp: '/images/talent-hand-sm.webp', avif: '/images/talent-hand-sm.avif' },
+    { w: 1672, jpg: '/images/talent-hand-full.jpg', webp: '/images/talent-hand-full.webp', avif: '/images/talent-hand-full.avif' },
+  ],
+  'talent-commute': [
+    { w: 1080, jpg: '/images/talent-commute-sm.jpg', webp: '/images/talent-commute-sm.webp', avif: '/images/talent-commute-sm.avif' },
+    { w: 1536, jpg: '/images/talent-commute-full.jpg', webp: '/images/talent-commute-full.webp', avif: '/images/talent-commute-full.avif' },
+  ],
+  'talent-stretch': [
+    { w: 1080, jpg: '/images/talent-stretch-sm.jpg', webp: '/images/talent-stretch-sm.webp', avif: '/images/talent-stretch-sm.avif' },
+    { w: 1086, jpg: '/images/talent-stretch-full.jpg', webp: '/images/talent-stretch-full.webp', avif: '/images/talent-stretch-full.avif' },
+  ],
+  'talent-desk': [
+    { w: 1080, jpg: '/images/talent-desk-sm.jpg', webp: '/images/talent-desk-sm.webp', avif: '/images/talent-desk-sm.avif' },
+    { w: 1254, jpg: '/images/talent-desk-full.jpg', webp: '/images/talent-desk-full.webp', avif: '/images/talent-desk-full.avif' },
+  ],
+  'talent-billboard': [
+    { w: 1080, jpg: '/images/talent-billboard-sm.jpg', webp: '/images/talent-billboard-sm.webp', avif: '/images/talent-billboard-sm.avif' },
+    { w: 1484, jpg: '/images/talent-billboard-full.jpg', webp: '/images/talent-billboard-full.webp', avif: '/images/talent-billboard-full.avif' },
+  ],
+  'talent-listening': [
+    { w: 1080, jpg: '/images/talent-listening-sm.jpg', webp: '/images/talent-listening-sm.webp', avif: '/images/talent-listening-sm.avif' },
+    { w: 1254, jpg: '/images/talent-listening-full.jpg', webp: '/images/talent-listening-full.webp', avif: '/images/talent-listening-full.avif' },
+  ],
+  'talent-feed': [
+    { w: 1080, jpg: '/images/talent-feed-sm.jpg', webp: '/images/talent-feed-sm.webp', avif: '/images/talent-feed-sm.avif' },
+    { w: 1672, jpg: '/images/talent-feed-full.jpg', webp: '/images/talent-feed-full.webp', avif: '/images/talent-feed-full.avif' },
   ],
 }
 
