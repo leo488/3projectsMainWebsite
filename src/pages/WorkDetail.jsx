@@ -5,10 +5,10 @@ import { Link } from '../router'
 import Arrow from '../components/Arrow'
 import PixelGlyph from '../components/PixelGlyph'
 import Photo from '../components/Photo'
-import PixelReveal from '../components/PixelReveal'
 import SearchScene from '../components/SearchScene'
 import MsScreen from '../components/MsScreens'
 import TalentFinale from '../components/TalentFinale'
+import ContactLink from '../components/ContactLink'
 import { PROJECTS, getProject } from '../data/projects'
 import './WorkDetail.css'
 
@@ -217,9 +217,7 @@ export default function WorkDetail({ slug }) {
         <section className="detail-gallery">
           {project.gallery.map((g, i) => (
             <figure key={i} className={`detail-shot${g.photo || g.src ? '' : ' is-empty'}`}>
-              {g.photo && i === 0
-                ? <PixelReveal name={g.photo} alt={g.alt || ''} sizes="100vw" position={g.position} />
-                : g.photo
+              {g.photo
                 ? <Photo name={g.photo} alt={g.alt || ''} sizes={i === 0 ? '100vw' : '(max-width: 900px) 100vw, 50vw'} loading="lazy" style={g.position ? { objectPosition: g.position } : undefined} />
                 : g.src
                   ? <img src={g.src} alt={g.alt || ''} loading="lazy" decoding="async" />
@@ -268,6 +266,15 @@ export default function WorkDetail({ slug }) {
             </li>
           ))}
         </ul>
+        {/* The way in, as big as the page allows. */}
+        <ContactLink className="detail-cta">
+          <span className="tiny detail-cta-eyebrow">Have a problem like this?</span>
+          <span className="detail-cta-text">
+            Start a conversation
+            <svg className="detail-cta-arrow" viewBox="0 0 44 24" aria-hidden="true"><path d="M0 12h40M30 2l10 10-10 10" /></svg>
+          </span>
+        </ContactLink>
+
         {next && (
           <Link href={`/work/${next.slug}`} className="detail-next-link">
             <span className="tiny">Next case study</span>

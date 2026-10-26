@@ -27,11 +27,12 @@ PHOTOS = {
     'blog-tap':          ('bb5d3f6b-image.png', 0),
     'blog-arrival':      ('ffd5c45a-image.png', 0),
     'blog-taxi':         ('a0c0d17e-image.png', 0),
-    'talent-hats':       ('f2d36d16-image.png', 0),
-    'talent-runner':     ('f4f3b3b6-image.png', 0),
-    'talent-studio':     ('17d979bc-image.png', 0),
-    'talent-billboard':  ('bca8f132-image.png', 0),
-    'talent-stretch':    ('238961a8-image.png', 0),
+    # Myspotlyt, Leo's painted set.
+    'talent-glasses':    ('9661d3b9-image.png', 0),
+    'talent-commute':    ('cb242c12-image.png', 0),
+    'talent-listening':  ('2ca4ea29-image.png', 0),
+    'talent-stretch':    ('a7f400bb-image.png', 0),
+    'talent-billboard':  ('1958e3a7-image.png', 0),
 }
 SIZES = (('full', 3200), ('sm', 1080))
 OUT = os.path.join(os.path.dirname(__file__), '..', 'public', 'images')

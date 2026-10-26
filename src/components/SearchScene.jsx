@@ -23,7 +23,7 @@ const PICK_AT = SUGGEST_AT + 1400
 const PROFILE_AT = PICK_AT + 600
 const LOOP_AT = PROFILE_AT + 4200
 
-export default function SearchScene({ photo, position, caption, also }) {
+export default function SearchScene({ photo, position, caption, also, avatar: crop = { size: '500%', x: 50, y: 25 } }) {
   useAppFont()
   const ref = useRef(null)
   const [t, setT] = useState(0)          // ms into the current pass
@@ -95,7 +95,7 @@ export default function SearchScene({ photo, position, caption, also }) {
           <div className={`ms-accounts${suggest ? ' is-in' : ''}`}>
             <p className="ms-label">Accounts</p>
             <div className={`ms-account${picked ? ' is-picked' : ''}`}>
-              <span className="ms-avatar" style={{ backgroundImage: `url(${avatar})` }} />
+              <span className="ms-avatar" style={{ backgroundImage: `url(${avatar})`, backgroundSize: crop.size, backgroundPosition: `${crop.x}% ${crop.y}%` }} />
               <span>Chidinma Amadi</span>
             </div>
           </div>
@@ -103,7 +103,7 @@ export default function SearchScene({ photo, position, caption, also }) {
 
         <div className={`ms-screen ms-profile${profile ? ' is-in' : ''}`}>
           <p className="ms-title ms-title--small">Talent</p>
-          <span className="ms-avatar ms-avatar--large" style={{ backgroundImage: `url(${avatar})` }} />
+          <span className="ms-avatar ms-avatar--large" style={{ backgroundImage: `url(${avatar})`, backgroundSize: crop.size, backgroundPosition: `${crop.x}% ${crop.y}%` }} />
           <p className="ms-name">Chidinma Amadi</p>
           <p className="ms-handle">Talent</p>
           <div className="ms-stats">

@@ -396,6 +396,71 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* Start a conversation, the size of a headline: a light passes across
+   the words now and then, and the arrow leans forward with it. */
+.detail-cta {
+  display: block;
+  margin-top: 128px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.detail-cta-eyebrow {
+  color: var(--pale-blue);
+}
+
+.detail-cta-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25em;
+  margin-top: 24px;
+  font-size: clamp(48px, 8.4vw, 148px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  background: linear-gradient(100deg, #FFFFFF 42%, #A3C0FF 50%, #FFFFFF 58%) 100% 0 / 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: ctaSheen 4.5s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+}
+
+.detail-cta-arrow {
+  width: 0.62em;
+  height: 0.34em;
+  flex: none;
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 2.4;
+  animation: ctaLean 4.5s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.detail-cta:hover .detail-cta-arrow {
+  animation: none;
+  transform: translateX(0.18em);
+}
+
+@keyframes ctaSheen {
+  0%, 30% { background-position: 100% 0; }
+  70%, 100% { background-position: 0 0; }
+}
+
+@keyframes ctaLean {
+  0%, 45%, 100% { transform: none; }
+  60% { transform: translateX(0.14em); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detail-cta-text,
+  .detail-cta-arrow {
+    animation: none;
+  }
+}
+
 .detail-next-link {
   display: flex;
   flex-direction: column;
@@ -530,6 +595,10 @@
 
   .detail-next-link {
     margin-top: 72px;
+  }
+
+  .detail-cta {
+    margin-top: 80px;
   }
 }
 

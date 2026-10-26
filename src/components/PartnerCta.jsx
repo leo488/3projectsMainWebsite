@@ -1,7 +1,7 @@
 import useReveal from './useReveal'
 import Arrow from './Arrow'
-import { Link } from '../router'
 import Photo from './Photo'
+import ContactLink from './ContactLink'
 import './PartnerCta.css'
 
 export default function PartnerCta() {
@@ -14,9 +14,9 @@ export default function PartnerCta() {
           Turn relationships into lasting
           business opportunities.
         </h2>
-        <Link href="/contact?topic=cpa" className="btn btn--white partner-btn">
+        <ContactLink topic="cpa" className="btn btn--white partner-btn">
           Become a CPA Partner <Arrow size={18} />
-        </Link>
+        </ContactLink>
       </div>
       <div className="partner-right">
         <Photo

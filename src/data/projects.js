@@ -277,18 +277,18 @@ export const PROJECTS = [
       headline: 'From a platform nobody stayed on to thirtyfold revenue growth.',
       body: 'Myspotlyt now runs on a stable stack, ships features on a predictable cadence and holds an active base of **five thousand users**. The work continues one release at a time.',
     },
-    // Talent photographs from Leo. The first arrives as pixels on every
-    // case study that has one.
+    // Leo's painted set: people on the move, on their phones.
     gallery: [
-      // Framed on her face and the hat she holds.
-      { photo: 'talent-hats', alt: 'A milliner seated among her hats', position: '50% 35%' },
+      { photo: 'talent-glasses', alt: 'A painting of a woman on a city bus, smiling at her phone', position: '50% 35%' },
     ],
     // Near the close: the talent the platform is for, her photograph
     // beside her profile in the app.
     finale: {
-      photo: 'talent-studio',
-      alt: 'A performer laughing, seated in a sunlit studio',
-      position: '42% 50%',
+      photo: 'talent-listening',
+      alt: 'A painting of a woman in headphones by a sunlit bus window, on her phone',
+      position: '50% 40%',
+      // Her face, cropped from the same painting for the app's avatar.
+      avatar: { size: '440%', x: 40, y: 22 },
       eyebrow: 'Who it is for',
       heading: 'Every release was for someone like her.',
       body: 'Behind every vote, ticket and follow on Myspotlyt is a performer waiting to be seen. A platform that stays up and does what its audience expects is how more of them get found, and how that audience keeps coming back.',
@@ -298,9 +298,10 @@ export const PROJECTS = [
     },
     // The app rebuilt in code over a photograph: a search that finds her.
     scene: {
-      photo: 'talent-runner',
-      also: 'talent-hats',
-      position: '70% 30%',
+      photo: 'talent-commute',
+      also: 'talent-glasses',
+      position: '50% 40%',
+      avatar: { size: '500%', x: 30, y: 24 },
       caption: 'Talent, a search away.',
     },
     // Breaks the phases after Design with a statement in the opening's
@@ -310,7 +311,7 @@ export const PROJECTS = [
       eyebrow: 'What we built for',
       text: 'A talent platform lives on one feeling: **being seen**. Every screen we shipped was made to get people there faster.',
       photo: 'talent-billboard',
-      alt: 'A billboard reading "Easy talent search." beside a woman smiling at her phone',
+      alt: 'A painting of a billboard reading "Easy talent search." beside a woman smiling at her phone',
       position: '50% 48%',
     },
     sections: [
@@ -323,7 +324,7 @@ export const PROJECTS = [
         ],
         screen: 'live',
         // Beside the feed: someone mid-stretch, smiling into the day.
-        pair: { photo: 'talent-stretch', alt: 'A woman stretching in a garden, laughing', position: '62% 30%' },
+        pair: { photo: 'talent-stretch', alt: 'A painting of a woman stretching in a garden, laughing', position: '58% 30%' },
         imageAlt: 'The Myspotlyt home feed, live, with comments and hearts coming in',
         ground: 'var(--phase-discover)',
       },

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import Logo from './Logo'
 import MegaMenu from './MegaMenu'
 import { Link } from '../router'
+import ContactLink from './ContactLink'
 import './Navbar.css'
 
 export default function Navbar({ theme = 'light' }) {
@@ -112,9 +113,9 @@ export default function Navbar({ theme = 'light' }) {
           <li><Link href="/careers">Careers</Link></li>
         </ul>
 
-        <Link href="/contact" className="btn-start btn-gradient">
+        <ContactLink className="btn-start btn-gradient">
           Start a conversation
-        </Link>
+        </ContactLink>
       </div>
     </nav>
   )
